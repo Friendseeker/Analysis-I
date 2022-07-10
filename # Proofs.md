@@ -1943,6 +1943,38 @@ Hence $f \in F \rightarrow f \in F'$ and $f \in F' \rightarrow f \in F$, indicat
 
 ### Exercise 3.5.12
 
-Note that 
+We use induction to show existence of $a_N:\{n \in \N, n \leq N\} \rightarrow N$ s.t. $a_N(0) = c$ and $\forall n < N, a_N(n++) = f(n, a_N(n))$, then we use $a_N$ to construct $a$.
 
+Let $P(N)$ be $a_N$ exists. Then, for the base case, easy to construct (by definition of function) $a_0: \{0\} \rightarrow \N$ s.t. $a_0(0) = c$, as desired.
 
+Assume true for $P(N)$, then, for $P(N++)$, we construct the function $a_{N++}$ s.t.:
+
+- For $n < N++$, $a_{N++}(n) = a_{N}(n)$
+- For $n = N++$, $a_{N++}(N++) = f(N, a_{N}(N))$
+
+Easy to verify that the above function has the desired domain & range $\{n \in \N, n \leq N++\} \rightarrow N$. We remains to show that the function satisfies the desired properties, aka:
+
+- $a_{N++}(0) = c$
+- $\forall n < N++, a_{N++}(n++) = f(n, a_{N++}(n))$
+
+For $a_{N++}(0) = c$, note, it must hold that $0 < N++$. As, otherwise by trichotomy of order, we have $0 = N++$ or $0 > N++$. $0 = N++$ contradicts Axiom 2.3. $0 > N++$ implies that $0 = d + (N++)$ for some natural number $d$. By Corollary 2.2.9 it implies $0 = N++$, contradiction.
+
+Hence, $a_{N++}(0) = a_{N}(0) = c$ by inductive hypothesis, as desired.
+
+For $\forall n < N++, a_{N++}(n++) = f(n, a_N(n))$, we prove by cases. 
+
+For $n < N$, it must hold that $n + d = N$ for some positive $d$, hence $(n + d)++ = N++$ By Axiom of substitution and therefore $(n++) + d = N++$ by addition laws, hence $n++ < N++$. Therefore $a_{N++}(n++) = a_{N}(n++) = f(n, a_{N}(n))$. Note $n < N++$, hence $f(n, a_{N}(n)) = f(n, a_{N++}(n))$, as desired.
+
+For $n = N$, $a_{N++}(n++) = a_{N++}(N++) = f(N, a_{N}(N))$ by construction, as desired.
+
+For $n > N$, $n \geq N++$ by 2.2.12 e. Hence, either $n = N++$ or $n > N++$, both violates trichotomy of order as $n < N++$. Therefore the case is vacuous, as desired.
+
+For existence of $a$, we define $a(n) = a_N(n)$. Then, $a(0) = a_0(0) = c, a(n++) = a_{N++}(n) = f(n, a_{N}(n)) = f(n, a(n))$ as desired.
+
+For uniqueness of $a$, assume there exists $b$ that satisfies the conditions. We proceed to show that $\forall n \in N, a(n) = b(n)$, aka $a = b$.
+
+We let $P(n)$ be $a(n) = b(n)$. Then, $a(0) = b(0) = c$ by definition, hence the base case is satisfied.
+
+For $P(n++)$, note $a(n++) = f(n, a(n)), b(n++) = f(n, b(n))$. Hence since $a(n) = b(n)$ by inductive hypothesis, $f(n, a(n)) = f(n, b(n))$, hence $a(n++) = b(n++)$ as desired.
+
+Therefore $a$ is unique.

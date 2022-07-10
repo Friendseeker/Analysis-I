@@ -109,6 +109,7 @@ Let a, b, c be natural numbers. Then
 - b. (Order is transitive) If a≥b and b≥c, then a≥c.
 - c. (Order is anti-symmetric) If a ≥ b and b ≥ a, then a = b.
 - d. (Addition preserves order) a≥b if and only if a+c≥b+c.
+  - Easy to prove that $a>b$ iff $a+c>b+c$ too
 - e. a<b if and only if a++≤b.
 - f. a<b if and only if b=a+d for some positive number d.
 
