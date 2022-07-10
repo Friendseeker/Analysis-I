@@ -1978,3 +1978,23 @@ We let $P(n)$ be $a(n) = b(n)$. Then, $a(0) = b(0) = c$ by definition, hence the
 For $P(n++)$, note $a(n++) = f(n, a(n)), b(n++) = f(n, b(n))$. Hence since $a(n) = b(n)$ by inductive hypothesis, $f(n, a(n)) = f(n, b(n))$, hence $a(n++) = b(n++)$ as desired.
 
 Therefore $a$ is unique.
+
+### Exercise 3.5.13
+
+We first show that $f$ exists, using Exercise 3.5.12, then we show that $f$ has the desired property:
+
+- $f$ needs to be bijective
+- $f(n) = n' \Leftrightarrow f(n++) = n'++$ 
+
+Existence: we define $f: \N \rightarrow \N'$ as:
+
+- $f(0) = 0'$
+- $f(n++) = f(n)++$
+
+Above uniquely defines a function by Exercise 3.5.12, as desired.
+
+For $f(n) = n' \Leftrightarrow f(n++) = n'++$, note $f(n) = n'$ implies $f(n++) = f(n)++ = n'++$, as desired. And, $f(n++) = n'++$ implies $f(n)++ = n'++$, which, by Axiom 2.4, implies that $f(n) = n'$, as desired. Using this, we can also inductively show that $f(n) = n'$.
+
+We proceed to prove that $f$ is bijective. For surjectivity, let the inductive hypothesis $P(n')$ be $\exists x \in N, f(x) = n'$. Then, for $P(0')$, we let $x = 0$ as desired. For $P(n++)$, note by inductive hypothesis we have $f(c) = n'$. Hence $f(c++) = n'++$, as desired.
+
+For injectivity, assume $f(n) = f(m)$. Then, we have $f(n) = n', f(m) = m'$, hence $f(n) = f(m) \rightarrow n' = m'$, as desired.
