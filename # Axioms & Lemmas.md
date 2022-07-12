@@ -150,20 +150,20 @@ multiply n++ to m by defining (n++) × m := (n × m) + m.
 
 ### Lemma 2.3.2 (Multiplication is commutative)
 
-Let n,m be natural numbers. Then n×m=m×n.
+Let $n,m$ be natural numbers. Then $n \times m=m \times n$.
 
 ### Lemma 2.3.2'
 
-m x 0 = 0
+$m \times 0 = 0$
 
 ### Lemma 2.3.2’’
 
-m x (n++) = m \* n + m
+$m \times (n++) = m \times n + m$
 
 ### Lemma 2.3.3 (Positive natural numbers have no zero divisors)
 
-Let n,m be natural numbers. Then n × m = 0 if and only if at least one of n, m
-is equal to zero. In particular, if n and m are both positive, then nm is also
+Let $n,m$ be natural numbers. Then $n \times m = 0$ if and only if at least one of $n, m$
+is equal to zero. In particular, if $n$ and $m$ are both positive, then $nm$ is also
 positive.
 
 ### Proposition 2.3.4 (Distributive law). For any natural numbers a, b, c,
@@ -519,6 +519,92 @@ Suppose that $n ≥ 1$, and $X$ has cardinality $n$. Then $X$ is non-empty, and 
 - (d) If $X$ is a finite set, and $f: X \rightarrow Y$ is a function, then $f(X)$ is a finite set with $\#(f(X)) \leq \#(X)$. If in addition $f$ is one to one, then $\#(f(X)) = \#(X)$
 - (e) Let $X, Y$ be finite sets, then $\#(X \times Y) = \#(X) \times \#(Y)$
 - (f) Let $X, Y$ be finite sets, then then $\#(Y^X) = \#(Y)^{\#(X)}$
+
+### Definition 4.1.1 (Integers)
+
+An integer is an expression of the form $a \text{---} b$, where $a$ and $b$ are natural numbers. Two integers are considered to be equal, $a \text{---} b = c \text{---} d$, if and only if $a + d = c + b$. We let $\Z$ denote the set of all integers.
+
+### Definition 4.1.2
+
+The sum of two integers, $(a\text{---}b)+(c\text{---}d)$, is defined by the formula $(a\text{---}b) + (c\text{---}d) := (a + c)\text{---}(b + d)$
+The product of two integers, $(a\text{---}b) × (c\text{---}d)$, is defined by
+$(a\text{---}b) × (c\text{---}d) := (ac + bd)\text{---}(ad + bc)$.
+
+- Note $n$ behaves similarly to $n \text{---} 0$, as one can verify:
+
+$$
+\begin{align*}
+(n \text{---} 0) + (m \text{---} 0) &= (n + m)\text{---}0 \\
+(n \text{---} 0) \times (m \text{---} 0) &= (n \times m)\text{---}0 \\
+\end{align*}
+$$
+
+Hence, we may say for $n \in \N$, $n\text{---}0 = n$, as both are isomorphic to each other, aka every equation in $\N$ maps to an equation in $\Z$.
+
+### Definition 4.1.4 (Negation of integers)
+
+If $(a\text{---}b)$ is an integer, we define the negation $−(a\text{---}b)$ to be the integer $(b\text{---}a)$. In particular if $n = n\text{---}0$ is a positive natural number, we can define its negation $−n = 0\text{---}n$.
+
+### Lemma 4.1.5 (Trichotomy of integers)
+
+Let $x$ be an integer. Then exactly one of the following three statements is true: (a) $x$ is zero; (b) $x$ is equal to a positive natural number $n$; or (c) $x$ is the negation $−n$ of a positive natural number $n$.
+
+If $n$ is a positive natural number, we call $−n$ a negative integer. Thus every integer is positive, zero, or negative, but not more than one of these at a time.
+
+### Proposition 4.1.6 (Laws of algebra for integers)
+
+Let $x, y, z$ be integers.
+Then we have
+$$
+\begin{align*}
+x+y&=y+x \\
+(x + y) + z &= x + (y + z) \\
+x+0=0+x&=x  \\ 
+x + (−x) = (−x) + x &= 0 \\
+xy &= yx \\
+(xy)z &= x(yz) \\
+x1 = 1x &= x \\
+x(y + z) &= xy + xz \\
+(y + z)x &= yx + zx
+\end{align*}
+$$
+
+Aka $\Z$ forms a commutative ring.
+
+### Subtraction of integers
+
+We now define the operation of subtraction $x − y$ of two integers by the formula
+$x − y := x + (−y)$
+
+Then, for $a, b \in \N$:
+
+$$a − b = a + (−b) = (a\text{---}0) + (0\text{---}b) = a\text{---}b$$
+
+Hence we can discard $\text{---}$ in favor of $-$.
+
+### Proposition 4.1.8 (Integers have no zero divisors)
+
+Let $a$ and $b$ be integers such that $ab=0$. Then either $a=0$ or $b=0$ (or both).
+
+### Corollary 4.1.9 (Cancellation law for integers)
+
+If $a, b, c$ are integers
+such that $ac = bc$ and $c$ is non-zero, then $a = b$.
+
+### Definition 4.1.10 (Ordering of the integers)
+
+Let $n$ and $m$ be integers. We say that $n$ is greater than or equal to $m$, and write $n ≥ m$ or $m ≤ n$, iff we have $n = m+a$ for some natural number $a$. We say that $n$ is strictly greater than $m$, and write $n > m$ or $m < n$, iff $n ≥ m$ and $n \neq m$.
+
+### Lemma 4.1.11 (Properties of order)
+
+Let $a, b, c$ be integers.
+
+- (a) $a>b$ if and only if $a−b$ is a positive natural number.
+- (b) (Addition preserves order) If $a>b$, then $a+c>b+c$.
+- (c) (Positive multiplication preserves order) If $a > b$ and $c$ is positive, then $ac > bc$.
+- (d) (Negation reverses order) If $a > b$, then $−a < −b$.
+- (e) (Order is transitive) If $a>b$ and $b>c$, then $a>c$.
+- (f) (Order trichotomy ) Exactly one of the statements $a > b$, $a < b$, or $a=b$ is true.
 
 ## Appendix a
 

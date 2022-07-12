@@ -2323,3 +2323,146 @@ $$\# \bigcup_{i \in \{1, ..., n\}} A_i = \sum_{i \in \{1, ..., n\}} \#(A_i) \leq
 
 Contradiction. Hence $\exists i \in \{1, ..., n\}, \#(A_i) > 1$, which by rules of order, $\exists i \in \{1, ..., n\}, \#(A_i) \geq 2$, as desired.
 
+### Exercise 4.1.1
+
+Reflexivity:
+
+Given $a\text{---}b$, obviously $a + b = a + b$, hence $a\text{---}b = a\text{---}b$.
+
+Symmetry:
+
+If $a\text{---}b = c\text{---}d$, then $a + d = c + b$, hence by Reflexivity of Natural Number equality, $c + b = a + d$, hence $a\text{---}b = c\text{---}d$ as desired.
+
+### Exercise 4.1.2
+
+If $a\text{---}b = a'\text{---}b'$, then $a + b' = a' + b$. Hence $b' + a = b + a'$, therefore $(b' \text{---} a') = (b \text{---} a)$, hence $-(a\text{---}b) = -(a'\text{---}b')$ as desired.
+
+### Exercise 4.1.3
+
+Let $a = x - y$
+$$
+\begin{align*}
+(-1) \times (x \text{---} y) &= (0\text{---}1) \times (x \text{---} y) \\
+                    &= (0 \times x + y)\text{---}(0 \times y + x) \\
+                    &= y \text{---} x \\
+                    &= -a
+\end{align*}
+$$
+
+As desired.
+
+### Exercise 4.1.4
+
+For $x + y = y + x$, let $x = a \text{---} b, y = x = c \text{---} d$, then $x + y = (a + c) \text{---} (b + d), y + x = (c + a) \text{---} (d + b)$.
+
+Note $(a + c) + (d + b) = (c + a) + (b + d)$, hence $x + y = y + x$ as desired.
+
+For $(x + y) + z = x + (y + z)$, let $x = a \text{---} b, y = c \text{---} d, z = e \text{---} f$, then:
+
+- $(x + y) + z = (a + c) + e \text{---} (b + d) + f$
+- $x + (y + z) = a + (c + e) \text{---} b + (d + f)$
+
+Hence, we remains to show $(a + c) + e + b + (d + f) = a + (c + e) + (b + d) + f$, which is true by natural number addition rules as desired.
+
+For $x + 0 = 0 + x = x$, let $x = a \text{---} b$, then $x + 0 = (a \text{---} b) + (0 \text{---} 0) = (a + 0) \text{---} (b + 0) = (a \text{---} b) = x$ as desired. For $x + 0 = 0 + x$, it follows from $x + y = y + x$.
+
+For $x + (−x) = (−x) + x = 0$, similarly $x + (−x) = (−x) + x$ follows from $x + y = y + x$. Remains to show $x + (-x) = 0$. Let $x = a \text{---} b$, then $x + (-x) = a \text{---} b + b \text{---} a = (a + b) \text{---} (b + a)$. We claim $(a + b) \text{---} (b + a) = 0 \text{---} 0$, as $a + b + 0 = 0 + b + a$, as desired.
+
+For $xy = yx$, let $x = a \text{---} b, y = x = c \text{---} d$, then $xy = (ac + bd) \text{---} (ad + bc), yx = (ca + db) \text{---} (cb + da) = (ac + bd) \text{---} (ad + bc)$. Rest follows from reflexivity.
+
+For $x1 = 1x = x$, note $x1 = 1x$ by $xy = yx$. Remains to show that $x1 = x$. Let $x = a \text{---} b$, then $x1 = (a \text{---} b) \times (1 \text{---} 0) = (a1 + b0) \text{---} (a0 + b1) = a \text{---} b = x$ as desired.
+
+For $x(y + z) = xy + xz$, let $x = a \text{---} b, y = c \text{---} d, z = e \text{---} f$, then $x(y + z) = (a \text{---} b) \times ((c + e) \text{---} (d + f)) = a(c+e) + b(d + f) \text{---} (a(d + f) + b(c + e))$.
+
+$xy + xz = (ac + bd) \text{---} (ad + bc) + (ae + bf) \text{---} (af + be) = ((ac + bd) + (ae + bf)) \text{---} (ad + bc) + (af + be)$. Note $(ac + bd) + (ae + bf) = a(c+e) + b(d + f)$ and $(ad + bc) + (af + be) = a(d + f) + b(c + e)$, rest follows from reflexivity.
+
+For $(y + z)x = yx + zx$, note $(y + z)x = x(y + z)$ by $xy = yx$. Then, $x(y + z) = xy + xz$. Finally $xy + xz = yx + zx$ by $xy = yx$, as desired.
+
+### Exercise 4.1.5
+
+Let $x = (a \text{---} b), y = (c \text{---} d)$, then $xy = (ac + bd) \text{---} (ad + bc) = 0 \text{---} 0$. Hence $ac + bd + 0 = (ad + bc) + 0$ implying $ac + bd = ad + bc$. Then, we need to prove either $a = b$ or $c = d$.
+
+Note:
+
+$$
+\begin{align*}
+ac + bd &= ad + bc \\
+ac + bd - bd - ad &= ad + bc - bd - ad \quad \text{by substitution Axiom}\\
+ac - ad &= bc - bd \\
+a(c - d) &= b(c - d) \\
+a(c - d) - b(c - d) &= 0 \\
+(a - b)(c - d) &= 0
+\end{align*}
+$$
+
+WLOG assume $a > b, c > d$, then By Lemma 4.1.5, $(a - b), (c - d)$ equates to natural numbers. Hence, by Proposition 4.1.8 either $a = b$ or $c = d$ as desired.
+
+If $a - b < 0$ or $c - d < 0$, then we can simply multiply both sides by $-1$ and the same argument holds.
+
+### Exercise 4.1.6
+
+If $ac = bc$, then $ac - bc = 0$, hence $c(a - b) = 0$. Therefore, by Proposition 4.1.8, either $c = 0$ or $a - b = 0$. Since $c \neq 0$, then $a - b = 0$ must hold, therefore $a = b$ as desired.
+
+Alternate proof:
+
+By Corollary 2.3.7, $c$ is either positive, or negation of positive number.
+
+WLOG say $c$ is positive (if $c$ is negative, we multiply both sides by $-1$). Then, assume $a, b \in \N$, then the conclusion follows from Corollary 2.3.7. Assume $a, b \notin \N$, then we multiply both sides by $-1$ to yield $-a = -b$, which then we can deduce $a = b$ as desired. Assume $a \in \N, b \notin \N$, then we can show $ac \in \N$, $bc = -(-b)c \notin \N$, contradiction hence the case is vacuous, as desired.
+
+### Exercise 4.1.7
+
+a) 
+
+Only if:
+
+Assume $a > b$, then $a = b + c$ for some positive $c$. Hence:
+
+$$
+\begin{align*}
+a &= b + c \\
+a - b &= b + c - b \\
+a - b &= c
+\end{align*}
+$$
+
+As desired.
+
+If:
+
+Assume $a - b = c$ for some positive $c$, then:
+
+$$
+\begin{align*}
+a - b &= c \\
+a - b + b &= c + b \\
+a &= b + c \\
+a &> b
+\end{align*}
+$$
+As desired.
+
+b)
+
+$a + c - (b + c) = a + c - b - c = a - b$. Since $a > b$, $a + c - (b + c)  = a - b$ is a positive number, hence $a + c > b + c$ as desired.
+
+c)
+
+$ac - bc = (a - b)c$. Since $a - b, c$ are positive, $(a - b)c$ is positive, hence $ac > bc$ as desired.
+
+d)
+
+$-b - (-a) = -b + a = a - b$. Since $a > b$, $-b - (-a) = a - b$ is positive, hence $-b > -a$ as desired.
+
+e)
+
+Note $a = b + e, b - f = c$ for some positive $e, f$, hence:
+
+$a - c = (b + e) - (b - f) = e + f > 0$, hence $a > c$ as desired.
+
+### Exercise 4.1.8
+
+Let $P(n)$ denote $n \geq 0$. Then, $P(0)$ is true as $0 \geq 0$.
+
+For $P(n++)$, note $n++ > n \geq 0$ (by $P(n)$), as desired.
+
+However, $P(-1)$, aka $-1 \geq 0$ is false.
