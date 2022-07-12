@@ -38,10 +38,17 @@ true for every natural number n.
 
 ### Proposition 2.1.16 (Recursive Definitions)
 
-Suppose for each natural number n, we have some function fn : N → N from the
-natural numbers to the natural numbers. Let c be a natural number. Then we can
-assign a unique natural number an to each natural number n, such that a0 = c and
-an++ = fn(an) for each natural number n.
+Suppose for each natural number $n$, we have some function $f_n : N → N$ from the
+natural numbers to the natural numbers. Let $c$ be a natural number. Then we can
+assign a unique natural number an to each natural number $n$, such that $a_0 = c$ and
+$a_{n++} = f_n(a_n)$ for each natural number $n$.
+
+Note: The non-trivial parts are:
+
+- Every natural number is assigned
+  - s.t. there's no number without assignment
+- Every natural number is assigned exactly once
+  - s.t. no number is assigned twice with two distinct values
 
 ### Definition 2.2.1 (Addition of natural numbers)
 
@@ -173,8 +180,8 @@ If a, b are natural numbers such that a < b, and c is positive, then ac < bc.
 
 ### Proposition 2.3.9 (Euclidean algorithm)
 
-Let n be a natural number, and let q be a positive number. Then there exist
-natural numbers m, r such that 0 ≤ r < q and n = mq + r.
+Let $n$ be a natural number, and let $q$ be a positive number. Then there exist
+natural numbers $m, r$ such that $0 ≤ r < q$ and $n = mq + r$.
 
 ### Definition 2.3.11 (Exponentiation for natural numbers)
 
@@ -483,6 +490,35 @@ $$\prod_{1≤i≤n}X_i = \{(x_i)_{1≤i≤n} :x_i ∈ X_i \text{ for all } 1≤i
 Let $n ≥ 1$ be a natural number, and for each natural number $1 ≤ i ≤ n$, let $X_i$ be a non-empty set. Then there exists an $n$-tuple $(x_i)_{1≤i≤n}$ such that $x_i ∈ X_i$ for all $1≤i≤n$.
  
 Aka, if each $X_i$ is non-empty, then the set $\prod_{1≤i≤n}X_i$ is non-empty.
+
+### Definition 3.6.1 (Equal cardinality)
+
+We say that two sets $X$ and $Y$ have equal cardinality iff there exists a bijection $f : X → Y$ from $X$ to $Y$.
+
+### Proposition 3.6.4
+
+Let $X, Y , Z$ be sets. Then:
+
+- $X$ has equal cardinality with $X$. 
+- If $X$ has equal cardinality with $Y$, then $Y$ has equal cardinality with $X$. 
+- If $X$ has equal cardinality with $Y$ and $Y$ has equal cardinality with $Z$, then $X$ has equal cardinality with $Z$.
+
+### Proposition 3.6.8 (Uniqueness of cardinality)
+
+Let $X$ be a set with some cardinality $n$. Then $X$ cannot have any other cardinality, i.e., $X$ cannot have cardinality $m$ for any $m \neq n$.
+
+### Lemma 3.6.9
+
+Suppose that $n ≥ 1$, and $X$ has cardinality $n$. Then $X$ is non-empty, and if $x$ is any element of $X$, then the set $X − \{x\}$ (i.e., $X$ with the element $x$ removed) has cardinality $n − 1$.
+
+### Proposition 3.6.14 (Cardinal arithmetic)
+
+- (a) Let $X$ be a finite set, and let $x \notin X$, then $x \cup X$ is finite and $\#(X \cup \{x\}) = \#(X) + 1$
+- (b) Let $X, Y$ be finite sets. Then $X \cup Y$ is finite and $\#(X \cup Y) \leq \#(X) + \#(Y)$. If $X \cap Y = 0$ (aka $X, Y$ disjoint) in addition, then $\#(X \cup Y) = \#(X) + \#(Y)$
+- (c) Let $X$ be a finite set, and let $Y \subseteq X$, then $Y$ is finite, and $\#(Y) \leq \#(X)$. If $Y \neq X$ in addition, then $\#(Y) \leq \#(X)$
+- (d) If $X$ is a finite set, and $f: X \rightarrow Y$ is a function, then $f(X)$ is a finite set with $\#(f(X)) \leq \#(X)$. If in addition $f$ is one to one, then $\#(f(X)) = \#(X)$
+- (e) Let $X, Y$ be finite sets, then $\#(X \times Y) = \#(X) \times \#(Y)$
+- (f) Let $X, Y$ be finite sets, then then $\#(Y^X) = \#(Y)^{\#(X)}$
 
 ## Appendix a
 

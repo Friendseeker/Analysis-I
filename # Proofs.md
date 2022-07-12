@@ -1952,7 +1952,11 @@ Assume true for $P(N)$, then, for $P(N++)$, we construct the function $a_{N++}$ 
 - For $n < N++$, $a_{N++}(n) = a_{N}(n)$
 - For $n = N++$, $a_{N++}(N++) = f(N, a_{N}(N))$
 
-Easy to verify that the above function has the desired domain & range $\{n \in \N, n \leq N++\} \rightarrow N$. We remains to show that the function satisfies the desired properties, aka:
+First, we can verify that the above is a function (that passes vertical line test). Assume there exists $a_{N++}(n)$ s.t. it is assigned with two values $y, y'$. Then, $n < N++$ is false as $a_{N++}(n) = a_{N}(n)$, and $a_{N}(n)$ is assigned with one value by inductive hypothesis. Hence, it must hold that $n = N++$ (by trichotomy of order), however, $a_{N++}(N++) = f(N, a_{N}(N))$, for which RHS has only one value, as desired.
+
+Also, easy to verify that the above function has the desired domain & range $\{n \in \N, n \leq N++\} \rightarrow N$.
+
+We remains to show that the function satisfies the desired properties, aka:
 
 - $a_{N++}(0) = c$
 - $\forall n < N++, a_{N++}(n++) = f(n, a_{N++}(n))$
@@ -1979,6 +1983,10 @@ For $P(n++)$, note $a(n++) = f(n, a(n)), b(n++) = f(n, b(n))$. Hence since $a(n)
 
 Therefore $a$ is unique.
 
+Problem with the above proof: Circularity. Order is defined using addition, which is then defined using recursive definition.
+
+Bonus: TODO
+
 ### Exercise 3.5.13
 
 We first show that $f$ exists, using Exercise 3.5.12, then we show that $f$ has the desired property:
@@ -1998,3 +2006,320 @@ For $f(n) = n' \Leftrightarrow f(n++) = n'++$, note $f(n) = n'$ implies $f(n++) 
 We proceed to prove that $f$ is bijective. For surjectivity, let the inductive hypothesis $P(n')$ be $\exists x \in N, f(x) = n'$. Then, for $P(0')$, we let $x = 0$ as desired. For $P(n++)$, note by inductive hypothesis we have $f(c) = n'$. Hence $f(c++) = n'++$, as desired.
 
 For injectivity, assume $f(n) = f(m)$. Then, we have $f(n) = n', f(m) = m'$, hence $f(n) = f(m) \rightarrow n' = m'$, as desired.
+
+### Exercise 3.6.1
+
+Reflexivity:
+
+Consider the mapping $f: X \rightarrow X$ s.t. $f(x) = x$. Easy to confirm that it is a bijection.
+
+Symmetry:
+
+If $X$ has same cardinality with $Y$, then there exists a bijective function $f: X \rightarrow Y$. Hence, by Exercise 3.3.6, there exists bijective $f^{-1}: Y \rightarrow X$, hence $Y$ has same cardinality with $X$ as desired.
+
+Transitivity:
+
+If $X$ has same cardinality with $Y$, there exists bijective $f: X \rightarrow Y$. If $Y$ has same cardinality with $Z$, then there exists bijective $g: Y \rightarrow Z$. By Exercise 3.3.7, $f \circ g: X \rightarrow Z$ exists & is bijective, as desired.
+
+### Exercise 3.6.2
+
+Note $\{i \in \N; 1 \leq i \leq 0\}$ is empty, as $i \leq 0$ implies $i + d = 0$, which then by Corollary 2.2.9 implies that $i = 0$, yet $1 + a = i$ for some $a$, leading to $1 = 0$, yet $1 = 0++$, hence $0++ = 0$, contradicting Axiom 2.3.
+
+Only If direction:
+
+Assume $X$ is non-empty, yet $X$ has cardinality $0$, then we have bijection $f: \empty \rightarrow X$. However, $f$ is not surjective, as given $x \in X$, there exists no $e \in \empty$ s.t. $f(e) = x$. Hence $f$ is not bijective, contradiction.
+
+If direction:
+
+If $X$ is empty, then, obvious bijection $f: \empty \rightarrow \empty$ exists, as desired.
+
+### Exercise 3.6.3
+
+We induct on $n$. Vacuously true for $n = 0$. For $P(n++)$, consider $f: \{i \in \N, 1 \leq i \leq n++\} \rightarrow \N$, consider $g: \{i \in \N, 1 \leq i \leq n\} \rightarrow \N$ s.t. $\forall 1 \leq i \leq n, g(i) = f(i)$, then by inductive hypothesis $\exists M' \in \N, \forall 1 \leq i \leq n, g(i) = f(i) \leq M'$.
+
+Therefore, we let $M = \max(M', f(n++))$, then:
+
+$$\forall 1 \leq i \leq n, f(i) \leq M' \leq  \max(M', f(n++))$$
+
+$$f(n++) \leq \max(M', f(n++))$$
+
+Combined:
+
+$$\forall 1 \leq i \leq n++, f(i) \leq  \max(M', f(n++))$$
+
+As desired.
+
+### Exercise 3.6.4
+
+(a) Let $\#(X) = n$. Then, there exists a bijective function $f: X \rightarrow \{i \in \N, 1 \leq i \leq n\}$
+
+We define $g: X \cup \{x\} \rightarrow \{i \in \N, 1 \leq i \leq n + 1\}$ as:
+
+- If $e \in X$, $g(e) = f(e)$
+- Else $g(e) = n + 1$
+
+$g$ is surjective, as, for $y \in \{i \in \N, 1 \leq i \leq n + 1\}$, it must either hold that $y \leq n$ or $y = n + 1$, by rules of order. If $y \leq n$, then $\exists e \in X, f(e) = y$, by surjectivity of $f$. Hence, $\exists e \in X, f(e) = g(e)= y$, therefore $\exists e \in X \cup \{x\}, g(e)= y$, as desired.
+
+If $y = n + 1$, then $g(x) = n + 1$ (as $x \notin X$), as desired.
+
+$g$ is injective. as, say $g(a) = g(b)$, then either $a, b \in X$ or some of $a,b \notin X$.
+
+If $a, b \in X$, then $g(a) = g(b)$ implies $f(a) = f(n)$, hence $a = b$ by injectivity of $f$.
+
+Else, WLOG assume $a \in X$ and $b \notin X$, then $g(b) = n + 1, g(a) = f(a)$. However $f(a) \in \{i \in \N, 1 \leq i \leq n\}$, $g(b) \notin \{i \in \N, 1 \leq i \leq n\}$. Hence, $f(a) \neq g(b)$, contradiction.
+
+Therefore, it must hold that both $a, b \notin X$. However, $a, b \in X \cup \{x\}$, hence $a = b = x$, as desired.
+
+(b)
+
+Note $Y - X \subseteq Y$, hence by (c):
+
+$$
+\begin{align*}
+\#(Y - X) &\leq \#(Y) \\
+\#(X) + \#(Y - X) &\leq \#(X) + \#(Y) \\
+\end{align*}
+$$
+
+We remain to show that $\#(X \cup Y) = \#(X) + \#(Y - X)$. Note there exists bijection $f: X \rightarrow \{i \in \N: 1 \leq i \leq \#(X)\}, g: Y - X \rightarrow \{i \in \N: 1 \leq i \leq \#(Y - X)\}$.
+
+And, we construct $h: X \cup Y \rightarrow \{i \in \N: 1 \leq i \leq \#(X) + \#(Y - X)\}$, for which:
+
+- For $e \in X, h(e) = f(e)$
+- Else, $h(e) = g(e) + \#(X)$
+
+We proceed to show that $h$ is bijective.
+
+For injectivity, consider $h(e) = h(e')$, then if $e \in X, e' \notin X$, then $h(e) \leq \#(X)$, $h(e') = h(e) > \#(X)$, violating trichotomy of order. If $e \in X, e' \in X$, then $h(e) = h(e')$ implies $f(e) = f(e')$, which implies $e = e'$ by injectivity of $f$.
+
+Similarly, if $e, e' \notin X$, $h(e) = h(e')$ implies $g(e) + \#(X) = g(e') + \#(X)$, which implies $g(e) = g(e')$, which implies $e = e'$ by injectivity of $g$, as desired.
+
+For surjectivity, consider $i' \in \{i \in \N: 1 \leq i \leq \#(X) + \#(Y - X)\}$, we either have $i' \leq \#(X)$ or $i' > \#(X)$. 
+
+For the first case, note $\exists e \in X, f(e) = i'$, since $f(e) = g(e)$, the same $e$ yields $g(e) = i'$ as desired.
+
+For the second case, note $\exists e \notin X, g(e) = i' - \#(X)$. (As $\#(X) + \#(Y - X) \geq i'$ implies $\#(Y - X) \geq i' - \#(X)$ which implies $i' - \#(X) \in \{i \in \N: 1 \leq i \leq \#(Y - X)\}$), hence $\exists e \notin X, g(e) + \#(X)= i'$, which implies $\exists e \notin X, h(e) = i'$ as desired.
+
+Note: Above used subtraction, which will be defined later. And introduction here should not cause circular reasoning.
+
+If $X, Y$ disjoint, then $Y - X  = Y$, hence $\#(X \cup Y) = \#(X) + \#(Y - X) = \#(X) + \#(Y)$ as desired.
+
+(c)
+
+Note, if $Y = X$, then we have $\#(Y) = \#(X)$, hence $\#(Y) \leq \#(X)$ as desired.
+
+For case $Y \neq X$, $Y \subset X$. We induct on $\#(X)$. When $\#(X) = 0$, by Exercise 3.6.2, $X = \empty$. For $Y \subset X$, either $Y = \empty$ or $Y \neq \empty$. $Y = \empty$ implies $X = Y$, hence not under the case $Y \neq X$. $Y \neq \empty$ implies $y \in Y$ (by single choice), yet $Y \subset X$ implies $y \in X$, contradiction. Hence, $\#(X) = 0$ is vacuously true.
+
+For $\#(X) = 1$, by Exercise 3.6.2, $X$ is non-empty, hence by single choice there exists $x \in X$. We claim $X = \{x\}$. Assume there exists $x' \in X, x' \neq x$, then we can define bijection $f: X \rightarrow \{1, 2\}, f(x) = 1, f(x') = 2$. Hence $\#(X) = 2$, contradiction.
+
+Assume $Y$ is non-empty, then we claim $Y = X = \{x\}$. As, assume $Y$ contains $2$ elements $y, y'$, then $y \in Y, y' \in Y$ as $Y \subset X$, hence $y = y' = x$, as desired. Hence, this does not fall under the case $Y \neq X$.
+
+Assume $Y$ is empty, then $Y \subset X$, as desired.
+
+For $P(n++)$, we take $x \in X, x \notin Y$ (which exists as $X \neq Y$. By Lemma 3.6.9 $\#(X - \{x\}) = n$. Hence, if $X - \{x\} \neq Y$, it must then hold that $X - \{x\} \subset Y$, therefore $\#(Y) < \#(X - \{x\})$, by inductive hypothesis. Hence $\#(Y) < \#(X - \{x\}) < n++ = \#(X)$ as desired.
+
+If $X - \{x\} = Y$, then $\#(Y) = \#(X - \{x\}) = n < n++ = \#(X)$, closing the induction.
+
+(d)
+
+Let $\#(X) = n$, we induct on $\#(X)$.
+
+For $n = 0$, by Exercise 3.6.2, $X = \empty$, hence $f(X) = \empty$. Therefore $\#(X) = \#(f(X)) = 0$, as desired.
+
+For $P(n++)$, we take an element $x \in X$ and consider $X - \{x\}$. Note by Lemma 3.6.9, $\#(X - \{x\}) = n$, hence $\#(f(X - \{x\}))\leq \#(X - \{x\})$ by inductive hypothesis. 
+
+Then, we perform case analysis. If there exist $x' \in X, x \neq x'$ s.t. $f(x) = f(x')$, then $f(X - \{x\}) = f(X)$. As, given $y \in f(X)$, it must hold that $y = f(c)$ for some $c \in X$. If $c \in X - \{x\}$, then $y \in f(X - \{x\})$. If $c \notin X - \{x\}$, since $c \in X$ it must hold that $c = x$. Hence $y = f(c) = f(x') \in f(X)$ as desired. Similarly for $y \in f(X - \{x\})$, we can show that $y \in f(X)$, as desired.
+
+Therefore, $f(X - \{x\}) = f(X)$, hence $\#f(X - \{x\}) = \#f(X)$, consequently $\#f(X) \leq \#(X - \{x\})$, note $\#(X - \{x\}) = n$, hence $\#f(X) \leq n < n++$ as desired.
+
+If there doesn't exist $x' \in X, x \neq x'$ s.t. $f(x) = f(x')$, then easy to verify $f(X - \{x\}) = f(X) - \{f(x)\}$. Since $f(x) \in f(X)$, $\#(f(X - \{x\})) = \#(f(X) - \{f(x)\}) = \#(f(X)) - 1$. Hence:
+
+$$
+\begin{align*}
+\#(f(X - \{x\})) &\leq \#(X - \{x\}) \\
+\#(f(X)) - 1 &\leq n \\
+\#(f(X)) &\leq n++ \\
+\end{align*}
+$$
+
+As desired.
+
+For $f$ one-to-one, we can either modify the above induction proof or directly consider function $g: X \rightarrow f(X)$ s.t. $g(x) = f(x)$, and show $g$ is bijective.
+
+(e)
+
+Since $X, Y$ are finite sets, denote $\#(X) = n, \#(Y) = m$. 
+WLOG assume $n = 0$, then $RHS = 0$, and $LHS = 0$ by Exercise 3.5.8, as desired.
+
+Consider the case $n, m \neq 0$. There exists bijections:
+
+$$
+\begin{align*}
+f&: \{X \rightarrow {i \in \N, 1 \leq i \leq n}\} \\
+g&: \{Y \rightarrow {i \in \N, 1 \leq i \leq m}\}
+\end{align*}
+$$
+
+Define $h: \{X \times Y \rightarrow \{i \in \N, 1 \leq i \leq nm\}\}$ as:
+
+$h(x, y) = (g(y) - 1)n + f(x)$
+
+Easy to verify that $h$ does have desired domain & range.
+
+We claim that $h$ is bijective. For injectivity, assume we have $h(x,y) = h(x', y')$, then $(g(y) - 1)n + f(x) = (g(y') - 1)n + f(x')$, then $(g(y) - 1)n + f(x) = (g(y') - 1)n + f(x')$, then $g(y)n + f(x) = g(y')n + f(x')$.
+
+We induct on $n$ to show that $g(y)n + f(x) = g(y')n + f(x')$ implies $f(x) = f(x'), g(y) = h(y')$. We prove a Lemma:
+
+- Given $n, q \in \N, n, q \geq 1$, there exists unique $r \in \N, 1 \leq r \leq q, m \in \N$ s.t. $n = mq + r$.
+
+Proof: 
+
+For existence, note there exists $m, 0 \leq r - 1 < q$ by applying Proposition 2.3.9 to $n - 1 = mq + (r - 1)$.
+
+For uniqueness, Induct on $n$.
+
+For $n = 1$, $1 = mq + r$. Hence, it must hold that $r = 1$, then $mq = 0$. Since $q \geq 1$, then by Lemma 2.3.3, $m = 0$ must hold, as desired.
+
+For $P(n++)$, we have $n++ = mq + r$. Assume we also have $n++ = mq + r'$, s.t. $r \neq r'$, then contradiction as $mq + r = mq + r' \rightarrow r = r'$. Similarly, cannot have $m \neq m' \land r = r'$. Therefore must have $m \neq m' \land r \neq r'$
+
+Then, if $r, r' > 1$, we have $n = mq + (r - 1) = m'q + (r' - 1)$, contradicting $P(n)$.
+
+If $r = 1 \land r' \geq 1$, then $n = mq, n = (m - 1)q + q$. (Note: we can take $m - 1$ as if $m = 0$, $n = mq = 0$, violating $n \geq 1$). Also $n = m'q + (r' - 1)$. Note since $r' \geq q$, it must hold that $r' - 1 < q$, hence $(r' - 1) \neq q$, contradicting $P(n)$. This closes the induction.
+
+Hence, let $L = g(y)n + f(x) = g(y')n + f(x')$. It immediately follows that $g(y) = g(y'), f(x) = f(x')$ via the Lemma, as desired.
+
+For surjectivity, given $L \in \{i \in \N: 1 \leq i \leq nm\}$, there exists $u, t$ s.t. $L = un + t$ by Lemma, hence $L = ((u + 1) - 1)n + t$. We take $a = g^{-1}(u + 1), b = f^{-1}(t)$. Since $1 \leq t \leq n$, $t$ is in domain of $f^{-1}$. Similarly, assume $u + 1 > m$, then $L \geq mn + t > mn$. Contradiction. Hence $u + 1$ is in domain of $g^{-1}$. Then:
+
+$$
+\begin{align*}
+h(a, b) &= h(g^{-1}(u + 1), f^{-1}(t)) \\
+        &= (g(g^{-1}(u + 1)) - 1)n + f(f^{-1}(t)) \\
+        &= ((u + 1) - 1)n + t \\
+        &= L
+\end{align*}
+$$
+
+As desired.
+
+Note: For injectivity, induction can be circumvented, by bounding $f(x) - f(x')$ and show that it lies between multiple of $n$. Surjectivity can also be shown by Euclidean Algorithm + bound estimation. This offers an alternative way of doing the problem.
+
+(f)
+
+Let $\#(X) = n$, We induct on $n$.
+
+When $n = 0$, we have $\#(Y)^{\#(X)} = 1$ and $X = \empty$ (By 3.6.2), and there exists $1$ function $f: X \rightarrow \empty$, as desired.
+
+For $P(n++)$, consider taking $x \in X$, and hence $Y^{X - \{x\}} = \#(Y)^n$ by inductive hypothesis.
+
+We proceed to show that there exists a bijection between $Y^{X - \{x\}} \times Y^{\{x\}}$ and $Y^X$. Let $g: Y^{X - \{x\}} \times Y^{\{x\}} \rightarrow Y^X$ be:
+
+- $g(h, i) = f$ s.t. $\forall x' \in X - \{x\}, f(x') = h(x')$, else $f(x) = i(x)$
+
+We proceed to prove that $g$ is injective. For $g(h, i), g(h', i')$, it must hold that:
+
+- $\forall x' \in X - \{x\}, f(x') = h(x')$
+- $\forall x' \in X - \{x\}, f(x') = h'(x')$
+
+Hence, $\forall x' \in X - \{x\}, h(x') = h'(x')$, therefore $h = h'$. Similarly, $i(x) = i'(x)$, as desired.
+
+For surjectivity, given a function $f \in Y^X$, we define:
+
+- $h: X - \{x\} \rightarrow Y$ s.t. $\forall x' \in X - \{x\}, h(x') = f(x')$
+- $i: \{x\} \rightarrow Y$ s.t. $i(x) = f(x)$.
+
+Hence, $h \in Y^{X - \{x\}}, i \in Y^{\{x\}}$. Easy to verify $g(h, i) = f$, as desired.
+
+Then, we show that $\#(Y^{\{x\}}) = \#(Y)$. We similarly establish construct $h: Y^{\{x\}} \rightarrow Y$ s.t. $h(f) = f(x)$. Then, $h$ is injective, as, given $f(x) = f'(x)$, it must hold that $f = f'$ by definition of equality. $h$ is surjective, as, given $y \in Y$, we can construct $f(x) = y$ as desired.
+
+Hence:
+
+$$
+\begin{align*}
+\#(Y^X) &= \#(Y^{X - \{x\}}) \times \#(Y^{\{x\}}) \quad \text{By e)} \\
+        &= \#(Y)^n \times \#(Y) \quad \text{By inductive hypothesis} \\
+        &= \#(Y)^{n + 1}
+\end{align*}
+$$
+
+As desired.
+
+### Exercise 3.6.5
+
+We consider $f: A \times B \rightarrow B \times A$ s.t. $f(a, b) = (b, a)$.
+
+$f$ is injective as, given $f(a, b) = f(c, d)$, then $(b, a) = (d, c)$, hence $b = d$ and $a = c$, therefore $(a, b) = (c, d)$ as desired.
+
+$f$ is surjective, as, given $(a, b) \in B \times A$, we have $f(b, a) = (a, b)$ as desired.
+
+Alternate proof of Lemma 2.3.2:
+
+For $m, n \in \N$, there exists two sets $M, N$ with cardinality $m, n$. By Proposition 3.6.14 e), $\#(M \times N) = m \times n, \#(N \times M) = n \times m$. Yet, by Exercise 3.6.5, $\#(M \times N) = \#(N \times M)$, hence $m \times n = n \times m$, as desired.
+
+### Exercise 3.6.6
+
+Note:
+
+$$f \in (A^B)^C \Leftrightarrow f: C \rightarrow A^B$$
+
+$$g \in A^{B \times C} \Leftrightarrow g: B \times C \rightarrow A$$
+
+Consider $h: (A^B)^C \rightarrow A^{B \times C}$ s.t. $\forall (b,c) \in B \times C, h(f)(b, c) = f(c)(b)$. We claim that $h$ is a bijection.
+
+$h$ is injective as say we have $h(f) = h(f')$, then $\forall (b,c) \in B \times C, f(c)(b) = f'(c)(b)$. Denote $f(c) = g, f'(c) = g'$, then $\forall (b,c) \in B \times C, g(b) = g'(b)$. Hence $\forall b \in B, g(b) = g'(b)$, hence $g = g'$. Therefore $\forall c \in C, f(c) = f'(c)$, hence $f = f'$ as desired.
+
+$h$ is surjective as, given $g: B \times C \rightarrow A$, we define $f: C \rightarrow A^B$ as $f(c) = g(b, c)$. With $c$ fixed, $g(b, c) \in A^B$ as desired.
+
+Given $a, b, c \in N$, construct $A, B, C$ with cardinality $a, b, c$. Then, $\#((A^B)^C) = (a^b)^c, \#(A^{B \times C}) = a^{b \times c}$ by Proposition 3.6.14. Hence, $(a^b)^c = a^{b \times c}$ as desired.
+
+For $a^b \times a^c = a^{b + c}$, consider sets $A, B, C$ with cardinality $a, b, c$ and $B, C$ disjoint. Then, consider bijection $t: A^{B \cup C} \rightarrow A^B \times A^C$, for which $t(h) = (f, g)$, with $\forall b \in B, f(b) = h(b), \forall c \in C, g(c) = h(c)$. Rest similar to the above proof.
+
+### Exercise 3.6.7
+
+Only if
+
+$f: A \rightarrow B$ is an injection. Denote $g: A \rightarrow f(A)$ s.t. $\forall a \in A, g(a) = f(a)$. Then, $g$ is a bijection. As, $g$ is injective, given $g(a) = g(a')$, then $f(a) = f(a')$, hence $a = a'$ by injectivity of $f$. $g$ is surjective, as, for all $b \in f(A)$, $\exists a \in a$ s.t. $f(a) = b$, by definition of image.
+
+Hence, $\#(A) = \#(f(A))$. Note $f(A) \subseteq B$, hence by 3.6.14 c), $\#(A) = \#(f(A)) \leq \#(B)$.
+
+If
+
+Given $\#(A) \leq \#(B)$, then there exists:
+
+- $f: A \rightarrow \{i \in \N: 1 \leq i \leq \#(A)\}$
+- $g: \{i \in \N: 1 \leq i \leq \#(B)\} \rightarrow B$
+
+We construct $g': \{i \in \N: 1 \leq i \leq \#(A)\} \rightarrow B$ s.t. $\forall i \in \{i \in \N: 1 \leq i \leq \#(A)\}, g'(i) = g(i)$.
+
+Then, we claim that $h = g \circ f, h: A \rightarrow B$ is an injection. First, note domain & range of $g, f$ satisfies conditions in Definition 3.3.10, hence $h: A \rightarrow B$ is a function. Then, given $h(a) = h(a')$, we deduce $g(f(a)) = g(f(a'))$, which by injectivity of $g$ we deduce $f(a) = f(a')$, hence $a = a'$ by injectivity of $f$ as desired.
+
+### Exercise 3.6.8
+
+Consider $h: A \rightarrow f(A)$. Then, similar to Exercise 3.6.7 reasoning, $h$ is bijective. Hence, consider $h^{-1}: f(A) \rightarrow A$, then $h^{-1}$ is bijective, hence surjective. Finally consider $g: B \rightarrow A$ s.t.:
+
+- If $b \in f(A)$, $g(b) = h^{-1}(b)$
+- Else we choose $a \in A$, and let $g(b) = a$
+
+Note: we can take $a \in A$, as if $A = \empty$, injectivity of $f$ implies $B = \empty$, for which $g: \empty \rightarrow \empty$ exist as trivial bijection.
+
+Easy to verify $g$ has desired domain & range.
+
+For surjectivity, take $a \in A$, then $g(h(a)) = h^{-1}(h(a)) = a$ as desired.
+
+### Exercise 3.6.9
+
+In Exercise 3.6.4 b), it is shown that $\#(X \cup Y) = \#(Y) + \#(X - Y)$.
+
+We proceed to show that $\#(X \cap Y) = \#(X) - \#(X - Y)$. Note $\#(X \cap Y) + \#(X - Y) = \#((X \cap Y) \cup (X - Y)) = \#(X)$ (by Exercise 3.6.4 b, as $X - Y, X \cap Y$ disjoint), hence $\#(X \cap Y) = \#(X) - \#(X - Y)$.
+
+Add $\#(X \cap Y) = \#(X) - \#(X - Y)$ and $\#(X \cup Y) = \#(Y) + \#(X - Y)$ yields the result.
+
+### Exercise 3.6.10
+
+Assume $\forall i \in \{1, ..., n\}, \#(A_i) \leq 1$.
+
+Then, by 3.6.14 b):
+
+$$\# \bigcup_{i \in \{1, ..., n\}} A_i = \sum_{i \in \{1, ..., n\}} \#(A_i) \leq \sum_{i \in \{1, ..., n\}} 1 = n$$
+
+Contradiction. Hence $\exists i \in \{1, ..., n\}, \#(A_i) > 1$, which by rules of order, $\exists i \in \{1, ..., n\}, \#(A_i) \geq 2$, as desired.
+
