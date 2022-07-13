@@ -530,7 +530,9 @@ The sum of two integers, $(a\text{---}b)+(c\text{---}d)$, is defined by the form
 The product of two integers, $(a\text{---}b) × (c\text{---}d)$, is defined by
 $(a\text{---}b) × (c\text{---}d) := (ac + bd)\text{---}(ad + bc)$.
 
-- Note $n$ behaves similarly to $n \text{---} 0$, as one can verify:
+### Isomorphism between integer & natural number
+
+Note $n$ behaves similarly to $n \text{---} 0$, as one can verify:
 
 $$
 \begin{align*}
@@ -605,6 +607,88 @@ Let $a, b, c$ be integers.
 - (d) (Negation reverses order) If $a > b$, then $−a < −b$.
 - (e) (Order is transitive) If $a>b$ and $b>c$, then $a>c$.
 - (f) (Order trichotomy ) Exactly one of the statements $a > b$, $a < b$, or $a=b$ is true.
+
+### Definition 4.2.1
+
+A rational number is an expression of the form $a//b$, where $a$ and $b$ are integers and $b$ is non-zero; $a//0$ is not considered to be a rational number. Two rational numbers are considered to be equal, $a//b = c//d$, if and only if $ad = cb$. The set of all rational numbers is denoted $\mathbf{Q}$.
+
+### Definition 4.2.2
+
+If $a//b$ and $c//d$ are rational numbers, we define their sum
+their product and the negation
+
+- $(a//b) + (c//d) := (ad + bc)//(bd)$
+- $(a//b) * (c//d) := (ac)//(bd)$
+- $−(a//b) := (−a)//b$
+
+Note that if $b$ and $d$ are non-zero, then $bd$ is also non-zero, by Proposition 4.1.8, so the sum or product of two rational numbers remains a rational number.
+
+### Isomorphism between rational number and integer
+
+Note:
+$$
+\begin{align*}
+(a//1) + (b//1) &= (a + b)//1 \\ 
+(a//1) × (b//1) &= (ab//1) \\
+−(a//1) &= (−a)//1
+\end{align*}
+$$
+
+Hence we define $a = a//1$
+
+### Definition for reciprocal
+
+If $x = a//b$ is a non-zero rational (so that $a, b \neq 0$) then we define the reciprocal $x^{-1}$ of $x$ to be the rational number $x^{-1} := b//a$.
+
+### Proposition 4.2.4 (Laws of algebra for rationals)
+
+Let $x, y, z$ be rationals. Then the following laws of algebra hold:
+$$
+\begin{align*}
+x+y &=y+x \\
+(x + y) + z &= x + (y + z) \\
+x+0=0+x&=x \\ 
+x + (−x) = (−x) + x &= 0 \\
+xy &= yx \\
+(xy)z &= x(yz) \\
+x1 = 1x &= x \\
+x(y + z) &= xy + xz \\ 
+(y + z)x &= yx + zx \\
+xx^{-1} = x^{-1}x &= 1 \quad \text{If } x \neq 0
+\end{align*}
+$$
+
+### Quotient & subtraction of rationals
+
+We can now define the quotient $x/y$ of two rational numbers $x$ and $y$, provided that $y$ is non-zero, by the formula $x/y := x × y^{-1}$
+
+Hence, $a/b = a//b$ for every integer $a$ and every non-zero integer $b$. Therefore the notation $a//b$ can be discarded.
+
+Similarly:
+
+$$x − y := x + (−y)$$
+
+### Definition 4.2.6
+
+A rational number $x$ is said to be positive iff we have $x = a/b$ for some positive integers $a$ and $b$. It is said to be negative iff we have $x = −y$ for some positive rational $y$ (i.e., $x = (−a)/b$ for some positive integers $a$ and $b$).
+
+### Lemma 4.2.7 (Trichotomy of rationals)
+
+Let $x$ be a rational number. Then exactly one of the following three statements is true: (a) $x$ is equal to $0$. (b) $x$ is a positive rational number. (c) $x$ is a negative rational number.
+
+### Definition 4.2.8 (Ordering of the rationals)
+
+Let $x$ and $y$ be rational numbers. We say that $x > y$ iff $x − y$ is a positive rational number, and $x < y$ iff $x−y$ is a negative rational number. We write $x ≥ y$ iff either $x > y$ or $x = y$, and similarly define $x ≤ y$.
+
+### Proposition 4.2.9 (Basic properties of order on the rationals)
+
+Let $x, y, z$ be rational numbers. Then the following properties hold.
+
+- (a) (Order trichotomy) Exactly one of the three statements $x = y, x<y, x>y$ is true.
+- (b) (Order is anti-symmetric) One has $x < y$ if and only if $y > x$.
+- (c) (Order is transitive) If $x<y $ and $y<z$,then $x<z$.
+- (d) (Addition preserves order)If $x<y$,then $x+z<y+z$.
+- (e) (Positive multiplication preserves order) If $x < y$ and $z$ is positive, then $xz < yz$.
 
 ## Appendix a
 

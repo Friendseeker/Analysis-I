@@ -2459,6 +2459,10 @@ Note $a = b + e, b - f = c$ for some positive $e, f$, hence:
 
 $a - c = (b + e) - (b - f) = e + f > 0$, hence $a > c$ as desired.
 
+f)
+
+Equivalent of showing exactly one of $a - b > 0$, $a - b$ positive, $a - b$ negative is true, which follows from Trichotomy of integers.
+
 ### Exercise 4.1.8
 
 Let $P(n)$ denote $n \geq 0$. Then, $P(0)$ is true as $0 \geq 0$.
@@ -2466,3 +2470,124 @@ Let $P(n)$ denote $n \geq 0$. Then, $P(0)$ is true as $0 \geq 0$.
 For $P(n++)$, note $n++ > n \geq 0$ (by $P(n)$), as desired.
 
 However, $P(-1)$, aka $-1 \geq 0$ is false.
+
+### Exercise 4.2.1
+
+Reflexivity:
+
+Let $x = a // b$, then $x = x \Leftrightarrow ab = ab$. Since $ab = ab$ always true $x = x$ as desired.
+
+Symmetry:
+
+Let $x = a // b, y = c // d$. Then $x = y$ implies $ad = bc$, which implies $bc = ad$ hence $y = x$ as desired.
+
+Transitivity:
+
+Let $x = a // b, y = c // d, z = e // f$. Assume $x = y$, $y = z$, then $ad = bc, cf = ed$. Hence $bcf = bed$, hence $adf = bed$. Since $d \neq 0$, $af = be$ by Corollary 4.1.9, hence $x = z$ as desired.
+
+### Exercise 4.2.2
+
+For addition, say we have $x = x', x = a // b, y = c // d, x
+' = a' // b'$, then:
+
+$$
+\begin{align*}
+x + y &= (ad + bc) // bd \\
+x' + y &= (a'd + b'c) // b'd
+\end{align*}
+$$
+
+Now, we remain to show that $(ad + bc)b'd = (a'd + b'c)bd$. Note $ab' = a'b$, then $(ad + bc)b'd = ab'dd + bb'cd = a'bdd + bb'cd = (a'd + b'c)bd$ as desired.
+
+Similarly, say $x = a // b, y = c // d, y' = y, y' = c' // d'$, then:
+
+$$
+\begin{align*}
+x + y &= (ad + bc) // bd \\
+x + y' &= (ad' + bc') // bd'
+\end{align*}
+$$
+
+Then, remain to show $(ad + bc)bd' = (ad' + bc')bd$. Note $cd' = c'd$, then $(ad + bc)bd' = adbd' + cd'bb = adbd' + c'dbb = (ad' + c'b)bd$ as desired.
+
+For product:
+
+$$
+\begin{align*}
+x * y &= ac // bd \\
+x' * y &= a'c // b'd
+\end{align*}
+$$
+
+Note $ab' = a'b$, then $ac b'd = a'cbd$ as desired.
+
+Similarly:
+
+$$
+\begin{align*}
+x * y &= ac // bd \\
+x * y' = ac' // bd'
+\end{align*}
+$$
+
+Note $cd' = c'd$, then $acbd' = ac'bd$ as desired.
+
+For negation, say we have $x = a // b, x' = x, x' = a' // b'$, then $-x = (-a) // b, -x' = (-a') // b'$. Remains to show $-ab' = -a'b$. Note $ab' = a'b$, then $-ab' = -a'b$ as desired.
+
+### Exercise 4.2.3
+
+Let $x = a // b, y = c // d, z = e // f$.
+
+For $x + y = y + x$, note $x + y = (ad + bc) // bd, y + x = (da + cb) // bd = (ad + bc) // bd$ as desired.
+
+For $x + 0 = 0 + x = x$, note $x + 0 = 0 + x$ by $x + y = y + x$. Remains to show $x + 0 = 0$. Note $x + 0 = (a1 + b0) // b = a // b = x$  as desired.
+
+For $x + (-x) = (-x) + x = 0$, note $x + (-x) = (-x) + x$ by $x + y = y + x$, hence remains to show $x + (-x) = 0$. Note $x + (-x) = (ab + b(-a)) // bb = 0 // bb$. We claim $0 // bb = 0 // 1$, as $0 \times 1 = 0 \times bb = 0$, as desired.
+
+For $xy = yx$, note $xy = ac // bd$, $yx = ca // db = ac // bd$, rest follows by reflexivity.
+
+For $(xy)z = x(yz)$, note $(xy)z = (ac)e // (bd)f$, $(xy)z = a(ce) // b(df) = (ac)e // (bd)f$ as desired.
+
+For $x1 = 1x = x$, note $x1 = 1x$ follows from $xy = yx$. For $x1 = x$, note $x1 = a1 // b1 = a // b = x$ as desired.
+
+For $x(y + z) = xy + xz$, note $x(y + z) = (a // b)(cf + de // df) = a(cf + de) // bdf$
+
+$xy + xz = ac // bd + ae // bf = (acbf + aebd) // bdbf$
+
+Then, need to show $a(cf + de)bdbf = (abcf + aebd)bdf$, which, since $b, d, f \neq 0$, is equivalent to $a(cf + de) = (acf + aed)$. which is true by distributive law of integer, as desired.
+
+For $(y + z)x = yx + zx$, note $(y + z)x = x(y + z)$ by $xy = yx$, then $x(y + z) = xy + xz = yx + zx$ as desired.
+
+For $x x^{-1} = x^{-1} x = 1$, note $x x^{-1} = x^{-1} x$ by $xy = yx$. Remains to show $x x ^{-1} = 1$. Note $x x^{-1} = ab // ba$. Since $ab1 = ba1$, $x x^{-1} = 1$ as desired.
+
+### Exercise 4.2.4
+
+Let $x = a / b$. Then, assume $b$ positive. (If $b$ is not positive, easy to prove $(-a) / (-b) = a / b$), with $(-b)$ positive.
+
+Then, we either have $a < 0, a = 0, a > 0$ by Lemma 4.1.11 f).
+
+If $a < 0$, then by definition $x$ is negative. If $a = 0$, then by definition $x = 0$. If $a > 0$, then by definition $x$ is positive. Hence at least one of (a) (b) (c) is true.
+
+Then, we show (a), (b) cannot happen at the same time. Assume $a / b = 0 / 1$, then $a1 = b0$, hence $a = 0$, contradiction, Similarly (b) (c) cannot happen at the same time.
+
+For (a), (c), assume $x = a / b = c / d$ for $a, b, d > 0, c < 0$, then $ad = bc$ holds. Note $ad$ is positive by Lemma 4.1.11 c), yet $bc$ is negative, contradiction as desired.
+
+### Exercise 4.2.5
+
+a)  Equivalent to exactly one of $x - y = 0$, $x - y$ positive, $x - y$ negative is true, which follows from Lemma 4.2.7.
+
+b) One have $x < y$ if $x - y$ is negative. We claim $y - x$ is positive. Say $x = a/b, y = c/d$ for some $b, d \in \Z, b, d > 0$, then $x - y = (ad - bc) / bd, y - x = (bc - ad) / bd = -(ad - bc) / bd$, hence by definition of negation $x - y = -(y - x)$. Hence $y - x$ negative by Definition 4.2.6, therefore $y > x$.
+
+The other direction can be proved similarly.
+
+c) If $x < y$ and $y < z$, then $y - x$, $z - y$ are both positive. Hence, $(y - x) + (z - y) = z - x$ is positive, therefore $x < z$ as desired.
+
+Note: easy to prove sum of two positive numbers are positive. Assume we have $x, y > 0, x = a/b, y = c/d, a,b,c,d > 0$, then $x + y = (ad + bc) / bd$. Note $bd$ is positive as $b > 0$, by 4.1.11 c) $bd > 0d = 0$, and $ad + bc$ is positive as say we have $m, n > 0$, then $m + n > 0 + n$ by 4.1.11 b), and since $0 + n = n > 0$, $m + n > 0$ by 4.1.11 e) as desired.
+
+d) $x < y$ implies $y - x$ is positive. Hence $y + z - (x + z) = y - x$ is positive as desired.
+
+e) $yz - xz = (y - x)z$. Since $y > x$, $y - x$ is positive, we call it $d$. We remains to prove that product of two positive rational is positive. Say $m = a / b, n = c / d$, for some $a,b,c,d > 0$, then $mn = ac / bd$. Hence, we remain to show $ac, bd$ are positive, given $a,b,c,d$ positive, It is already shown in c), as desired.
+
+### Exercise 4.2.6
+
+$xz - yz = (x - y)z = 1(x - y)z = (-1)(-1)(x - y)z = (y - x)(-z)$. Since $y - x, -z$ are positive, their product is positive via similar reasoning in Exercise 4.2.9 c).
