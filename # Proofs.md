@@ -2591,3 +2591,327 @@ e) $yz - xz = (y - x)z$. Since $y > x$, $y - x$ is positive, we call it $d$. We 
 ### Exercise 4.2.6
 
 $xz - yz = (x - y)z = 1(x - y)z = (-1)(-1)(x - y)z = (y - x)(-z)$. Since $y - x, -z$ are positive, their product is positive via similar reasoning in Exercise 4.2.9 c).
+
+### Exercise 4.3.1
+
+(a) By trichotomy of rational number, we either have $x$ positive, $x$ negative or $x = 0$.
+
+Assume $x$ positive, then by definition $|x| = x$, which is positive as desired. 
+
+Assume $x$ negative, then by definition $|x| = -x$. Assume $x = a / b$ for some $a < 0, b > 0$, then $-x = (-a) / b$ with $-a, b$ positive hence $-x$ is positive.
+
+Assume $x = 0$, then by definition $x = 0 \geq 0$ as desired,
+
+(b) By trichotomy of rational number, we break into cases.
+
+If $x = 0$, $|x + y| = |y| = 0 + |y| = |x| + |y| \leq |x| + |y|$ as desired. Similar reasoning for $y = 0$.
+
+If $x, y$ are positive, then $|x + y| = x + y = |x| + |y| \leq |x| + |y|$ as desired.
+
+If $x, y$ are negative, then $|x + y| = -(x + y) = (-x) + (-y) = |x| + |y| \leq |x| + |y|$ as desired.
+
+If $x$ positive and $y$ negative, then we either have $x + y$ positive, $x + y$ negative, or $x + y = 0$, If $x + y$ is positive, then $|x + y| = x + y, |x| + |y| = x - y, |x| + |y| - |x + y| = x - y - (x + y) = -2y > 0$ as desired.
+
+If $x + y = 0$, then $|x + y| = 0, |x| + |y| \geq 0 = |x + y|$ as desired.
+
+If $x + y < 0$, then $|x + y| = -(x + y), |x| + |y| = x - y, |x| + |y| - |x + y| = x - y + (x + y) = 2x > 0$ as desired.
+
+c)
+
+If direction:
+
+If $y \geq |x|$, assume $x \geq 0$, then $y \geq x \geq 0$. Note since $y \geq 0$, $-y \leq 0$ by Exercise 4.2.6, hence $y \geq x \geq 0 \geq -y$ as desired.
+
+Assume $x < 0$, then $-x > 0$ by Exercise 4.2.6, hence $y \geq -x > 0$, therefore $-y \leq x < 0$ by Exercise 4.2.6. Note since $y > 0$, $-y \leq x < 0 < y$ as desired.
+
+d)
+
+Assume $x, y$ both positive, then $|xy| = xy = |x||y|$ as desired. Assume $x, y$ both negative, then $|xy| = (-x)(-y) = |x||y|$ as desired. Assume $x = 0$, then $|xy| = |0| = 0 = 0|y| = |x||y|$ as desired. Assume $x$ positive and $y$ negative then $|xy| = x(-y) = |x||y|$ as desired.
+
+e)
+
+$|x - y| \geq 0$ by a). Also, by a), $|x - y| = 0$ iff $x - y = 0$ iff $x = y$ as desired.
+
+f)
+
+$|x - y| = 1|x - y| = |-1||x - y| = |(-1)(x - y)| = |y - x|$ as desired.
+
+g):
+
+Need to show $|x - z| \leq |x - y| + |y - z|$. Let $x - y = a, y - z = b$, then $x - z = x - y + y - z = a + b$. Hence, since by b) $|a + b| \leq |a| + |b|$, $|x - z| \leq |x - y| + |y - z|$ by substitution as desired.
+
+### Exercise 4.3.2
+
+a)
+
+If $x = y$, then $d(y, x) = 0$. Hence $\epsilon > 0 = d(y,x)$ as desired.
+
+For the converse, WLOG assume $x < y$, then $y - x = d$ for some positive $d$. Then, $d(x, y) = d$. We choose $\epsilon = d / 2$, then we claim $d > d / 2$. Say $d = a / b$ for some $a, b > 0$, then $d / 2 = (a / b) \times (1 / 2) = a / 2b$. One can easily verify $d = 2a / 2b$, hence $d - d / 2 = (2a - a) / 2b = a / 2b$, which is positive, as desired.
+
+Hence, $d > d/2$ implies $d(y, x) > d/2$, hence $x$ is not $\epsilon$-close to $y$ for $\epsilon = d / 2$, contradiction as desired.
+
+b)
+
+If $|x - y| \leq \epsilon$, then $|y - x| = |x - y| = \epsilon$ as desired.
+
+c)
+
+Given $|x - y| \leq \epsilon, |y - z| \leq \delta$, then $|x - y| + |y - z| \leq \epsilon + |y - z| \leq \epsilon + \delta$. Note by 4.3.3 f), $|x - z| \leq |x - y| + |y - z| \leq \epsilon + |y - z| \leq \epsilon + \delta$ as desired.
+
+d)
+
+Note:
+$$
+\begin{align*}
+d(x + z, y + w) &= |x + z - (y + w)| \\ 
+                &= |(x - y) + (z - w)| \\ 
+                &\leq |x - y| + |z - w| \quad \text{by 4.3.3 (b)} \\
+                &= \epsilon + \delta
+\end{align*}
+$$
+
+As desired.
+
+Similarly:
+
+$$
+\begin{align*}
+d(x - z, y - w) &= |x - z - (y - w)| \\ 
+                &= |(x - y) + (-1)(z - w)| \\ 
+                &\leq |x - y| + |z - w| \quad \text{by 4.3.3 (b), (d)} \\
+                &= \epsilon + \delta
+\end{align*}
+$$
+
+As desired.
+
+e)
+
+$|x - y| \leq \epsilon < \epsilon'$ as desired.
+
+f)
+
+WLOG assume $y \leq w \leq z$. Then $y - x \leq w - x \leq z - x$. Hence we either have $w < x, w \geq x$. Assume $w < x$, then $x - w > 0$, note $x - y \geq x - w > 0$, hence $|x - y| \geq |x - w|$ implying $\epsilon \geq d(w, x)$ as desired.
+
+Assume $w \geq x$, then $w - x \geq 0$, hence $0 \leq w - x \leq z - x$, therefore $|w - x| \leq |z - x|$ implying $d(w, x) \leq \epsilon$ as desired.
+
+g)
+
+Note $z$ non-zero required as Definition 4.3.4 mandates that $\epsilon > 0$.
+
+$$
+\begin{align*}
+d(xz, yz) &= |xz - yz| \\
+          &= |z(x - y)| \\
+          &= |z||x - y| \quad \text{By 4.3.3 (d)} \\
+          &\leq |z|\epsilon
+\end{align*}
+$$
+
+As desired.
+
+### Exercise 4.3.3
+
+a)
+
+Let $P(n)$ be $x^nx^m = x^{n + m}$.
+
+Then, $P(0)$ denote $x^0x^m = x^m$, which is true as $x^0 = 1$ by definition 4.3.9.
+
+For $P(n + 1)$, note $x^{n + 1}x^m = x^nxx^m = x^{n + m}x$ by $P(n)$, then $x^{n + m}x = x^{n + m + 1} = x^{(n + 1) + m}$ by definition 4.3.9 as desired.
+
+Similarly, let $P(m)$ denote $(x^n)^m = x^{nm}$, then $P(0)$ denote $(x^n)^0 = x^{n0}$, which is true as both side evaluates to $1$.
+
+For $P(m + 1)$, note $(x^n)^{m+1} = (x^n)^mx^n = x^{nm}x^n$ by $P(m)$, which, by $x^nx^m = x^{n + m}$ equals to $x^{nm + n} = x^{n(m + 1)}$ as desired.
+
+Let $P(n)$ denote $(xy)^n = x^n y^n$, then $P(0)$ is true as both sides equates to $1$. For $P(n + 1)$, note $(xy)^{n+1} = (xy)^n xy = x^n y^n xy$ by inductive hypothesis, which then, by Definition 4.3.9, equals to $x^{n + 1} y^{n + 1}$ as desired.
+
+b)
+
+If direction:
+
+Note $x^n = x^{n-1}x$. Note $n - 1 \in \N$ as each positive natural number has a natural predecessor (Lemma 2.2.10). Hence, since $x = 0$, $x^{n - 1}x = x^{n - 1} 0 = 0$ as desired.
+
+Only if direction:
+
+We prove the contraceptive, let $P(n)$ be $x \neq 0 \Rightarrow x^n \neq 0$. Then, $P(1)$ is true as $x^1 = x^0x = x \neq 0$. For $P(n + 1)$, note $x^{n + 1} = x^nx$. Since $x \neq 0$ and $x^n \neq 0$ by $P(n)$, then their product $x^nx \neq 0$ as desired.
+
+c)
+
+Note if $y = 0$, then $y^n = 0 \geq 0$ as desired. For $y > 0$, Let $P(n)$ denote $y > 0 \Rightarrow y^n > 0$. Then, $P(0)$ is true as $y^0 = 1 > 0$. For $P(n+1)$, note if $y > 0$, then $y^{n+1} = y^n y > y^n0 = 0$ as desired.
+
+For $x^n \geq y^n$ (given $x \geq y \geq 0$), let $P(n)$ denote $x^n \geq y^n$. Then, $P(0)$ is true as $x \geq y$. For $P(n + 1)$, note
+
+$$
+\begin{align*}
+x^{n + 1} &= x^nx \\ 
+          &\geq x^n y \quad &\text{As } x^n \geq 0, x > y\\ 
+          &\geq y^ny \quad &\text{By } P(n) \\
+          &= y^{n + 1} \quad &\text{By Definition 4.3.9}
+\end{align*}
+$$
+
+As desired.
+
+d)
+
+Assume $x \geq 0$, then $|x^n| = x^n = |x|^n$ as desired. Assume $x < 0$, then $|x^n| = |(-1)^n(-x)^n| = |(-1)^n||(-x)^n| = |(-x)^n| = (-x)^n = |x|^n$ as desired.
+
+We remain to show $|(-1)^n| = 1$. If $n = 0$, then $|(-1)^0| = 1$ as desired. For $P(n+1)$, note $|(-1)^{n+1}| = |(-1)^n(-1)| = |(-1)^n||-1| = 1 \times 1 = 1$ as desired.
+
+### Exercise 4.3.4
+
+a)
+
+Assume $n, m$ negative, then $x^nx^m = (x^{-n})^{-1} \times (x^{-m})^{-1} = (x^{-n} x^{-m})^{-1} = (x^{-(n + m)})^{-1} = x^{n + m}$ as desired.  First equality follows from definition 4.3.11. Second equality follows from $a^{-1}b^{-1} = (ab)^{-1}$. Third equality follows from 4.3.10 a). Last inequality follows from definition 4.3.10 a). 
+
+We remain to show $a^{-1}b^{-1} = (ab)^{-1}$. We first show that $a^{-1}$ as exponent is consistent with $a^{-1}$ as inverse. Note $a^{-1} = 1 / a = 1 \times \text{Inverse of }a$ as desired.
+
+Then $(ab)^{-1}ab = 1$ by Proposition 4.2.4, then $(ab)^{-1}aba^{-1}b^{-1} = a^{-1}b^{-1}$, then, $(ab)^{-1}aba^{-1}b^{-1} = (ab)^{-1}(aa^{-1})(bb^{-1}) = (ab)^{-1}$ by Proposition 4.2.4 as desired.
+
+Assume $n$ positive, $m$ negative. Let $m' = -m$ be positive. We propose Lemma 1: $x^a / x^b = x^{a - b}$ if $a, b, a - b \in \N$. We induct on $a$. If $a = 0$, then $x^{a - b} = x^{-b}, x^a / x^b = 1/ x^b = x^{-b}$ as desired.
+
+Note definition 4.3.11 only ensures $1/x^n = x^{-n}$ if $n$ is negative. Hence, we prove Lemma 2: $1/x^n = x^{-n}$ for any $n \in \Z$. Proof: Assume $n \geq 0$, then $1/x^n = 1 / (1 / x^{-n})$ for some negative $-n$ by definition 4.3.11. Easy to verify $1 / (1 / a) = a$ for $a \in \R$, hence $1 / x^n = 1 / (1 / x^{-n}) = x^{-n}$ as desired, ensuring that $1/x^b = x^{-b}$ is true.
+
+Therefore for $P(a + 1)$, $x^{a+1} / x^b = x(x^a) / x^b = x \times x^{a - b} = x^{(a + 1) - b}$, with second inequality is ensured by $P(a)$, other inequalities ensured by Definition 4.3.9 (As $a - b \in \N$) as desired.
+
+We remain to show $x^nx^{-m'} = x^{n - m'}$. Note $x^n x^{-m'} = x^n \times (1 / x^{m'}) = x^n \times (x^{m'})^{-1} = x^n / x^{m'}$. The first inequality is ensured by Lemma 2, second inequality is ensured by Definition 4.3.11 and third inequality follows from definition of division.
+
+Hence, if $n - m \geq 0$, result directly follows from Lemma 1. Otherwise, $x^n/x^{m'} = 1/(x^{m'} / x^n) = 1/x^{m' - n} = x^{n - m'}$ as desired.
+
+For $(x^n)^{m} = x^{nm}$, assume $n, m$ are negative, then it remains to prove $(x^{-n'})^{-m'} = x^{-n'-m'}$ for $n' = -n, m' = -n, n', m' \in \N$.
+
+We propose Lemma 3: $1/a^n = (1/a)^n$ for $n \in \N$. $P(0)$ is true as $1/a^0 = (1/a)^0 = 1$. For $P(n + 1)$:
+
+$$
+\begin{align*}
+\frac{1}{a^{n+1}} &= \frac{1}{a a^n} \quad \text{By Definition 4.3.9} \\
+                  &= \frac{1}{a} \frac{1}{a^n} \quad \text{By Division Rules} \\
+                  &= \frac{1}{a} (\frac{1}{a})^n \quad \text{By } P(n) \\
+                  &= (\frac{1}{a})^{n + 1}  \quad \text{By Definition 4.3.9}
+\end{align*}
+$$
+
+As desired.
+
+Then, with Lemma 3:
+$$
+\begin{align*}
+(x^{-n'})^{-m'} &= (\frac{1}{x^{n'}})^{-m'} \quad \text{By Definition 4.3.11} \\
+                &= 1 / ((1 / x^{n'})^{m'}) \quad \text{By Definition 4.3.11} \\
+                &= 1 / (1 / (x^{n'})^{m'}) \quad \text{By Lemma 3} \\
+                &= 1 / (1 / x^{n'm'}) \quad \text{By 4.3.10 (a)} \\
+                &= x^{n'm'} \quad \text{By Division rules} \\
+                &= x^{(-n')(-m')}
+\end{align*}
+$$
+
+As desired.
+
+Similarly, if $n$ is positive, and $m$ is negative, we let $m' = -m \in \N$, then:
+
+$$
+\begin{align*}
+(x^n)^{-m'} &= 1 / (x^n)^{m'} \quad \text{By Definition 4.3.11} \\
+            &= 1 / x^{nm'} \quad \text{By 4.3.10 (a)} \\
+            &= x^{n(-m')} \quad \text{By Lemma 2} 
+\end{align*}
+$$
+
+As desired.
+
+If $n$ is negative, and $m$ is positive, then let $n' = -n \in \N$:
+
+$$
+\begin{align*}
+(x^{-n'})^{m} &= (1 / x^{n'})^{m} \quad \text{By Definition 4.3.11} \\
+              &= (1/(x^{n'})^{m}) \quad \text{By Lemma 3} \\
+              &= 1 / x^{n'm} \quad \text{By 4.3.10 (a)} \\
+              &= x^{(-n')m} \quad \text{By Lemma 2} 
+\end{align*}
+$$
+
+As desired.
+
+For $(xy)^n = x^n y^n$, consider $n$ negative, and let $n' = -n \in \N$:
+
+$$
+\begin{align*}
+(xy)^{-n'} &= 1 / (xy)^{n'} \quad \text{By Definition 4.3.11} \\
+            &= 1 / (x^{n'} y^{n'})  \quad \text{By 4.3.10 (a)} \\
+            &= (1 / x^{n'})(1 / y^{n'}) \quad \text{By Definition 4.2.2} \\
+            &= x^{-n'} y^{-n'} \quad \text{By Definition 4.3.11}
+\end{align*}
+$$
+
+As desired.
+
+b)
+
+Say $n$ negative, then let $n' = -n \in \N, x = a/b, y = c/d, a,b,c,d \in \N$. Easy to verify $x^{-n'} = b^{n'} / a^{n'}$. By 4.3.10 c), $b^{n'} > 0, a^{n'} > 0$, hence $x^{-n'} > 0$ as desired as $x^{-n'} - 0$ is a positive rational number by Definition 4.2.6, and the inequality is true by 4.2.7.
+
+For $x^{-n'} \leq y^{-n'}$, note:
+
+$$
+\begin{align*}
+y^{n'} &\leq x^{n'} \quad \text{By 4.3.10 (c)} \\
+1 &\leq \frac{x^{n'}}{y^{n'}} \quad \text{By 4.2.9 (e) and Lemma 1} \\
+x^{-n'} &\leq y^{-n'} \quad \text{By 4.2.9 (e) and Lemma 1}
+\end{align*}
+$$
+
+As desired. (Note: Definition 4.3.11 or many other facts can be used instead of Lemma 1).
+
+c)
+
+We start by introducing Lemma 4: $a^n = 1 \Rightarrow a = 1$, for $a \in \mathbf{Q}, n \in \Z - \{0\}$.
+
+Proof: Consider $n$ positive, then we induct on $n$. Let $n = 1$, then $a^1 = 1$ implies $a = 1$ as desired. For $P(n+1)$, note $a^{n+1} = 1$ implies $a a^n = 1$ which by $P(n)$ implies $a = 1$ as desired.
+
+For $n$ negative, let $n' = -n \in \N$, then:
+
+$$
+\begin{align*}
+a^{-n'} &= 1 \\
+a^{-n'}a^{n'} &= a^{n'} \\
+1 &= a^{n'} \\
+1 &= a
+\end{align*}
+$$
+
+As desired.
+
+Then:
+
+$$
+\begin{align*}
+x^n &= y^n \\
+x^n (\frac{1}{y})^n &= 1 \quad \text{By Lemma 3} \\
+(x/y)^n &= 1 \quad \text{By 4.3.12 (a)} \\
+x/y &= 1 \quad \text{By Lemma 4} \\
+x &= y
+\end{align*}
+$$
+
+As desired.
+
+d)
+
+We start with Lemma 5: $|1 / a| = 1 / |a|, a \neq 0$. Assume $a$ is positive, then easy to verify $1/a$ is positive, hence $|1 / a| = 1 / a = 1 / |a|$ as desired. Assume $a$ is negative, then easy to verify $1/a$ is negative, hence $|1 / a| = 1 / (-a) = 1 / |a|$ as desired.
+
+Assume $n$ negative, then let $n' = -n \in \N$, then:
+
+$$
+\begin{align*}
+|x^{-n'}| &= |\frac{1}{x^{n'}}| \quad \text{By Definition 4.3.11} \\
+          &= \frac{1}{|x^{n'}|} \quad \text{By Lemma 5} \\
+          &= \frac{1}{|x|^{n'}} \quad \text{By 4.3.10 (d)} \\
+          &= |x|^{-n'} \quad \text{By Definition 4.3.11}
+\end{align*}
+$$
+
+As desired.
+
+### Exercise 4.3.5
+
+Let $P(n)$ be $2^n \geq n$. Then, $P(1)$ is true as $2 > 1$. For $P(n + 1)$, note $2^{n + 1} = 2^n \times 2 \geq n \times 2$ by inductive hypothesis. Then $n \times 2 > n$ (as $n \times 2 - n = n \geq 1 > 0$) as desired.

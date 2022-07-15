@@ -687,8 +687,70 @@ Let $x, y, z$ be rational numbers. Then the following properties hold.
 - (a) (Order trichotomy) Exactly one of the three statements $x = y, x<y, x>y$ is true.
 - (b) (Order is anti-symmetric) One has $x < y$ if and only if $y > x$.
 - (c) (Order is transitive) If $x<y $ and $y<z$,then $x<z$.
-- (d) (Addition preserves order)If $x<y$,then $x+z<y+z$.
+- (d) (Addition preserves order) If $x<y$,then $x+z<y+z$.
 - (e) (Positive multiplication preserves order) If $x < y$ and $z$ is positive, then $xz < yz$.
+
+### Definition 4.3.1 (Absolute value)
+
+If $x$ is a rational number, the absolute value $|x|$ of $x$ is defined as follows. If $x$ is positive, then $|x| := x$. If $x$ is negative, then $|x| := −x$. If $x$ is zero, then $|x| := 0$.
+
+### Definition 4.3.2 (Distance)
+
+Let $x$ and $y$ be rational numbers. The quantity $|x − y|$ is called the distance between $x$ and $y$ and is sometimes denoted $d(x, y)$, thus $d(x, y) := |x − y|$. For instance, $d(3, 5) = 2$.
+
+### Proposition 4.3.3 (Basic properties of absolute value and distance)
+
+Let $x, y, z$ be rational numbers.
+
+- (a) (Non-degeneracy of absolute value) We have $|x| ≥ 0$. Also, $|x| = 0$ if and only if $x$ is $0$.
+- (b) (Triangle inequality for absolute value) We have $|x+y| ≤ |x|+|y|$.
+- (c) We have the inequalities $−y≤x≤y$ if and only if $y≥|x|$. In particular, we have $−|x| ≤ x ≤ |x|$.
+- (d) (Multiplicativity of absolute value) We have $|xy| = |x| |y|$. In
+particular, $| − x| = |x|$.
+- (e) (Non-degeneracy of distance) We have $d(x, y) ≥ 0$. Also, $d(x, y) = 0$ if and only if $x=y$.
+- (f) (Symmetry of distance) $d(x, y) = d(y, x)$.
+- (g) (Triangle inequality for distance) $d(x, z) ≤ d(x, y) + d(y, z)$.
+
+### Definition 4.3.4 ($\epsilon$-closeness)
+
+Let $\epsilon > 0$ be a rational number, and let $x,y$ be rational numbers. We say that $y$ is $\epsilon$-close to $x$ iff we have $d(y, x) ≤ \epsilon$.
+
+### Proposition 4.3.7
+
+Let $x, y, z, w$ be rational numbers.
+- (a) If $x = y$, then $x$ is $\epsilon$-close to $y$ for every $\epsilon > 0$. Conversely, if $x$ is $\epsilon$-close to $y$ for every $\epsilon>0$, then we have $x=y$.
+- (b) Let $\epsilon>0$. If $x$ is $\epsilon$-close to $y$, then $y$ is $\epsilon$-close to $x$.
+- (c) Let $\epsilon,\delta > 0$. If $x$ is $\epsilon$-close to $y$, and $y$ is $\delta$-close to $z$, then $x$ and $z$ are $(\epsilon + \delta)$-close.
+- (d) Let $\epsilon,\delta > 0$. If $x$ and $y$ are $\epsilon$-close, and $z$ and $w$ are $\delta$-close, then $x+z$ and $y+w$ are $(\epsilon+\delta)$-close, and $x−z$ and $y−w$ are also $(\epsilon + \delta)$-close.
+- (e) Let $\epsilon > 0$. If $x$ and $y$ are $\epsilon$-close, they are also $\epsilon$′-close for every $\epsilon′ > \epsilon$.
+- (f) Let $\epsilon>0$. If $y$ and $z$ are both $\epsilon$-close to $x$, and $w$ is between $y$ and $z$ (i.e., $y ≤ w ≤ z$ or $z ≤ w ≤ y$), then $w$ is also $\epsilon$-close to $x$.
+- (g) Let $\epsilon > 0$. If $x$ and $y$ are $\epsilon$-close, and $z$ is non-zero, then $xz$ and $yz$ are $\epsilon|z|$-close.
+- (h) Let $\epsilon,\delta > 0$. If $x$ and $y$ are $\epsilon$-close, and $z$ and $w$ are $\delta$-close, then $xz$ and $yw$ are $(\epsilon|z| + \delta|x| + \epsilon\delta)$-close.
+
+### Definition 4.3.9 (Exponentiation to a natural number)
+
+Let $x$ be a rational number. To raise $x$ to the power $0$, we define $x^0 := 1$; in particular we define $0^0 := 1$. Now suppose inductively that $x_n$ has been defined for some natural number $n$, then we define $x^{n+1} := x^n \times x$.
+
+### Proposition 4.3.10 (Properties of exponentiation, I)
+
+Let $x,y$ be rational numbers, and let $n, m$ be natural numbers.
+
+- (a) We have $x^n x^m = x^{n+m}$, $(x^n)^m = x^{nm}$, and $(xy)^n = x^ny^n$.
+- (b) Suppose $n>0$. Then we have $x^n =0$ if and only if $x=0$.
+- (c) If $x ≥ y ≥ 0$, then $x^n ≥ y^n ≥ 0$. If $x > y ≥ 0$ and $n > 0$, then $x^n > y^n ≥ 0$.
+- (d) We have $|x^n| = |x|^n$.
+
+### Definition 4.3.11 (Exponentiation to a negative number)
+
+Let $x$ be a non-zero rational number. Then for any negative integer $-n$, we define $x^{−n} := 1 / x^n$.
+
+### Proposition 4.3.12 (Properties of exponentiation, II)
+
+Let $x, y$ be non-zero rational numbers, and let $n, m$ be integers.
+- (a) We have $x^nx^m = x^{n+m}$, $(x^n)^m = x^{nm}$, and $(xy)^n = x^ny^n$.
+- (b) If $x≥y>0$, then $x^n ≥ y^n >0$ if $n$ is positive,and $0< x^n ≤ y^n$ if $n$ is negative.
+- (c) If $x,y>0,n \neq 0$, and $x^n =y^n$,then $x=y$.
+- (d) We have $|x^n| = |x|^n$.
 
 ## Appendix a
 
