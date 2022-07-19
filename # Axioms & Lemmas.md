@@ -711,6 +711,8 @@ particular, $| − x| = |x|$.
 - (f) (Symmetry of distance) $d(x, y) = d(y, x)$.
 - (g) (Triangle inequality for distance) $d(x, z) ≤ d(x, y) + d(y, z)$.
 
+Note: Another useful inequality not included in the list is $|x| - |y| \leq |x - y|$. Note $x = (x - y) + y$, hence $|x| \leq |x - y| + |y|$ by triangle inequality. Therefore $|x| - |y| \leq |x - y|$. Similarly $|y| - |x| \leq |x - y|$. 
+
 ### Definition 4.3.4 ($\epsilon$-closeness)
 
 Let $\epsilon > 0$ be a rational number, and let $x,y$ be rational numbers. We say that $y$ is $\epsilon$-close to $x$ iff we have $d(y, x) ≤ \epsilon$.
@@ -796,6 +798,18 @@ Every finite sequence $a_1,a_2,...,a_n$ is bounded.
 ### Lemma 5.1.15 (Cauchy sequences are bounded)
 
 Every Cauchy sequence $(a_n)^{\infty}_{n=1}$ is bounded.
+
+### Definition 5.2.1 ($ε$-close sequences)
+
+Let $(a_n)^{∞}_{n}=0$ and $(b_n)^{∞}_{n}=0$ be two sequences, and let $ε > 0$. We say that the sequence $(a_n)^{∞}_n=0$ is $\epsilon$-close to $(b_n)^{∞}_{n}=0$ iff $a_n$ is $ε$-close to bn for each $n ∈ \N$. In other words, the sequence $a_0,a_1,a_2,...$ is $ε$-close to the sequence $b_0,b_1,b_2,...$ iff $|a_n − b_n| ≤ ε$ for all $n = 0,1,2,....$
+
+### Definition 5.2.3 (Eventually ε-close sequences)
+
+Let $(a_n)^{∞}_n=0$ and $(b_n)^{∞}_n=0$ be two sequences, and let $ε > 0$. We say that the sequence $(a_n)^{∞}_n=0$ is eventually $\epsilon$-close to $(b_n)^{∞}_n=0$ iff there exists an $N ≥ 0$ such that the sequences $(a_n)^{∞}_{n=N}$ and $(b_n)^{∞}_{n=N}$ are $\epsilon$-close. In other words, $a_0,a_1,a_2,...$ is eventually $ε$-close to $b_0,b_1,b_2,...$ iff there exists an $N ≥ 0$ such that $|a_n − b_n| ≤ ε$ for all $n ≥ N$.
+
+### Definition 5.2.6 (Equivalent sequences)
+
+Two sequences $(a_n)^{∞}_n=0$ and $(b_n)^{∞}_n=0$ are equivalent iff for each rational $ε > 0$, the sequences $(a_n)^{∞}_n=0$ and $(b_n)^{∞}_n=0$ are eventually $ε$-close. In other words, $a_0, a_1, a_2, ...$ and $b_0,b_1,b_2,...$ are equivalent iff for every rational $ε > 0$, there exists an $N ≥ 0$ such that $|a_n − b_n| ≤ ε$ for all $n ≥ N$.
 
 ## Appendix a
 

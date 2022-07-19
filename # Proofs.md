@@ -3004,3 +3004,54 @@ Hence, pick $M = M' + 1 + |a_N|$ as desired.
 Proof for $|x| - |y| \leq |x - y|$:
 
 Note $x = (x - y) + y$, hence $|x| \leq |x - y| + |y|$ by triangle inequality. Therefore $|x| - |y| \leq |x - y|$ as desired.
+
+### Exercise 5.2.1
+
+Note, for any $\epsilon, \epsilon'> 0$, there exists $N, N'$ s.t.
+
+$$
+\begin{align*}
+\forall i,j \geq N, |a_i - a_j| \leq \epsilon \\
+\forall i \geq N', |b_i - b_j| \leq \epsilon'
+\end{align*}
+$$
+
+Then, pick $N'' = \max(N, N')$, it holds that:
+
+$$
+\begin{align*}
+\forall i, j \geq N'', |b_i - b_j| \leq |b_i - a_i| + |a_i - b_j|& &\text{By triangle inequality} \\
+\forall i,j \geq N'', |b_i - b_j| \leq \epsilon' + |a_i - b_j|& &\text{As } |b_i - a_i| \leq \epsilon' \\
+\forall i,j \geq N'', |b_i - b_j| \leq \epsilon' + |a_i - a_j| + |a_j - b_j|& &\text{By triangle inequality} \\
+\forall i,j \geq N'', |b_i - b_j| \leq \epsilon' + \epsilon + \epsilon'& \\
+\forall i,j \geq N'', |b_i - b_j| \leq 2\epsilon' + \epsilon&
+\end{align*}
+$$
+
+Hence, we simply let $\epsilon' = \epsilon = \epsilon'' / 3$, then it holds that:
+
+$$
+\forall i,j \geq N'', |b_i - b_j| \leq \epsilon''
+$$
+
+Hence $(a_n)_{n=1}^{\infty}$ is Cauchy Sequence implies $(b_n)_{n=1}^{\infty}$ is Cauchy Sequence. Easy to verify equivalent sequence is reflexive, symmetric and transitive, hence the other direction follows from symmetry as desired.
+
+Comment: Thanks MVT and C-R equation proof telling me the triangle inequality trick.
+
+### Exercise 5.2.2
+
+Assume $a$ is bounded by some $M$, then:
+
+$$
+\begin{align*}
+\forall i \geq N, |a_i - b_i| \leq \epsilon& &\text{As }a, b \text{ eventually } \epsilon \text{ close} \\
+\forall i \geq N, |b_i| - |a_i| \leq |a_i - b_i| \leq \epsilon& &\text{By reverse triangle inequality} \\
+\forall i \geq N, |b_i| - |a_i| \leq \epsilon& \\
+\forall i \geq N, |b_i| \leq \epsilon + |a_i|& \\
+\forall i \geq N, |b_i| \leq \epsilon + M& &\text{As } a \text{ is bounded by some } M
+\end{align*}
+$$
+
+By Lemma 5.1.14, $(b_n)_{n=1}^{N - 1}$ is bounded by some $M'$, hence $(b_n)_{n=1}^{\infty}$ is bounded by $\max(M, \epsilon + M')$ as desired.
+
+The other direction follows similarly.
