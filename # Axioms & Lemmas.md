@@ -747,10 +747,27 @@ Let $x$ be a non-zero rational number. Then for any negative integer $-n$, we de
 ### Proposition 4.3.12 (Properties of exponentiation, II)
 
 Let $x, y$ be non-zero rational numbers, and let $n, m$ be integers.
+
 - (a) We have $x^nx^m = x^{n+m}$, $(x^n)^m = x^{nm}$, and $(xy)^n = x^ny^n$.
 - (b) If $x≥y>0$, then $x^n ≥ y^n >0$ if $n$ is positive,and $0< x^n ≤ y^n$ if $n$ is negative.
 - (c) If $x,y>0,n \neq 0$, and $x^n =y^n$,then $x=y$.
 - (d) We have $|x^n| = |x|^n$.
+
+### Proposition 4.4.1 (Interspersing of integers by rationals)
+
+Let $x$ be a rational number. Then there exists an integer $n$ such that $n ≤ x < n+1$. In fact, this integer is unique (i.e., for each $x$ there is only one $n$ for which $n ≤ x < n + 1$). In particular, there exists a natural number $N$ such that $N > x$ (i.e., there is no such thing as a rational number which is larger than all the natural numbers).
+
+### Proposition 4.4.3 (Interspersing of rationals by rationals)
+
+If $x$ and $y$ are two rationals such that $x < y$, then there exists a third rational $z$ such that $x < z < y$.
+
+### Proposition 4.4.4
+
+There does not exist any rational number $x$ for which $x^2 = 2$.
+
+### Proposition 4.4.5
+
+For every rational number $ε > 0$, there exists a non-negative rational number $x$ such that $x^2 < 2 < (x + ε)^2$.
 
 ## Appendix a
 

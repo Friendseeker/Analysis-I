@@ -2915,3 +2915,80 @@ As desired.
 ### Exercise 4.3.5
 
 Let $P(n)$ be $2^n \geq n$. Then, $P(1)$ is true as $2 > 1$. For $P(n + 1)$, note $2^{n + 1} = 2^n \times 2 \geq n \times 2$ by inductive hypothesis. Then $n \times 2 > n$ (as $n \times 2 - n = n \geq 1 > 0$) as desired.
+
+### Proposition 4.4.5
+
+Note: Tao's proof is difficult to understand with my average IQ, hence this writing to fill in the gaps.
+
+Let $\epsilon > 0, \epsilon \in \mathbf{Q}$. Then, for contradiction assume no such $x$ exists. Then, the statement $x^2 < 2 < (x + \epsilon)^2$ is false for all nonnegative $x \in \mathbf{Q}$. This implies whenever $x^2 < 2$, $(x + \epsilon)^2 \leq 2$. (Otherwise $x^2 < 2 < (x + \epsilon)^2$ would be true). By Proposition 4.4.4, since $x + \epsilon \in \mathbf{Q}$, it cannot hold that $(x + \epsilon)^2 = 2$, hence it must hold that $(x + \epsilon)^2 < 2$.
+
+We set $x = 0$. Since $x^2 < 2$ and $x$ is non-negative, it holds that $(0 + \epsilon)^2 < 2$, hence $\epsilon^2 < 2$.
+
+Similarly, we set $x = \epsilon$, then since $\epsilon^2 < 2$, it holds that $(\epsilon + \epsilon)^2 \leq 2$, aka $(2\epsilon^2)<2$.
+
+We then claim $(n\epsilon)^2<2$ for $n \in \N$. $P(0)$ is already proven. For $P(n + 1)$, note $(n \epsilon)^2 < 2$ by inductive hypothesis, hence set $x = n \epsilon$, then $(n \epsilon + \epsilon)^2 < 2$ implying $((n + 1)\epsilon^2) < 2$ as desired.
+
+However, by proposition 4.4.1, there exists a natural number $n > 2 / \epsilon$, as $2 / \epsilon$ is a rational number. Hence, it holds that, for that particular $n$, $n \epsilon > 2$, hence $(n \epsilon)^2 > 4$. However $(n \epsilon)^2 < 2 < 4$, contradiction as desired.
+
+My comment: basically the proof bounds $n \epsilon$ and constructs a large enough $n$ to show that $n \epsilon$ cannot be bounded to create contradiction. Proposition 4.4.1 is probably not strictly needed, and other estimation would suffice in the construction of sufficiently large $n$.
+
+### Exercise 4.4.1
+
+Consider $x \geq 0$, then $x = a/b$ for some $a, b \in \N$.
+
+$$
+\begin{align*}
+n \leq x &< n + 1 \\
+n \leq a/b &< n + 1\\
+bn \leq a &< b(n + 1)
+\end{align*}
+$$
+
+We claim there exists $n \in \N$ s.t. the above inequality is true. Note $bn \leq a$ iff $bn + c = a$ for some $c \in \N$, then by proposition 2.3.9 there exists such $n, c \in \N$ s.t. $bn + c = a$ and furthermore $c < b$.
+
+We claim that the found $n$ satisfies $a < b(n + 1)$. Note $b(n + 1) - a = b(n + 1) - (bn + c) = b - c > 0$ as desired.
+
+For $x < 0$, let $x' = -x$, then there exists $n' \in \N$ s.t. $n' \leq x' < n' + 1$, aka $-n' - 1 < x \leq -n'$.
+
+Assume $x \neq n'$, then $x < n'$. We let $n = -n' - 1$, then $x < -n' = n + 1$, and $-n' - 1 = n + 1 - 1 = n$, hence $-n' - 1 < x$ implies $n < x$, which implies $n \leq x$ as desired.
+
+Assume $x = n'$, then $x \in \Z$. We simply let $n = x$ as desired.
+
+### Exercise 4.4.2
+
+a)
+
+We claim $\forall n \in \N, a_n \geq k$ for all $k \in \N$.
+
+We induct on $k$. Base case $P(0)$ is true as $\forall n \in \N, a_n \in \N$, and a natural number is either equal or greater than $0$ as desired.
+
+For $P(k + 1)$, note:
+
+$$
+\begin{align*}
+\forall n \in \N&, a_n > a_{n + 1} \geq k \quad \text{By} \; P(k) \\
+\forall n \in \N&, a_n \geq k + 1
+\end{align*}
+$$
+
+As desired.
+
+Hence, we claim $a_1 \geq a_0$. Yet $a_0 > a_1$, contradiction as desired.
+
+b)
+
+Principle of infinite descent doesn't work if the sequence can take integer values. As, integer is not bounded below. Positive rational value also doesn't suffice. Consider the sequence $a_0 = 1, a_{n + 1} = a_n / 2$. Easy to prove for any arbitrary $n$, $a_n > 0$.
+
+### Exercise 4.4.3
+
+A natural number $p$ is either even or odd as say $p = 2k + r$, then there exists $k \in \N, 0 \leq r < 2$ s.t. $p = 2k + r$. Since $0 \leq r < 2$. $r = 0, 1$ as desired.
+
+A natural number $p$ cannot be both even and odd, as, say $p = 2a = 2b + 1$ for some $a, b \in \N$, then $2a = 2b + 1, 2(a - b) = 1, a - b = 1/2$. However, integer subtraction is closed, yet $1/2$ is not an integer, contradiction as desired.
+
+We can show $1/2$ is not an integer, as, assume $1/2$ is an integer, then there exists $a/1 = 1/2$, then $1 = 2a$ for some integer $a$. Easy to verify via induction $\forall a \in \N, 2a \neq 1$, and similarly $\forall a \in \N, -1 \neq 2a$ by trichotomy of order as desired.
+
+If $p$ is odd, then $p = 2k + 1, p^2 = (2k + 1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1 = 2k' + 1$ as desired.
+
+Since $p^2 = 2q^2$, then assume $q = p$, then $p^2 = 2p^2$ implying $pp = 0$ hence $p = 0$, contradiction as $p$ is positive integer.
+
+Similarly assume $q > p$, then $q^2 > pq$ and $pq > p^2$, hence $q^2 > p^2, p^2 = 2q^2 > 2p^2$ implying $p^2 > 2p^2$, hence $0 > p^2$, hence $0 = p^2 + d$ for some $d \in \N$, hence $p^2 = 0$, hence $p = 0$, contradiction as desired.
