@@ -2992,3 +2992,15 @@ If $p$ is odd, then $p = 2k + 1, p^2 = (2k + 1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k)
 Since $p^2 = 2q^2$, then assume $q = p$, then $p^2 = 2p^2$ implying $pp = 0$ hence $p = 0$, contradiction as $p$ is positive integer.
 
 Similarly assume $q > p$, then $q^2 > pq$ and $pq > p^2$, hence $q^2 > p^2, p^2 = 2q^2 > 2p^2$ implying $p^2 > 2p^2$, hence $0 > p^2$, hence $0 = p^2 + d$ for some $d \in \N$, hence $p^2 = 0$, hence $p = 0$, contradiction as desired.
+
+### Exercise 5.1.1
+
+Choose $\epsilon = 1$, then for some $N$, $|a_j - a_k| \leq 1$ for all $j, k \geq N$.
+
+Then, $a_{1}^{N - 1}$ is bounded by some $M'$ Lemma 5.1.14. We claim $a_{N}^{\infty}$ is also bounded. Pick $a_k$ s.t. $k \geq N$, then $|a_k - a_N| \leq 1$. Then, note $|a_k| - |a_N| \leq |a_k - a_N|$, then $|a_k| \leq |a_k - a_N| + |a_N|\leq 1 + |a_N|$ as desired.
+
+Hence, pick $M = M' + 1 + |a_N|$ as desired.
+
+Proof for $|x| - |y| \leq |x - y|$:
+
+Note $x = (x - y) + y$, hence $|x| \leq |x - y| + |y|$ by triangle inequality. Therefore $|x| - |y| \leq |x - y|$ as desired.

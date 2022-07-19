@@ -769,6 +769,34 @@ There does not exist any rational number $x$ for which $x^2 = 2$.
 
 For every rational number $ε > 0$, there exists a non-negative rational number $x$ such that $x^2 < 2 < (x + ε)^2$.
 
+### Definition 5.1.1 (Sequences)
+
+Let $m$ be an integer. A sequence $(a_n)^{\infty}_n=m$ of rational numbers is any function from the set $\{n ∈ \Z : n ≥ m\}$ to $\mathbf{Q}$, i.e., a mapping which assigns to each integer $n$ greater than or equal to $m$, a rational number $a_n$. More informally, a sequence $(a_n)^{\infty}_n=m$ of rational numbers is a collection of rationals $a_m, a_{m+1}, a_{m+2}, ...$
+
+### Definition 5.1.3 (ε-steadiness)
+
+Let $ε > 0$. A sequence $(a_n)^{\infty}_n=0$ is said to be $ε$-steady iff each pair $a_j, a_k$ of sequence elements is $\epsilon$-close for every natural number $j, k$. In other words, the sequence $a_0, a_1, a_2,...$. is $ε$-steady iff $d(a_j,a_k) ≤ ε$ for all $j,k$.
+
+### Definition 5.1.6 (Eventual ε-steadiness)
+
+Let $ε > 0$. A sequence $(a_n)^{\infty}_n=0$ is said to be eventually $ε$-steady iff the sequence $a_N, a_{N+1}, a_{N+2}, ...$ is $\epsilon$-steady for some natural number $N ≥ 0$. In other words, the sequence $a_0, a_1, a_2, ...$ is eventually $ε$-steady iff there exists an $N ≥ 0$ such that $d(a_j,a+k) ≤ ε$ for all $j,k ≥ N$.
+
+### Definition 5.1.8 (Cauchy sequences)
+
+A sequence $(a_n)^{\infty}_n=0$ of rational numbers is said to be a Cauchy sequence iff for every rational $ε > 0$, the sequence $(a_n)^{\infty}_n=0$ is eventually $ε$-steady. In other words, the sequence $a_0, a_1, a_2, ...$ is a Cauchy sequence iff for every $ε > 0$, there exists an $N ≥ 0$ such that $d(a_j,a_k) ≤ ε$ for all $j,k ≥ N$.
+
+### Definition 5.1.12 (Bounded sequences)
+
+Let $M ≥ 0$ be rational. A finite sequence $a_1, a_2,...,a_n$ is bounded by $M$ iff $|a_i| ≤ M$ for all $1 ≤ i ≤ n$. An infinite sequence $(a_n)^{\infty}_n=1$ is bounded by $M$ iff $|a_i| ≤ M$ for all $i ≥ 1$. A sequence is said to be bounded iff it is bounded by $M$ for some rational $M ≥ 0$.
+
+### Lemma 5.1.14 (Finite sequences are bounded)
+
+Every finite sequence $a_1,a_2,...,a_n$ is bounded.
+
+### Lemma 5.1.15 (Cauchy sequences are bounded)
+
+Every Cauchy sequence $(a_n)^{\infty}_{n=1}$ is bounded.
+
 ## Appendix a
 
 Refer to
