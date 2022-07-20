@@ -720,6 +720,7 @@ Let $\epsilon > 0$ be a rational number, and let $x,y$ be rational numbers. We s
 ### Proposition 4.3.7
 
 Let $x, y, z, w$ be rational numbers.
+
 - (a) If $x = y$, then $x$ is $\epsilon$-close to $y$ for every $\epsilon > 0$. Conversely, if $x$ is $\epsilon$-close to $y$ for every $\epsilon>0$, then we have $x=y$.
 - (b) Let $\epsilon>0$. If $x$ is $\epsilon$-close to $y$, then $y$ is $\epsilon$-close to $x$.
 - (c) Let $\epsilon,\delta > 0$. If $x$ is $\epsilon$-close to $y$, and $y$ is $\delta$-close to $z$, then $x$ and $z$ are $(\epsilon + \delta)$-close.
@@ -810,6 +811,62 @@ Let $(a_n)^{∞}_n=0$ and $(b_n)^{∞}_n=0$ be two sequences, and let $ε > 0$. 
 ### Definition 5.2.6 (Equivalent sequences)
 
 Two sequences $(a_n)^{∞}_n=0$ and $(b_n)^{∞}_n=0$ are equivalent iff for each rational $ε > 0$, the sequences $(a_n)^{∞}_n=0$ and $(b_n)^{∞}_n=0$ are eventually $ε$-close. In other words, $a_0, a_1, a_2, ...$ and $b_0,b_1,b_2,...$ are equivalent iff for every rational $ε > 0$, there exists an $N ≥ 0$ such that $|a_n − b_n| ≤ ε$ for all $n ≥ N$.
+
+### Definition 5.3.1 (Real numbers)
+
+A real number is defined to be an object of the form $\operatorname{LIM}_{n→∞} a_n$, where $(a_n)^{∞}_{n=1}$ is a Cauchy sequence of rational numbers. Two real numbers $\operatorname{LIM}_{n→∞} a_n$ and $\operatorname{LIM}_{n→∞}b_n$ are said to be equal iff $(a_n)^{∞}_{n=1}$ and $(b_n)^{∞}_{n=1}$ are equivalent Cauchy sequences. The set of all real numbers is denoted $\R$.
+
+### Proposition 5.3.3 (Formal limits are well-defined)
+
+Let $x = \operatorname{LIM}_{n→∞} a_n, y = \operatorname{LIM}_{n→∞} b_n$, and $z = \operatorname{LIM}_{n→∞} c_n$ be real numbers. Then, with the above definition of equality for real numbers, we have $x=x$. Also, if $x=y$,then $y=x$. Finally, if $x=y$ and $y=z$,then $x = z$.
+
+### Definition 5.3.4 (Addition of reals)
+
+Let $x = \operatorname{LIM}_{n\rightarrow \infty} a_n$ and $y = \operatorname{LIM}_{n\rightarrow \infty} b_n$ be real numbers. Then we define the sum $x + y$ to be $x + y := \operatorname{LIM}_{n\rightarrow \infty}(a_n + b_n)$.
+
+### Lemma 5.3.6 (Sum of Cauchy sequences is Cauchy)
+
+Let $x = \operatorname{LIM}_{n\rightarrow \infty} a_n$ and $y = \operatorname{LIM}_{n\rightarrow \infty} b_n$ be real numbers. Then $x + y$ is also a real number (i.e., $(a_n + b_n)^{∞}_{n=1} is a Cauchy sequence of rationals).
+
+### Lemma 5.3.7 (Sums of equivalent Cauchy sequences are equivalent)
+
+Let $x = \operatorname{LIM}_{n\rightarrow \infty} a_n, y = \operatorname{LIM}_{n\rightarrow \infty} b_n$, and $x′ = \operatorname{LIM}_{n\rightarrow \infty} a_n'$ be real numbers. Suppose that $x=x′$. Then we have $x+y=x′+y$.
+
+### Definition 5.3.9 (Multiplication of reals)
+
+Let $x = \operatorname{LIM}_{n\rightarrow \infty} a_n$ and $y = \operatorname{LIM}_{n\rightarrow \infty} b_n$ be real numbers. Then we define the product $xy$ to be $xy := \operatorname{LIM}_{n\rightarrow \infty} a_nb_n$.
+
+### Proposition 5.3.10 (Multiplication is well defined)
+
+Let $x = \operatorname{LIM}_{n\rightarrow \infty} a_n, y = \operatorname{LIM}_{n\rightarrow \infty} b_n$, and $x' = \operatorname{LIM}_{n\rightarrow \infty} a_n'$ be real numbers. Then $xy$ is also a real number. Furthermore, if $x = x'$, then $xy = x'y$.
+
+### Proposition 5.3.11
+
+All the laws of algebra from Proposition 4.1.6 hold not only for the integers, but for the reals as well.
+
+### Definition 5.3.12 (Sequences bounded away from zero)
+
+A sequence $(a_n)^{∞}_{n=1}$ of rational numbers is said to be bounded away from zero iff there exists a rational number $c > 0$ such that $|a_n| ≥ c$ for all $n ≥ 1$.
+
+### Lemma 5.3.14
+
+Let $x$ be a non-zero real number. Then $x = \operatorname{LIM}_{n\rightarrow \infty} a_n$ for some Cauchy sequence $(a_n)^{∞}_{n=1}$ which is bounded away from zero.
+
+### Lemma 5.3.15
+
+Suppose that $(a_n)^{∞}_{n=1}$ is a Cauchy sequence which is
+bounded away from zero. Then the sequence $(a_n^{−1})^{∞}_{n=1}$ is also a Cauchy sequence.
+
+### Definition 5.3.16 (Reciprocals of real numbers)
+
+Let $x$ be a non-zero real number. Let $(a_n)^{∞}_{n=1}$ be a Cauchy sequence bounded away from zero such that $x = \operatorname{LIM}_{n\rightarrow \infty} a_n$ (such a sequence exists by Lemma 5.3.14).
+
+Then we define the reciprocal $x^{-1}$ by the formula $x^{-1} := \operatorname{LIM}_{n\rightarrow \infty} a_n^{-1}$.
+(From Lemma 5.3.15 we know that $x^{−1}$ is a real number.)
+
+### Lemma 5.3.17 (Reciprocation is well defined)
+
+Let $(a_n)^{∞}_{n=1}$ and $(b_n)^{∞}_{n=1}$ be two Cauchy sequences bounded away from zero such that $\operatorname{LIM}_{n\rightarrow \infty} a_n = \operatorname{LIM}_{n\rightarrow \infty} b_n$ (i.e., the two sequences are equivalent). Then $\operatorname{LIM}_{n\rightarrow\infty} a_n^{−1} = \operatorname{LIM}_{n\rightarrow\infty} b_n^{−1}$.
 
 ## Appendix a
 

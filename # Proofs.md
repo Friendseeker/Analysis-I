@@ -3055,3 +3055,88 @@ $$
 By Lemma 5.1.14, $(b_n)_{n=1}^{N - 1}$ is bounded by some $M'$, hence $(b_n)_{n=1}^{\infty}$ is bounded by $\max(M, \epsilon + M')$ as desired.
 
 The other direction follows similarly.
+
+### Exercise 5.3.1
+
+Reflexivity:
+
+Note $\forall n \geq 1, |a_n - a_n| = 0 \leq \epsilon$ for any $\epsilon > 0$ as desired.
+
+Symmetry:
+
+If $\forall n \geq N, |a_n - b_n| \leq \epsilon$, then $\forall n \geq N, |b_n - a_n| = |a_n - b_n| \leq \epsilon$ as desired.
+
+Transitivity:
+
+Say $\forall n \geq N, |a_n - b_n| \leq \epsilon, \forall n \geq M, |b_n - c_n| \leq \delta$, then $\forall n \geq \max(N, M), |a_n - c_n| \leq |a_n - b_n| + |b_n - c_n| = \epsilon + \delta$. Remains to set $\epsilon = \delta = \epsilon'/2$, then $\forall n \geq \max(N, M), |a_n - c_n| \leq |a_n - b_n| + |b_n - c_n| = \epsilon + \delta = \epsilon'$. as desired.
+
+### Exercise 5.3.2
+
+Show $xy$ is a real number:
+
+By proposition 4.3.7 h), say $\forall i,j \geq N,|a_i - a_j| \leq \epsilon, \forall i,j \geq M, |b_i - b_j| \leq \delta$, then:
+
+$$\forall i,j \geq \max(N, M), |a_ib_i - a_jb_j| \leq \epsilon|b_i| + \delta|a_i| + \epsilon\delta$$
+
+Note by Lemma 5.1.15, $|a_i| \leq A, |b_i| \leq B$ for some $A, B \in \mathbb{Q}$. Hence:
+
+$$\forall i,j \geq \max(N, M), |a_ib_i - a_jb_j| \leq \epsilon B + \delta A + \epsilon\delta$$
+
+We wish that:
+
+$$\forall i,j \geq N', |a_ib_i - a_jb_j| \leq \epsilon'$$
+
+Hence, we let $N' = \max(N, M), \epsilon = \epsilon'/(3B), \delta = 2\epsilon' / 3(A + \epsilon)$, then:
+
+$$
+\begin{align*}
+\forall i,j \geq \max(N, M), |a_ib_i - a_jb_j| \leq \epsilon B + \delta A + \epsilon\delta& \\
+\forall i,j \geq N', |a_ib_i - a_jb_j| \leq \frac{\epsilon'}{3B} B + \frac{2\epsilon'}{3(A + \epsilon)}(A + \epsilon)& \\
+\forall i, j \geq N', |a_ib_i - a_jb_j| \leq \frac{\epsilon'}{3} + \frac{2\epsilon'}{3} = \epsilon'&
+\end{align*}
+$$
+
+As desired.
+
+Note: Issa Rice offers a much cleaner way to do this part in contrast to the brute force above
+
+Show $x = x' \Rightarrow xy = x'y$
+
+Need to show:
+
+$$\forall n \geq N', |a_nb_n - a_n'b_n| \leq \epsilon'$$
+
+Note $$\forall n \geq N, |a_n - a_n'| \leq \epsilon$$ as $x = x'$.
+
+Hence, let $N' = N, \epsilon = \epsilon' / B$ for which $b$ is bounded by $B$ (exists by Lemma 5.1.15), then:
+
+$$
+\begin{align*}
+|a_nb_n - a_n'b_n| &= |b_n||a_n - a_n'| \\
+                   &\leq B \epsilon'/B \\
+                   &= \epsilon'
+\end{align*}
+$$
+
+As desired.
+### Exercise 5.3.3
+
+If direction
+
+It holds that $|a - b| \leq \epsilon$ for any $\epsilon \in \mathbb{Q}, \epsilon > 0$.
+
+Assume $a \neq b$, then $|a - b| \neq 0$. Easy to verify $|a - b| > |a - b| / 2$. Hence, it cannot hold that $|a - b| \leq |a - b|/2$ by trichotomy of order, contradiction as desired.
+
+Only if direction
+
+Since $a = b$, $|a - b| = 0 \leq \epsilon$ for any $\epsilon > 0$ as desired.
+
+### Exercise 5.3.4
+
+Since $(b_n)^{\infty}_{n=0}$ is equivalent to $(a_n)^{\infty}_{n=0}$, $(b_n)^{\infty}_{n=0}$ is eventually $\epsilon$-close to $(a_n)^{\infty}_{n=0}$ for some $\epsilon > 0$. Rest follows from Exercise 5.2.2.
+
+### Exercise 5.3.5
+
+Need to show there exists $N$ s.t. $\forall n \geq N, |1/n - 0| \leq \epsilon$ for any $\epsilon > 0$.
+
+Note $|1/n - 0| = 1/n \leq 1/N$, and, $1/N \leq \epsilon \Leftrightarrow 1/\epsilon \leq N$. By Proposition 4.4.1 such $N$ exists as desired.
