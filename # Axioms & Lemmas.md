@@ -687,7 +687,7 @@ Let $x, y, z$ be rational numbers. Then the following properties hold.
 - (a) (Order trichotomy) Exactly one of the three statements $x = y, x<y, x>y$ is true.
 - (b) (Order is anti-symmetric) One has $x < y$ if and only if $y > x$.
 - (c) (Order is transitive) If $x<y $ and $y<z$,then $x<z$.
-- (d) (Addition preserves order) If $x<y$,then $x+z<y+z$.
+- (d) (Addition preserves order) If $x<y$, then $x+z<y+z$.
 - (e) (Positive multiplication preserves order) If $x < y$ and $z$ is positive, then $xz < yz$.
 
 ### Definition 4.3.1 (Absolute value)
@@ -867,6 +867,56 @@ Then we define the reciprocal $x^{-1}$ by the formula $x^{-1} := \operatorname{L
 ### Lemma 5.3.17 (Reciprocation is well defined)
 
 Let $(a_n)^{∞}_{n=1}$ and $(b_n)^{∞}_{n=1}$ be two Cauchy sequences bounded away from zero such that $\operatorname{LIM}_{n\rightarrow \infty} a_n = \operatorname{LIM}_{n\rightarrow \infty} b_n$ (i.e., the two sequences are equivalent). Then $\operatorname{LIM}_{n\rightarrow\infty} a_n^{−1} = \operatorname{LIM}_{n\rightarrow\infty} b_n^{−1}$.
+
+### Definition 5.4.1
+
+Let $(a_n)^{\infty}_{n=1}$ be a sequence of rationals. We say that this sequence is positively bounded away from zero iff we have a positive rational $c > 0$ such that $a_n ≥ c$ for all $n ≥ 1$ (in particular, the sequence is entirely positive). The sequence is negatively bounded away from zero iff we have a negative rational $−c<0$ such that $a_n ≤−c$ for all $n≥1$ (in particular, the sequence is entirely negative).
+
+### Definition 5.4.3
+
+A real number $x$ is said to be positive iff it can be written as $x = \operatorname{LIM}_{n→∞} a_n$ for some Cauchy sequence $(a_n)^{\infty}_{n=1}$ which is positively bounded away from zero. $x$ is said to be negative iff it can be written as $x = \operatorname{LIM}_{n→∞}$ an for some sequence $(a_n)^{\infty}_{n=1}$ which is negatively bounded away from zero.
+
+### Proposition 5.4.4 (Basic properties of positive reals)
+
+For every real number $x$, exactly one of the following three statements is true:
+
+- (a) $x$ is zero
+- (b) $x$ is positive
+- (c) $x$ is negative.
+
+A real number $x$ is negative if and only if $−x$ is positive. If $x$ and $y$ are positive, then so are $x + y$ and $xy$.
+
+### Definition 5.4.5 (Absolute value)
+
+Let $x$ be a real number. We define the absolute value $|x|$ of $x$ to equal $x$ if $x$ is positive, $−x$ when $x$ is negative, and $0$ when $x$ is zero.
+
+### Definition 5.4.6 (Ordering of the real numbers)
+
+Let $x$ and $y$ be real numbers. We say that $x$ is greater than $y$, and write $x > y$, if $x−y$ is a positive real number, and $x < y$ iff $x − y$ is a negative real number. We define $x ≥ y$ iff $x > y$ or $x = y$, and similarly define $x ≤ y$.
+
+### Proposition 5.4.7
+
+All the claims in Proposition 4.2.9 which held for rationals, continue to hold for real numbers.
+
+### Proposition 5.4.8
+
+Let $x$ be a positive real number. Then $x^{-1}$ is also positive. Also, if $y$ is another positive number and $x > y$, then $x^{−1} < y^{−1}$.
+
+### Corollary 5.4.10
+
+Let $(a_n)^{∞}_{n=1}$ and $(b_n)^{∞}_{n=1}$ be Cauchy sequences of rationals such that $a_n ≥ b_n$ for all $n ≥ 1$. Then $\operatorname{LIM}_{n→∞} a_n ≥ \operatorname{LIM}_{n→∞} b_n$.
+
+### Proposition 5.4.12 (Bounding of reals by rationals)
+
+Let $x$ be a positive real number. Then there exists a positive rational number $q$ such that $q ≤ x$, and there exists a positive integer $N$ such that $x ≤ N$.
+
+### Corollary 5.4.13 (Archimedean property)
+
+Let $x$ and $ε$ be any positive real numbers. Then there exists a positive integer $M$ such that $Mε > x$.
+
+### Proposition 5.4.14
+
+Given any two real numbers $x < y$, we can find a rational number $q$ such that $x < q < y$.
 
 ## Appendix a
 

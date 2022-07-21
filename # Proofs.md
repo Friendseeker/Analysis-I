@@ -2734,7 +2734,7 @@ Note $x^n = x^{n-1}x$. Note $n - 1 \in \N$ as each positive natural number has a
 
 Only if direction:
 
-We prove the contraceptive, let $P(n)$ be $x \neq 0 \Rightarrow x^n \neq 0$. Then, $P(1)$ is true as $x^1 = x^0x = x \neq 0$. For $P(n + 1)$, note $x^{n + 1} = x^nx$. Since $x \neq 0$ and $x^n \neq 0$ by $P(n)$, then their product $x^nx \neq 0$ as desired.
+We prove the contraposition, let $P(n)$ be $x \neq 0 \Rightarrow x^n \neq 0$. Then, $P(1)$ is true as $x^1 = x^0x = x \neq 0$. For $P(n + 1)$, note $x^{n + 1} = x^nx$. Since $x \neq 0$ and $x^n \neq 0$ by $P(n)$, then their product $x^nx \neq 0$ as desired.
 
 c)
 
@@ -2954,6 +2954,10 @@ Assume $x \neq n'$, then $x < n'$. We let $n = -n' - 1$, then $x < -n' = n + 1$,
 
 Assume $x = n'$, then $x \in \Z$. We simply let $n = x$ as desired.
 
+For uniqueness, say we have $n \leq x < n + 1, m \leq x < n + 1$. WLOG say $n < m$. Then $n < m \leq x < n + 1 < m + 1$. Hence $n < m < n + 1$. Hence $m \in \Z$ is between two consecutive integers, contradiction.
+
+We can prove that $n < m < n + 1$ does indeed lead to contradiction. Since $n < m$, $m - n = d$ for some positive integer $d$. Similarly $n + 1 - m = d'$ for some positive $d'$. Note $n + 1 - m = -(m - n) + 1 = -d + 1 = d'$, hence $d' + d - 1 = 0$. Since $d - 1$ is natural by Lemma 2.2.10, by Corollary 2.2.9, $d' = d - 1 = 0$, hence $d = 1$. However, $d' + (d - 1) = (d' - 1) + d$, hence similarly $d = 0$, contradiction as desired. 
+
 ### Exercise 4.4.2
 
 a)
@@ -3140,3 +3144,147 @@ Since $(b_n)^{\infty}_{n=0}$ is equivalent to $(a_n)^{\infty}_{n=0}$, $(b_n)^{\i
 Need to show there exists $N$ s.t. $\forall n \geq N, |1/n - 0| \leq \epsilon$ for any $\epsilon > 0$.
 
 Note $|1/n - 0| = 1/n \leq 1/N$, and, $1/N \leq \epsilon \Leftrightarrow 1/\epsilon \leq N$. By Proposition 4.4.1 such $N$ exists as desired.
+
+### Exercise 5.4.1
+
+Say $x$ is negative, then $x = (a_n)^{\infty}_{n=1}$ for some $(a_n)^{\infty}_{n=1}$ negatively bounded. Easy to verify $-x = -(a_n)^{\infty}_{n=1}$ is positively bounded. Other direction follows similarly.
+
+Say $x = \operatorname{LIM}_{n\rightarrow\infty}(a_n)^{\infty}_{n=1}, y = \operatorname{LIM}_{n\rightarrow\infty}(b_n)^{\infty}_{n=1}$, with both sequence positively bounded away from zero. Then it holds that $a_n \geq A, b_n \geq B$ for some $A, B > 0, A, B \in \mathbb{Q}$. Hence $a_n + b_n \geq A + B > 0$ as desired. Similar reasoning for $xy$ being positive.
+
+Other Part: Note we either have $x = 0$ or $x \neq 0$. Say $x = 0$ aka $x = \operatorname{LIM}_{n\rightarrow\infty}(0)_{n=1}^{\infty}$. Easy to verify $x$ is neither positive nor negative, hence the trichotomy.
+
+Say $x \neq 0$, then we claim $x$ is either positive or negative. By Lemma 5.3.14 $x = \operatorname{LIM}_{n\rightarrow\infty} (a_n)^{\infty}_{n=1}$ for which $\forall n, |a_n| \geq c$ for some rational $c > 0$.
+
+As $(a_n)^{\infty}_{n=1}$ is a Cauchy sequence, it holds that $\exists N, \forall n \geq N, |a_n - a_N| \leq \epsilon$ for all $\epsilon > 0$.
+
+Since $a_N \neq 0$ (as $|a_N| > c$), either $a_N < 0$ or $a_N > 0$. WLOG assume $a_N < 0$, then $a_N = |a_N| \geq c$. Then WLOG assume $a_n - a_N \geq 0$, we then have $a_n - a_N \leq \epsilon$. Setting $\epsilon = c/2$ yields $a_n - a_N \leq c/2$. Since $|a_N| \geq c$ and $a_N < 0$, $a_N \leq -c$, hence:
+
+$$
+\begin{align*}
+a_n - a_N \leq c/2& \\
+a_n \leq c/2 + a_N \leq c/2 - c \leq -c/2&
+\end{align*}
+$$
+
+Hence $\exists N, \forall n \geq N, a_n \leq -c/2$. Hence, we define $(b_n)^{\infty}_{n=1}$ s.t. $\forall n < N, b_n = -1, \forall n \geq N, b_n = a_n$. Easy to verify $|b_n| \leq \min(-1, -c/2)$ (aka $(b_n)^{\infty}_{n=1}$ is negatively bounded from $0$), $(b_n)^{\infty}_{n=1}$ is Cauchy and $(a_n)^{\infty}_{n=1} = (b_n)^{\infty}_{n=1}$ as desired.
+
+### Exercise 5.4.2
+
+Note by Proposition 5.3.11, Proposition 4.1.6 holds for $\R$.
+
+a)
+
+Consider $x - y$, then we either have $x - y > 0, x - y = 0, x - y < 0$, hence we either have $x > y, x = y, x < y$ as desired.
+
+b)
+
+One has $x < y$ iff $x - y$ is negative. Note $y - x = -(x - y)$. By Proposition 5.4.4, $y - x$ positive, hence $y > x$ as desired.
+
+Other direction follows similarly.
+
+c)
+
+If $x < y$, then $y - x$ is positive, similarly $z - y$ is positive. Hence $(y - x) + (z - y) = z - x$ is positive (by Proposition 5.4.4), hence $x < z$ as desired.
+
+d)
+
+If $x < y$, then $y - x$ is positive. Note $(y + z) - (x + z) = y - x$, which is also positive, hence $y + z > x + z$ as desired.
+
+e)
+
+Proven in the text.
+
+### Exercise 5.4.3
+
+Uniqueness follows similar reasoning from Exercise 4.4.1.
+
+For existence, we either have $x < 0, x = 0, x > 0$.
+
+Consider the case $x > 0$, then we argue by contradiction. Assume $\lnot (\forall x \in \R^{+}, \exists N \in \Z, N \leq x < N + 1)$, then $\exists x \in \R^{+}, \forall N \in \Z, x < N \lor x \geq N + 1$. We claim for that particular $x$, $x \geq n$ for all $n \in \N$. We prove by induction.
+
+For $P(0)$, $x > 0$ hence $x \geq 0$ as desired.
+
+For $P(n+1)$, note we have $x < n \lor x \geq n + 1$. Easy to verify $x < n, x \geq n + 1$ are mutually exclusive. Note by $P(n)$, $x \geq n$. Hence $x < n$ cannot hold, therefore $x \geq n + 1$ as desired.
+
+However, there exists $N \in Z^{+}$ s.t. $x \leq N$ by Proposition 5.4.12. Hence we have $x \geq N + 1$ (by $P(N + 1)$) and $x \leq N$, contradiction.
+
+(Above proof similar to in-text proof for Proposition 4.4.5 and the inductive proof for principle of infinite descent).
+
+For the case $x = 0$, $0 \leq 0 < 1$ as desired.
+
+For the case $x < 0$, same reasoning in Exercise 4.4.1 solution applies.
+
+Note: A direct proof using Proposition 4.4.1 and Corollary 5.4.10 would also suffice. Albeit I had enough suffering in this section already and I will not bother with it. The indirect proof is just much more elegant.
+
+### Exercise 5.4.4
+
+Easy to show for all $N \in \N$, $1/N > 0$.
+
+Remains to show $\exists N \in \N, x > 1/N$ for any $x \in \R^{+}$. Note $x > 1/N \Rightarrow N > 1/x \Rightarrow N1 > 1/x$. Since $1, 1/x$ are positive real numbers, $N$ exists by Corollary 5.4.13 as desired.
+
+### Exercise 5.4.5
+
+Say $q = a/b$, then:
+
+$$
+\begin{align*}
+x < a/b < y& \\
+bx < a < by& \\
+0 < a - bx < b(y - x)&
+\end{align*}
+$$
+
+Now, note by Exercise 5.4.4, there exists $y - x > 1/N$ for some $N \in \Z^{+}$. We make leap of faith and claim $b = N$, then we remains to find $a \in \Z$. Note $y - x > 1/b$ implies $b(y - x) > 1$. Hence $a - bx \leq 1$ implies $a - bx < b(y - x)$
+
+$$
+\begin{align*}
+0 < a - bx \leq 1& \\
+bx < a \leq bx + 1
+\end{align*}
+$$
+
+We proceed to prove in general $\exists a \in \Z, r < a \leq r + 1$ for all $r \in \R$. Note by Exercise 5.4.3, there exists $n \in \Z$ s.t. $n \leq r < n + 1$. We claim $a = n + 1$ is suitable, as $n \leq r \Rightarrow n + 1 \leq r + 1 \Rightarrow a \leq r + 1$, and $r < n + 1 \Rightarrow r < a$, as desired.
+
+My comment: Too many leap of faith required for this question...
+
+### Exercise 5.4.6
+
+WLOG we only prove $<$ case as $\leq$ case is similar
+
+If direction
+
+We either have $x - y \geq 0$ or $x - y < 0$.
+
+WLOG $x - y \geq 0$, then $|x - y| = x - y$. Hence $x - y < \epsilon$ implies $x < y + \epsilon$. Note $x - y \geq 0$ implies $y \leq x$, hence $y - \epsilon < y \leq x < y + \epsilon$ as desired.
+
+Only if direction
+
+Note $y - \epsilon < x < y + \epsilon$ iff $- \epsilon < x - y < \epsilon$. We argue by contradiction. Assume $|x - y| \geq \epsilon$, then either $x - y \geq \epsilon$ or $-\epsilon \geq x - y$. First one contradict $x - y < \epsilon$ and second one contradict $-\epsilon < x - y$ as desired.
+
+### Exercise 5.4.7
+
+First statement
+
+If direction
+
+Say $x \leq y$, then $x \leq y < y + \epsilon$ hence $x \leq y + \epsilon$ as desired.
+
+Only if direction
+
+Assume $x > y$, then $x - y = c$ for some $c > 0$. Then, we claim $x > y + c/2$, as $x - (y + c/2) = c - c/2 = c/2 > 0$. Hence let $\epsilon = c/2$, it cannot hold that $x \leq y + c/2$ as desired.
+
+Second Statement
+
+If direction
+
+If $x = y$ then $x - y = 0$. Hence $|x - y| = x - y = 0 < \epsilon \leq \epsilon$ as desired.
+
+Only if direction
+
+Say we have $|x - y| \leq \epsilon$, then by Exercise 5.4.6 it holds that $y - \epsilon \leq x \leq y + \epsilon$. Hence, $x \leq y + \epsilon$ for any $\epsilon > 0$ implies $x \leq y$ by the first statement. $y - \epsilon \leq x \Rightarrow y \leq y + \epsilon$ for any $\epsilon > 0$ implies $y \leq x$. Hence, $x \leq y \land y \leq x$ implies $x = y$ as desired.
+
+### Exercise 5.4.8
+
+We prove the contraposition. Assume $\operatorname{LIM}_{n\rightarrow\infty} a_n > x$, then by Proposition 5.4.14 there exists $q \in \mathbb{Q}$ s.t. $\operatorname{LIM}_{n\rightarrow\infty} a_n > q > x$. Hence, $\operatorname{LIM}_{n\rightarrow\infty}a_n > \operatorname{LIM}_{n\rightarrow\infty}q$. Therefore $(\lnot \operatorname{LIM}_{n\rightarrow\infty} a_n\leq \operatorname{LIM}_{n\rightarrow\infty}q)$, hence by Corollary 5.4.10 $\exists n \geq 1, a_n > q > x$. Hence $\lnot \forall n \geq 1, a_n \leq x$ as desired.
+
+
