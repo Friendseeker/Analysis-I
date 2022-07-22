@@ -918,6 +918,36 @@ Let $x$ and $ε$ be any positive real numbers. Then there exists a positive inte
 
 Given any two real numbers $x < y$, we can find a rational number $q$ such that $x < q < y$.
 
+In Exercise 5.5.5, we show that not only $q$ exists, but $q \neq 0$ always exists.
+
+### Definition 5.5.1 (Upper bound)
+
+Let $E$ be a subset of $R$, and let $M$ be a real number. We say that $M$ is an upper bound for $E$, iff we have $x≤M$ for every element $x \in E$.
+
+### Definition 5.5.5 (Least upper bound)
+
+Let $E$ be a subset of $R$, and $M$ be a real number. We say that $M$ is a least upper bound for $E$ iff (a) $M$ is an upper bound for $E$, and also (b) any other upper bound $M'$ for $E$ must be larger than or equal to $M$.
+
+### Proposition 5.5.8 (Uniqueness of least upper bound)
+
+Let $E$ be a subset of $\R$. Then $E$ can have at most one least upper bound.
+
+### Theorem 5.5.9 (Existence of least upper bound)
+
+Let $E$ be a non-empty subset of $R$. If $E$ has an upper bound, (i.e., $E$ has some upper bound $M$), then it must have exactly one least upper bound.
+
+Note: the gist of the proof is really to offer a sequence of rational approximations for the least upper bound, and then show the sequence converges to a real number, with the number being the least upper bound.
+
+Key insight being noticing that magnifying $n$ one can get an arbitrarily close approximation to the least upper bound.
+
+### Definition 5.5.10 (Supremum)
+
+Let $E$ be a subset of the real numbers. If $E$ is non-empty and has some upper bound, we define $\sup(E)$ to be the least upper bound of $E$ (this is well-defined by Theorem 5.5.9). We introduce two additional symbols, $+∞$ and $−∞$. If $E$ is non-empty and has no upper bound, we set $\sup(E) := +∞$; if $E$ is empty, we set $\sup(E) := −∞$. We refer to $\sup(E)$ as the supremum of $E$, and also denote it by $\sup E$.
+
+### Proposition 5.5.12
+
+There exists a positive real number $x$ such that $x^2 = 2$.
+
 ## Appendix a
 
 Refer to

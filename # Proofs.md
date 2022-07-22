@@ -3285,6 +3285,78 @@ Say we have $|x - y| \leq \epsilon$, then by Exercise 5.4.6 it holds that $y - \
 
 ### Exercise 5.4.8
 
-We prove the contraposition. Assume $\operatorname{LIM}_{n\rightarrow\infty} a_n > x$, then by Proposition 5.4.14 there exists $q \in \mathbb{Q}$ s.t. $\operatorname{LIM}_{n\rightarrow\infty} a_n > q > x$. Hence, $\operatorname{LIM}_{n\rightarrow\infty}a_n > \operatorname{LIM}_{n\rightarrow\infty}q$. Therefore $(\lnot \operatorname{LIM}_{n\rightarrow\infty} a_n\leq \operatorname{LIM}_{n\rightarrow\infty}q)$, hence by Corollary 5.4.10 $\exists n \geq 1, a_n > q > x$. Hence $\lnot \forall n \geq 1, a_n \leq x$ as desired.
+We prove the contraposition. Assume $\operatorname{LIM}_{n\rightarrow\infty} a_n > x$, then by Proposition 5.4.14 there exists $q \in \mathbb{Q}$ s.t. $\operatorname{LIM}_{n\rightarrow\infty} a_n > q > x$. Hence, $\operatorname{LIM}_{n\rightarrow\infty}a_n > \operatorname{LIM}_{n\rightarrow\infty}q$. Therefore $\lnot (\operatorname{LIM}_{n\rightarrow\infty} a_n\leq \operatorname{LIM}_{n\rightarrow\infty}q)$, hence by Corollary 5.4.10 $\exists n \geq 1, a_n > q > x$. Hence $\lnot \forall n \geq 1, a_n \leq x$ as desired.
 
+### Exercise 5.5.1
 
+Assume $-M \neq \inf(-E)$, then, either:
+
+- $-M$ is not a lower bound
+- There exists $-M' > -M$ which is a lower bound
+
+Assume $-M$ is not a lower bound, then $\exists -x \in -E, -x < M$. Hence it holds that $x \geq M$. Note $-x \in -E \Leftrightarrow x \in E$. Hence $x \geq M$ means $M \neq \sup(E)$, contradiction.
+
+Assume $-M' > -M$ exists which is a lower bound, then $\forall -x \in -E, -x \geq -M'$. Hence $\forall x \in E, -x \geq -M'$, hence $\forall x \in E, x \leq M'$. Therefore $M' < M$ is also an upper bound for $E$, contradiction.
+
+Note: it may seen trivial that $-x \in -E \Leftrightarrow x \in E$, however it can still be proven. $x \in E \Rightarrow -x \in -E$ follows from Axiom of substitution. $-x \in -E \Rightarrow x \in E$ as for every $-x \in -E$ there exists $x' \in E$ s.t. $-x' = -x$ by Axiom of substitution, hence $x = x' \in E$ as desired.
+
+### Exercise 5.5.2
+
+Similar to Exercise 5.4.3 Solution.
+
+Say $\lnot (\exists L < m \leq k, m/n \text{ is upper bound} \land (m - 1) / n \text{ is not upper bound})$, then $\forall L < m \leq k, m/n \text{ is not upper bound} \lor (m - 1) / n \text{ is upper bound}$.
+
+Now we induct on $m$ and claim $L \leq m \leq k \rightarrow m/n \text{ is not upper bound}$.
+
+For base case $m = L$, $L / n$ is not upper bound as desired.
+
+For $P(m + 1)$, note if $m+ 1 \leq k$, then either $(m + 1) / n$ is not upper bound or $m/n$ is upper bound. Since $m/n$ is not upper bound by $P(m)$, $(m + 1)/n$ is not upper bound has to hold as desired, closing the induction.
+
+Hence, since $L \leq k \leq k$, it holds that $k/n$ is not an upper bound, contradiction.
+
+### Exercise 5.5.3
+
+Since $(m - 1)/n$ is not upper bound, there exists element $x \in E$ s.t. $x > (m - 1) / E$. Similarly there exists $x' \in E, x' > (m' - 1) / E$. Let $X = \max(x, x')$, easy to verify $X \in E, X > (m - 1)/E, X > (m' - 1)/E$.
+
+WLOG say $m > m'$, then:
+
+$$
+\begin{align*}
+m/n \geq X > (m - 1) / n \\
+m'/n \geq X > (m' - 1) / n \\
+m/n > m'/n \geq x > (m - 1) / n > (m' - 1) / n
+\end{align*}
+$$
+
+Hence we have $m'/n > (m - 1)/n$ and $m/n > (m' - 1)/n$, therefore $m' > m - 1, m > m' - 1$, hence by Proposition 2.2.12 e), $m' \geq m, m \geq m'$, therefore $m = m'$, contradiction as desired.
+
+### Exercise 5.5.4
+
+By Corollary 5.4.13, for any $\epsilon$ there exists $M \in \Z^{+}$ s.t. $1 < \epsilon M$, hence there exists $M$ s.t. $1/M < \epsilon$.
+
+Therefore, $|q_n - q_{n'}| \leq 1/M < \epsilon$ as desired.
+
+To prove that $\forall M \geq 1, |q_M - S| \leq 1/M$, note:
+
+$$
+\begin{align*}
+\forall M \geq 1, \forall n \geq M, |q_n - q_M| \leq 1/M \quad \text{By Given Property} \\
+\forall M \geq 1, \forall n \geq M, q_M - 1/M \leq q_n \leq q_M + 1/M \quad \text{By Exercise 5.4.6}
+\end{align*}
+$$
+
+Now define $q'_n = q_n$ if $n \geq M$, $q_M$ if $n < M$, easy to verify $(q'_n)^{\infty}_{n=1}$ is Cauchy and $\operatorname{LIM}_{n\rightarrow\infty}(q'_n)^{\infty}_{n=1} = \operatorname{LIM}_{n\rightarrow\infty}(q_n)^{\infty}_{n=1}$.
+
+Note $\forall n \geq 1, q_M - 1/M \leq q'_n \leq q_M + 1/M$, hence by Exercise 5.4.8, $q_M - 1/M \leq S \leq q_M + 1/M$, hence $|q_M - S| \leq 1/M$ follows from Exercise 5.4.6.
+
+### Exercise 5.5.5
+
+We start by proving a stronger version of Proposition 5.5.14. Given $x, y \in \R, x < y$, we can always find $r \in \mathbb{Q}, r \neq 0$ s.t. $x < r < y$.
+
+If $x, y > 0$ or $x , y < 0$, then apply Proposition 5.5.14, easy to verify $r > 0$ or $r < 0$ correspondingly.
+
+WLOG if $x \leq 0, y > 0$, apply Proposition 5.5.14 to find $y/2 < r < y$, as desired.
+
+Denote $x = \sqrt{2}$ as the real number such that $x > 0, x^2 = 2$. It exists by Proposition 5.5.12.
+
+Then, by stronger version of Proposition 5.4.14, there exists $r \in \mathbb{Q}$ s.t. $x / \sqrt{2} < r < y / \sqrt{2}$. Hence, $x < \sqrt{2}r < y$. We claim that $\sqrt{2}r$ is irrational. Assume $\sqrt{2}r$ is rational, then $\sqrt{2}r / r = \sqrt{2}$ (we can divide as $r \neq 0$), hence $\sqrt{2}$ is rational as division is closed, contradicting Proposition 4.4.4.
