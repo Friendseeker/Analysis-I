@@ -3360,3 +3360,163 @@ WLOG if $x \leq 0, y > 0$, apply Proposition 5.5.14 to find $y/2 < r < y$, as de
 Denote $x = \sqrt{2}$ as the real number such that $x > 0, x^2 = 2$. It exists by Proposition 5.5.12.
 
 Then, by stronger version of Proposition 5.4.14, there exists $r \in \mathbb{Q}$ s.t. $x / \sqrt{2} < r < y / \sqrt{2}$. Hence, $x < \sqrt{2}r < y$. We claim that $\sqrt{2}r$ is irrational. Assume $\sqrt{2}r$ is rational, then $\sqrt{2}r / r = \sqrt{2}$ (we can divide as $r \neq 0$), hence $\sqrt{2}$ is rational as division is closed, contradicting Proposition 4.4.4.
+
+### Exercise 5.6.1
+
+a)
+
+We denote $E: \{y' \in \R, y' \geq 0, (y')^n \leq x\}$. Hence $y = x^{1/x} = \sup(E)$
+
+We argue by contradiction. Assume $y^n \neq x$, then either $y^n < x$ or $y^n > x$.
+
+Assume $y^n < x$, then we claim we can find $0 < \epsilon < 1$ s.t. $(y + \epsilon)^n \leq x$, hence $y + \epsilon \in E$, yet $y + \epsilon > \sup(E)$, contradiction.
+
+For construction of $\epsilon$, we establish estimation for $(y + \epsilon)^n$:
+
+$$
+\begin{align*}
+(y + \epsilon)^n &= \sum_{j=0}^{n} \binom{n}{j} y^j\epsilon^{n-j}& \text{Binomial Theorem} \\
+&= y^n + \sum_{j=0}^{n-1}\binom{n}{j}y^{j}\epsilon^{n-j} \\
+&= y^n + \sum_{j=0}^{n-1}\binom{n}{j} y^{j} \epsilon \epsilon^{n-j-1} \\
+&\leq y^n + \sum_{j=0}^{n-1}\binom{n}{j} y^{j} \epsilon& \text{As } \epsilon \leq 1, \epsilon^i \leq 1 \text{ for } i \in \N\\
+&= y^n + k_{n, y}\epsilon& \text{By factoring out } \epsilon
+\end{align*}
+$$
+
+With $k_{n, y} \in \R^{+}$ depending on $n, y$. We remain to show that we can find $0 < \epsilon < 1$ such that $y^n + k_{n,y} \epsilon \leq x$. Since $y^n < x$, it is always possible, as desired. (e.g. we can let $\epsilon = \min(1/2, (x - y^n)/k_{n, y})$, easy to verify $0 < \epsilon < 1$ and $y^n + k_{n, y} \epsilon \leq x$).
+
+Note: we take $\min$ as $x - y^n$ may exceed $k_{n, y}$ causing the obvious choice $\epsilon = (x - y^n)/k_{n, y}$ to fail as $\epsilon > 1$.
+
+Similarly, assume $y^n > x$, we claim we can find $0 < \epsilon < 1$ s.t. $(y - \epsilon)^n > x$. Hence, $y - \epsilon$ is a lower bound of $E$, yet $y - \epsilon <\sup(E)$, contradiction.
+
+For $y - \epsilon$ being lower bound: assume $\exists y' \in E, y - \epsilon < y'$, then $(y - \epsilon)^n \leq (y')^n \leq x$, yet $(y - \epsilon)^n > x$, contradiction.
+
+To find $0 < \epsilon < 1$, we establish estimation for $(y - \epsilon)^n$:
+
+$$
+\begin{align*}
+(y - \epsilon)^n &= \sum_{j=0}^{n} \binom{n}{j} y^j(-\epsilon)^{n-j}& \text{Binomial Theorem} \\
+&= y^n + \sum_{j=0}^{n-1}\binom{n}{j}y^{j}(-\epsilon)^{n-j} \\
+&> y^n + \sum_{n - j \text{ odd}, j=0}^{n-1} \binom{n}{j}y^j (-\epsilon^{n-j})& \text{Discard Positive Terms} \\
+&= y^n + \sum_{n - j \text{ odd}, j=0}^{n-1} \binom{n}{j}y^j \epsilon(-\epsilon^{n-j-1})& \\
+&\geq y^n + \sum_{n - j \text{ odd}, j=0}^{n-1} \binom{n}{j}y^j \epsilon(-1)& \text{As } \epsilon \leq 1, -\epsilon^i \geq -1 \text{ for } i \in \N\\
+&= y^n - \sum_{n - j \text{ odd}, j=0}^{n-1} \binom{n}{j}y^j \epsilon& \\
+&= y^n - k_{n, y}\epsilon& \text{By factoring out } \epsilon
+\end{align*}
+$$
+
+Remains to show there exists $0 < \epsilon < 1$ s.t. $y^n - k_{n, y}\epsilon \geq x$. Since $y^n > x$, we similarly take $\epsilon = \min(1/2, (y^n - x)/k_{n, y})$ as desired.
+
+Note: Part a) basically shows $(x^{1/n})^n = x$, aka cancellation.
+
+b)
+
+Note since $y^n = x$, $((y^n)^{1/n})^n = (x^{1/n})^n$. By a), $((y^n)^{1/n})^n = y^n$, hence we have $y^n = (x^{1/n})^n$, with $n \in \Z^{+}$. By Proposition 5.6.3 & Proposition 4.3.12 c), $y = x^{1/n}$ as desired.
+
+Note: Part b) basically shows $(y^{n})^{1/n} = y$, aka cancellation in slightly different order.
+
+c)
+
+I assume it actually means $x > 0 \Rightarrow x^{1/n} > 0$.
+
+Note by definition $x^{1/n} = \sup\{y \in \R, 0 \leq y \land y^n \leq x\}$. Since $0 \in \{y \in \R, 0 \leq y \land y^n \leq x\}$, it holds that $x^{1/n} \geq 0$. Remains to show $x^{1/n} \neq 0$. Assume $x^{1/n} = 0$, then $(x^{1/n})^n = 0$ as $n \neq 0$. By Lemma 5.6.6 a), $(x^{1/n})^n = x$, hence $x = 0$, contradicting $x > 0$ as desired.
+
+d)
+
+By Proposition 4.3.10 c), $x^{1/n} > y^{1/n}$ iff $(x^{1/n})^n > (y^{1/n})^n$. By a), $(x^{1/n})^n = x, (y^{1/n})^n = y$. Hence $(x^{1/n})^n > (y^{1/n})^n$ iff $x > y$ as desired.
+
+e)
+
+For case $x > 1$:
+
+$$
+\begin{align*}
+x > 1& \\
+x^{k+1} > x^{k}& \quad \text{By 5.4.7 \& 4.2.9 e)}\\
+(x^{1/k})^{k(k+1)} > (x^{1/(k+1)})^{k(k+1)}& \quad \text{By a), 5.6.3, 4.3.10 a)} \\
+x^{1/k} > x^{1/(k+1)}& \quad \text{By 5.6.3 \& 4.3.10 c)}&
+\end{align*}
+$$
+
+Remain follows from simple induction.
+
+Case $x < 1$ is similar.
+
+f)
+$$
+\begin{align*}
+xy = xy& \\
+((xy)^{1/n})^n = (x^{1/n})^n (y^{1/n})^n& \quad \text{By a)} \\
+((xy)^{1/n})^n = (x^{1/n}y^{1/n})^n& \quad \text{By 5.6.3 \& 4.3.10 a)} \\
+(xy)^{1/n} = x^{1/n} y^{1/n}& \quad \text{By 5.6.3 \& 4.3.10 c)}
+\end{align*}
+$$
+
+g)
+
+$$
+\begin{align*}
+x = x& \\
+((x^{1/n})^{1/m})^{nm} = (x^{1/nm})^{nm}& \quad \text{By a), 5.6.3, 4.3.10 a)}\\
+(x^{1/n})^{1/m} = x^{1/nm}& \quad \text{By 5.6.3 \& 4.3.10 c)}
+\end{align*}
+$$
+
+### Exercise 5.6.2
+
+Let $q = a/b, r = c/d, a,b,c,d \in \Z^{+}$
+a)
+
+$x^q = (x^{1/a})^b$ by Definition 5.6.7. Since $x > 0$, $x^{1/a} > 0$ by 5.6.6 d), and $(x^{1/a})^b > 0$ by 4.3.10 c) as desired.
+
+b)
+
+$$
+\begin{align*}
+(x^{1/bd})^{ad + bc} = (x^{1/bd})^{ad}(x^{1/bd})^{bc}& \quad \text{By 4.3.10 a)} \\
+x^{a/b + c/d} = x^{a/b}x^{c/d}& \quad \text{By 5.6.7}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+x^{a/b} = x^{ad/bd}& \quad \text{By 5.6.8}\\
+((x^{a/b})^{1/d})^d = (x^{a/bd})^d& \quad \text{By 5.6.6 a), 5.6.7}\\
+(x^{a/b})^{1/d} = x^{a/bd}& \quad \text{By 4.3.10 c)} \\
+((x^{a/b})^{1/d})^{c} = (x^{a/bd})^{c} \\
+(x^{a/b})^{c/d} = ((x^{1/bd})^a)^c& \quad \text{By 5.6.7} \\
+(x^q)^r = (x^{1/bd})^{ac}& \quad \text{By 4.3.10 a)} \\
+(x^q)^r = x^{ac/bd}& \quad \text{By 5.6.7} \\
+(x^q)^r = x^{qr}
+\end{align*}
+$$
+
+c)
+
+$$
+\begin{align*}
+x^{-q} &= x^{-a/b} \\
+       &= (x^{1/{b}})^{-a} \\
+       &= 1/(x^{1/b})^a\\
+       &= 1/x^{a/b} \\
+       &= 1/x^q
+\end{align*}
+$$
+
+d)
+
+Note $x^{a/b} > y^{a/b}$ iff $(x^{a/b})^b > (y^{a/b})^b$ by Proposition 4.3.10 c) iff $x^a > y^a$ by 5.6.9 b) iff $x > y$ by Proposition 4.3.10 c) as desired.
+
+e)
+
+Let $q = a/b, r = c/d, a,b,c,d \in \Z, c,d > 0$. Then $q > r$ iff $q - r > 0$ iff $ad - bc > 0$ iff $ad > bc$. 
+
+WLOG say $x > 1$  then $x^{q} = x^{ad/bd} > x^{bc/bd} = x^{r}$ iff $ad > bc$ by 5.6.6 e) as desired.
+
+### Exercise 5.6.3
+
+Assume $x = 0$, easy to verify $LHS = RHS = 0$.
+
+Assume $x > 0$, then by Lemma 5.6.9 b), $RHS = x$. $LHS = x$ by definition of absolute value as desired.
+
+Assume $x < 0$, then $x = -y$ for some $y > 0$. Remains to show $|-y| = ((-y)^{2})^{1/2}$. Note $LHS = y$ by definition. For RHS, $(-y)^2 = y^2$, and $(y^2)^{1/2} = y$ 5.6.9 b) as desired.

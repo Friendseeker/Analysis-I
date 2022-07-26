@@ -948,6 +948,61 @@ Let $E$ be a subset of the real numbers. If $E$ is non-empty and has some upper 
 
 There exists a positive real number $x$ such that $x^2 = 2$.
 
+### Definition 5.6.1 (Exponentiating a real by a natural number)
+
+Let $x$ be a real number. To raise $x$ to the power $0$, we define $x^0 := 1$. Now suppose recursively that $x^n$ has been defined for some natural number $n$, then we define $x^{n+1} := x^n \times x$.
+
+### Definition 5.6.2 (Exponentiating a real by an integer)
+
+Let $x$ be a non-zero real number. Then for any negative integer $−n$, we define $x^{−n} := 1/x^n$.
+
+### Proposition 5.6.3
+
+All the properties in Propositions 4.3.10 and 4.3.12 remain valid if $x$ and $y$ are assumed to be real numbers instead of rational numbers.
+
+### Definition 5.6.4
+
+Let $x ≥ 0$ be a non-negative real, and let $n ≥ 1$ be a positive integer. We define $x^{1/n}$, also known as the $n_{th}$ root of $x$, by the formula:
+
+$$x^{1/n} := \sup\{y∈R:y≥0 \land y^n ≤ x\}$$
+
+We often write $\sqrt{x}$ for $x^{1/2}$.
+
+### Lemma 5.6.5 (Existence of nth roots)
+
+Let $x ≥ 0$ be a non-negative real, andl et $n≥1$ be a positive integer. Then the set $E:=\{y∈R:y≥ 0 \land y^n ≤ x\}$ is non-empty and is also bounded above. In particular, $x^{1/n}$ is a real number.
+
+### Lemma 5.6.6
+
+Let $x, y ≥ 0$ be non-negative reals, and let $n, m ≥ 1$ be positive integers.
+
+- (a) If $y = x^{1/n}$, then $y^n = x$.
+- (b) Conversely, if $y^n = x$, then $y = x^{1/n}$.
+- (c) $x^{1/n}$ is a positive real number.
+- (d) We have $x>y$ if and only if $x^{1/n} >y^{1/n}$.
+- (e) If $x > 1$, then $x^{1/k}$ is a decreasing function of $k$. If $x < 1$, then $x^{1/k}$ is an increasing function of $k$. If $x = 1$, then $x^{1/k} = 1$ for all $k$.
+- (f) We have $(xy)^{1/n} = x^{1/n}y^{1/n}$.
+- (g) We have $(x^{1/n})^{1/m} = x^{1/nm}$.
+
+### Definition 5.6.7
+
+Let $x > 0$ be a positive real number, and let $q$ be a rational number. To define $x^q$, we write $q = a/b$ for some integer $a$ and positive integer $b$, and define
+$x^q := (x^{1/b})a$.
+
+### Lemma 5.6.8
+
+Let $a,a'$ be integers and $b,b'$ be positive integers such that $a/b = a'/b'$, and let $x$ be a positive real number. Then we have $(x^{1/b'})^{a'} = (x^{1/b})^a$.
+
+### Lemma 5.6.9
+
+Let $x, y > 0$ be positive reals, and let $q, r$ be rationals.
+
+- (a) $x^q$ is a positive real.
+- (b) $x^{q+r} = x^{q}x^{r}$ and $(x^q)^r = x^{qr}$.
+- (c) $x^{−q} = 1/x^q$.
+- (d) If $q>0$, then $x>y$ if and only if $x^q >y^q$.
+- (e) If $x>1$, then $x^q >x^r$ if and only if $q>r$. If $x<1$, then $x^q > x^r$ if and only if $q < r$.
+
 ## Appendix a
 
 Refer to
