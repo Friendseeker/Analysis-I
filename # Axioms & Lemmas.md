@@ -698,6 +698,8 @@ If $x$ is a rational number, the absolute value $|x|$ of $x$ is defined as follo
 
 Let $x$ and $y$ be rational numbers. The quantity $|x − y|$ is called the distance between $x$ and $y$ and is sometimes denoted $d(x, y)$, thus $d(x, y) := |x − y|$. For instance, $d(3, 5) = 2$.
 
+Note: $x, y \in \R$ is defined similarly (Definition 6.1.1). Similarly Proposition 4.3.3 continues to hold.
+
 ### Proposition 4.3.3 (Basic properties of absolute value and distance)
 
 Let $x, y, z$ be rational numbers.
@@ -716,6 +718,8 @@ Note: Another useful inequality not included in the list is $|x| - |y| \leq |x -
 ### Definition 4.3.4 ($\epsilon$-closeness)
 
 Let $\epsilon > 0$ be a rational number, and let $x,y$ be rational numbers. We say that $y$ is $\epsilon$-close to $x$ iff we have $d(y, x) ≤ \epsilon$.
+
+Similarly we can let $\epsilon, x, y \in \R$ and the definition works for real number. (Definition 6.1.2)
 
 ### Proposition 4.3.7
 
@@ -784,13 +788,19 @@ Let $ε > 0$. A sequence $(a_n)^{\infty}_n=0$ is said to be $ε$-steady iff each
 
 Let $ε > 0$. A sequence $(a_n)^{\infty}_n=0$ is said to be eventually $ε$-steady iff the sequence $a_N, a_{N+1}, a_{N+2}, ...$ is $\epsilon$-steady for some natural number $N ≥ 0$. In other words, the sequence $a_0, a_1, a_2, ...$ is eventually $ε$-steady iff there exists an $N ≥ 0$ such that $d(a_j,a+k) ≤ ε$ for all $j,k ≥ N$.
 
+Has real cauchy sequence analogue by letting $\epsilon \in \R$. (Definition 6.1.3)
+
 ### Definition 5.1.8 (Cauchy sequences)
 
 A sequence $(a_n)^{\infty}_n=0$ of rational numbers is said to be a Cauchy sequence iff for every rational $ε > 0$, the sequence $(a_n)^{\infty}_n=0$ is eventually $ε$-steady. In other words, the sequence $a_0, a_1, a_2, ...$ is a Cauchy sequence iff for every $ε > 0$, there exists an $N ≥ 0$ such that $d(a_j,a_k) ≤ ε$ for all $j,k ≥ N$.
 
+Similarly let $\epsilon, a_n \in \R$, we can define Cauchy Sequence for real (Definition 6.1.3).
+
 ### Definition 5.1.12 (Bounded sequences)
 
 Let $M ≥ 0$ be rational. A finite sequence $a_1, a_2,...,a_n$ is bounded by $M$ iff $|a_i| ≤ M$ for all $1 ≤ i ≤ n$. An infinite sequence $(a_n)^{\infty}_n=1$ is bounded by $M$ iff $|a_i| ≤ M$ for all $i ≥ 1$. A sequence is said to be bounded iff it is bounded by $M$ for some rational $M ≥ 0$.
+
+Note: Also applies to $M \in \R$ (Definition 6.1.16)
 
 ### Lemma 5.1.14 (Finite sequences are bounded)
 
@@ -807,6 +817,7 @@ Let $(a_n)^{∞}_{n}=0$ and $(b_n)^{∞}_{n}=0$ be two sequences, and let $ε > 
 ### Definition 5.2.3 (Eventually ε-close sequences)
 
 Let $(a_n)^{∞}_n=0$ and $(b_n)^{∞}_n=0$ be two sequences, and let $ε > 0$. We say that the sequence $(a_n)^{∞}_n=0$ is eventually $\epsilon$-close to $(b_n)^{∞}_n=0$ iff there exists an $N ≥ 0$ such that the sequences $(a_n)^{∞}_{n=N}$ and $(b_n)^{∞}_{n=N}$ are $\epsilon$-close. In other words, $a_0,a_1,a_2,...$ is eventually $ε$-close to $b_0,b_1,b_2,...$ iff there exists an $N ≥ 0$ such that $|a_n − b_n| ≤ ε$ for all $n ≥ N$.
+
 
 ### Definition 5.2.6 (Equivalent sequences)
 
@@ -826,7 +837,7 @@ Let $x = \operatorname{LIM}_{n\rightarrow \infty} a_n$ and $y = \operatorname{LI
 
 ### Lemma 5.3.6 (Sum of Cauchy sequences is Cauchy)
 
-Let $x = \operatorname{LIM}_{n\rightarrow \infty} a_n$ and $y = \operatorname{LIM}_{n\rightarrow \infty} b_n$ be real numbers. Then $x + y$ is also a real number (i.e., $(a_n + b_n)^{∞}_{n=1} is a Cauchy sequence of rationals).
+Let $x = \operatorname{LIM}_{n\rightarrow \infty} a_n$ and $y = \operatorname{LIM}_{n\rightarrow \infty} b_n$ be real numbers. Then $x + y$ is also a real number (i.e., $(a_n + b_n)^{∞}_{n=1}$ is a Cauchy sequence of rationals).
 
 ### Lemma 5.3.7 (Sums of equivalent Cauchy sequences are equivalent)
 
@@ -1002,6 +1013,71 @@ Let $x, y > 0$ be positive reals, and let $q, r$ be rationals.
 - (c) $x^{−q} = 1/x^q$.
 - (d) If $q>0$, then $x>y$ if and only if $x^q >y^q$.
 - (e) If $x>1$, then $x^q >x^r$ if and only if $q>r$. If $x<1$, then $x^q > x^r$ if and only if $q < r$.
+
+### Proposition 6.1.4
+
+Let $(a_n)^{\infty}_{n=m}$ be a sequence of rational numbers starting at some integer index $m$. Then $(a_n)^{\infty}_{n=m}$ is a Cauchy sequence in the sense of Definition 5.1.8 if and only if it is a Cauchy sequence in the sense of Definition 6.1.3.
+
+### Definition 6.1.5 (Convergence of sequences)
+
+Let $ε > 0$ be a real number, and let $L$ be a real number. A sequence $(a_n)^{∞}_{n=N}$ of real numbers is said to be $ε$-close to $L$ iff $a_n$ is $ε$-close to $L$ for every $n≥N$, i.e., we have $|a_n − L| ≤ ε$ for every $n ≥ N$.
+
+We say that a sequence $(a_n)^{∞}_{n=m}$ is eventually $ε$-close to $L$ iff there exists an $N ≥ m$ such that $(a_n)^{∞}_{n=N}$ is $\epsilon$-close to $L$.
+
+We say that a sequence $(a_n)^{∞}_{n=m}$ converges to $L$ iff it is eventually $ε$-close to $L$ for every real $ε > 0$.
+
+### Proposition 6.1.7 (Uniqueness of limits)
+
+Let $(a_n)^{∞}_{n=m}$ be a real sequence starting at some integer index $m$, and let $L \neq L'$ be two distinct real numbers. Then it is not possible for $(a_n)^{∞}_{n=m}$ to converge to $L$ while also converging to $L'$.
+
+### Definition 6.1.8 (Limits of sequences)
+
+If a sequence $(a_n)^{∞}_{n=m}$ converges to some real number $L$, we say that $(a_n)^{∞}_{n=m}$ is convergent and that its limit is $L$. We write:
+$$
+L = \lim_{n\rightarrow\infty} a_n
+$$
+To denote this fact. If a sequence $(a_n)^{\infty}_{n=m}$ is not converging to any real number $L$, we say that the sequence $(a_n)^{∞}_{n=m}$ is divergent and we leave $\lim_{n→∞} a_n$ undefined.
+
+### Proposition 6.1.11
+
+We have $\lim_{n→∞} 1/n = 0$.
+
+### Proposition 6.1.12 (Convergent sequences are Cauchy)
+
+Suppose that $(a_n)^{∞}_{n=m}$ is a convergent sequence of real numbers. Then $(a_n)^{∞}_{n=m}$ is also a Cauchy sequence.
+
+### Proposition 6.1.15 (Formal limits are genuine limits)
+
+Suppose that $(a_n)^{∞}_{n=1}$ is a Cauchy sequence of rational numbers. Then $(a_n)^{∞}_{n=1}$ converges to $\operatorname{LIM}_{n→∞} a_n$, i.e. $\operatorname{LIM}_{n→∞} a_n = \lim_{n\rightarrow\infty} a_n$
+
+### Definition 6.1.16 (Bounded sequences)
+
+A sequence $(a_n)^{∞}_{n=m}$ of real numbers is bounded by a real number $M$ iff we have $|a_n| ≤ M$ for all $n ≥ m$. We say that $(a_n)^{∞}_{n=m}$ is bounded iff it is bounded by $M$ for some real number $M > 0$.
+
+### Corollary 6.1.17
+
+Every convergent sequence of real numbers is bounded.
+
+### Theorem 6.1.19 (Limit Laws)
+
+Let $(a_n)^{∞}_{n=m}$ and $(b_n)^{∞}_{n=m}$ be convergent sequences of real numbers, and let $x,y$ be the real numbers $x := \lim_{n→∞} a_n$ and $y := \lim_{n→∞} b_n$.
+
+- (a) The sequence $(a_n + b_n)^{∞}_{n=m}$ converges to $x + y$; in other words,
+$$\lim_{n\rightarrow\infty} (a_n + b_n) = \lim_{n\rightarrow\infty} a_n + \lim_{n\rightarrow\infty} b_n$$
+- (b) The sequence $(a_nb_n)^{∞}_{n=m}$ converges to $xy$; in other words,
+$$\lim_{n\rightarrow\infty}(a_nb_n) = ( \lim_{n\rightarrow\infty} a_n)( \lim_{n\rightarrow\infty} b_n)$$
+- (c) For any real number $c$, the sequence $(ca_n)^{∞}_{n=m}$ converges to $cx$; in other words,
+$$\lim_{n\rightarrow\infty}(ca_n) = c \lim_{n→∞} a_n$$
+- (d) The sequence $(a_n − b_n)^{∞}_{n=m}$ converges to $x − y$; in other words,
+$$\lim_{n\rightarrow\infty}(a_n − b_n) = \lim_{n\rightarrow\infty} a_n − \lim_{n\rightarrow\infty}b_n$$
+- (e) Suppose that $y\neq 0$, and that $b_n \neq 0$ for all $n≥m$. Then the sequence $(b^{-1})^{\infty}_n$ converges to $y^{-1}$; in other words,
+$$\lim_{n\rightarrow\infty} (b_n)^{−1} = (\lim_{n\rightarrow\infty}b_n)^{−1}$$
+- (f) Suppose that $y \neq 0$, and that $b_n \neq 0$ for all $n≥m$. Then the sequence $(a_n/b_n)^{∞}_{n=m}$ converges to $x/y$; in other words
+$$\lim_{n\rightarrow\infty} a_n/b_n = \lim_{n→∞} a_n/\lim_{n→∞} b_n$$
+- (g) The sequence $(\max(a_n,b_n))^{∞}_{n=m}$ converges to $\max(x,y)$; in other words:
+$$\lim_{n\rightarrow\infty}  \max(a_n, b_n) = \max(\lim_{n\rightarrow\infty}  a_n, \lim_{n\rightarrow\infty}  b_n)$$
+- (h) The sequence $(\min(an, bn))^{∞}_{n=m}$ converges to $\min(x, y)$; in other words,
+$$\lim_{n\rightarrow\infty} \min(a_n, b_n) = \min( \lim_{n\rightarrow\infty} a_n, \lim_{n\rightarrow\infty} b_n)$$
 
 ## Appendix a
 

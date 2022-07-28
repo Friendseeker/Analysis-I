@@ -3484,7 +3484,7 @@ x^{a/b} = x^{ad/bd}& \quad \text{By 5.6.8}\\
 ((x^{a/b})^{1/d})^d = (x^{a/bd})^d& \quad \text{By 5.6.6 a), 5.6.7}\\
 (x^{a/b})^{1/d} = x^{a/bd}& \quad \text{By 4.3.10 c)} \\
 ((x^{a/b})^{1/d})^{c} = (x^{a/bd})^{c} \\
-(x^{a/b})^{c/d} = ((x^{1/bd})^a)^c& \quad \text{By 5.6.7} \\
+({n\rightarrow\infty}({n\rightarrow\infty}(x^{a/b})^{c/d} = ((x^{1/bd})^a)^c& \quad \text{By 5.6.7} \\
 (x^q)^r = (x^{1/bd})^{ac}& \quad \text{By 4.3.10 a)} \\
 (x^q)^r = x^{ac/bd}& \quad \text{By 5.6.7} \\
 (x^q)^r = x^{qr}
@@ -3519,4 +3519,225 @@ Assume $x = 0$, easy to verify $LHS = RHS = 0$.
 
 Assume $x > 0$, then by Lemma 5.6.9 b), $RHS = x$. $LHS = x$ by definition of absolute value as desired.
 
-Assume $x < 0$, then $x = -y$ for some $y > 0$. Remains to show $|-y| = ((-y)^{2})^{1/2}$. Note $LHS = y$ by definition. For RHS, $(-y)^2 = y^2$, and $(y^2)^{1/2} = y$ 5.6.9 b) as desired.
+Assume $x < 0$, then $x = -y$ for some $y > 0$. Remains to show $|-y| = ((-y)^{2})^{1/2}$. Note $LHS = y$ by definition. For RHS, $(-y)^2 = y^2$, and $(y^2)^{1/2} = y$ by 5.6.9 b) as desired.
+
+### Exercise 6.1.1
+
+We fix $n$ and induct on $m$.
+
+For $m = n + 1$, clearly $a_m = a_{n+1} > a_{n}$ as desired.
+
+For $m+1$, note $a_{m+1} > a_m$, and $a_m > a_n$ by inductive hypothesis as desired.
+
+### Exercise 6.1.2
+
+$(a_n)^{\infty}_{n=m}$ converges to $L$ iff $(a_n)^{\infty}_{n=m}$ is eventually $\epsilon$-close to $L$ for any $\epsilon > 0$, which happens iff $(a_n)_{n=N}^{\infty}$ is $\epsilon$-close to $L$ for some $N \geq m$ any $\epsilon > 0$, which happens iff $\forall \epsilon > 0, \exists N \geq M, \forall n \geq N, |a_n - L| \leq \epsilon$ as desired.
+
+Every iff is ensured by Definition 6.1.5. 
+
+### Exercise 6.1.3
+
+Only if:
+
+Since $(a_n)^{\infty}_{n=m}$ is convergent to $c$, $\forall \epsilon > 0, \exists N \geq m, \forall n \geq N, |a_n - c| \leq \epsilon$.
+
+Since $m' \geq m$, it holds that $N \geq m'$, hence $\forall \epsilon > 0, \exists N \geq m', \forall n \geq N, |a_n - c| \leq \epsilon$. Therefore $(a_n)^{\infty}_{n=m'}$ is convergent as desired.
+
+If
+
+We have $\forall \epsilon > 0, \exists N' \geq m', \forall n \geq N', |a_n - c| \leq \epsilon$. We choose $N = \max(N, m)$, easy to verify $N \geq m$ and $N \geq N'$. Since $N \geq N'$, $\forall n \geq N, |a_n - c| \leq \epsilon$ implies $\forall n \geq N', |a_n - c| \leq \epsilon$ as desired.
+
+### Exercise 6.1.4
+
+If
+
+We have  $\forall \epsilon > 0, \exists N \geq m, \forall n \geq N, |a_{n+k} - c| \leq \epsilon$.
+
+Hence, we have $\forall \epsilon > 0, \exists N + k \geq m, \forall n, n + k \geq N + k, |a_{n+k} - c| \leq \epsilon$. Let $N' = N + k$, we claim $\forall \epsilon > 0, \exists N' \geq m, \forall n' \geq N', |a_{n'} - c| \leq \epsilon$. Say given $n' \geq N'$, then $n' = n + k$ for some $n \geq N' - k = N$, hence $|a_{n'} - c| = |a_{n+k} - c| \leq \epsilon$ as desired.
+
+Only if:
+
+We have $\forall \epsilon > 0, \exists N' \geq m, \forall n' \geq N', |a_{n'} - c| \leq \epsilon$.
+
+We need to show  $\forall \epsilon > 0, \exists N \geq m, \forall n \geq N, |a_{n+k} - c| \leq \epsilon$.
+
+Similarly, we let $N = N'$. Note $n + k \geq N = N'$. Hence let $n' = n + k$, $|a_{n+k} - c = |a_{n'} - c| \leq \epsilon$ asa desired.
+
+### Exercise 6.1.5
+
+We have $\forall \epsilon' > 0, \exists N' \geq m, \forall n \geq N', |a_{n} - c| \leq \epsilon'$
+
+We need to show $\forall \epsilon > 0, \exists N \geq m, \forall i, j \geq N, |a_{i} - a_{j}| \leq \epsilon$.
+
+Let $\epsilon' = \epsilon / 2$, then $\exists N' \geq m, \forall n \geq N', |a_n - c| \leq \epsilon / 2$. Choose $N = N'$, then $|a_i - a_j| \leq |a_i - L| + |L - a_j| = \epsilon/2 + \epsilon/2 = \epsilon$ as desired.
+
+### Exercise 6.1.6
+
+Let $(a_n)^{\infty}_{n=m}$ be a Cauchy Sequence of rationals and let $L = \operatorname{LIM}_{n\rightarrow\infty} a_n$. Then:
+
+$$\forall \epsilon > 0, \exists N \geq m, \forall i, j \geq m, |a_i - a_j| \leq \epsilon$$
+
+We argue by contradiction. Assume $(a_n)^{\infty}_{n=m}$ does not converge to $L$, then:
+
+$$\exists \epsilon > 0, \forall M \geq m, \exists i' \geq M, |a_{i'} - L| > \epsilon$$
+
+Hence, choosing that $\epsilon$, and noting $(a_n)^{\infty}_{n=m}$ is $\epsilon/2$ stable, then:
+
+$$\exists N \geq m, \forall i, j \geq N, |a_i - a_j| \leq \epsilon/2$$
+
+Since $i' \geq n$, then $\forall j \geq N, |a_{i'} - a_j| \leq \epsilon/2$. By Exercise 5.4.6, $\forall j \geq N, a_{i'} - \epsilon/2 \leq a_{j} \leq a_{i'} + \epsilon/2$.
+
+WLOG say $a_{i'} - L \geq 0$, then $a_{i'} - L = |a_{i'} - L| > \epsilon$. Note $a_j \geq a_{i'} - \epsilon/2$. Hence $a_{i'} - L + a_j > \epsilon + a_{i'} - \epsilon/2$, which simplifies to $\forall j \geq N, a_j > L + \epsilon/2$
+
+We construct sequence $(b_n)^{\infty}_{n=1}$ s.t. $\forall j < M, b_j = L + \epsilon/2, \forall j \geq M, b_j = a_j$. Then it holds that $\forall j \geq 1, b_j \geq L + \epsilon/2$. By Exercise 5.4.3, $L = \operatorname{LIM}_{n\rightarrow\infty} a_j = \operatorname{LIM}_{n\rightarrow\infty} b_j \geq L + \epsilon/2$. Hence $L \geq L + \epsilon/2 \Rightarrow 0 \geq \epsilon/2$, contradiction as desired.
+
+Comment: Basically we show that if $(a_n)^{\infty}_{n=m}$ doesn't converge to $L$, then its formal limit is not $L$ either. The tricky part is usage of Exercise 5.4.6 and how cases should be split. Very tricky to see the sign of $a_{i'} - L$ matters.
+
+### Exercise 6.1.7
+
+Assume a sequence of rational numbers $(a_n)^{\infty}_{n=m}$ is bounded by a real number $M$. Then, by proposition 5.4.14 there exists $r \in \mathbb{Q}, M < r < M + 1$. Hence $(a_n)^{\infty}_{n=m}$ is bounded by $r$ as desired.
+
+### Exercise 6.1.8
+
+a)
+
+Need to show:
+
+$$\forall \epsilon > 0, \exists M \geq m, \forall n \geq m, |a_n + b_n - (x + y)| \leq \epsilon$$
+
+Note we have $\exists A \geq M, \forall n \geq M, |a_n - x| \leq \epsilon/2, \exists B \geq M, \forall n \geq M, |b_n - y| \leq \epsilon/2$. Hence, choose $M = \max(A, B)$, then $\forall n \geq M, |a_n + b_n - (x + y)| \leq |a_n - x| + |b_n - y| = \epsilon$ as desired.
+
+b)
+
+I can use 4.3.7 h), however it is... ugly. Hence using something else this time.
+
+Need to show:
+$$\forall \epsilon > 0, \exists M \geq m, \forall n \geq M, |a_nb_n - xy| \leq \epsilon$$
+
+Note by Corollary 6.1.17, $\forall n, |a_n| \leq U$. Then:
+
+$$\exists A \geq m, \forall n \geq M, |a_n - x| \leq \epsilon/(2U)$$
+
+$$\exists B \geq m, \forall n \geq M, |b_n - y| \leq \epsilon/(2|y|)$$
+
+Hence, choose $M = \max(A, B)$, it holds that, for all $n \geq M$:
+
+$$
+\begin{align*}
+|a_nb_n - xy| &= |a_nb_n + a_ny - a_ny - xy| \\
+              &= |a_n(b_n - y) + y(a_n - x)| \\
+              &\leq |a_n||b_n - y| + |y||a_n - x| \\
+              &\leq U|b_n - y| + |y||a_n - x| \\
+              &\leq U \epsilon/(2U) + |y| \epsilon/(2|y|) \\
+              &= \epsilon 
+\end{align*}
+$$
+
+As desired.
+
+c)
+
+Follows from b) by defining $b_n = c$ for all $n$.
+
+d)
+
+$$
+\begin{align*}
+\lim_{n\rightarrow\infty}(a_n - b_n) &= \lim_{n\rightarrow\infty} (a_n + (-b_n)) \\
+&= \lim_{n\rightarrow\infty} a_n + \lim_{n\rightarrow\infty} (-b_n) &\quad \text{By a)} \\
+&= \lim_{n\rightarrow\infty} a_n - \lim_{n\rightarrow\infty} b_n &\quad \text{By c)}
+\end{align*}
+$$
+
+e)
+
+Note we have:
+
+$$\forall \epsilon' > 0, \exists N' \geq m, \forall n \geq N',|b_n - y| \leq \epsilon'$$
+
+Then, note by Lemma 5.3.15, $b_n^{-1}$ is a Cauchy Sequence, by Proposition 6.1.15, a Cauchy Sequence is convergent, by Corollary 6.1.17, a convergent sequence is bounded, hence, $|b_n^{-1}| \leq U$ for some $U$.
+
+We need to show:
+
+$$\forall \epsilon > 0, \exists N \geq M, |1/b_n - 1/y| \leq \epsilon$$
+
+Hence, choose $\epsilon' = y\epsilon/M, N = N'$, it holds that, for $n \geq N$:
+
+$$
+\begin{align*}
+|1/b_n - 1/y| &= \frac{1}{|b_n|y}|y - b_n| \\
+              &\leq \frac{M}{y} y\epsilon/M \\
+              &= \epsilon
+\end{align*}
+$$
+
+As desired.
+
+f)
+
+$$
+\begin{align*}
+\lim_{n\rightarrow\infty} \frac{a_n}{b_n} &= \lim_{n\rightarrow\infty} a_n b_n^{-1} \\
+&= \lim_{n\rightarrow\infty} a_n \lim_{n\rightarrow\infty} b_n^{-1} &\quad \text{By b)} \\
+&= \lim_{n\rightarrow\infty} a_n (\lim_{n\rightarrow\infty} b_n)^{-1} &\quad \text{By c)} \\
+\end{align*}
+$$
+
+As desired.
+
+g)
+
+WLOG assume $x \leq y$, then:
+
+$$\exists A \geq m, \forall n \geq A, |a_n - x| \leq \frac{y - x}{2}$$
+
+$$\exists B \geq m, \forall n \geq B, |b_n - y| \leq \frac{y - x}{2}$$
+
+Hence, for all $n \geq \max(A, B)$:
+
+$$
+a_n \leq x + \frac{y - x}{2} = \frac{x + y}{2} = y - \frac{y - x}{2} \leq b_n
+$$
+
+Hence $\forall n \geq \max(A, B), a_n \leq b_n$.
+
+Since $(b_n)^{\infty}_{n=m}$ is convergent, it holds:
+
+$$
+\begin{align*}
+\forall \epsilon > 0, \exists N' \geq m, \forall n \geq N', |b_n - y| \leq \epsilon
+\end{align*}
+$$
+
+Choose $N = \max(N', A, B)$, it holds that:
+
+$$
+\begin{align*}
+\forall \epsilon > 0, \exists N \geq m, \forall n \geq N, |b_n - y| \leq \epsilon \\
+\forall \epsilon > 0, \exists N \geq m, \forall n \geq N, |\max(a_n, b_n) - \max(x, y)| \leq \epsilon
+\end{align*}
+$$
+
+As desired.
+
+h)
+
+We exploit duality of $\max, \min$.
+$$
+\begin{align*}
+\lim_{n\rightarrow\infty} \min(a_n, b_n) &= \lim_{n\rightarrow\infty} -\max(-a_n, -b_n) \\
+&= -\lim_{n\rightarrow\infty} \max(-a_n, -b_n) &\quad \text{By c)} \\
+&= -\max(\lim_{n\rightarrow\infty} -a_n, \lim_{n\rightarrow\infty} -b_n) &\quad \text{By g)} \\
+&= \min(\lim_{n\rightarrow\infty} a_n, \lim_{n\rightarrow\infty} b_n)
+\end{align*}
+$$
+### Exercise 6.1.9
+
+We can have $a_n = b_n = 1/n, a_n/b_n = 1$. Hence $LHS = 1$, yet $RHS$ is undefined as $\lim_{n\rightarrow\infty}b_n = 0$.
+
+### Exercise 6.1.10
+
+Only if direction is trivial as $\epsilon \in \mathbb{Q} \rightarrow \epsilon \in \R$.
+
+For if direction, given $\epsilon \in \R$, then there exists $0 < \epsilon' < \epsilon$, s.t. $\epsilon' \in \mathbb{Q}$ by Proposition 5.4.14. Hence, $\exists N' \geq 0, \forall n \geq N, |a_n - b_n| \leq \epsilon'$. We let $N = N'$, then $\forall \epsilon \in \R^{+}, \exists N \geq 0, \forall n \geq N, |a_n - b_n| \leq \epsilon' < \epsilon$ as desired.
+
