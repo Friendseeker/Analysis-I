@@ -1118,6 +1118,25 @@ $x∈E$. Then we have $\sup(E)≤M$.
 - (c) Suppose that $M ∈ \R^{*}$ is a lower bound for $E$, i.e., $x ≥ M$ for all
 $x∈E$. Then we have $\inf(E)≥M$.
 
+### Definition 6.3.1 (Sup and inf of sequences)
+
+Let $(a_n)^{∞}_{n=m}$ be a sequence of real numbers. Then we define $\sup(a_n)^{∞}_{n=m}$ to be the supremum of the set $\{a_n : n ≥ m\}$, and $\inf(a_n)^{∞}_{n=m}$ to the infimum of the same set $\{a_n :n≥m\}$.
+
+### Proposition 6.3.6 (Least upper bound property)
+
+Let $(a_n)^{∞}_{n=m}$ be a sequence of real numbers, and let $x$ be the extended real number $x := \sup(a_n)^{∞}_{n=m}$. Then we have $a_n ≤ x$ for all $n ≥ m$. Also, whenever $M ∈ \R^{*}$ is an upper bound for $a_n$ (i.e., $a_n ≤ M$ for all $n ≥ m$), we have $x ≤ M$. Finally, for every extended real number $y$ for which $y < x$, there exists at least one $n≥m$ for which $y<a_n ≤x$.
+
+### Proposition 6.3.8 (Monotone bounded sequences converge)
+
+Let $(a_n)^{∞}_{n=m}$ be a sequence of real numbers which has some finite upper bound $M ∈ \R$, and which is also increasing (i.e., $a_{n+1} ≥ a_n$ for all $n ≥ m$). Then $(a_n)^{∞}_{n=m}$ is convergent, and in fact
+$\lim_{n\rightarrow\infty} a_n = \sup(a_n)^{∞}_{n=m} ≤ M$.
+
+### Proposition 6.3.10
+
+Let $0 < x < 1$. Then we have $\lim_{n→∞} x^n = 0$.
+
+Regarding Why?: Exercise 6.1.4
+
 ## Appendix a
 
 Refer to

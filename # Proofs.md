@@ -3801,4 +3801,52 @@ Note $\inf(E) = -\sup(-E)$. Remains to show $\sup(-E) = \sup(-E - \{-\infty\})$.
 
 $\infty \notin E$ case follows similarly.
 
+### Exercise 6.3.1
+
+For $\inf(a_n)^{\infty}_{n=m} = 0$. Note, by Proposition 6.2.5 b), we either have $\inf(a_n)^{\infty}_{n=m} < 0, \inf(a_n)^{\infty}_{n=m} = 0, \inf(a_n)^{\infty}_{n=m} > 0$.
+
+If $\inf(a_n)^{\infty}_{n=m} < 0$, then note $0$ is a lower bound. (As $\forall n \geq 1, 1/n > 0$). Yet by 6.2.11 c) we have $\inf(a_n)^{\infty}_{n=m} \geq 0$, contradiction.
+
+If $\inf(a_n)^{\infty}_{n=m} > 0$, then denote it as $\epsilon$. By Archimedes easy to verify we can find sufficiently large $N \in \Z^{+}$ s.t. $1/N < \epsilon$. Hence $\inf(a_n)^{\infty}_{n=m}$ is not a lower bound, contradicting Exercise 5.5.1.
+
+Hence it must hold $\inf(a_n)^{\infty}_{n=m} = 0$.
+
+For $\sup(a_n)^{\infty}_{n=m} = 1$, easy to verify $1$ is an upper bound. (As $\forall n \in Z^{+}, 1/n \leq 1$). Hence, remains to show it is the least upper bound by Definition 5.5.10. Assume $1$ is not least upper bound, then by Theorem 6.2.11 b), $1 > \sup(a_n)^{\infty}_{n=m}$. However since $1 = a_{1}$, $a_1 > \sup(a_n)^{\infty}_{n=m}$, contradicting Definition 5.5.10 as desired.
+
+### Exercise 6.3.2
+
+$\forall n \geq m, a_n \leq \sup(a_n)^{\infty}_{n=m}$ follows from 6.2.11 a) (via letting $E = (a_n)^{\infty}_{n=m}$)
+
+$x \leq M$ for any upper bound $M$ follows from 6.2.11 b)
+
+For third claim, we argue by contradiction. Assume $\exists y < x, \forall n \geq m, y \geq a_n$, then $y$ is a lower bound. Hence $y \geq x$ by 6.2.11 b). However, $y < x$, contradiction as desired.
+
+### Exercise 6.3.3
+
+Note for all $\epsilon > 0$, there exists $N \geq m$ s.t.:
+
+$$\sup(a_n)^{\infty}_{n=m} - \epsilon \leq a_N \leq \sup(a_n)^{\infty}_{n=m} + \epsilon$$
+
+The first inequality follows from 6.3.6 3rd claim as $\sup(a_n)^{\infty}_{n=m} - \epsilon < \sup(a_n)^{\infty}_{n=m}$. The second inequality follows from same claim as $a_n \leq \sup(a_n)^{\infty}_{n=m} \leq \sup(a_n)^{\infty}_{n=m} + \epsilon$.
+
+Note for all $n \geq N$, $a_n \geq a_N$, hence:
+
+$$\sup(a_n)^{\infty}_{n=m} - \epsilon \leq a_N \leq a_n \leq \sup(a_n)^{\infty}_{n=m} + \epsilon$$
+
+Therefore, by Exercise 5.4.6, it holds that:
+
+$$\forall \epsilon > 0, \exists N \geq m, \forall n \geq m, |a_n - \sup(a_n)^{\infty}_{n=m}| \leq \epsilon$$
+
+As desired.
+
+### Exercise 6.3.4
+
+Explain: When $x > 1$, the sequence is no longer bounded above.
+
+Show: Assume $\lim_{n\rightarrow\infty} x^n =L$. Then since $x > 1$, $1/x < 1$. Hence, $\lim_{n\rightarrow\infty} (1/x)^n = 0$.
+
+However, $\lim_{n\rightarrow\infty} x^n(1/x)^n = 1$, yet $\lim_{n\rightarrow\infty}x^n \lim_{n\rightarrow\infty} (1/x)^n = L \times 0 = 0 \neq 1$, contradiction as desired.
+
+Example 1.2.3 flaw: Change of variable (As in Exercise 6.1.4) applies only to convergent series. In fact the contradiction only shows that the sequence is not convergent, which is exactly the case.
+
 
