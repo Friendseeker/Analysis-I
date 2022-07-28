@@ -1076,8 +1076,47 @@ $$\lim_{n\rightarrow\infty} (b_n)^{−1} = (\lim_{n\rightarrow\infty}b_n)^{−1}
 $$\lim_{n\rightarrow\infty} a_n/b_n = \lim_{n→∞} a_n/\lim_{n→∞} b_n$$
 - (g) The sequence $(\max(a_n,b_n))^{∞}_{n=m}$ converges to $\max(x,y)$; in other words:
 $$\lim_{n\rightarrow\infty}  \max(a_n, b_n) = \max(\lim_{n\rightarrow\infty}  a_n, \lim_{n\rightarrow\infty}  b_n)$$
-- (h) The sequence $(\min(an, bn))^{∞}_{n=m}$ converges to $\min(x, y)$; in other words,
+- (h) The sequence $(\min(a_n, b_n))^{∞}_{n=m}$ converges to $\min(x, y)$; in other words,
 $$\lim_{n\rightarrow\infty} \min(a_n, b_n) = \min( \lim_{n\rightarrow\infty} a_n, \lim_{n\rightarrow\infty} b_n)$$
+
+### Definition 6.2.1 (Extended real number system)
+
+The extended real number system $\R^{*}$ is the real line $\R$ with two additional elements attached, called $+∞$ and $−∞$. These elements are distinct from each other and also distinct from every real number. An extended real number $x$ is called finite iff it is a real number, and infinite iff it is equal to $+∞$ or $−∞$. 
+
+### Definition 6.2.2 (Negation of extended reals)
+
+The operation of negation $x \mapsto -x$ on $\R$, we now extend to $\R^{*}$ by defining $−(+∞) := −∞$ and $−(−∞) := +∞$.
+
+### Proposition 6.2.5
+
+Let $x, y, z$ be extended real numbers. Then the following statements are true:
+
+- (a) (Reflexivity) We have $x ≤ x$.
+- (b) (Trichotomy) Exactly one of the statements $x < y, x = y$, or $x > y$ is true.
+- (c) (Transitivity) If $x≤y$ and $y≤z$, then $x≤z$.
+- (d) (Negation reverses order) If $x ≤ y$, then $−y ≤ −x$.
+
+### Definition 6.2.6 (Supremum of sets of extended reals)
+
+Let $E$ be a subset of $\R^{*}$. Then we define the supremum $\sup(E)$ or least upper bound of $E$ by the following rule.
+
+- (a) If $E$ is contained in $\R$ (i.e., $+∞$ and $−∞$ are not elements of $E$), then we let $
+sup(E)$ be as defined in Definition 5.5.10.
+- (b) If $E$ contains $+∞$, then we set $\sup(E) := +∞$.
+- (c) If $E$ does not contain $+∞$ but does contain $−∞$, then we set $\sup(E) := \sup(E\backslash \{−∞\})$ (which is a subset of $\R$ and thus falls under case (a)).
+
+We also define the infimum $\inf(E)$ of $E$ (also known as the greatest lower bound of $E$ by the formula
+$\inf(E) := − \sup(−E)$ where $−E$ is the set $−E := \{−x : x ∈ E\}$.
+
+### Theorem 6.2.11
+
+Let $E$ be a subset of $\R^{*}$. Then the following statements are true.
+
+- (a) For every $x∈E$ we have $x≤\sup(E)$ and $x≥\inf(E)$.
+- (b) Suppose that $M ∈ \R^{*}$ is an upper bound for $E$, i.e., $x ≤ M$ for all
+$x∈E$. Then we have $\sup(E)≤M$.
+- (c) Suppose that $M ∈ \R^{*}$ is a lower bound for $E$, i.e., $x ≥ M$ for all
+$x∈E$. Then we have $\inf(E)≥M$.
 
 ## Appendix a
 

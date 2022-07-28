@@ -3741,3 +3741,64 @@ Only if direction is trivial as $\epsilon \in \mathbb{Q} \rightarrow \epsilon \i
 
 For if direction, given $\epsilon \in \R$, then there exists $0 < \epsilon' < \epsilon$, s.t. $\epsilon' \in \mathbb{Q}$ by Proposition 5.4.14. Hence, $\exists N' \geq 0, \forall n \geq N, |a_n - b_n| \leq \epsilon'$. We let $N = N'$, then $\forall \epsilon \in \R^{+}, \exists N \geq 0, \forall n \geq N, |a_n - b_n| \leq \epsilon' < \epsilon$ as desired.
 
+### Exercise 6.2.1
+
+Reflexivity:
+
+Note $\R^{*} = \R \cup \{\infty\} \cup \{-\infty\}$
+
+Hence, since $\infty, -\infty$ are distinct from all elements in $\R$ by Definition 6.2.1, it holds that a number $x \in \R^{*}$ is either:
+
+- $x \in \R$
+- $x = \infty$
+- $x = -\infty$
+
+$x \in \R$ case follows from Definition 6.2.3 a) and analogue of reflexivity in $\R$ .
+
+For $x = \infty$, $x \leq x$ follows from Definition 6.2.3 b). $x = -\infty$ case follows from Definition 6.2.3 c), as desired.
+
+Trichotomy:
+
+When $x, y \in \R$, trichotomy follows from analogue in $\R$ (Proposition 5.4.7).
+
+When $x \in \R, y = \infty$, $x = y$ is false by Definition 6.2.1. $x < y$ is true as $x \leq y$ (By Definition 6.2.3 b)) and $x \neq y$. $x > y$ is false as $x \geq y$ (aka $y \leq x$) is false. (We can verify neither of 6.2.3 a), b), c) are satisfied).
+
+$7$ cases remain, and the verification is similar to above cases hence omitted.
+
+Transitivity:
+
+If $x, y, z \in \R$, follows from analogue in $\R$.
+
+If $x \in \R^{*} - \R, y, z \in \R$, easy to verify $x = -\infty$, hence since $z \in \R$, $x < z$ as desired.
+
+Other cases follow similarly. There may be a proof not involving 8 cases (prob via building some Lemmas first) but I am too average to figure it out.
+
+Negation reverses order:
+
+If $x, y \in \R$, follows from analogue in $\R$.
+
+If $x \in \R^{*} - \R, y \in \R$, easy to verify $x = -\infty$. Hence $-x = \infty$, $-y \leq \infty = -x$ as desired.
+
+Other case follow similarly.
+
+### Exercise 6.2.2
+
+If $E \subseteq \R$, then the 3 claims follow from Definition 5.5.10 and Exercise 5.5.1.
+
+If $\infty \in E$, then by Definition 6.2.6, $\sup(E) = \infty, \inf(E) = -\sup(-E)$. Then, if $-\infty \in E$, then $\infty \in -E$ hence $\inf(E) = -\infty$. 
+
+Hence, a) is true by Definition 6.2.3.
+
+For b), since $\infty \in E$, then $\infty \leq M$. Hence $\sup(E) = \infty \leq M$ as desired.
+
+For c), note $-\infty \in E$, hence $-\infty \geq M$. Using similar reasoning $\inf(E) = -\infty \geq M$ as desired.
+
+If $-\infty \notin E$, consider $\inf(E - \{\infty\})$. Since $E - \{\infty\} \subseteq \R$, it follows from Exercise 5.5.1 that $\inf(E - \{\infty\})$ is the greater lower bound of $E - \{\infty\}$. Note $\inf(E - \{\infty\}) \leq \infty$, and $\inf(E) = \inf(E - \{\infty\})$, claim a), c) follows.
+
+Why $\inf(E) = \inf(E - \{\infty\})$?
+
+Note $\inf(E) = -\sup(-E)$. Remains to show $\sup(-E) = \sup(-E - \{-\infty\})$. It follows from Definition 6.2.6 c) as desired.
+
+$\infty \notin E$ case follows similarly.
+
+
