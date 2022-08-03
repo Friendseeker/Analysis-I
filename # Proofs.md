@@ -3563,6 +3563,12 @@ We need to show  $\forall \epsilon > 0, \exists N \geq m, \forall n \geq N, |a_{
 
 Similarly, we let $N = N'$. Note $n + k \geq N = N'$. Hence let $n' = n + k$, $|a_{n+k} - c = |a_{n'} - c| \leq \epsilon$ asa desired.
 
+Alternative proof (informal):
+
+Note we have $(a_{n+k})^{\infty}_{n = m}$ term by term equal to $(a_n)^{\infty}_{n = m + k}$. Hence result follows from Exercise 6.1.3.
+
+Albeit, the problem being... need to show term by term equal yields the same limit. The concept seems to be obvious, as both intuitively represent the same sequence, but proving it may be another story.
+
 ### Exercise 6.1.5
 
 We have $\forall \epsilon' > 0, \exists N' \geq m, \forall n \geq N', |a_{n} - c| \leq \epsilon'$
@@ -3847,6 +3853,398 @@ Show: Assume $\lim_{n\rightarrow\infty} x^n =L$. Then since $x > 1$, $1/x < 1$. 
 
 However, $\lim_{n\rightarrow\infty} x^n(1/x)^n = 1$, yet $\lim_{n\rightarrow\infty}x^n \lim_{n\rightarrow\infty} (1/x)^n = L \times 0 = 0 \neq 1$, contradiction as desired.
 
-Example 1.2.3 flaw: Change of variable (As in Exercise 6.1.4) applies only to convergent series. In fact the contradiction only shows that the sequence is not convergent, which is exactly the case.
+Example 1.2.3 flaw: Change of variable (As in Exercise 6.1.4) applies only to convergent series. In fact Example 1.2.3 serves as a valid proof by contradiction for proving divergence of the series.
 
+### Exercise 6.4.1
 
+We have:
+
+$$\forall \epsilon > 0, \exists M \geq m, \forall n \geq M, |a_n - L| \leq \epsilon$$
+
+We need to show:
+
+$$\forall \epsilon > 0, \forall N \geq m, \exists n \geq m, |a_n - L| \leq \epsilon$$
+
+Fix $\epsilon$, we choose $n = \max(N, M)$, then $|a_n - L| \leq \epsilon$ as desired.
+
+### Exercise 6.4.2
+
+#### Limit Point
+
+Exercise 6.1.3
+
+Only if direction:
+
+Recall definition of Limit Point, we have:
+
+$$\forall \epsilon > 0, \forall N \geq m, \exists n \geq N, |a_n - x| \leq c$$
+
+Note since $m' \geq m$, $\forall N \geq m$ implies $\forall N \geq m'$, hence:
+
+$$\forall \epsilon > 0, \forall N \geq m', \exists n \geq N, |a_n - x| \leq c$$
+
+Which, by definition of limit point implies $c$ is a limit point of $(a_n)^{\infty}_{n = m'}$, as desired.
+
+If direction:
+
+We have:
+
+$$\forall \epsilon > 0, \forall N \geq m', \exists n \geq N, |a_n - x| \leq \epsilon \quad \text{(1)}$$
+
+Hence, by instantiating $N = m'$:
+
+$$\forall \epsilon > 0, \exists n' \geq m', |a_{n'} - x| \leq \epsilon \quad \text{(2)}$$
+
+We need to show:
+
+$$\forall \epsilon > 0, \forall N \geq m, \exists n \geq N, |a_n - x| \leq \epsilon \quad \text{(3)}$$
+
+Fix $\epsilon$, we split $\forall N \geq m$ into cases, and show in each case there exists a permissible $n$.
+
+For $m' > N$, we can merely choose $n = n'$ with $n'$ from (2) (using the same $\epsilon$ in (2)). We need to test $n' \geq N$ and $|a_{n'} - x| \leq \epsilon$. Since $n' \geq m'$ and $m' > M$, $n' \geq N$. By (2), $|a_{n'} - x| \leq \epsilon$. Hence $n'$ satisfies the conditions.
+
+For $N \geq m'$, we can choose the same $n$ in (1). Easy to confirm the conditions are satisfied by such choice.
+
+Hence, in both case $\exists n \geq N, |a_n - x| \leq \epsilon$, and the reasoning holds for any $\epsilon > 0$, as desired.
+
+Exercise 6.1.4
+
+Only if direction:
+
+By Definition of Limit Point, we have:
+
+$$\forall \epsilon > 0, \forall N' \geq m, \exists n' \geq N, |a_{n'} - x| \leq \epsilon \quad \text{(1)}$$
+
+We need to show:
+
+$$\forall \epsilon > 0, \forall N \geq m, \exists n \geq N, |a_{n + k} - x| \leq \epsilon \quad \text{(2)}$$
+
+Fix $\epsilon, N$, we need to show a permissible $n$ exists via (1).
+
+We instantiate (1) via setting $N' = N + k$, then $\exists n' > N, |a_{n'} - x| \leq \epsilon$. We claim $n = n' - k$ is permissible.
+
+We first verify $n \geq N$. Note $n' \geq N + k$, hence $n' - k \geq N$. Therefore $n = n' - k \geq N$ as desired.
+
+Then, $|a_{n + k} - x| = |a_{n'} - x| \leq \epsilon$, as desired.
+
+If direction:
+
+We have:
+
+$$\forall \epsilon > 0, \forall N' \geq m + k, \exists n' \geq N', |a_{n'} - x| \leq \epsilon \quad \text{(1)}$$
+
+We need to show:
+
+$$\forall \epsilon > 0, \forall N \geq m, \exists n \geq N, |a_n - x| \leq \epsilon$$
+
+Fix $\epsilon$. We split into case $N \geq m + k$ and $N < m + k$, and show in each case a permissible $n$ exists.
+
+Case $N \geq m + k$ is shown by (1), by instantiating $N' = N$ and take $n'$ as $n$. Easy to verify it is permissible.
+
+Remains to consider case $N < m + k$. In that case, note by instantiating $N' = m + k$ in (1), we deduce $\exists n' \geq m + k, |a_{n'} - x| \leq \epsilon$. We show $n'$ is permissible, as since $n' \geq m + k$ and $m + k > N$, it holds that $n' \geq N$. And, $|a_n - x| \leq \epsilon$, as desired.
+
+#### $\lim\sup_{n\rightarrow\infty}$ case
+
+Exercise 6.1.3
+
+Need to show $\inf(\sup(a_n)^{\infty}_{n = N})^{\infty}_{N = m} = \inf(\sup(a_n)^{\infty}_{n = N})^{\infty}_{N = m'}$ for which $m' \geq m$.
+
+We first show $\sup(a_n)^{\infty}_{n=N} \geq \sup(a_n)^{\infty}_{n = N + 1}$
+
+First note by Proposition 6.3.6, $\forall n \geq N, \sup(a_n)^{\infty}_{n = N} \geq a_n$. Hence, $\forall n \geq N + 1, \sup(a_n)^{\infty}_{n = N} \geq a_n$. Therefore $\sup(a_n)^{\infty}_{n = N}$ is an upper bound for $(a_n)^{\infty}_{n = N + 1}$. Rest follows by Proposition 6.3.6 as desired.
+
+Then we perform induction on $m'$. For ease of notation denote $I(m') = \inf(\sup(a_n)^{\infty}_{n = N})^{\infty}_{N = m'}, b_N = \sup(a_n)^{\infty}_{n=N}$. Note $b_N \geq b_{N+1}$. Hence, the inductive hypothesis can be expressed as $P(m'): I(m) = I(m')$.
+
+Base case $P(m)$ is trivially true. Assume true for $P(m')$. By Proposition 6.3.6, we have $\forall N \geq m', I(m') \leq b_N$. Hence it holds that $\forall N \geq m' + 1, I(m') \leq b_N$. Hence $I(m')$ is a lower bound of $(b_N)^{\infty}_{N = m' + 1}$.
+
+Similarly, $\forall N \geq m' + 1, I(m' + 1) \leq b_N$. And, noting $I(m'+1) \leq b_{m'+1} \leq b_{m'}$, we have $\forall N \geq m', I(m' + 1) \leq b_N$. Hence $I(m'+1)$ is lower bound of $(b_{N})^{\infty}_{N = m}$.
+
+Therefore, by Proposition 6.3.6, we have $I(m') \geq I(m'+1), I(m'+1) \geq I(m')$. Hence $I(m') = I(m'+1)$. And, by inductive hypothesis $I(m'+1) = I(m') = I(m)$ as desired.
+
+Exercise 6.1.4
+
+We start with a Lemma:
+
+$$\{\sup(a_n)^{\infty}_{n = N + k}: N \geq m\} = \{\sup(a_n)^{\infty}_{n = N'}: N' \geq m + k\}$$
+
+Proof:
+
+Say given $\sup(a_n)^\infty_{n=N+k}$ for some $N \geq m$, then $N + k \geq m + k$, hence letting $N' = n + k$, by Axiom of Substitution $\sup(a_n)^\infty_{n = N + k} = \sup(a_n)^\infty_{n = N'} \in RHS$ as desired.
+
+Similarly, given $\sup(a_n)^{\infty}_{n = N'}$ for some $N' \geq m + k$, then $N' - k \geq m$. Hence letting $N = N' - k$, $\sup(a_n)^{\infty}_{n = N'} = \sup(a_n)^\infty_{n = N' - k + k} = \sup(a_n)^\infty_{N + k} \in LHS$ as desired.
+
+Hence:
+
+$$
+\begin{align*}
+\inf(\sup(a_n)^{\infty}_{n = N + k})^{\infty}_{N = m} &= \inf(\sup(a_n)^{\infty}_{n = N})^{\infty}_{N = m + k} &\quad \text{By Lemma} \\
+&= \inf(\sup(a_n)^{\infty}_{n = N})^{\infty}_{N = m} &\quad \text{By Exercise 6.1.3}
+\end{align*}
+$$
+
+As desired.
+
+#### $\lim\inf_{n\rightarrow\infty}$ case
+
+Similar to $\lim\sup_{n\rightarrow\infty}$ case hence omitted.
+
+### Exercise 6.4.3
+
+c)
+
+We first show $\inf(a_n)^\infty_{n=m} \leq L^{-}$.
+
+By definition of $L^{-}$ and $a_{N}^-$, above is equivalent to $\inf(a_n)^\infty_{n=m} \leq \sup(\inf(a_n)^\infty_{n = N})^\infty_{N=m}$.
+
+Since $\inf(a_n)^{\infty}_{n = m} \in \{\inf(a_n)^{\infty}_{n = N} : N \geq m\}$ (can show via setting $N = m$ on the right side and result follows from Axiom of Substitution), by Proposition 6.3.6 we have $\inf(a_n)^\infty_{n=m} \leq \sup(\inf(a_n)^\infty_{n = N})^\infty_{N=m}$ as desired.
+
+Can similarly show $L^{+} \leq \sup(a_n)^{\infty}_{n = m}$
+
+Remains to show $L^{-} \leq L^{+}$. By definition of $L^{-}, L^{+}$, the inequality is equivalent to $\sup(a_N^-)^\infty_{N = m} \leq \inf(a_N^+)^\infty_{N = m}$. We argue by contradiction. Assume $\sup(a_N^-)^\infty_{N = m} > \inf(a_N^+)^\infty_{N = m}$, then, by Proposition 6.3.6:
+
+$$\exists N_0 \geq m, \sup(a_N^-)^\infty_{N = m} \geq a_{N_0}^- > \inf(a_N^+)^\infty_{N=m}$$
+
+Taking $a_{N_0}^- > \inf(a_N^+)^{\infty}_{N=m}$, we apply Proposition 6.3.6 again yielding:
+
+$$\exists N_1 \geq m, a_{N_0}^- > a_{N_1}^+ \geq \inf(a_N^{+})^\infty_{N = m}$$
+
+We claim $a_{N_0}^- > a_{N_1}^+$ is the desired contradiction. Let $M = \max(N_0, N_1)$, then by Proposition 6.3.6, $\sup(a_n)^\infty_{n = N_0} \geq a_M \geq \inf(a_n)^\infty_{n = N_1}$, hence $\sup(a_n)^\infty_{n = N_0} \geq \inf(a_n)^\infty_{n = N_1}$, contradicting $\inf(a_n)^\infty_{n = N_1} > \sup(a_n)^\infty_{n = N_0}$ as desired.
+
+d)
+
+We argue by contradiction. To show $L^- \leq c$ for any sequence, assume $L^- > c$ for some sequence $(a_n)^\infty_{n = m}$. Then, by Definition 6.4.6, we have $\sup(A_N^-)^\infty_{N = m} > c$. By Proposition 6.3.6, we have:
+
+$$\exists N_0 \geq m, \sup(A_N^-)^\infty_{N = m} \geq A^-_{N_0} > c$$
+
+Hence we have $A^-_{N_0} > c$ for some $N_0 \geq m$. By Definition 6.4.6, we have $\inf(a_n)^\infty_{n = N_0} > c$. Since by Proposition 6.3.6, we have $\forall n \geq N_0, a_n \geq \inf(a_n)^\infty_{n = N_0}$ and $\inf(a_n)^\infty_{n = N_0} > c$, we have $\forall n \geq N_0, a_n > c$.
+
+Since $c$ is a limit point of $(a_n)^\infty_{n = m}$, by Definition 6.4.1, we have:
+
+$$\forall \epsilon > 0, \forall N \geq m, \exists n \geq N, |a_n - c| \leq \epsilon$$
+
+Set $\epsilon = (\inf(a_n)^\infty_{n = N_0} - c) / 2, N = N_0$, we have $\exists n \geq N_0, |a_n - c| \leq  (\inf(a_n)^\infty_{n = N_0} - c) / 2$, hence:
+
+$$
+\begin{align*}
+a_n - c &\leq (\inf(a_n)^\infty_{n = N_0} - c) / 2 &\text{As } n \geq N_0 \Rightarrow a_n > c \\
+a_n + a_n - c &\leq \inf(a_n)^\infty_{n = N_0} \\
+a_n &< \inf(a_n)^\infty_{n = N_0} &\text{As } a_n > c
+\end{align*}
+$$
+
+It was shown that $\forall n \geq N_0, a_n \geq \inf(a_n)^\infty_{n = N_0}$, since $n \geq N_0$, we have $a_n \geq \inf(a_n)^\infty_{n = N_0}$, contradicting $a_n < \inf(a_n)^\infty_{n = N_0}$ as desired.
+
+e)
+
+By Definition 6.4.1, Showing $L^-$ is a limit point is equivalent of showing:
+
+$$\forall \epsilon > 0, \forall N \geq m, \exists n \geq N, |a_n - L^-| \leq \epsilon$$
+
+Fix $\epsilon, N$. Then, by Definition 6.4.6, $L^- = \sup(a_{N'}^-)^\infty_{N' = m}$. By Exercise 6.4.2, it equals to $\sup(a^-_{N'})^\infty_{N' = N}$.
+
+Hence, by Proposition 6.3.6:
+
+$$
+\begin{align*}
+&\exists N_0 \geq N, L^- \geq a_{N_0}^- > L^- - \epsilon / 2 \\
+&\exists N_0 \geq N, 0 \geq a_{N_0}^- - L^- > -\epsilon / 2 \\
+&\exists N_0 \geq N, 0 \leq L^- - a_{N_0}^- < \epsilon / 2 \\
+&\exists N_0 \geq N, |L^- - a_{N_0}^-| < \epsilon / 2
+\end{align*}
+$$
+
+Then, by Proposition 6.3.6 again:
+
+$$
+\begin{align*}
+&\exists n_0 \geq N_0, a_{N_0}^- \leq a_{n_0} < a_{N_0}^- + \epsilon / 2\\
+&\exists n_0 \geq N_0, 0 \leq a_{n_0} - a_{N_0} < \epsilon / 2\\
+&\exists n_0 \geq N_0, |a_{n_0} - a_{N_0}| < \epsilon / 2
+\end{align*}
+$$
+
+We claim $n = n_0$ is permissible. First, $n_0 \geq N_0$, and $N_0 \geq N$, hence $n_0 \geq N$. Then:
+
+$$
+\begin{align*}
+|a_{n_0} - L^-| &\leq |a_{n_0} - a_{N_0}^-| + |a_{N_0}^- - L^-| &\text{By Triangle Inequality} \\
+&< \epsilon / 2 + \epsilon / 2\\
+&= \epsilon
+\end{align*}
+$$
+
+As desired.
+
+f)
+
+#### If $(a_n)^∞_{n=m}$ converges to $c$, then we must have $L^+ = L^− = c$
+
+For simplicity we only show $L^+ = c$.
+
+Since $(a_n)^∞_{n=m}$ converges to $c$, by Definition 6.1.5, we have:
+
+$$\forall \epsilon > 0, \exists N_{\epsilon} > m, \forall n \geq N_{\epsilon}, |a_n - c| \leq \epsilon$$
+
+By Exercise 5.4.6, the above is equivalent to:
+
+$$\forall \epsilon > 0, \exists N_{\epsilon} > m, \forall n \geq N_{\epsilon}, c - \epsilon \leq a_n \leq c + \epsilon$$
+
+Hence, taking the right side of the inequality:
+
+$$\forall \epsilon > 0, \exists N_{\epsilon} > m, \forall n \geq N_{\epsilon}, a_n \leq c + \epsilon$$
+
+Therefore, by Definition 5.5.1, $c + \epsilon$ is an upper bound for $(a_n)^\infty_{N_{\epsilon}}$. Hence, by Proposition 6.3.6, we have $\sup(a_n)^\infty_{n = N_{\epsilon}} \leq c + \epsilon$. Since, by Definition 6.4.6, $\sup(a_n)^\infty_{n = N_{\epsilon}} = a^+_{N_{\epsilon}}$, and $L^+ = \inf(a^+_{N})^\infty_{N = m}$, we have, by Proposition 6.3.6:
+
+$$\forall \epsilon > 0, \exists N_{\epsilon} > m, L^+ = \inf(a^+_{N})^\infty_{N = m} \leq a^+_{N_{\epsilon}} \leq c + \epsilon$$
+
+$$\forall \epsilon > 0, \exists N_{\epsilon} > m, L^+ \leq c + \epsilon$$
+
+$$\forall \epsilon > 0, L^+ \leq c + \epsilon$$
+
+We claim $L^+ \leq c$. We argue by contradiction. Assume $L^+ > c$, then choose $\epsilon = (L^+ - c)/2$, we deduce:
+
+$$
+\begin{align*}
+L^- &\leq c + (L^- - c)/2 \\
+2L^- &\leq 2c + L^- - c \\
+L^- &\leq c
+\end{align*}
+$$
+
+Which contradicts $L^+ > c$ as desired.
+
+Then, we deduce $c \leq L^+$.
+
+Similar to how we established $\sup(a_n)^\infty_{n = N_{\epsilon}} \leq c + \epsilon$, we have $c - \epsilon \leq \inf(a_n)^\infty_{n = N_\epsilon}$. Then, by Definition 6.4.2, $\inf(a_N^+)^\infty_{N = m} = \inf(a_N^+)^\infty_{N = N_{\epsilon}}$, hence $L^+ = \inf(a_N^+)^\infty_{N = N_{\epsilon}}$. Then, by Proposition 6.3.6, $\forall N \geq N_{\epsilon}, a_N \leq a^+_N$. Hence, by Lemma 6.4.13, $\inf(a_n)^\infty_{n = N_{\epsilon}} \leq \inf(a^+_N)^\infty_{N = N_{\epsilon}}$, therefore:
+
+$$\forall \epsilon > 0, c - \epsilon \leq \inf(a_n)^\infty_{n = N_{\epsilon}} \leq \inf(a^+_N)^\infty_{N = N_{\epsilon}} = L^+$$
+
+$$\forall \epsilon > 0, c - \epsilon \leq L^+$$
+
+Using similar argument for showing $L^+ \leq c$, we can show above predicate implies $c \leq L^+$. Hence $c \leq L^+ \leq c$, implying $L^+ = c$ as desired
+
+#### If $L^+ = L^- = c$, then $(a_n)^\infty_{n = m}$ converges to $c$
+
+By Exercise 6.1.2, $(a_n)^\infty_{n = m}$ converges to $c$ iff:
+
+$$\forall \epsilon > 0, \exists N \geq m, \forall n \geq N, |a_n - c| \leq \epsilon$$
+
+By Exercise 5.4.6, above is true iff:
+
+$$\forall \epsilon > 0, \exists N \geq m, \forall n \geq N, c - \epsilon \leq a_n \leq c + \epsilon$$
+
+Fix $\epsilon$. Since $c + \epsilon = L^+ + \epsilon > L^+$, by Proposition 6.4.12 a):
+
+$$\exists N_0 \geq m, \forall n \geq N_0, a_n < c + \epsilon$$
+
+Similarly:
+
+$$\exists N_1 \geq m, \forall n \geq N_1, c - \epsilon < a_n$$
+
+Hence, we claim $N = \max(N_0, N_1)$ is permissible. Note $N \geq m$ as $N \geq N_0$ and $N_0 \geq m$. And, since $n \geq N$ implies $n \geq N_0$ and $n \geq N_1$:
+
+$$\forall n \geq N, c - \epsilon < a_n < c + \epsilon$$
+
+$$\forall n \geq N, c - \epsilon \leq a_n \leq c + \epsilon$$
+
+As desired.
+
+### Exercise 6.4.4
+
+For $\sup(a_n)^\infty_{n = m} \leq \sup(b_n)^\infty_{n = m}$. We argue by contradiction. Assume $\sup(a_n)^\infty_{n = m} > \sup(b_n)^\infty_{n = m}$. Then by Proposition 6.3.4, $\exists n_0 > 0, \sup(a_n)^{\infty}_{n = m} \geq a_{n_0} > \sup(b_n)^\infty_{n=m}$. Hence we have $a_{n_0} > \sup(b_n)^\infty_{n = m}$. However, since $\forall n \geq m, a_n \leq b_n$, we have $a_{n_0} \leq b_{n_0}$. We also have $b_{n_0} \leq \sup(b_n)^\infty_{n = m}$ by Proposition 6.3.6. Hence we have $a_{n_0} \leq \sup(b_n)^\infty_{n = m}$, contradicting $a_{n_0} > \sup(b_n)^\infty_{n = m}$ as desired.
+
+Similarly we can show $\inf(a_n)^\infty_{n = m} \leq \inf(b_n)^\infty_{n = m}$.
+
+For $\lim\sup_{n\rightarrow\infty} a_n \leq \lim\sup_{n\rightarrow\infty} b_n$, by Definition 6.4.6 the inequality is equivalent to $\inf(a_N^+)^\infty_{n = m} \leq \inf(b_N^+)^{\infty}_{n=m}$. Note since $\forall n \geq m, a_n \leq b_n$, by 6.4.4 1) we have $\forall N \geq m$, $a_N^+ \leq b_N^+$. Hence by 6.4.4 2) we have $\inf(a_N^+)^\infty_{n = m} \leq \inf(b_N^+)^{\infty}_{n=m}$ as desired.
+
+Similarly we can show $\lim\inf_{n\rightarrow\infty} a_n \leq \lim\inf_{n\rightarrow\infty} b_n$, as desired.
+
+### Exercise 6.4.5
+
+By Proposition 6.4.12 f), since $L = \lim_{n\rightarrow\infty}a_n, L = \lim\sup_{n\rightarrow\infty} a_n$. Similarly $L = \lim\sup_{n\rightarrow\infty} c_n$.
+
+Since $a_n \leq b_n \leq c_n$, By Lemma 6.4.13 f), we have:
+
+$$L = \lim\sup_{n\rightarrow\infty}a_n \leq \lim\sup_{n\rightarrow\infty} b_n \leq \lim\sup_{n\rightarrow\infty}c_n = L$$
+
+$$\lim\sup_{n\rightarrow\infty} b_n= L$$
+
+Similarly we can conclude $\lim\inf_{n\rightarrow\infty} b_n = L$. Hence by Lemma 6.4.13 f), $\lim_{n\rightarrow\infty}b_n = L$ as desired.
+
+### Exercise 6.4.6
+
+Let $a_n = 1 - 1/n, b_n = 1$. It is the desired example as $a_n < b_n$ and easy to verify $\lim\sup_{n\rightarrow\infty}a_n = \lim\sup_{n\rightarrow\infty}b_n = 1$. 
+
+It does not contradict Lemma 6.4.13 as Lemma 6.4.13 only claims $\lim\sup_{n\rightarrow\infty}a_n \leq \lim\sup_{n\rightarrow\infty}b_n$, which still holds as $1 \leq 1$.
+
+### Exercise 6.4.7
+
+If direction:
+
+Note $\lim_{n\rightarrow\infty} -|a_n| = \lim_{n\rightarrow\infty} |a_n| = 0$, and $-|a_n| \leq a_n \leq |a_n|$. By Corollary 6.4.14, $\lim_{n\rightarrow\infty} a_n = 0$ as desired.
+
+Only if direction
+
+Note $\min(-a_n, a_n) \leq |a_n| \leq \max(-a_n, a_n)$.
+
+By 6.1.19 g) h), $\lim_{n\rightarrow\infty}\min(-a_n, a_n) = \lim_{n\rightarrow\infty}\max(-a_n, a_n) = 0$. Hence $\lim_{n\rightarrow\infty} a_n = 0$ by Corollary 6.4.14 as desired.
+
+If $0$ is replaced with some other number (say $1$), clearly false. Note $\lim_{n\rightarrow\infty} -1 \neq \lim_{n\rightarrow\infty} |-1|$.
+
+### Exercise 6.4.8
+
+We proceed to prove by cases. Either $(a_n)^\infty_{n=m}$ have finite upper bound or $(a_n)^\infty_{n=m}$ does not have finite upper bound.
+
+If $(a_n)^{\infty}_{n = m}$ has finite upper bound, then we show $\lim\sup_{n\rightarrow\infty} a_n$ is finite. Let $M$ be the finite upper bound of $(a_n)^\infty_{n=m}$. Define $(b_n)^{\infty}_{n=m}$ as constant sequence with each term being $M$. Hence, $\lim_{n\rightarrow\infty} b_n = M$. Therefore, by Proposition 6.4.12 f), $\lim\sup_{n\rightarrow\infty} b_n = M$. By definition of upper bound, it holds that $\forall n \geq m, a_n \leq b_n$. Hence, by Lemma 6.4.13, $\lim\sup_{n\rightarrow\infty} a_n \leq \lim\sup_{n\rightarrow\infty} b_n = M$. Hence $\lim\sup_{n\rightarrow\infty} a_n$ is finite.
+
+Therefore, by Proposition 6.4.12 e), $\lim\sup_{n\rightarrow\infty} a_n$ is a limit point as under Definition 6.4.1. Hence, by Proposition 6.4.12 f), for all limit point $c$ as under Definition 6.4.1, $c \leq \lim\sup_{n\rightarrow\infty} a_n$. There does not exist other limit points as $(a_n)^\infty_{n = m}$ has finite upper bound, hence for all limit point $c$, $c \leq \lim\sup_{n\rightarrow\infty} a_n$ as desired.
+
+If $(a_n)^{\infty}_{n = m}$ has no finite upper bound, then we show $\lim\sup_{n\rightarrow\infty} a_n = \infty$. By Definition 6.4.6, it is equivalent of showing $\lim\sup_{n\rightarrow\infty} a_n = \inf(a_N^+)^\infty_{N = m}$. We start by showing $\forall N \geq m, a_N^+ = \infty$.
+
+By Definition 5.5.10, it is equivalent of showing $(a_n)^{\infty}_{n = N}$ has no finite upper bound for all $N \geq m$. We use induction. For base case $N = m$, $(a_n)^{\infty}_{n = N}$ has no finite upper bound due to the case we are under. For $P(N + 1)$, we prove by contraposition and show $\lnot P(N + 1) \Rightarrow \lnot P(N)$. Assume $P(N + 1)$ has upper bound $M$, then $\forall n \geq N + 1, a_n \leq M$. Since $M \leq \max(M, a_{N})$, we deduce $\forall n \geq N + 1, a_n \leq \max(M, a_{N})$. Note $a_{N} \leq \max(M, a_{N})$, hence $\forall n \geq N, a_n \leq \max(M, a_{N})$, therefore $\max(M, a_{N})$ is a finite upper bound for $(a_n)^\infty_{n = N}$, hence $\lnot P(N)$, as desired.
+
+Alternative method of showing $(a_n)^{\infty}_{n = N}$ for all $N \geq m$ has no finite upper bound: We argue by contradiction. Assume for some $N \geq m$, $(a_n)^\infty_{n = N}$ has finite upper bound $M$, then by Lemma 5.1.14, $a_m, a_{m + 1}, ... a_{N}$ is bounded by some finite $M'$. Hence, $(a_n)^\infty_{n = m}$ is bounded by $\max(M, M')$, contradicting $(a_n)^\infty_{n = m}$ has no finite upper bound, as desired.
+
+Since $\forall N \geq m, a_N^+ = \infty$, we deduce $\forall N \geq m, a_N^+ \geq \infty$. Hence $\infty$ is a lower bound for $a_N^+$. Since $\infty$ is a lower bound for $a_N^+$, it holds $\inf(a_N^+)^{\infty}_{N = m} \geq \infty$ by Proposition 6.2.11 c), hence $\inf(a_N^+)^{\infty}_{n = m} = \infty$, therefore $\lim\sup_{n\rightarrow\infty} a_n = \inf(a_N^+)^{\infty}_{n = m} = \infty$.
+
+Since $\lim\sup_{n\rightarrow\infty} a_n = \infty$ and $\infty$ is a limit point, $\lim\sup_{n\rightarrow\infty} a_n $ is a limit point. Furthermore, for any given limit point $c \in \R^{*}$, it holds that $c \leq \infty = \lim\sup_{n\rightarrow\infty} a_n$ as desired.
+
+### Exercise 6.4.9
+
+Consider $1, -1, 0, 2, -2, 0, 3, -3, 0...$
+
+TODO: prove it has exactly 3 limit points.
+
+### Exercise 6.4.10
+
+Since each $b_m$ is limit point of $(a_n)^\infty_{n = N}$, we have, for any $m \geq M$:
+
+$$\forall \epsilon_0 > 0, \forall N_0 \geq N, \exists n_0 \geq N_0, |a_{n_0} - b_m| \leq \epsilon \quad \text{(1)}$$
+
+Since $c$ is limit point of $b_n$, we also have:
+
+$$\forall \epsilon_1 > 0, \forall M_0 \geq M, \exists m_0 \geq M_0, |b_{m_0} - c| \leq \epsilon \quad \text{(2)}$$
+
+By Definition of limit point, showing $c$ is a limit point of $(a_n)^{\infty}_{n = N}$ is equivalent of showing:
+
+$$\forall \epsilon > 0, \forall N' \geq N, \exists n \geq N', |a_n - c| \leq \epsilon \quad \text{(3)}$$
+
+We fix $\epsilon, N'$. Then, we instantiate (2), setting $\epsilon_1  = \epsilon / 2, M_0 = M$, yielding:
+
+$$\exists m_0 \geq M, |b_{m_0} - c| \leq \epsilon / 2 \quad \text{(4)}$$
+
+Then, we instantiate (1), setting $m = m_0, \epsilon_0 = \epsilon/2, N_0 = N'$, then:
+
+$$\exists n_0 \geq N', |a_{n_0} - b_{m_0}| \leq \epsilon/2 \quad \text{(5)}$$
+
+We claim, in (3), setting $n = n_0$ is permissible. Note $n_0 \geq N'$, remains to check $|a_{n_0} - c| \leq \epsilon$.
+
+$$
+\begin{align*}
+|a_{n_0} - c| &\leq |a_{n_0} - b_{m_0}| + |b_{m_0} - c| &\text{By Triangle Inequality} \\
+              &\leq \epsilon / 2 + \epsilon / 2 &\text{By (4), (5)} \\
+              &\leq \epsilon
+\end{align*}
+$$
+
+As desired.

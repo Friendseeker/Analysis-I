@@ -1137,6 +1137,72 @@ Let $0 < x < 1$. Then we have $\lim_{n→∞} x^n = 0$.
 
 Regarding Why?: Exercise 6.1.4
 
+### Definition 6.4.1 (Limit points)
+
+Let $(a_n)^{∞}_{n=m}$ be a sequence of real numbers, let $x$ be a real number, and let $ε > 0$ be a real number. We say that $x$ is $ε$-adherent to $(a_n)^{∞}_{n=m}$ iff there exists an $n ≥ m$ such that an is $ε$-close to $x$. We say that $x$ is continually $ε$-adherent to $(a_n)^{∞}_{n=m}$ iff it is $ε$-adherent to $(a_n)^{∞}_{n=N}$ for every $N ≥ m$. We say that $x$ is a limit point or adherent point of $(a_n)^{∞}_{n=m}$ iff it is continually $ε$-adherent to $(a_n)^{∞}_{n=m}$ for every $ε > 0$.
+
+Aka:
+
+$$\forall \epsilon > 0, \forall N \geq m, \exists n \geq N, |a_n - x| \leq \epsilon$$
+
+### Proposition 6.4.5 (Limits are limit points)
+
+Let $(a_n)^{∞}_{n=m}$ be a sequence which converges to a real number $c$. Then $c$ is a limit point of $(a_n)^{∞}_{n=m}$, and in fact it is the only limit point of $(a_n)^{∞}_{n=m}$.
+
+### Definition 6.4.6 (Limit superior and limit inferior)
+
+Suppose that $(a_n)^{∞}_{n=m}$ is a sequence. We define a new sequence $(a^{+}_N)^{∞}_{N=m}$ by the formula
+$$ a^{+}_N : = \sup(a_n)^{∞}_{n = N}$$
+More informally, $a^{+}_N$ is the supremum of all the elements in the sequence from $a_N$ onwards. We then define the limit superior of the sequence $(a_n)^{∞}_{n=m}$, denoted $\lim \sup{n→∞} a_n$, by the formula
+$$\lim \sup_{n\rightarrow\infty} a_n := \inf(a^{+}_N)^{∞}_{N=m}$$
+Similarly, we can define
+$$a^{−}_N := \inf(a_n)^{∞}_{n=N}$$
+
+and define the limit inferior of the sequence $(a_n)^{∞}_{n=m}$, denoted
+$\lim \inf_{n→∞} a_n$, by the formula
+$$\lim \inf_{n\rightarrow\infty} a_n: = \sup (a^{−}_{N} )^{∞}_{N = m}$$
+
+Note: informally $\lim\sup_{n\rightarrow\infty}a_n$ describes the upper bound for the subsequence of a sequence infinitely far away. e.g. a sequence may start with $555, 1200, -500...$ and eventually become $1.00001, -0.999999, 1.0000001$...  $\lim\sup$ encodes information of the asymptotic behavior of a sequence.
+
+Tao's Piston analogy is also helpful. it is informal but does lead to useful fact such as how $a_N^+$ is a decreasing sequence (It is informal, but it still assists with formal reasoning.)
+
+### Proposition 6.4.12
+
+Let $(a_n)^{∞}_{n=m}$ be a sequence of real numbers, let $L^{+}$ be the limit superior of this sequence, and let $L^{−}$ be the limit inferior of this sequence (thus both $L^{+}$ and $L^{−}$ are extended real numbers).
+
+- (a) For every $x > L^{+}$, there exists an $N ≥ m$ such that $a_n < x$ for all $n ≥ N$. (In other words, for every $x > L^{+}$, the elements of the sequence $(a_n)^{∞}_{n=m}$ are eventually less than $x$.) Similarly, for every $y<L^{-}$, there exists an $N≥m$ such that $a_n>y$ for all $n≥N$.
+- (b) For every $x<L^{+}$, and every $N ≥m$, there exists an $n≥N$ such that $a_n > x$. (In other words, for every $x < L^{+}$, the elements of the sequence $(a_n)^{∞}_{n=m}$ exceed $x$ infinitely often.) Similarly, for every $y > L^{−}$ and every $N ≥ m$, there exists an $n ≥ N$ such that $a_n < y$.
+- (c) We have $\inf(a_n)^{∞}_{n=m} ≤ L^{−} ≤ L^{+} ≤ \sup(a_n)^{∞}_{n=m}$.
+- (d) If $c$ is any limit point of $(a_n)^{∞}_{n=m}$, then we have $L^{−} ≤ c ≤ L^{+}$.
+- (e) If $L^{+}$ is finite, then it is a limit point of $(a_n)^{∞}_{n=m}$. Similarly, if $L^{−}$ is finite, then it is a limit point of $(a_n)^{∞}_{n=m}$.
+- (f) Let $c$ be a real number. If $(a_n)^{∞}_{n=m}$ converges to $c$, then we must have $L^{+} = L^{−} = c$. Conversely, if $L^{+} = L^{−} = c$, then $(a_n)^{∞}_{n=m}$ converges to $c$.
+
+### Lemma 6.4.13 (Comparison principle)
+
+Suppose that $(a_n)^{∞}_{n=m}$ and $(b_n)^{∞}_{n=m}$ are two sequences of real numbers such that $a_n ≤ b_n$ for all $n ≥ m$. Then we have the inequalities:
+$$
+\begin{align*}
+\sup(a_n)^{∞}_{n=m} &≤ \sup(b_n)^{∞}_{n=m} \\
+\inf(a_n)^{∞}_{n=m} &≤ \inf(b_n)^{∞}_{n=m} \\
+\lim \sup_{n\rightarrow\infty} a_n &≤ \lim \sup_{n\rightarrow\infty} b_n \\
+\lim \inf_{n\rightarrow\infty} a_n &≤ \lim \inf_{n\rightarrow\infty} b_n
+\end{align*}
+$$
+
+### Corollary 6.4.14 (Squeeze test)
+
+Let $(a_n)^{∞}_{n=m}, (b_n)^{∞}_{n=m}$, and $(c_n)^{∞}_{n=m}$ be sequences of real numbers such that
+$$ a_n ≤b_n ≤c_n$$
+for all $n ≥ m$. Suppose also that $(a_n)^{∞}_{n=m}$ and $(c_n)^{∞}_{n=m}$ both converge to the same limit $L$. Then $(b_n)^{∞}_{n=m}$ is also convergent to $L$.
+
+### Corollary 6.4.17 (Zero test for sequences)
+
+Let $(a_n)^{∞}_{n=M}$ be a sequence of real numbers. Then the limit $\lim_{n→∞} a_n$ exists and is equal to zero if and only if the limit $\lim_{n→∞} |a_n|$ exists and is equal to zero.
+
+### Theorem 6.4.18 (Completeness of the reals)
+
+A sequence $(a_n)^{∞}_{n=1}$ of real numbers is a Cauchy sequence if and only if it is convergent.
+
 ## Appendix a
 
 Refer to
