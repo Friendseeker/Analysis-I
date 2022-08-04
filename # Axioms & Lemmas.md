@@ -1203,6 +1203,18 @@ Let $(a_n)^{∞}_{n=M}$ be a sequence of real numbers. Then the limit $\lim_{n�
 
 A sequence $(a_n)^{∞}_{n=1}$ of real numbers is a Cauchy sequence if and only if it is convergent.
 
+### Corollary 6.5.1
+
+We have $\lim_{n→∞} 1/n^{1/k} = 0$ for every integer $k ≥ 1$.
+
+### Lemma 6.5.2
+
+Let $x$ be a real number. Then the limit \lim_{n→∞} x_n$ exists and is equal to zero when $|x| < 1$, exists and is equal to $1$ when $x = 1$, and diverges when $x = −1$ or when $|x| > 1$.
+
+### Lemma 6.5.3
+
+For any $x > 0$, we have $\lim_{n→∞} x^{1/n} = 1$.
+
 ## Appendix a
 
 Refer to

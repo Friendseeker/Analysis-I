@@ -4248,3 +4248,62 @@ $$
 $$
 
 As desired.
+
+### Exercise 6.5.1
+
+$$
+\begin{align*}
+\lim_{n\rightarrow\infty}(1/n)^q &= \lim_{n\rightarrow\infty} (1/n)^{a/b} \\
+&= \lim_{n\rightarrow\infty} ((1/n)^{1/b})^a &\text{By Definition 5.6.7}\\
+&= (\lim_{n\rightarrow\infty} (1/n)^{1/b})^a &\text{By Theorem 6.1.19 b) and Induction}\\
+&= 0^a &\text{As } a > 0\\
+&= 0
+\end{align*}
+$$
+
+Remark: The fact that $a, b \in \Z^+$ is essential. Definition 6.5.7 only applies if $a \in \Z, b \in \Z^+$. Theorem 6.1.19 b) and induction applies only because $a \in \Z^+$. $0^a$ is well defined because $a > 0$ ($0^{-1}$ would be undefined).
+
+### Exercise 6.5.2
+
+#### $\lim_{n\rightarrow\infty} x^n = 0$ when $|x| < 1$
+
+By Corollary 6.4.17, $\lim_{n\rightarrow\infty} x^n = 0$ iff $\lim_{n\rightarrow\infty} |x^n| = 0$. Hence:
+
+$$
+\begin{align*}
+\lim_{n\rightarrow\infty} |x^n| &= \lim_{n\rightarrow\infty} |x|^n &\text{by 4.3.10 d)} \\
+&= 0 &\text{by 6.3.10}
+\end{align*}
+$$
+
+Remark: Proposition 4.3.10 d) can be used since $n \in \N$. If $n \in \R$ things are more tricky. Proposition 6.3.10 can be used as $0 < |x| < 1$. Note we may have $|x| = 0$, but in that case the limit is still trivially $0$, as desired.
+
+#### $\lim_{n\rightarrow\infty} x^n = 1$ when $x = 1$
+
+Since $x^n = 1^n = 1$, by Definition 6.1.5 it follows that $\lim_{n\rightarrow\infty} x^n = \lim_{n\rightarrow\infty} 1 = 1$ as desired.
+
+#### $\lim_{n\rightarrow\infty} x^n$ diverges when $x = -1$ or when $|x| > 1$
+
+When $x = -1$, then both $-1, 1$ are limit points (can show via Definition 6.4.1), hence by Proposition 6.4.12 d) it holds that $L^- \leq -1, L^+ \geq 1$, hence $L^- \neq L^+$, implying $\lim_{n\rightarrow\infty} x^n$ diverges by Proposition 6.4.12 f).
+
+(Or we can manually evaluate $L^-, L^+$ and show they are not equal).
+
+When $|x| > 1$, note similar reasoning for Exercise 6.3.4 still applies. Assume $\lim_{n\rightarrow\infty} x^n = L$, then $\lim_{n\rightarrow\infty} x^n \lim_{n\rightarrow\infty} (1/x)^n = 1$. However, since $|x| > 1$, $1/|x| < 1$, hence $|1/x| < 1$. Therefore by 6.5.2 a), $\lim_{n\rightarrow\infty} (1/x)^n = 0$, hence we have $L \times 0 = 1$, contradiction.
+
+### Exercise 6.5.3
+
+We argue by cases. Assume $x = 1$, then $x^{1/n} = 1$, hence $\lim_{n\rightarrow\infty} x^{1/n} = 1$ as desired.
+
+Assume $x > 1$, then by Lemma 5.6.9 d), $x^{1/n} > 1^{1/n}$, hence $x^{1/n} > 1$. Hence, $1$ is a lower bound for $(x^{1/n})^\infty_{n = 1}$. Since $x > 1$, by Lemma 5.6.6 e), $x^{1/n}$ is a decreasing function of $n$. Hence, by Proposition 6.3.8, $(x^{1/n})^\infty_{n = 1}$ converges, and $\lim_{n\rightarrow\infty} x^{1/n} = \inf(x^{1/n}) ^\infty_{n = 1} \geq 1$.
+
+We then show $\inf(x^{1/n})^{\infty}_{n = 1} > 1$ causes contradiction. Assume $\inf(x^{1/n})^\infty_{n = 1} = 1 + d$ for some $d \in \R^{+}$, then $\forall n \geq 1, (1 + d) \leq x^{1/n}$. By 4.3.12 c), $\forall n \geq 1, (1 + d)^n  \leq x$. Via Binomial Theorem, easy to show $(1 + d)^n \geq nd^2$. By Corollary 5.4.13, there exists $n' \in \Z^{+}$, $n' d^2 > x$. Hence $(1 + d)^{n'} \geq n'd^2 > x$, which is the desired contradiction.
+
+Hence, $\lim_{n\rightarrow\infty} x^{1/n} = \inf(x^{1/n}) ^\infty_{n = 1} = 1$, as desired.
+
+Case $0 < x < 1$ remains. Via similar application of Lemma 5.6.9 d), 5.6.6 e), Proposition 6.3.8, we can show $\lim_{n\rightarrow\infty} x^{1/n}$ exists. Then, by Theorem 6.1.19 b);
+
+$$\lim_{n\rightarrow\infty} x^{1/n} \lim_{n\rightarrow\infty} (1/x)^{1/n} = \lim_{n\rightarrow\infty} x^{1/n} (1/x)^{1/n}$$
+
+Easy to show $RHS = 1$. Then, since $0 < x < 1$, $1/x > 1$, hence $\lim_{n\rightarrow\infty} (1/x)^{1/n} = 1$, therefore we have $\lim_{n\rightarrow\infty} x^{1/n} \times 1 = 1$, hence $\lim_{n\rightarrow\infty} x^{1/n} = 1$ as desired.
+
+Remark: The estimation $(1 + d)^n \geq nd^2$ cannot be proven easily by induction. However, one may still avoid usage of Binomial Theorem by using estimation $(1 + d)^n \geq 1 + dn$ instead. This estimation, also called Bernoulli's inequality can be easily proven with induction.
