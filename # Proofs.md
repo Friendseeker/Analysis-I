@@ -4307,3 +4307,179 @@ $$\lim_{n\rightarrow\infty} x^{1/n} \lim_{n\rightarrow\infty} (1/x)^{1/n} = \lim
 Easy to show $RHS = 1$. Then, since $0 < x < 1$, $1/x > 1$, hence $\lim_{n\rightarrow\infty} (1/x)^{1/n} = 1$, therefore we have $\lim_{n\rightarrow\infty} x^{1/n} \times 1 = 1$, hence $\lim_{n\rightarrow\infty} x^{1/n} = 1$ as desired.
 
 Remark: The estimation $(1 + d)^n \geq nd^2$ cannot be proven easily by induction. However, one may still avoid usage of Binomial Theorem by using estimation $(1 + d)^n \geq 1 + dn$ instead. This estimation, also called Bernoulli's inequality can be easily proven with induction.
+
+### Exercise 6.6.1
+
+#### Show $(a_n)^\infty_{n=0}$ is subsequence of $(a_n)^\infty_{n = 0}$
+Let $f: \N \rightarrow \N$ be $f(n) = n$. Then, $f$ is strictly increasing. Since $\forall n \in \N, a_n = a_{f(n)}$, $(a_n)^\infty_{n = 0}$ is a subsequence of $(a_n)^\infty_{n = 0}$ by Definition 6.6.1.
+
+#### Show $(c_n)^\infty_{n = 0}$ is subsequence of $(a_n)^\infty_{n = 0}$
+
+Since $(c_n)^\infty_{n = 0}$ is subsequence of $(b_n)^\infty_{n = 0}$, by Definition 6.6.1 there exists $g: \N \rightarrow \N$ s.t. $\forall n \in \N, c_n = b_{g(n)}$. Since $(b_n)^\infty_{n = 0}$ is subsequence of $(a_n)^\infty_{n = 0}$, by Definition 6.6.1 there exists $f: \N \rightarrow \N$ s.t. $\forall n \in \N, b_n = a_{f(n)}$.
+
+We now claim $\forall n \in \N, c_n = a_{f(g(n))}$. Since $\forall n \in \N, b_n = a_{f(n)}$ and $g(n) \in \N$, it holds that $\forall n \in \N, b_{g(n)} = a_{f(g(n))}$. Since $\forall n \in \N, c_n = b_{g(n)}$, it holds that $\forall n \geq \N, c_n = a_{f(g(n))}$, as desired.
+
+Then, note by Definition 3.3.10, $f \circ g: \N \rightarrow \N$. Hence $f \circ g$ satisfies the domain & range requirement by Definition 6.6.1. Remains to show $\forall n \in \N, f(g(n + 1)) \geq f(g(n))$. Since $g$ is strictly increasing, $g(n + 1) > g(n)$. Since $f$ is strictly increasing, easy to show via induction that $a \geq b \Rightarrow f(a) \geq f(b)$, hence $f(g(n + 1)) \geq f(g(n))$ as desired.
+
+### Exercise 6.6.2
+
+Consider $a: 1,2,1,2,1,2...$ and $b: 2,1,2,1,2,1$...
+
+Note $b_n = a_{n+1}, a_{n} = b_{n + 1}$.
+
+### Exercise 6.6.3
+
+We define $f: \N \times \N \rightarrow \N$ as:
+
+$$f(j, k) = \min\{n \in \N: |a_n| \geq j + 1; n > k\}$$
+
+For which $\min(E)$ is implicitly defined as a natural number s.t.:
+
+- $\min(E) \in E$
+- $\forall e \in E, \min(E) \leq e$
+
+We claim that if $E$ is a non-empty subset of $\N$, then:
+
+- $\min(E)$ exists
+- $\min(E)$ is unique.
+
+For existence of $\min(E)$, we argue by contradiction. Assume $\min(E)$ does not exist for a set $E$. Then, we use strong induction: let $P(n)$ denote $n \notin E$. Then base case $P(0)$ is true. As, if $0 \in E$, $\forall e \in E, 0 \leq e$ (as $e \in E$ implies $e \in \N$), hence $\min(E) = 0$ is permissible, contradiction. 
+
+For $P(n + 1)$, note $0, 1, 2, ..., n \notin E$ by inductive hypothesis. Hence, assume $n + 1 \in E$, then $\forall e \in E, n + 1 \leq e$ (otherwise $\exists e \in E, n + 1 > e$, hence $e \leq n$, contradicting $0, 1, 2,..., n \notin E$). Hence $\min(E) = n + 1$ is permissible, contradiction, thus closing the induction.
+
+Since $E$ is a non-empty subset of $\N$, by Lemma 3.1.16 we can take $c \in E$, and since $E \subseteq \N$, it holds that $c \in \N$, Since $c \in \N$, $c \notin E$ by $P(c)$, contradiction as desired.
+
+We proceed to show $f$ is well defined, which is equivalent to showing $\min\{n \in \N: |a_n| \geq j; n > k\}$ exists & is unique, which is equivalent to showing $\{n \in \N: |a_n| \geq j; n > k\}$ is subset of $\N$ & non-empty.
+
+For $\{n \in \N: |a_n| \geq j; n > k\} \subseteq \N$, it follows from Axiom of specification. For $\{n \in \N: |a_n| \geq j + 1; n > k\} \neq \empty$. We argue by contradiction. Assume the contrary, then $\forall n > k, |a_n| < j + 1$. Yet, by Lemma 5.1.14, $\forall n \leq k, |a_n| \leq M$ for some finite $M$. Hence, $(a_n)^\infty_{n = 0}$ is bounded by $\max(M, j + 1)$, contradiction. Hence $f$ is a function.
+
+We recursively define $n: \N \rightarrow \N$ as:
+
+$$
+\begin{align*}
+n(0) &= \{n \in \N: |a_n| \geq 0\} \\
+n(j + 1) &= f(j, n(j))
+\end{align*}
+$$
+
+(This does uniquely define a function by Exercise 3.5.12)
+
+Then, easy to verify $n(j + 1) > n(j)$. Hence, by Definition 6.6.1 we can define subsequence $(b_j)^\infty_{j = 0}$ of $(a_n)^\infty_{n = 0}$ via:
+
+$$b_j = a_{f(j)}$$
+
+We claim $(b_j)^\infty_{j = 0}$ is the desired subsequence, aka:
+
+$$\lim_{j\rightarrow\infty} \frac{1}{b_j} = 0$$
+
+By definition of $f(j)$, it holds that $|a_{f(j)}| \geq j + 1$, hence:
+
+$$
+\begin{align*}
+\lim_{j\rightarrow\infty} |\frac{1}{b_j}| &= \lim_{n\rightarrow\infty} |\frac{1}{a_{f(j)}}| \\
+&\leq \lim_{j\rightarrow\infty} \frac{1}{j + 1} &\text{By 6.4.14} \\
+&= \lim_{j\rightarrow\infty} \frac{1}{j} &\text{By 6.1.4} \\
+&= 0
+\end{align*}
+$$
+
+Hence, by Corollary 6.4.17, $\lim_{j\rightarrow\infty} 1/b_j = 0$, as desired.
+
+### Exercise 6.6.4
+
+#### (b) implies (a)
+
+By Lemma 6.6.4, $(a_n)^\infty_{n = 0}$ is a subsequence of $(a_n)^\infty_{n = 0}$. Hence, every subsequence of $(a_n)^\infty_{n = 0}$ converges to $L$ implies $(a_n)^\infty_{n = 0}$ converges to $L$.
+
+#### (a) implies (b)
+
+Since $(a_n)^\infty_{n = 0}$ converges to $L$, by Definition 6.1.5:
+
+$$\forall \epsilon' > 0, \exists N' \geq 0, \forall n' \geq N', |a_{n'} - L| \leq \epsilon \quad \text{(1)}$$
+
+Denote a subsequence of $(a_n)^\infty_{n = 0}$ as $(b_n)^\infty_{n = 0}$ s.t. $\forall n \geq 0, b_n = a_{f(n)}$ for some strictly increasing function $f: \N \rightarrow \N$. We need to show $(b_n)^\infty_{n = 0}$ converges to $L$, which, By Definition 6.1.5, is equivalent to:
+
+$$\forall \epsilon > 0, \exists N \geq 0, \forall n \geq N, |b_n - L| \leq \epsilon \quad \text{(2)}$$
+
+Since $\forall n \geq 0, b_{n} = a_{f(n)}$, and $n \geq N \geq 0$ in (2), we conclude $|b_n - L| \leq \epsilon$ iff $|a_{f(n)} - L| \leq \epsilon$, hence (2) is equivalent to:
+
+$$\forall \epsilon > 0, \exists N \geq 0, \forall n \geq N, |a_{f(n)} - L| \leq \epsilon \quad \text{(3)}$$
+
+Fix $\epsilon$, then by instantiating $(1)$ with $\epsilon' = \epsilon$, we deduce:
+
+$$\exists N' \geq 0, \forall n' \geq N', |a_{n'} - L| \leq \epsilon \quad \text{(4)}$$
+
+Then, we claim $\exists N'' \in \N, f(N'') > N'$. We argue by contradiction. Assume $\forall N \in \N, f(N) \leq N'$. Then, define $(c_N)^\infty_{N = 0}$ s.t. $\forall N \in \N, c_N = N' - f(n)$. Then, since $\forall N \in \N, f(N) < f(N + 1)$, $\forall N \in \N, c_N > c_{N + 1}$. Yet, $\forall N \in \N, c_N \in \N$. Thus contradiction by Exercise 4.4.2 (a).
+
+We claim (3) is true, as $N = N''$ is permissible. Easy to verify $N'' \geq 0$. Remains to show $\forall n \geq N'', |a_{f(n)} - L| \leq \epsilon$. Since $f$ is strictly increasing, via easy induction $\forall n \geq N'', f(n) \geq f(N'')$. Since $f(N'') > N'$, $\forall n \geq N'', f(n) > N'$. Therefore by (4), $|a_{f(n)} - L| \leq \epsilon$ as desired.
+
+### Exercise 6.6.5
+
+#### (a) implies (b)
+We borrow definition of $\min$ from Exercise 6.6.3
+
+Then, we define $n: \N \rightarrow \N$ via:
+
+$$
+\begin{align*}
+n(0) &= 0 \\
+n(j + 1) &= f(j, n(j)) \\
+\end{align*}
+$$
+
+For which $f: \N \times \N \rightarrow \N$ is defined as:
+
+$$f(j, k) = \min\{n > k : |a_n − L| ≤ \frac{1}{j + 1}\}$$
+
+Similar to Exercise 6.6.3 solution, to ensure that $n: \N \rightarrow \N$ is well defined, we merely need to show $\{n > k : |a_n − L| ≤ \frac{1}{j + 1}\}$ is non-empty.
+
+Since $(a_n)^\infty_{n = 0}$ has limit point $L$, by Definition 6.4.1 it holds that:
+
+$$\forall \epsilon > 0, \forall N \geq 0, \exists n \geq N, |a_n - L| \leq \epsilon$$
+
+Instantiate the above with $\epsilon = 1/{j + 1}, N = k + 1$ yields:
+
+$$\exists n \geq k + 1, |a_n - L| \leq \frac{1}{j + 1}$$
+
+$$\exists n > k, |a_n - L| \leq \frac{1}{j + 1}$$
+
+Hence $\{n > k : |a_n − L| ≤ \frac{1}{j + 1}\}$ is non-empty.
+
+Easy to verify $n(j+1) > n(j)$, hence by Definition 6.6.1, we can define subsequence $(b_j)^\infty_{j = 0}$ of $(a_n)^\infty_{n = 0}$ via:
+
+$$b_j = a_{f(j)}$$
+
+We claim $(b_j)^\infty_{j = 0}$ is the desired subsequence, aka $(b_j)^\infty_{j = 0}$ converges to $L$. By Definition 6.1.5, it is equivalent to showing:
+
+$$\forall \epsilon > 0, \exists N \geq 0, \forall n \geq N, |b_n - L| \leq \epsilon \quad \text{(1)}$$
+
+Observe, $|a_{f(n)} - L| \leq 1/n$. Hence, $|b_n - L| \leq 1/n$. Fixing $\epsilon$, we can choose $N$ s.t. $1/N \leq \epsilon$. Such $N$ exists as by Corollary 5.4.13, $\exists N \in \Z^{+}, N \epsilon \geq 1$. Divide $\epsilon$ by both sides yields $1/N \leq \epsilon$. (Or we can note $1/N \leq \epsilon \Leftrightarrow 1/\epsilon \leq N$ and use Proposition 5.4.12).
+
+We claim the same $N$ is permissible for (1), as, for all $n \geq N$:
+
+$$
+\begin{align*}
+|b_n - L| &\leq 1/n \\
+          &\leq 1/N &\text{As } n \geq N \\
+          &\leq \epsilon
+\end{align*}
+$$
+
+As desired.
+
+#### (b) implies (a)
+
+We prove a stronger statement. Call the subsequence $(b_n)^\infty_{n = 0}$, for which $\forall n \in \N, b_n = a_{f(n)}$ for a strictly increasing function $f: \N \rightarrow \N$. Say $L$ is a limit point of $(b_n)^\infty_{n = 0}$, then, by Definition 6.4.1:
+
+$$\forall \epsilon' > 0, \forall N' \geq 0, \exists n' \geq N', |b_{n'} - L| \leq \epsilon' \quad \text{(1)}$$
+
+We want to show $(a_n)^\infty_{n = 0}$ has limit point $L$, which, by Definition 6.4.1, is equivalent to:
+
+$$\forall \epsilon > 0, \forall N \geq 0, \exists n \geq N, |a_n - L| \leq \epsilon \quad \text{(2)}$$
+
+Fix $\epsilon, N$. By solution of Exercise 6.6.4, $\exists N_0 \in \N, f(N_0) \geq N$. We instantiate (1) with $\epsilon' = \epsilon, N' = N_0$, then:
+
+$$\exists n' \geq N_0, |b_{n'} - L| \leq \epsilon$$
+$$\exists n' \geq N_0, |a_{f(n')} - L| \leq \epsilon$$
+
+Then, $n = f(n')$ is permissible, as $f(n') \geq f(N_0) \geq N$ and $|a_{f(n')} - L| \leq \epsilon$, as desired.

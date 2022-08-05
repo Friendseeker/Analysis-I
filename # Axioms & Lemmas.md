@@ -1215,6 +1215,33 @@ Let $x$ be a real number. Then the limit \lim_{n→∞} x_n$ exists and is equal
 
 For any $x > 0$, we have $\lim_{n→∞} x^{1/n} = 1$.
 
+### Definition 6.6.1 (Subsequences)
+
+Let $(a_n)^{∞}_{n=0}$ and $(b_n)^{∞}_{n=0}$ be sequences of real numbers. We say that $(b_n)^∞_{n=0}$ is a subsequence of $(a_n)^∞_{n=0}$ iff there exists a function $f : \N → \N$ which is strictly increasing (i.e., $f(n + 1) > f(n)$ for all $n ∈ N$) such that
+$b_n =a_{f(n)}$ for all $n∈N$.
+
+### Lemma 6.6.4
+
+Let $(a_n)^{∞}_{n=0}$, $(b_n)^{∞}_{n=0}$, and $(c_n)^∞_{n=0}$ be sequences of real numbers. Then $(a_n)^∞_{n=0}$ is a subsequence of $(a_n)^{∞}_{n=0}$. Furthermore, if $(b_n)^{∞}_{n=0}$ is a subsequence of $(a_n)^∞_{n=0}$, and $(c_n)^∞_{n=0}$ is a subsequence of $(b_n)^∞_{n=0}$, then $(c_n)^∞_{n=0}$ is a subsequence of $(a_n)^∞_{n=0}$.
+
+### Proposition 6.6.5 (Subsequences related to limits)
+
+Let $(a_n)^\infty_{n = 0}$ be a sequence of real numbers, and let $L$ be a real number. Then the following two statements are logically equivalent (each one implies the other):
+
+- (a) The sequence $(a_n)^\infty_{n = 0}$ converges to $L$.
+- (b) Every subsequence of $(a_n)^\infty_{n = 0}$ converges to $L$.
+
+### Proposition 6.6.6 (Subsequences related to limit points)
+
+Let $(a_n)^\infty_{n = 0}$ be a sequence of real numbers, and let $L$ be a real number. Then the following two statements are logically equivalent.
+
+- (a) $L$ is a limit point of $(a_n)^\infty_{n = 0}$.
+- (b) There exists a subsequence of $(a_n)^\infty_{n = 0}$ which converges to $L$.
+
+### Theorem 6.6.8 (Bolzano-Weierstrass theorem)
+
+Let $(a_n)^\infty_{n = 0}$ be a bounded sequence (i.e., there exists a real number $M > 0$ such that $|a_n| ≤ M$ for all $n ∈ N$). Then there is at least one subsequence of $(a_n)^\infty_{n = 0}$ which converges.
+
 ## Appendix a
 
 Refer to
