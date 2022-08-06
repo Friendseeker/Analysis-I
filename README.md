@@ -9,7 +9,7 @@ This repo contains my solutions to the following textbook:
 - \# Proofs.md contains solutions to Exercises in the textbook.
 - \# Axioms & Lemmas.md contains Axioms, Lemmas, Propositions covered in the book.
 
-Both file are intended to be opened via [Visual Studio Code][https://code.visualstudio.com].
+Both file are intended to be opened via [Visual Studio Code](https://code.visualstudio.com).
 
 ### Unfinished Chapters
 
@@ -17,3 +17,11 @@ Both file are intended to be opened via [Visual Studio Code][https://code.visual
 - Chapter 7 - 11
 - Appendix A
 - Appendix B
+
+### Disclaimer
+
+I am an undergraduate student working through Analysis I on my own. Therefore, correctness & 
+presentation of my solution will not be of the same calibre as official solutions (if there's any).
+
+Solutions to early chapters may especially suffer from quality issue, as I was still in the process
+of figuring out what I was doing.
