@@ -1,8 +1,5 @@
 # List of Axioms & Lemmas
 
-Note: Tao implicitly use zeroth-order and first-order logic throughout chapter 2
-& 3. Hence, zeroth-order and first-order logic Axioms belongs to the list.
-
 ## Main Text
 
 ### Axiom 2.1
@@ -16,34 +13,31 @@ If $n$ is a natural number, then $n++$ is also a natural number.
 ### Definition 2.1.3
 
 We define $1$ to be the number $0++$, $2$ to be the number $(0++)++$, $3$ to be the number
-$((0++)++)++$, etc. (In other words,$1:=0++$,$2:=1++$,$3:=2++$,etc. In this text I
-use $x:=y$ to denote the statement that $x$ is defined to equal $y$.)
+$((0++)++)++$, etc. (In other words,$1:=0++$,$2:=1++$,$3:=2++$,etc.)
 
 ### Axiom 2.3
 
-0 is not the successor of any natural number; i.e., we have n++ ̸= 0 for every
-natural number n.
+0 is not the successor of any natural number; i.e., we have $n++ \neq 0$ for every
+natural number $n$.
 
 ### Axiom 2.4
 
-Different natural numbers must have different successors; i.e., if n, m are
-natural numbers and n ̸= m, then n++ ̸= m++. Equivalently, if n++ = m++, then we
-must have n = m.
+Different natural numbers must have different successors; i.e., if $n, m$ are
+natural numbers and $n \neq m$, then $n++ \neq m++$. Equivalently, if $n++ = m++$, then we
+must have $n = m$.
 
 ### Axiom 2.5 (Principle of mathematical induction)
 
-Let P(n) be any property pertaining to a natural number n. Suppose that P(0) is
-true, and suppose that whenever P(n) is true, P(n++) is also true. Then P(n) is
-true for every natural number n.
+Let $P(n)$ be any property pertaining to a natural number n. Suppose that $P(0)$ is
+true, and suppose that whenever $P(n)$ is true, $P(n++)$ is also true. Then $P(n)$ is
+true for every natural number $n$.
 
 ### Proposition 2.1.16 (Recursive Definitions)
 
-Suppose for each natural number $n$, we have some function $f_n : N → N$ from the
-natural numbers to the natural numbers. Let $c$ be a natural number. Then we can
-assign a unique natural number an to each natural number $n$, such that $a_0 = c$ and
+Suppose for each natural number $n$, we have some function $f_n : \N → \N$ from the natural numbers to the natural numbers. Let $c$ be a natural number. Then we can assign a unique natural number an to each natural number $n$, such that $a_0 = c$ and
 $a_{n++} = f_n(a_n)$ for each natural number $n$.
 
-Note: The non-trivial parts are:
+Remark: The non-trivial parts are:
 
 - Every natural number is assigned
   - s.t. there's no number without assignment
@@ -52,101 +46,84 @@ Note: The non-trivial parts are:
 
 ### Definition 2.2.1 (Addition of natural numbers)
 
-Let m be a natural number. To add zero to m, we define 0 + m := m. Now suppose
-inductively that we have defined how to add n to m. Then we can add n++ to m by
-defining (n++) + m := (n + m)++. (aka g(0, m) = m. g(n++, m) = g(n, m)++)
+Let $m$ be a natural number. To add zero to $m$, we define $0 + m := m$. Now suppose
+inductively that we have defined how to add $n$ to $m$. Then we can add $n++$ to $m$ by
+defining $(n++) + m := (n + m)++$.
 
 ### Lemma 2.2.2
 
-For any natural number n, n + 0 = n. (aka g(n, 0) = n).
+For any natural number $n$, $n + 0 = n$.
 
 ### Lemma 2.2.3
 
-For any natural numbers n and m, n + (m++) = (n + m)++. (aka g(n, m++) = g(n,
-m)++)
+For any natural numbers $n$ and $m$, $n + (m++) = (n + m)++$.
 
 ### Proposition 2.2.4 (Addition is commutative)
 
-For any natural numbers n and m, n+m=m+n.
+For any natural numbers $n$ and $m$, $n+m=m+n$.
 
 ### Proposition 2.2.5 (Addition is associative)
 
-For any natural numbers a,b,c, we have (a+b)+c=a+(b+c).
+For any natural numbers $a,b,c$, we have $(a+b)+c=a+(b+c)$.
 
 ### Proposition 2.2.6 (Cancellation law)
 
-Let a,b,c be natural numbers such that a+b=a+c. Then we have b=c.
+Let $a,b,c$ be natural numbers such that $a+b=a+c$. Then we have $b=c$.
 
-### Proposition 2.2.6’ (Converse of Cancellation law)
+### Converse of Cancellation law
 
-Let a, b, c be natural numbers such that b = c. Then we have a + b = a + c for
-arbitrary natural number a.
+Let $a, b, c$ be natural numbers such that $b = c$. Then we have $a + b = a + c$ for
+arbitrary natural number $a$.
 
 ### Definition 2.2.7 (Positive natural numbers)
 
-A natural number n is said to be positive iff it is not equal to 0. (“iff” is
-shorthand for “if and only if” - see Section A.1).
+A natural number n is said to be positive iff it is not equal to $0$.
 
 ### Proposition 2.2.8
 
-If a is positive and b is a natural number, then a+b is positive (and hence b +
-a is also, by Proposition 2.2.4).
+If $a$ is positive and $b$ is a natural number, then $a+b$ is positive (and hence $b + a$ is also positive, by Proposition 2.2.4).
 
 ### Corollary 2.2.9
 
-If a and b are natural numbers such that a + b = 0, then a=0 and b=0.
+If $a$ and $b$ are natural numbers such that $a + b = 0$, then $a=0$ and $b=0$.
 
 ### Lemma 2.2.10
 
-Let a be a positive number. Then there exists exactly one natural number b such
-that b++ = a.
+Let $a$ be a positive number. Then there exists exactly one natural number $b$ such
+that $b++ = a$.
 
 ### Definition 2.2.11 (Ordering of the natural numbers)
 
-Let n and m be natural numbers. We say that n is greater than or equal to m, and
-write n ≥ m or m ≤ n, iff we have n = m + a for some natural number a. We say
-that n is strictly greater than m, and write n > m or m < n, iff n ≥ m and n ̸=
-m.
+Let $n$ and $m$ be natural numbers. We say that $n$ is greater than or equal to $m$, and
+write $n ≥ m$ or $m ≤ n$, iff we have $n = m + a$ for some natural number $a$. We say
+that $n$ is strictly greater than $m$, and write $n > m$ or $m < n$, iff $n ≥ m$ and $n \neq
+m$.
 
-### Proposition 2.2.12 (Basic properties of order for natural numbers).
+### Proposition 2.2.12 (Basic properties of order for natural numbers)
 
-Let a, b, c be natural numbers. Then
+Let $a, b, c$ be natural numbers. Then
 
-- a. (Order is reflexive) a ≥ a.
-- b. (Order is transitive) If a≥b and b≥c, then a≥c.
-- c. (Order is anti-symmetric) If a ≥ b and b ≥ a, then a = b.
-- d. (Addition preserves order) a≥b if and only if a+c≥b+c.
+- a. (Order is reflexive) $a ≥ a$.
+- b. (Order is transitive) If $a≥b$ and $b≥c$, then $a≥c$.
+- c. (Order is anti-symmetric) If $a ≥ b$ and $b ≥ a$, then $a = b$.
+- d. (Addition preserves order) $a≥b$ if and only if $a+c≥b+c$.
   - Easy to prove that $a>b$ iff $a+c>b+c$ too
-- e. a<b if and only if a++≤b.
-- f. a<b if and only if b=a+d for some positive number d.
+- e. $a<b$ if and only if $a++≤b$.
+- f. $a<b$ if and only if $b=a+d$ for some positive number $d$.
 
 ### Proposition 2.2.13 (Trichotomy of order for natural numbers)
 
-Let a and b be natural numbers. Then exactly one of the following statements is
-true: a<b, a=b, or a>b.
+Let $a$ and $b$ be natural numbers. Then exactly one of the following statements is true: $a<b, a=b$, or $a>b$.
 
 ### Proposition 2.2.14 (Strong principle of induction)
 
-Let m0 be a natural number, and let P (m) be a property pertaining to an
-arbitrary natural number m. Suppose that for each m ≥ m0, we have the following
-implication: if P(m′) is true for all natural numbers m0 ≤ m′ < m, then P(m) is
-also true. (In particular, this means that P(m0) is true, since in this case the
-hypothesis is vacuous.) Then we can conclude that P (m) is true for all natural
-numbers m ≥ m0.
-
-### Exercise 2.2.6
-
-Let n be a natural number, and let P(m) be a property pertaining to the natural
-numbers such that whenever P (m++) is true, then P (m) is true. Suppose that
-P(n) is also true. Prove that P(m) is true for all natural numbers m ≤ n; this
-is known as the principle of backwards induction. (Hint: apply induction to the
-variable n.)
+Let $m_0$ be a natural number, and let $P (m)$ be a property pertaining to an arbitrary natural number $m$. Suppose that for each $m ≥ m_0$, we have the following
+implication: if $P(m')$ is true for all natural numbers $m_0 ≤ m' < m$, then $P(m)$ is also true. (In particular, this means that $P(m_0)$ is true, since in this case the
+hypothesis is vacuous.) Then we can conclude that $P (m)$ is true for all natural numbers $m ≥ m_0$.
 
 ### Definition 2.3.1 (Multiplication of natural numbers)
 
-Let m be a natural number. To multiply zero to m, we define 0×m := 0. Now
-suppose inductively that we have defined how to multiply n to m. Then we can
-multiply n++ to m by defining (n++) × m := (n × m) + m.
+Let $m$ be a natural number. To multiply zero to $m$, we define $0×m := 0$. Now suppose inductively that we have defined how to multiply $n$ to $m$. Then we can multiply $n++$ to $m$ by defining $(n++) × m := (n × m) + m$.
 
 ### Lemma 2.3.2 (Multiplication is commutative)
 
@@ -166,17 +143,17 @@ Let $n,m$ be natural numbers. Then $n \times m = 0$ if and only if at least one 
 is equal to zero. In particular, if $n$ and $m$ are both positive, then $nm$ is also
 positive.
 
-### Proposition 2.3.4 (Distributive law). For any natural numbers a, b, c,
+### Proposition 2.3.4 (Distributive law)
 
-we have a(b+c)=ab+ac and (b+c)a=ba+ca.
+For any natural numbers $a, b, c$, we have $a(b+c)=ab+ac$ and $(b+c)a=ba+ca$.
 
 ### Proposition 2.3.5 (Multiplication is associative)
 
-For any natural numbers a,b,c, we have (a×b)×c=a×(b×c).
+For any natural numbers $a,b,c$, we have $(a×b)×c=a×(b×c)$.
 
 ### Proposition 2.3.6 (Multiplication preserves order)
 
-If a, b are natural numbers such that a < b, and c is positive, then ac < bc.
+If $a, b$ are natural numbers such that $a < b$, and $c$ is positive, then $ac < bc$.
 
 ### Proposition 2.3.9 (Euclidean algorithm)
 
@@ -185,9 +162,9 @@ natural numbers $m, r$ such that $0 ≤ r < q$ and $n = mq + r$.
 
 ### Definition 2.3.11 (Exponentiation for natural numbers)
 
-Let m be a natural number. To raise m to the power 0, we define $m^0 = 1$; in
-particular, we define $0^0 = 1$. Now suppose recursively that mn has been
-defined for some natural number n, then we define $m^n++ = m^n × m$.
+Let $m$ be a natural number. To raise $m$ to the power $0$, we define $m^0 = 1$; in
+particular, we define $0^0 = 1$. Now suppose recursively that $mn$ has been
+defined for some natural number $n$, then we define $m^{n++} = m^n × m$.
 
 ### Exercise 2.3.4
 

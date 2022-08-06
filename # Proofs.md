@@ -1,8 +1,5 @@
 # Proofs
 
-For Chapter 2 & Appendix a, the proofs are stored in
-<https://docs.google.com/document/d/1Ku0jlRZO5Kit4JJhbBh5hFHnCimUzOeX8XO8VW0fKMA/edit?usp=sharing>.
-
 ## Chapter 3
 
 ### Lemma 3.1.6 (Single choice)
@@ -19,15 +16,6 @@ all $x$.
 
 Therefore, it holds that $\forall x, x \in A \leftrightarrow x \in \empty$. By
 Definition 3.1.4, $A = \empty$, contradiction as desired.
-
-Remark: Note that Predicate Logic is independent of Set Axioms. As to why it can
-be used there, it is because Predicate Logic is Logic. We have Axioms and
-Mathematical Models in place, then we use Logic to perform deductions on the
-Axioms and Mathematical Models.
-
-Hence, compared to Chapter 2, the only difference is that we are using first
-order Logic (Predicate Logic) instead of zeroth order Logic (Propositional
-Logic).
 
 ### Remark 3.1.9
 
@@ -294,13 +282,6 @@ As desired.
 
 Part 2: $\sim \forall x, x \in A \leftrightarrow x \in C$ (aka $A != C$)
 
-Note: I tried to find a formalized predicate logic textbook, and my brain is now
-exploded. The deductions are... painful and there's no more truth table cheese.
-
-Hence I will get slightly informal in my deduction. However, as a remainder to
-myself there's always a formal way to do it. And, I strongly suspect that the
-below proof can be directly converted into a formal proof.
-
 Assume $A = C$, then all element of $C$ is in $A$ (Definition 3.1.4). However,
 since $B \subsetneq C$, some element $x \in C$ is not in $B$ (Follows from
 simple contradiction from Definition 3.1.4 and Definition 3.1.15). There are two
@@ -489,7 +470,7 @@ true implies that $x \in A$.
 
 Part 2 & 3
 
-Similar reasoning follows. Propositional Logic for the win.
+Similar reasoning follows.
 
 ### Exercise 3.1.11. Show that the axiom of replacement implies the axiom of specification
 
@@ -2918,8 +2899,6 @@ Let $P(n)$ be $2^n \geq n$. Then, $P(1)$ is true as $2 > 1$. For $P(n + 1)$, not
 
 ### Proposition 4.4.5
 
-Note: Tao's proof is difficult to understand with my average IQ, hence this writing to fill in the gaps.
-
 Let $\epsilon > 0, \epsilon \in \mathbf{Q}$. Then, for contradiction assume no such $x$ exists. Then, the statement $x^2 < 2 < (x + \epsilon)^2$ is false for all nonnegative $x \in \mathbf{Q}$. This implies whenever $x^2 < 2$, $(x + \epsilon)^2 \leq 2$. (Otherwise $x^2 < 2 < (x + \epsilon)^2$ would be true). By Proposition 4.4.4, since $x + \epsilon \in \mathbf{Q}$, it cannot hold that $(x + \epsilon)^2 = 2$, hence it must hold that $(x + \epsilon)^2 < 2$.
 
 We set $x = 0$. Since $x^2 < 2$ and $x$ is non-negative, it holds that $(0 + \epsilon)^2 < 2$, hence $\epsilon^2 < 2$.
@@ -3102,7 +3081,7 @@ $$
 
 As desired.
 
-Note: Issa Rice offers a much cleaner way to do this part in contrast to the brute force above
+Remark: Issa Rice offers a much cleaner way to do this part in contrast to the brute force above.
 
 Show $x = x' \Rightarrow xy = x'y$
 
@@ -4640,3 +4619,4 @@ Only if direction:
 We prove the contrapositive, aka $q \leq r \Rightarrow x^q \leq x^r$.
 
 If $q \leq r$, then then $\forall n \geq 1, x^{q_n} \leq x^{r_n}$ (by 5.6.9 e). Hence $\lim_{n\rightarrow\infty} x^{q_n} \leq \lim_{n\rightarrow\infty} x^{r_n}$ (By Lemma 6.4.13). Hence $x^q \leq x^r$ as desired.
+
