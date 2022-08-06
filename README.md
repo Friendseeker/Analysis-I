@@ -1,4 +1,4 @@
-# Solution to Analysis I by Terence Tao
+# Solution to Terence Tao's Analysis I
 
 This repo contains my solutions to the following textbook:
 
