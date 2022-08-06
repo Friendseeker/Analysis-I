@@ -1242,6 +1242,10 @@ Let $(a_n)^\infty_{n = 0}$ be a sequence of real numbers, and let $L$ be a real 
 
 Let $(a_n)^\infty_{n = 0}$ be a bounded sequence (i.e., there exists a real number $M > 0$ such that $|a_n| ≤ M$ for all $n ∈ N$). Then there is at least one subsequence of $(a_n)^\infty_{n = 0}$ which converges.
 
+### Proposition 6.7.3
+
+All the results of Lemma 5.6.9, which held for rational numbers $q$ and $r$, continue to hold for real numbers $q$ and $r$.
+
 ## Appendix a
 
 Refer to

@@ -4437,7 +4437,7 @@ Since $(a_n)^\infty_{n = 0}$ has limit point $L$, by Definition 6.4.1 it holds t
 
 $$\forall \epsilon > 0, \forall N \geq 0, \exists n \geq N, |a_n - L| \leq \epsilon$$
 
-Instantiate the above with $\epsilon = 1/{j + 1}, N = k + 1$ yields:
+Instantiate the above with $\epsilon = 1/(j + 1), N = k + 1$ yields:
 
 $$\exists n \geq k + 1, |a_n - L| \leq \frac{1}{j + 1}$$
 
@@ -4483,3 +4483,160 @@ $$\exists n' \geq N_0, |b_{n'} - L| \leq \epsilon$$
 $$\exists n' \geq N_0, |a_{f(n')} - L| \leq \epsilon$$
 
 Then, $n = f(n')$ is permissible, as $f(n') \geq f(N_0) \geq N$ and $|a_{f(n')} - L| \leq \epsilon$, as desired.
+
+### Exercise 6.7.1
+
+Say we have $(q_n)^\infty_{n = 1}$ of rationals converging to $q$, and $(r_n)^\infty_{n = 1}$ of rationals converging to $r$.
+
+#### a)
+
+$$
+\begin{align*}
+x^q &= \lim_{n\rightarrow\infty} x^{q_n} \\
+    &\geq \lim_{n\rightarrow\infty} 0 &\text{As } x^{q_n} > 0 \text{ by 5.6.9 a), then 6.4.13}
+\end{align*}
+$$
+
+Hence $x^q \geq 0$. Assume $x^q = 0$, then $(x^q)^{1/q} = 0^{1/q} = 0$. By b), $(x^q)^{1/q} = x$, hence $x = 0$, contradicting $x > 0$. Hence $x^q > 0$ as desired.
+
+#### b)
+
+We propose Lemma 1. Given $a \in \N, q \in \R$, and a sequence $(q_n)^\infty_{n = m}$ converging to $q$, it holds that:
+
+$$
+(x^q)^a = x^{qa}
+$$
+
+Proof:
+
+$$
+\begin{align*}
+(x^q)^a &= (\lim_{n\rightarrow\infty} x^{q_n})^a &\text{By 6.7.2} \\
+        &= \lim_{n\rightarrow\infty} (x^{q_n})^a &\text{By 6.1.19 b) \& Induction} \\
+        &= \lim_{n\rightarrow\infty} x^{q_na} &\text{By 5.6.9 b)}\\
+        &= x^{qa} &\text{By 6.7.2 as } q_na \text{ converges to } qa
+\end{align*}
+$$
+
+As desired.
+
+We propose Lemma 2. Given $a \in \Z, q \in \R$, and a sequence $(q_n)^\infty_{n = m}$ converging to $q$, it holds that:
+
+$$
+(x^q)^a = x^{qa}
+$$
+
+Proof:
+
+Case $a \geq 0$ is covered by Lemma 1. For case $a < 1$, let $-a' = a$ s.t. $-a' > 0$, then:
+
+$$
+\begin{align*}
+(x^q)^a &= (x^q)^{-a'} \\
+        &= (\lim_{n\rightarrow\infty} x^{q_n})^{-a'} &\text{By 6.7.2} \\
+        &= ((\lim_{n\rightarrow\infty} x^{q_n})^{-1})^{a'} &\text{By 5.6.9 b)} \\
+        &= (\lim_{n\rightarrow\infty} (x^{q_n})^{-1})^{a'} &\text{By 6.1.19 e)} \\
+        &= \lim_{n\rightarrow\infty} (x^{q_n})^{-1})^{a'} &\text{By 6.1.19 b) \& Induction} \\
+        &= \lim_{n\rightarrow\infty} x^{q_n(-a')} &\text{By 5.6.9 b)}\\
+        &= \lim_{n\rightarrow\infty} x^{q_n a} \\
+        &= x^{qa} &\text{By 6.7.2 as } q_na \text{ converges to } qa
+\end{align*}
+$$
+
+For 6.1.19 e), it can be used as since $x > 0$, $x^{q_n} > 0$ by 5.6.9 d).
+
+We propose Lemma 3. Given $b \in \Z - \{0\}, q \in \R$, and a sequence $(q_n)^\infty_{n = m}$ converging to $q$, it holds that:
+
+$$
+(x^q)^{1/b} = x^{q (1/b)}
+$$
+
+Proof:
+
+By Proposition 5.6.3 & Proposition 4.3.12, if $((x^q)^{1/b})^b = (x^{q (1/b)})^b$, then $(x^q)^{1/b} = x^{q (1/b)}$. We proceed to show $((x^q)^{1/b})^b = (x^{q (1/b)})^b$. For $LHS$:
+
+$$
+\begin{align*}
+((x^q)^{1/b})^b &= x^q &\text{By 5.6.6} \\
+\end{align*}
+$$
+
+For $RHS$:
+$$
+\begin{align*}
+(x^{q (1/b)})^b &= x^{q(1/b)b} &\text{By Lemma 2} \\
+                &= x^q
+\end{align*}
+$$
+
+Hence $LHS = RHS = x^q$, as desired.
+
+We propose Lemma 4: Given $p \in \mathbb{Q}, q \in \R$, and a sequence $(q_n)^\infty_{n = m}$ converging to $q$, it holds that:
+
+$$
+(x^q)^p = x^{qp}
+$$
+
+Proof:
+
+Let $p = a/b$ for some $a, b \in \Z$. Then:
+
+$$
+\begin{align*}
+(x^q)^p &= (x^q)^{a/b} \\
+        &= ((x^q)^a)^{1/b} &\text{By 5.6.9 b)} \\
+        &= (x^{qa})^{1/b} &\text{By Lemma 2} \\
+        &= x^{qa(1/b)} &\text{By Lemma 3} \\
+        &= x^{qp}
+\end{align*}
+$$
+
+As desired.
+
+Then:
+$$
+\begin{align*}
+(x^q)^r &= \lim_{n\rightarrow\infty} (x^q)^{r_n} &\text{By 6.7.2} \\
+        &= \lim_{n\rightarrow\infty} x^{qr_n} &\text{By Lemma 4}\\
+        &= x^{qr} &\text{By 6.7.2 as } qr_n \text{ converges to } qr
+\end{align*}
+$$
+
+As desired.
+
+#### c)
+
+$$
+\begin{align*}
+x^{-q} &= (x^q)^{-1} &\text{By b)} \\
+       &= \frac{1}{x^q} &\text{By 5.6.9 c)}
+\end{align*}
+$$
+
+As desired.
+
+#### d)
+
+If direction:
+
+If $x > y$, then $\forall n \geq 1, x^{q_n} > y^{q_n}$ by 5.6.9 d). Hence, $\lim_{n\rightarrow\infty} x^{q_n} \geq \lim_{n\rightarrow\infty} y^{q_n}$ (By Lemma 6.4.13), hence $x^q \geq y^q$. Assume $x^q = y^q$, then by b), $(x^q)^{1/q} = x, (y^q)^{1/q} = y$, hence $x = y$, contradiction. Hence $x^q > y^q$ as desired 
+
+Only if direction:
+
+To show $x^q > y^q \Rightarrow x > y$. We prove the contrapositive $x \leq y \Rightarrow x^q \leq y^q$.
+
+Since $x \leq y$, $\forall n \geq 1, x^{q_n} \leq y^{q_n}$ by 5.6.9 d). Hence, $\lim_{n\rightarrow\infty} x^{q_n} \leq \lim_{n\rightarrow\infty} y^{q_n}$, hence $x^q \leq y^q$ as desired.
+
+#### e)
+
+Say $x > 1$.
+
+If direction:
+
+If $q > r$, then $\forall n \geq 1, x^{q_n} > x^{r_n}$ (by 5.6.9 e). Hence $\lim_{n\rightarrow\infty} x^{q_n} \geq \lim_{n\rightarrow\infty} x^{r_n}$ (By Lemma 6.4.13). However, since $q \neq r$, by 6.7.1, $\lim_{n\rightarrow\infty} x^{q_n} \neq \lim_{n\rightarrow\infty} x^{r_n}$. Hence, $\lim_{n\rightarrow\infty} x^{q_n} > \lim_{n\rightarrow\infty} x^{r_n}$. Therefore $x^q > x^r$ as desired.
+
+Only if direction:
+
+We prove the contrapositive, aka $q \leq r \Rightarrow x^q \leq x^r$.
+
+If $q \leq r$, then then $\forall n \geq 1, x^{q_n} \leq x^{r_n}$ (by 5.6.9 e). Hence $\lim_{n\rightarrow\infty} x^{q_n} \leq \lim_{n\rightarrow\infty} x^{r_n}$ (By Lemma 6.4.13). Hence $x^q \leq x^r$ as desired.
