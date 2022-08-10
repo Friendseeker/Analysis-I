@@ -22,6 +22,3 @@ Both file are intended to be opened via [Visual Studio Code](https://code.visual
 
 I am an undergraduate student working through Analysis I on my own. Therefore, correctness & 
 presentation of my solution will not be of the same calibre as official solutions (if there's any).
-
-Solutions to early chapters may especially suffer from quality issue, as I was still in the process
-of figuring out what I was doing.
