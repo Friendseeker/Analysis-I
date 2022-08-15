@@ -1988,6 +1988,16 @@ We proceed to prove that $f$ is bijective. For surjectivity, let the inductive h
 
 For injectivity, assume $f(n) = f(m)$. Then, we have $f(n) = n', f(m) = m'$, hence $f(n) = f(m) \rightarrow n' = m'$, as desired.
 
+### Why? on page 70
+
+#### There's no bijection between an empty set and a non-empty set
+
+Say $f: \empty \rightarrow Y$ to some non-empty set $Y$. Then, by single choice we take $y \in Y$. However, $\nexists x \in \empty, f(x) = y$ (otherwise $x \in \empty$, contradiction). Hence, $f$ is not surjective.
+
+#### Show g is a bijection
+
+A similar example is shown in Why? on Page 160.
+
 ### Exercise 3.6.1
 
 Reflexivity:
@@ -4620,3 +4630,427 @@ We prove the contrapositive, aka $q \leq r \Rightarrow x^q \leq x^r$.
 
 If $q \leq r$, then then $\forall n \geq 1, x^{q_n} \leq x^{r_n}$ (by 5.6.9 e). Hence $\lim_{n\rightarrow\infty} x^{q_n} \leq \lim_{n\rightarrow\infty} x^{r_n}$ (By Lemma 6.4.13). Hence $x^q \leq x^r$ as desired.
 
+### Why? on Page 160
+
+#### $g$ (when restricted to $\{i ∈ N : 1 ≤ i ≤ n\}$) is a bijection from $\{i∈N:1≤i≤n\}→X−\{x\}$
+
+For sake of simplicity call $g$ with restricted domain $g'$. We argue by contradiction.
+
+Assume $g'$ is not injective, then:
+
+$$\exists i, j, g'(i) \neq g'(j)$$
+
+Since $\forall i \in \{i ∈ N : 1 ≤ i ≤ n\}, g'(i) = g(i)$, it holds that:
+
+$$\exists i, j, g(i) \neq g(j)$$
+
+Hence $g$ is not injective. Contradiction.
+
+We can similarly show that $g'$ is surjective, completing the proof.
+
+#### $\tilde{h}$ is a bijection from $\{i∈N:1≤i≤n\}→X−\{x\}$
+
+For injectivity, we argue by contradiction. Assume $\tilde{h}$ is not injective, it holds that:
+
+$$\exists p, q, p \neq q \land \tilde{h}(p) = \tilde{h}(q)$$
+
+Recall definition of $h$:
+
+$$
+\tilde{h}(i) = 
+\begin{cases}
+h(i) &\text{when} &i < j \\
+h(i + 1) &\text{when} &i \geq j
+\end{cases}
+$$
+
+Hence, we either have $\tilde{h}(p) = h(p), \tilde{h}(p) = h(p + 1), \tilde{h}(q) = h(q), \tilde{h}(q) = h(q + 1)$.
+
+Case 1: $\tilde{h}(p) = h(p), \tilde{h}(q) = h(q)$
+
+Hence $p \neq q$ yet $h(p) = h(q)$. Therefore $h$ is not injective, contradiction.
+
+Case 2: $\tilde{h}(p) = h(p + 1), \tilde{h}(q) = h(q + 1)$
+
+Similarly $p + 1 \neq q + 1$ yet $h(p + 1) = h(q + 1)$, contradiction.
+
+Case 3: $\tilde{h}(p) = h(p), \tilde{h}(q) = h(q + 1)$
+
+Assume $p \neq q + 1$, then $h(p) = h(q + 1)$, contradiction.
+
+Assume $p = q + 1$, then since $\tilde{h}(q) = h(q + 1)$, $q \geq j$. Hence, $p = q + 1 \geq j$. Hence $\tilde{h}(p) = h(p + 1)$. Rest follows from Case 2.
+
+For surjectivity. Since $h$ is surjective, then:
+
+$$\forall e \in X, \exists i' \in \{i∈N:1≤i≤n+1\}, h(i') = e \quad \text{(1)}$$
+
+To show $\tilde{h}$ is surjective is equivalent to showing:
+
+$$\forall e \in X - \{x\}, \exists i \in \{i∈N:1≤i≤n+1\}, h(i) = e \quad \text{(2)}$$
+
+Fix $e$, then by (1):
+
+$$\exists i' \in \{i∈N:1≤i≤n+1\}, h(i') = e \quad \text{(3)}$$
+
+Hence, if $i' < j$, then note $\tilde{h}(i') = h(i') = e$. Hence setting $i = i'$ is permissible in (2).
+
+If $i' \geq j$, then $\tilde{h}(i' + 1) = h(i') = e$. Hence setting $i = i' + 1$ is permissible in (2), as desired.
+
+### Why? On page 163
+
+#### Why is $h$ a bijection?
+
+Similar to the last Why?, some grunt work suffices to show that $h$ is injective and surjective.
+
+#### Why does Proposition 7.1.11(c) give us what we want?
+
+By Proposition 7.1.11 c), we have:
+
+$$\sum_{(y,x) \in Y \times X} f(x,y) = \sum_{(x,y) \in X \times Y} f(h(x,y))$$
+
+Since $h(x,y) = (y,x)$, we have:
+
+$$\sum_{(x,y) \in X \times Y} f(h(x,y)) = \sum_{(y,x) \in Y \times X} f(y,x)$$
+
+As desired.
+
+### Exercise 7.1.1
+
+a)
+
+We can either induct on $n$ or induct on $p$. (or maybe induct on $m$). For sake of simplicity we induct on $p$.
+
+Denote $P(p)$ as: for any given integer $m, n$ s.t. $m \leq n < p$:
+
+$$\sum_{i = m}^{n} a_i + \sum_{i = n + 1}^p a_i = \sum_{i = m}^p a_i$$
+
+When $p \leq m$, the inductive hypothesis is trivially true. Hence, consider the base case $P(m + 1)$, we need to show:
+
+$$\sum_{i = m}^{n + 1} a_i + \sum_{i = n + 1}^{m + 1} a_i = \sum_{i = m}^p a_i$$
+
+Since $m \leq n < m + 1$, it holds that $n = m$. Hence:
+
+$$
+\begin{align*}
+\sum_{i = m}^{n} a_i + \sum_{i = n + 1}^{m + 1} a_i &= \sum_{i = m}^{m} a_i + \sum_{i = m + 1}^{m + 1} a_i \\
+&= a_m + a_{m + 1} &\text{By Definition 7.1.1} \\
+&= \sum_{i = m}^{m + 1} a_i &\text{By Definition 7.1.1}
+\end{align*}
+$$
+
+As desired.
+
+For $P(p + 1)$:
+
+$$
+\begin{align*}
+\sum_{i = m}^{n} a_i + \sum_{i = n + 1}^{p + 1} a_i &= (\sum_{i = m}^{n} a_i + \sum_{i = n + 1}^{p} a_i) + a_p &\text{By Definition 7.1.1} \\
+&= \sum_{i = m}^p a_i + a_p &\text{By } P(p) \\
+&= \sum_{i = m}^{p + 1} a_i &\text{By Definition 7.1.1}
+\end{align*}
+$$
+
+As desired.
+
+b)
+
+We induct on $k$. Let $P(n)$ denote:
+
+$$\sum_{i = m}^n a_i = \sum_{j = m + k}^{n + k} a_{j - k}$$
+
+For base case $P(m)$, by Definition 7.1.1:
+
+$$\sum_{i = m}^m a_i = a_m = a_{m + k - k} = \sum_{j = m + k}^{m + k} a_{j - k}$$
+
+As desired.
+
+For $P(n + 1)$ given $P(n)$:
+
+$$
+\begin{align*}
+\sum_{j = m + k}^{n + k + 1} a_{j - k} &= a_{n + 1} + \sum_{j = m + k}^{n + k} a_{j - k} &\text{By Definition 7.1.1}\\
+&= a_{n + 1} + \sum_{i = m}^{n} a_{i} &\text{By } P(n) \\
+&= \sum_{i = m}^{n + 1} a_{i} &\text{By Definition 7.1.1}
+\end{align*}
+$$
+
+As desired.
+
+c)
+
+We induct on $n$:
+
+For base case $n = m$, easy to verify $LHS = RHS = a_m + b_m$.
+
+For $P(n + 1)$ given $P(n)$:
+
+$$
+\begin{align*}
+\sum_{i = m}^{n + 1} (a_i + b_i)
+&= a_{n + 1} + b_{n + 1} + \sum_{i = m}^{n} (a_i + b_i) \\
+&= a_{n + 1} + b_{n + 1} + \sum_{i = m}^{n} a_i + \sum_{i = m}^{n} b_i \\
+&= (a_{n + 1} + \sum_{i = m}^{n} a_i) + (b_{n + 1} + \sum_{i = m}^{n} b_i) \\
+&= \sum_{i = m}^{n + 1} a_i + \sum_{i = m}^{n + 1} b_i
+\end{align*}
+$$
+
+As desired.
+
+d)
+
+We induct on $n$:
+
+For base case $n = m$, easy to verify $LHS = RHS = c a_m$.
+
+For $P(n + 1)$ given $P(n)$:
+
+$$
+\begin{align*}
+\sum_{i = m}^{n + 1} c a_i &= ca_{n + 1} + \sum_{i = m}^n ca_i \\
+&= ca_{n + 1} + c\sum_{i = m}^n a_i \\
+&= c(a_{n + 1} + \sum_{i = m}^n a_i) \\
+&= c(\sum_{i = m}^{n + 1} a_i)
+\end{align*}
+$$
+
+e)
+
+We induct on $n$:
+
+For base case $n = m$, $|a_m| \leq |a_m|$ as desired.
+
+For $P(n + 1)$ given $P(n)$:
+
+$$
+\begin{align*}
+|\sum_{i = m}^{n + 1} a_i| &= |a_{n + 1} + \sum_{i = m}^n a_i| \\
+&\leq |a_{n + 1}| + |\sum_{i = m}^n a_i| &\text{By Triangle Inequality} \\
+&\leq |a_{n + 1}| + \sum_{i = m}^n |a_i| &\text{By } P(n) \\
+&= \sum_{i = m}^{n + 1} |a_i|
+\end{align*}
+$$
+
+As desired.
+
+f)
+
+Follows from simple induction on $n$.
+
+### Exercise 7.1.2
+
+a)
+
+ByDefinition 7.1.6, we choose a bijection $g: \empty \rightarrow X$, then:
+
+$$\sum_{x \in X}f(x) = \sum_{i = 1}^0 f(g(i))$$
+
+Since $0 < 1$, by Definition 7.1.1 RHS equals to $0$ as desired.
+
+b)
+
+Choose bijection $g: \{1\} \rightarrow X$ s.t.$g(1) = x_0$, then:
+
+$$\sum_{x \in X} f(x) = \sum_{i = 1}^1 f(g(1)) = f(x_0)$$
+
+As desired.
+
+c)
+
+Denote $|X| = n$, and denote bijection $k: \{1 \leq i \leq n\} \rightarrow Y$. Observe $g \circ k$ is a bijection from $\{1 \leq i \leq n\} \rightarrow X$. Hence:
+
+$$
+\begin{align*}
+\sum_{x \in X} f(x) &= \sum_{i = 1}^n f(g(k(i))) \\
+                    &= \sum_{y \in Y} f(g(y))
+\end{align*}
+$$
+
+As desired.
+
+d)
+
+By Lemma 7.1.14 b):
+
+$$\sum_{i = n}^m a_i = \sum_{i = 1}^{m - (n - 1)} a_{i + (n - 1)} $$
+
+We denote $g: \{1 \leq i \leq m - (n - 1)\} \rightarrow X$, s.t. $g(i) = i + (n - 1)$. Observe $g$ is bijective.
+
+Hence:
+
+$$\sum_{i = n}^m a_i = \sum_{i = 1}^{m - (n - 1)} a_{i + (n - 1)} = \sum_{i \in X} a_i$$
+
+As desired.
+
+e)
+
+Denote $|X| = n, |Y| = m$. Then since $X \cap Y = \empty$, $|X \cup Y| = n + m$.
+
+Then denote bijections $h: \{1 \leq i \leq n\} \rightarrow X, j: \{1 \leq i \leq m\} \rightarrow Y, k: \{1 \leq i \leq n + m\} \rightarrow X \cup Y$.
+
+We define $k$ as:
+
+$$
+k(i) =
+\begin{cases}
+h(i) &\text{If } i \leq n \\
+j(i - n) &\text{Otherwise}
+\end{cases}
+$$
+
+Observe, under this definition, $k$ is indeed bijective.
+
+Hence:
+
+$$
+\begin{align*}
+\sum_{z \in X \cup Y} f(x)
+&= \sum_{i = 1}^{n + m} f(k(i)) \\
+&= \sum_{i = 1}^n f(k(i)) + \sum_{i = n + 1}^{n + m} f(k(i)) \\
+&= \sum_{i = 1}^n f(h(i)) + \sum_{i = n + 1}^{n + m} f(j(i - n)) \\
+&= \sum_{i = 1}^n f(h(i)) + \sum_{i = 1}^m f(j(i)) \\
+&= \sum_{x \in X} f(x) + \sum_{y \in Y} f(y)
+\end{align*}
+$$
+
+As desired.
+
+f)
+
+Let $n = |X|$ Choose a bijection $h: \{1 \leq i \leq n\} \rightarrow X$, then:
+
+$$
+\begin{align*}
+\sum_{x \in X} f(x) + g(x)
+&= \sum_{i = 1}^n f(h(i)) + g(h(i)) \\
+&= \sum_{i = 1}^n f(h(i)) + \sum_{i = 1}^n g(h(i)) \\
+&= \sum_{x \in X} f(x) + \sum_{x \in X} g(x)
+\end{align*}
+$$
+
+As desired.
+
+g)
+
+Similarly to f)
+
+h)
+
+Similar to f)
+
+### Exercise 7.1.3
+
+#### Define Finite Product
+
+Let $m,n$ be integers, and let $(a_i)^n_{i=m}$ be a finite sequence of real numbers, assigning a real number $a_i$ to each integer $i$ between $m$ and $n$ inclusive (i.e., $m ≤ i ≤ n$). Then we define the finite product $\prod^n_{i=m} a_i$ by the recursive formula
+$$
+\prod^n_{i = m} a_i = 1 \text{ whenever } n < m
+$$
+
+$$
+\prod^{n+1}_{i=m} a_i = (\prod^{n}_{i=m} a_i) \times a_{n + 1} \text{ whenever } n \geq m - 1
+$$
+
+#### Which of the above result still holds?
+
+Remark: some may require minor modification (e.g. replace addition sign with multiplication sign)
+
+- 7.1.4 a), b), c)
+- 7.1.4 d)
+  - Scaling factor on RHS needs major modification
+- 7.1.4 e)
+  - Seems to become an equality instead
+- 7.1.4 f)
+  - If we restrict $a_i, b_i \geq 0$.
+  - Otherwise... may need to check number of negative elements, determine if it is odd/even then make a case by case rule.
+- 7.1.11 a)
+  - RHS No longer $0$, should be $1$
+- 7.1.11 b), c), d), e) f)
+- 7.1.11 g)
+  - Similar to 7.1.4 d), major change required
+- 7.1.11 h)
+  - Similar to 7.1.4 f), same constraint required
+- 7.1.11 i)
+  - Becomes equality
+
+### Exercise 7.1.4
+
+We induct on $n$:
+
+For base case $n = 0$, $LHS = (x + y)^0 = 1, RHS = \frac{0!}{0!(0 - 0)!}x^0y^{n - 0} = 1$, as desired.
+
+For inductive case:
+
+$$
+\begin{align*}
+(x + y)^{n + 1}
+&= (x + y)(x + y)^n \\
+&= (x + y)\sum_{j = 0}^n \frac{n!}{j!(n - j)!} x^j y^{n - j} \\
+&= (x\sum_{j = 0}^n \frac{n!}{j!(n - j)!} x^j y^{n - j}) + (y\sum_{j = 0}^n \frac{n!}{j!(n - j)!} x^j y^{n - j}) \\
+&= \sum_{j = 0}^n \frac{n!}{j!(n - j)!} x^{j+1} y^{n - j} + \sum_{j = 0}^n \frac{n!}{j!(n - j)!} x^j y^{n + 1 - j} \\
+&= x^{n + 1} + \sum_{j = 0}^{n - 1} \frac{n!}{j!(n - j)!} x^{j+1} y^{n - j} + y^{n + 1} + \sum_{j = 1}^{n} \frac{n!}{j!(n - j)!} x^j y^{n + 1 - j} \\
+&= x^{n + 1} + \sum_{j = 1}^{n} \frac{n!}{(j - 1)!(n + 1 - j)!} x^{j} y^{n + 1 - j} \\ &+ \sum_{j = 1}^{n} \frac{n!}{j!(n - j)!} x^j y^{n + 1 - j} + y^{n + 1} \\
+&= x^{n + 1} + \sum_{j = 1}^n \left(\frac{n!}{(j - 1)!(n + 1 - j)!} + \frac{n!}{j!(n - j)!}\right)x^{j} y^{n + 1 - j} +  y^{n + 1} \\
+&= x^{n + 1} + \sum_{j = 1}^n \frac{(n + 1)!}{j!(n + 1 - j)!}x^{j} y^{n + 1 - j} + y^{n + 1} \\
+&= \sum_{j = 0}^{n + 1} \frac{(n + 1)!}{j!(n + 1 - j)!}x^{j} y^{n + 1 - j}
+\end{align*}
+$$
+
+As desired.
+
+Remark:
+
+The identity:
+
+$$\frac{n!}{(j - 1)!(n + 1 - j)!} + \frac{n!}{j!(n - j)!} = \frac{(n + 1)!}{j!(n + 1 - j)!}$$
+
+Can be proven as follows:
+
+$$
+\begin{align*}
+(n + 1)! &= (n + 1)! \\
+n! \times (n + 1) &= (n + 1)! \\
+n!(j + n + 1 - j) &= (n + 1)! \\
+n!j + n!(n + 1 - j) &= (n + 1)! \\
+n!(\frac{j}{j!(n + 1 - j)!}) + n!(\frac{n + 1 - j}{j!(n + 1 - j)!}) &= \frac{(n + 1)!}{j!(n + 1 - j)!} \\
+\frac{n!}{(j - 1)!(n + 1 - j)!} + \frac{n!}{j!(n - j)!} &= \frac{(n + 1)!}{j!(n + 1 - j)!}
+\end{align*}
+$$
+
+With the division in the second last step can be done as $j!(n + 1 - j)! \neq 0$ for any $n, j$.
+
+- We check division by $0$ as it is illegal. We also need to check multiplication by $0$ as we otherwise we can deduce $3 = 1$ via $3 \times 0 = 1 \times 0$. Cancellation law requires the cancelled out part to be $\neq 0$.
+
+As desired.
+
+Remark 2: Above derivation may seen obscured at first. But, consider:
+
+$$
+\begin{align*}
+x(x + y)^2 &= xy^2 + 2x^2y + x^3 \\
+y(x + y)^2 &= y^3 + 2xy^2 + x^2y
+\end{align*}
+$$
+
+Observe the two expressions shares common terms in the middle ($xy^2, x^2y$).
+
+The scary looking algebra is merely the exploitation of such pattern.
+
+### Exercise 7.1.5
+
+Denote $n = |X|$. We induct on $n$.
+
+If $n = 0$, then $LHS = RHS = 0$ as desired.
+
+For $P(n+1)$:
+
+$$
+\begin{align*}
+\lim_{n \rightarrow \infty} \sum_{x \in X} a_n(x)
+&= \lim_{n\rightarrow \infty} (a_n(x_0) + \sum_{x \in X - \{x_0\}} a_n(x)) &\text{By 7.1.11 e)}\\
+&= \lim_{n\rightarrow\infty} a_n(x_0) + \lim_{n\rightarrow\infty} \sum_{x \in X - \{x_0\}} a_n(x) &\text{By 6.1.19 a)}\\
+&= \lim_{n\rightarrow\infty} a_n(x_0) +  \sum_{x \in X - \{x_0\}} \lim_{n\rightarrow\infty} a_n(x) &\text{By 3.6.9 \&} P(n)\\
+&= \sum_{x \in X} \lim_{n\rightarrow\infty} a_n(x) &\text{By 7.1.11 e)}
+\end{align*}
+$$
+
+As desired.

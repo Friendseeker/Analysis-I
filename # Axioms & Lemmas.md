@@ -1223,6 +1223,106 @@ Let $(a_n)^\infty_{n = 0}$ be a bounded sequence (i.e., there exists a real numb
 
 All the results of Lemma 5.6.9, which held for rational numbers $q$ and $r$, continue to hold for real numbers $q$ and $r$.
 
+### Definition 7.1.1 (Finite series)
+
+Let $m,n$ be integers, and let $(a_i)^n_{i=m}$ be a finite sequence of real numbers, assigning a real number $a_i$ to each integer $i$ between $m$ and $n$ inclusive (i.e., $m ≤ i ≤ n$). Then we define the finite sum (or finite series) $\sum^n_{i=m} a_i$ by the recursive formula
+$$
+\sum^n_{i = m} a_i = 0 \text{ whenever } n < m
+$$
+
+$$
+\sum^{n+1}_{i=m} a_i = (\sum^{n}_{i=m} a_i) + a_{n + 1} \text{ whenever } n \geq m - 1
+$$
+
+### Lemma 7.1.4
+
+(a)
+
+Let $m ≤ n < p$ be integers, and let $a_i$ be a real number assigned to each integer $m ≤ i ≤ p$. Then we have:
+
+$$\sum^n_{i = m} a_i + \sum^p_{i = n+1} a_i = \sum^p_{i = m} a_i$$
+
+(b)
+
+Let $m ≤ n$ be integers, $k$ be another integer, and let $a_i$ be a real number assigned to each integer $m ≤ i ≤ n$. Then we have:
+
+$$\sum^n_{i = m} a_i = \sum^{n + k}_{j = m + k} a_{j - k}$$
+
+(c)
+
+Let $m ≤ n$ be integers, and let $a_i,b_i$ be real numbers assigned to each integer $m ≤ i ≤ n$. Then we have:
+
+$$\sum_{i = m}^n (a_i + b_i) = (\sum^n_{i = m} a_i) + (\sum^n_{i = m} b_i)$$
+
+(d)
+
+Let $m ≤ n$ be integers, and let $a_i$ be a real number assigned to each integer $m ≤ i ≤ n$, and let $c$ be another real number. Then we have:
+
+$$\sum_{i = m}^n (ca_i) = c(\sum_{i = m}^n a_i)$$
+
+(e)
+
+(Triangle inequality for finite series) Let $m ≤ n$ be integers, and let $a_i$ be a real number assigned to each integer $m ≤ i ≤ n$. Then we have:
+
+$$\left|\sum_{i=m}^n a_i\right| \leq \sum_{i = m}^n |a_i|$$
+
+(f)
+
+(Comparison test for finite series) Let $m ≤ n$ be integers, and let $a_i, b_i$ be real numbers assigned to each integer $m ≤ i ≤ n$. Suppose that $a_i ≤ b_i$ for all $m≤i≤n$. Then we have:
+
+$$\sum_{i=m}^n a_i \leq \sum_{i = m}^n b_i$$
+
+### Definition 7.1.6 (Summations over finite sets)
+
+Let $X$ be a finite set with $n$ elements (where $n∈N$),and let $f :X \rightarrow \R$ be a function from $X$ to the real numbers (i.e., $f$ assigns a real number $f(x)$ to each element $x$ of $X$). Then we can define the finite sum $\sum_{x \in X} f(x)$ as follows. We first select any bijection $g$ from $\{i ∈ \N : 1 ≤ i ≤ n\}$ to $X$; such a bijection exists since $X$ is assumed to have $n$ elements. We then define
+
+$$\sum_{x \in X} f(x) = \sum_{i = 1}^n f(g(i))$$
+
+### Proposition 7.1.8 (Finite summations are well-defined)
+
+Let $X$ be a finite set with $n$ elements (where $n ∈ \N$), let $f : X → \R$ be a function, and let $g:\{i∈\N:1≤i≤n\}→X$ and $h:\{i∈\N:1≤i≤n\}→X$ be bijections. Then we have:
+
+$$\sum_{i = 1}^n f(g(i)) = \sum_{i = 1}^n f(h(i))$$
+
+### Proposition 7.1.11 (Basic properties of summation over finite sets)
+
+(a) If $f$ is empty, and $f: X \rightarrow \R$ is a function (i.e.) $f$ is the empty function, we have:
+
+$$\sum_{x \in X} f(x) = 0$$
+
+(b) If X consists of a single element, $X = \{x_0\}$, and $f : X → \R$ is a function, we have:
+
+$$\sum_{x \in X} f(x) = f(x_0)$$
+
+(c) (Substitution, part I ) If $X$ is a finite set, $f : X → \R$ is a function, and $g: Y → X$ is a bijection, then:
+
+$$\sum_{x \in X} f(x) = \sum_{y \in Y}f(g(y))$$
+
+(d) (Substitution, part II) Let $n ≤ m$ be integers, and let $X$ be the set $X:= \{i∈ \Z:n≤i≤m\}$. If $a_i$ is a real number assigned to each integer $i ∈ X$, then we have:
+
+$$\sum_{i = n}^m a_i = \sum_{i \in X} a_i$$
+
+(e) Let $X, Y$ be disjoint finite sets (so $X \cap Y = \empty$), and $f: X \cup Y \rightarrow \R$ is a function. Then we have:
+
+$$\sum_{x \in X \cup Y} f(x) = \sum_{x \in X} f(x) + \sum_{y \in Y} f(y)$$
+
+(f) (Linearity, part I ) Let X be a finite set, and let f : X → R and g : X → R be functions. Then:
+
+$$\sum_{x \in X} (f(x) + g(x)) = \sum_{x \in X} f(x) + \sum_{x \in X} g(x)$$
+
+(g) (Linearity, part II) Let $X$ be a finite set, let $f : X → \R$ be a function, and let $c$ be a real number. Then:
+
+$$\sum_{x \in X} c f(x) = c \sum_{x \in X} f(x)$$
+
+(h) (Monotonicity) Let $X$ be a finite set, and let $f : X → \R$ and $g : X → \R$ be functions such that $f(x) ≤ g(x)$ for all $x ∈ X$. Then we have:
+
+$$\sum_{x \in X} f(x) \leq \sum_{x \in X} g(x)$$
+
+(i) (Triangle inequality) Let $X$ be a finite set, and let $f : X → \R$ be a function. Then:
+
+$$|\sum_{x \in X} f(x)| \leq \sum_{x \in X} |f(x)|$$
+
+
 ## Appendix a
 
 Refer to
