@@ -1322,8 +1322,83 @@ $$\sum_{x \in X} f(x) \leq \sum_{x \in X} g(x)$$
 
 $$|\sum_{x \in X} f(x)| \leq \sum_{x \in X} |f(x)|$$
 
+### Definition 7.2.1 (Formal infinite series)
+
+A (formal) infinite series is any expression of the form:
+
+$$
+\sum_{n = m}^{\infty} a_n
+$$
+
+Where $m$ is an integer, and $a_n$ is a real number for any integer $n ≥ m$.
+
+### Definition 7.2.2 (Convergence of series)
+
+Let $\sum^{∞}_{n=m} a_n$ be a formal
+infinite series. For any integer $N ≥ m$, we define the $N^{th}$ partial sum $S_N$ of this series to be $S_N = \sum^{N}_{n=m} a_n$, of course, $S_N$ is a real number.
+
+If the sequence $(S_N)^{∞}_{N = m}$ converges to some limit $L$ as $N → ∞$, then we say that the infinite series $\sum^\infty_{N = m}$ is convergent, and converges to $L$.
+
+We also write $a_n$, and say that $L$ is the sum of the
+$a_n$. If the partial sums $S_N$ diverge, then we say
+infinite series that the infinite series $\sum^\infty_{n=m} a_n$ is divergent, and we do not assign any real number value to that series.
+
+### Proposition 7.2.5
+
+Let $\sum^\infty_{n = m} a_n$ be a formal series of real numbers.
+Then $\sum^\infty_{n = m} a_n$ an converges if and only if, for every real number $ε > 0$, there exists an integer $N ≥ m$ such that:
+
+$$\forall p, q \geq N, |\sum_{n = p}^q a_n| \leq \epsilon$$
+
+### Corollary 7.2.6 (Zero test)
+
+Let $\sum^∞_{n=m} a_n$ be a convergent series of real numbers. Then we must have $\lim_{n→∞} a_n = 0$. To put this another way, if $\lim_{n→∞} a_n$ is non-zero or divergent, then the series $\sum^∞_{n=m} a_n$ is divergent.
+
+### Definition 7.2.8 (Absolute convergence)
+
+Let $\sum^∞_{n=m} a_n$ be a formal series of real numbers. We say that this series is absolutely convergent iff the series $\sum^∞_{n=m} |a_n|$ is convergent.
+
+### Proposition 7.2.9 (Absolute convergence test)
+
+Let $\sum^∞_{n=m} a_n$ be a formal series of real numbers. If this series is absolutely convergent, then it is also conditionally convergent. Furthermore, in this case we have the triangle inequality:
+
+$$
+\left|\sum_{n = m}^\infty a_n\right| \leq \sum_{n = m}^\infty |a_n|
+$$
+
+### Proposition 7.2.12 (Alternating series test)
+
+Let $(a_n)^∞_{n=m}$ be a sequence of real numbers which are non-negative and decreasing, thus $a_n ≥ 0$ and $a_n ≥ a_{n+1}$ for every $n ≥ m$. Then the series $\sum^{∞}_{n=m} (−1)^n a_n$ is convergent if and only if the sequence an converges to $0$ as $n → ∞$.
+
+### Proposition 7.2.14 (Series laws)
+
+a)
+
+If $\sum^∞_{n = m} a_n$ is a series of real numbers converging to $x$, and $\sum^∞_{n=m} b_n$ is a series of real numbers converging to $y$, then $\sum^∞_{n=m} (a_n +b_n)$ is also a convergent series, and converges to $x+y$. In particular, we have:
+
+$$\sum_{n = m}^\infty (a_n + b_n) = \sum_{n = m}^\infty a_n + \sum_{n = m}^\infty b_n$$
+
+b)
+
+If $\sum^∞_{n = m} a_n$ is a series of real numbers converging to $x$, and $c$ is a real number, then $\sum^∞_{n = m} ca_n$ is also a converging series, and converges to $cx$. In particular, we have:
+
+$$\sum_{n = m}^\infty (ca_n) = c\sum_{n = m}^\infty a_n$$
+
+c)
+
+Let $\sum^∞_{n = m} a_n$ to be a series of real numbers, and let $k \geq 0$ be an integer. If one of the two series $\sum^\infty_{n=m} a_n$ and $\sum^\infty_{n=m+k} a_n$ are
+convergent, then the other one is also, and we have the identity
+
+$$\sum_{n = m}^\infty a_n = \sum_{n = m}^{m + k - 1} a_n + \sum_{n = m + k}^{\infty} a_n$$
+
+d)
+
+Let $\sum_{n=m}^\infty a_{n}$ be a series of real numbers converging to $x$, and let $k$ be an integer. Then $\sum_{n=m+k}^\infty a_{n−k}$ also converges to $x$.
+
+### Lemma 7.2.15 (Telescoping series)
+
+Let $(a_n)^∞_{n=0}$ be a sequence of real numbers which converge to $0$, i.e., $\lim_{n→∞} a_n = 0$. Then the series $\sum^∞_{n=0}(a_n − a_{n+1})$ converges to $a_0$.
 
 ## Appendix a
 
-Refer to
-<https://docs.google.com/document/d/1Akjw9_wFH3w6X-e-Lwk2pxYUZur21rhWixyrZ1_RvKQ/edit?usp=sharing>
+TODO

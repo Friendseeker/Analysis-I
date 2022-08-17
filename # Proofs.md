@@ -5054,3 +5054,220 @@ $$
 $$
 
 As desired.
+
+### Exercise 7.2.1
+
+The series is divergent by alternating series test.
+
+Example 1.2.2 used Proposition 7.2.14 c) d), for which, both requires the series to be convergent, yet the series is divergent.
+
+### Exercise 7.2.2
+
+By Theorem 6.4.18, $\sum_{n = m}^\infty a_n$ converges iff $(\sum_{n = m}^{N} a_n)^\infty_{N = m}$ is a Cauchy Sequence.
+
+We remains to show:
+
+$$\forall \epsilon > 0, \exists N \geq m, \forall p,q \geq N, \left|\sum_{n = p}^q a_n \right| \leq \epsilon$$
+
+iff $(\sum_{n = m}^{N} a_n)^\infty_{N = m}$ being a Cauchy Sequence.
+
+If:
+
+Note that case $p > q$ is trivial. Hence we consider the case $p \leq q$.
+
+Since $(\sum_{n = m}^{N} a_n)^\infty_{N = m}$ is a Cauchy Sequence, then:
+
+$$\forall \epsilon' > 0, \exists N' \geq m, \forall p'
+,q' \geq N', \left|\sum_{n = m}^{q'} a_n - \sum_{n = m}^{p'} a_n\right| \leq \epsilon'$$
+
+Observe, since $p \leq q$:
+
+$$\sum_{n = m}^{q'} a_n - \sum_{n = m}^{p'} a_n = \sum_{n = p' + 1}^{q'} a_n$$
+
+Fix $\epsilon$, we then can choose $\epsilon' = \epsilon$, then:
+
+$$\exists N' \geq m, \forall p'
+,q' \geq N', \left|\sum_{n = m}^{q'} a_n - \sum_{n = m}^{p'} a_n\right| \leq \epsilon$$
+
+We then choose $N = N' + 1$. It is permissible as, for any $p, q \geq N$, we have $q, p - 1 \geq N'$, hence:
+
+$$
+\begin{align*}
+\left|\sum_{n = p}^q a_n \right|
+&=  \sum_{n = (p - 1) + 1}^{q} a_n\\
+&\leq \epsilon
+\end{align*}
+$$
+
+As desired
+
+Only if:
+
+We have:
+
+$$\forall \epsilon' > 0, \exists N' \geq m, \forall p',q' \geq N', \left|\sum_{n = p'}^{q'} a_n \right| \leq \epsilon'$$
+
+We need to show:
+
+$$\forall \epsilon > 0, \exists N \geq m, \forall p
+,q \geq N, \left|\sum_{n = m}^{q} a_n - \sum_{n = m}^{p} a_n\right| \leq \epsilon$$
+
+Fix $\epsilon$. We let $\epsilon' = \epsilon$, then:
+
+$$\exists N' \geq m, \forall p',q' \geq N', \left|\sum_{n = p'}^{q'} a_n \right| \leq \epsilon$$
+
+Then, we claim $N = N'$ is feasible. As, for any $p, q \geq N$:
+
+$$
+\begin{align*}
+\left|\sum_{n = m}^{q} a_n - \sum_{n = m}^{p} a_n\right|
+&= \left|\sum_{n = p + 1}^{q} a_n \right| \\
+&\leq \epsilon
+
+\end{align*}
+$$
+
+### Exercise 7.2.3
+
+By Proposition 7.2.5, we have:
+
+$$\forall \epsilon > 0, \exists N \geq m, \forall p,q \geq N, \left|\sum_{n = p}^q a_n \right| \leq \epsilon$$
+
+Hence, setting $p = q$ yields:
+
+$$\forall \epsilon > 0, \exists N \geq m, \forall p \geq N, \left|\sum_{n = p}^p a_n \right| \leq \epsilon$$
+
+Hence:
+
+$$\forall \epsilon > 0, \exists N \geq m, \forall p \geq N, |a_p| \leq \epsilon$$
+
+Therefore, by definition of convergence, $(a_n)^{\infty}_{n = m}$ converges to $0$, as desired.
+
+### Exercise 7.2.4
+
+Part 1: If the series is absolutely convergent, it is conditionally convergent.
+
+Since the series is absolutely convergent, Proposition 7.2.5, it holds that:
+
+$$
+\forall \epsilon > 0, \exists N \geq m, \forall p, q \geq N, \left|\sum_{n = m}^\infty |a_n| \right| \leq \epsilon
+$$
+
+Observe, by triangle inequality:
+
+$$|\sum_{n = m}^\infty a_n| \leq \sum_{n = m}^\infty |a_n| = \left|\sum_{n = m}^\infty |a_n| \right| \leq \epsilon$$
+
+Hence:
+
+$$
+\forall \epsilon > 0, \exists N \geq m, \forall p, q \geq N, |\sum_{n = m}^\infty a_n| \leq \epsilon
+$$
+
+Conditional convergence follows by Proposition 7.2.5, as desired.
+
+Part 2: Triangle inequality holds for absolutely convergent infinite series
+
+Follows from Corollary 5.4.10
+
+### Exercise 7.2.5
+
+a)
+
+Follows from 6.1.19 a)
+
+b)
+
+Follows from 6.1.19 c)
+
+c)
+
+Say $(\sum_{n = {m + k}}^N a_n)^\infty_{N = m}$ is convergent. By 7.1.4 a)
+
+$$
+\sum_{n = m}^N a_n = \sum_{n = m}^{m + k - 1} a_n + \sum_{n = m + k}^{N} a_n
+$$
+
+Then, since both $\sum_{n = m}^{m + k - 1} a_n, \sum_{n = m + k}^{N} a_n$ are convergent, by Theorem 6.1.19 a), $\sum_{n = m}^N a_n$ also converges and:
+
+$$
+\begin{align*}
+\lim_{N\rightarrow\infty} \sum_{n = m}^N a_n
+&= \lim_{N\rightarrow\infty}\sum_{n = m}^{m + k - 1} a_n + \lim_{N\rightarrow\infty}\sum_{n = m + k}^{N} a_n \\
+\sum_{n = m}^\infty a_n&= \sum_{n = m}^{m + k - 1} a_n + \sum_{n = m + k}^{\infty} a_n \\
+\end{align*}
+$$
+
+As desired.
+
+Similarly, for the case of $(\sum_{n = m}^N a_n)^\infty_{N = m}$ being convergent, we can use Theorem 6.1.19 d).
+
+d)
+
+Observe $\sum^N_{n = m} a_n = \sum^{N + k}_{n = {m + k}} a_{n - k}$.
+
+Hence, if the sequence $(\sum^N_{n = m} a_n)^\infty_{N = m}$ converges, the sequence $(\sum^{N + k}_{n = {m + k}} a_{n - k})^\infty_{N = m}$ converges to the same value. Then, observe:
+
+$$\sum^{N}_{n = {m + k}} a_{n - k} =\sum^{N + k}_{n = {m + k}} a_{n - k} - \sum_{N + 1}^{N + k} a_{n - k}$$
+
+We then show $(\sum_{N + 1}^{N + k} a_{n - k})^\infty_{N = m}$ is convergent. By Exercise 6.1.3 and Lemma 7.1.4 b) equivalent of showing $(\sum_{N - k + 1}^{N} a_{n})^\infty_{N = m + k - 1}$ converges. We claim it converges to $0$ by contradiction. Since $(\sum^N_{n = m} a_n)^\infty_{N = m}$ converges, by Proposition 7.2.5:
+
+$$\forall \epsilon > 0, \exists N \geq m, \forall p,q \geq N, \left|\sum_{n = p}^q a_n\right| \leq \epsilon \quad \text{(1)}$$
+
+Since $(\sum_{N - k + 1}^{N} a_{n})^\infty_{N = m + k - 1}$ does not converge to $0$, then:
+
+$$\exists \epsilon > 0, \forall L \geq m + k - 1, \exists N_0 \geq L, \left|\sum_{N_0 - k + 1}^{N_0} a_{n}\right| > \epsilon \quad \text{(2)}$$
+
+Pick this $\epsilon$, then by (1):
+
+$$\exists N \geq m, \forall p,q \geq N, \left|\sum_{n = p}^q a_n\right| \leq \epsilon \quad \text{(3)}$$
+
+Take $N$ from (3), set $L = \max(m + k - 1, N)$ in (2) yields:`
+
+$$\exists N_0 \geq L, \left|\sum_{N_0 - k + 1}^{N_0} a_{n} - L\right| > \epsilon \quad \text{(4)}$$
+
+Yet, since $N_0 - k + 1 \geq L \geq m + k - 1$, $N_0 \geq N$. In addition, $N_0 - k + 1 \geq L \geq N$. Hence, setting $p = N_0 - k + 1, q = N_0$ in (3) yields:
+
+$$\left|\sum_{N_0 - k + 1}^{N_0} a_{n} - L\right| \leq \epsilon \quad \text{(5)}$$
+
+Contradicting (4), as desired.
+
+Recall:
+
+$$\sum^{N}_{n = {m + k}} a_{n - k} = \sum^{N + k}_{n = {m + k}} a_{n - k} - \sum_{N + 1}^{N + k} a_{n - k}$$
+
+Since $(\sum_{N + 1}^{N + k} a_{n - k})^\infty_{N = m}$ converges to $0$, $\sum^{N + k}_{n = {m + k}} a_{n - k}$ converges to $(\sum^\infty_{n = m} a_n)$, by Theorem 6.1.19 d), $\sum^{N}_{n = {m + k}} a_{n - k}$ converges to $\sum^\infty_{n = m} a_n - 0 = \sum^\infty_{n = m} a_n$, as desired.
+
+The converse can be shown similarly.
+
+### Exercise 7.2.6
+
+We start with Lemma:
+
+$$\sum^N_{n=0} (a_n − a_{n+1}) = a_0 - a_{N + 1}$$
+
+Proof: We induct on $N$. For $N = 0$:
+
+$$\sum^0_{n=0} (a_n − a_{n+1}) = a_0 - a_{1}$$
+
+As desired.
+
+For $P(n + 1)$ given $P(n)$:
+
+$$
+\begin{align*}
+\sum^{N + 1}_{n=0} (a_n − a_{n+1})
+&= a_{N + 1} - a_{N + 2} + \sum^{N}_{n=0} (a_n − a_{n+1}) \\
+&= a_{N + 1} - a_{N + 2} + a_0 - a_{N + 1} &\text{By }P(n) \\
+&= a_0 - a_{N + 2}
+\end{align*}
+$$
+
+This closes the induction.
+
+Hence, showing the infinite sum converges is equivalent to showing whether $(a_0 - a_{N + 2})^\infty_{N = 0}$ converges. Since both $(a_0)^\infty_{N = 0}, (a_{N + 2})^\infty_{N = 0}$ converges, by Theorem 6.1.19 d) $(a_0 - a_{N + 2})^\infty_{N = 0}$ converges to $a_0 - 0 = a_0$, as desired.
+
+#### How does the proposition change if we assume that $a_n$ does not converge to zero, but instead converges to some other real number $L$?
+
+With the same derivation, easy to show the infinite series converges to $a_0 - L$.
+
+
