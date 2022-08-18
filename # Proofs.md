@@ -5150,17 +5150,17 @@ Part 1: If the series is absolutely convergent, it is conditionally convergent.
 Since the series is absolutely convergent, Proposition 7.2.5, it holds that:
 
 $$
-\forall \epsilon > 0, \exists N \geq m, \forall p, q \geq N, \left|\sum_{n = m}^\infty |a_n| \right| \leq \epsilon
+\forall \epsilon > 0, \exists N \geq m, \forall p, q \geq N, \left|\sum_{n = p}^q |a_n| \right| \leq \epsilon
 $$
 
 Observe, by triangle inequality:
 
-$$|\sum_{n = m}^\infty a_n| \leq \sum_{n = m}^\infty |a_n| = \left|\sum_{n = m}^\infty |a_n| \right| \leq \epsilon$$
+$$\left|\sum_{n = p}^q a_n\right| \leq \sum_{n = p}^q |a_n| = \left|\sum_{n = p}^q |a_n| \right| \leq \epsilon$$
 
 Hence:
 
 $$
-\forall \epsilon > 0, \exists N \geq m, \forall p, q \geq N, |\sum_{n = m}^\infty a_n| \leq \epsilon
+\forall \epsilon > 0, \exists N \geq m, \forall p, q \geq N, \left|\sum_{n = p}^q a_n\right| \leq \epsilon
 $$
 
 Conditional convergence follows by Proposition 7.2.5, as desired.
@@ -5270,4 +5270,94 @@ Hence, showing the infinite sum converges is equivalent to showing whether $(a_0
 
 With the same derivation, easy to show the infinite series converges to $a_0 - L$.
 
+### Exercise 7.3.1
 
+Observe, since $b_n \geq |a_n|$, by 7.1.4 f):
+
+$$\left|\sum_{n = m}^N a_n\right| \leq \sum_{n = m}^N |a_n| \leq \sum_{n = m}^N b_n$$
+
+Since $\sum_{n = m}^N b_n$ is convergent, then by Proposition 7.1.3, $\forall N \geq m, \sum_{n = m}^N b_n \leq M$
+
+Hence:
+
+$$\sum_{n = m}^N |a_n| \leq \sum_{n = m}^N b_n \leq M$$
+
+Since $\sum_{n = m}^N |a_n| \leq M$, by Proposition 7.1.3, $\sum_{n = m}^\infty |a_n|$ is convergent, hence $\sum_{n = m}^\infty a_n$ is absolutely convergent.
+
+Furthermore, by Corollary 5.4.10:
+
+$$\sum_{n = m}^\infty |a_n| \leq \sum_{n = m}^\infty b_n \leq M$$
+
+Remaining part of the inequality follows from Proposition 7.2.9, as desired.
+
+### Exercise 7.3.2
+
+#### If $|x| ≥ 1$, then the series $\sum^∞_{n=0} x^n$ is divergent
+
+Since $|x| \geq 1$, by 4.3.12 d), $|x|^n \geq 1$. Hence, $|x^n| \geq 1$. We claim $\lim_{n\rightarrow\infty} x^n \neq 0$. Assume $\lim_{n\rightarrow\infty} x^n = 0$, then by Corollary 6.4.17, $\lim_{n\rightarrow\infty} |x^n| = 0$. However, since $|x^n| \geq 1$, by Corollary 5.4.10, $\lim_{n\rightarrow\infty} |x^n| \geq 1$, contradiction.
+
+Since $\lim_{n\rightarrow\infty} x^n \neq 0$, by Corollary 7.2.6, $\sum^∞_{n=0} x^n$ diverges, as desired.
+
+#### Second Part
+
+Lemma:
+
+$$\sum_{n = m}^N x^n = \frac{1 - x^{N + 1}}{1 - x}$$
+
+Proof:
+
+We induct on $N$. If $N = m$, then $LHS = RHS = 1$, as desired.
+
+For $P(N + 1)$ given $P(N)$:
+
+$$
+\begin{align*}
+\sum_{n = m}^{N + 1} x^n
+&= \sum_{n = m}^{N} x^n + x^{N + 1} \\
+&= \frac{1 - x^{N + 1}}{1 - x} + x^{N + 1} \\
+&= \frac{1 - x^{N + 1}}{1 - x} + \frac{(1 - x)x^{N + 1}}{1 - x} \\
+&= \frac{1 - x^{N + 1} + (1 - x)x^{N + 1}}{1 - x} \\
+&= \frac{1 - x^{N + 2}}{1 - x}
+\end{align*}
+$$
+
+As desired.
+
+Then, we remain to show:
+
+$$\lim_{N\rightarrow\infty} \frac{1 - x^{N + 1}}{1 - x}$$
+
+exists and equals to $1/(1 - x)$:
+
+Proof:
+
+$$
+\begin{align*}
+\lim_{N\rightarrow\infty} \frac{1 - x^{N + 1}}{1 - x}
+&= \lim_{N\rightarrow\infty} \frac{1}{1 - x} - \lim_{N\rightarrow\infty} \frac{x^{N + 1}}{1 - x} &\text{By 6.1.19 a)}\\
+&= \frac{1}{1 - x} - (\lim_{n\rightarrow\infty} x^{N + 1})\frac{1}{1-x} &\text{By 6.1.19 c)}\\
+&= \frac{1}{1 - x} - 0 \times \frac{1}{1-x} &\text{As } |x| < 1\\
+&= \frac{1}{1 - x}
+\end{align*}
+$$
+
+One can verify the conditions for 6.1.19 a), c) are met, as desired.
+
+### Exercise 7.3.3
+
+We argue by contradiction. Assume $a_{N} \neq 0$ for some $N \in \N$. Then, by 7.2.14 c):
+
+$$
+\begin{align*}
+\sum_{n = 0}^{N} |a_n| + \sum_{n = N + 1}^{\infty} |a_n| &= \sum_{n = 0}^\infty |a_n| \\
+\sum_{n = 0}^{N - 1} |a_n| + |a_N| +  \sum_{n = N + 1}^{\infty} |a_n| &= \sum_{n = 0}^\infty |a_n| \\
+\sum_{n = 0}^{N - 1} |a_n| + |a_N| +  \sum_{n = N + 1}^{\infty} |a_n| &= 0 \\
+\sum_{n = 0}^{N - 1} |a_n| + \sum_{n = N + 1}^{\infty} |a_n| &= -|a_N|
+\end{align*}
+$$
+
+Hence, since $a_{N} \neq 0$, $|a_N| > 0$, therefore $\sum_{n = 0}^{N - 1} |a_n| + \sum_{n = N + 1}^{\infty} |a_n| < 0$.
+
+By triangle inequality, $\sum_{n = 0}^{N - 1} |a_n| \geq 0$. By Corollary 7.3.2, $\sum_{n = N + 1}^{\infty} |a_n| \geq 0$. $\sum_{n = 0}^{N - 1} |a_n| + \sum_{n = N + 1}^{\infty} |a_n| \geq 0$, contradicting $\sum_{n = 0}^{N - 1} |a_n| + \sum_{n = N + 1}^{\infty} |a_n| < 0$, as desired.
+
+Remark: One can also use a direct proof via directing evaluating $|a_N|$ for any $N \in \N$ and show $|a_N| = 0$, in a manner similar to the presented proof.

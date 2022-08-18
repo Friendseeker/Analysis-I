@@ -1399,6 +1399,36 @@ Let $\sum_{n=m}^\infty a_{n}$ be a series of real numbers converging to $x$, and
 
 Let $(a_n)^∞_{n=0}$ be a sequence of real numbers which converge to $0$, i.e., $\lim_{n→∞} a_n = 0$. Then the series $\sum^∞_{n=0}(a_n − a_{n+1})$ converges to $a_0$.
 
+### Proposition 7.3.1
+
+Let $\sum^∞_{n=m} a_n$ be a formal series of non-negative real numbers. Then this series is convergent if and only if there is a real number $M$ such that:
+
+$$\sum_{n = m}^N a_n \leq M \quad \text{For all integers } N \geq m$$
+
+### Corollary 7.3.2 (Comparison test)
+
+Let $\sum^∞_{n=m} a_n$ and $\sum^∞_{n=m} b_n$ be two formal series of real numbers, and suppose that $|a_n| ≤ b_n$ for all $n ≥ m$. Then if $\sum^∞_{n=m} b_n$ is convergent, then $\sum^∞_{n=m} a_n$ is absolutely convergent, and in fact:
+
+$$\left|\sum_{n = m}^\infty a_n \right| \leq \sum_{n = m}^\infty |a_n| \leq \sum_{n = m}^\infty b_n$$
+
+### Lemma 7.3.3 (Geometric series)
+
+Let $x$ be a real number. If $|x| ≥ 1$, then the series $\sum^∞_{n=0} x_n$ is divergent. If however $|x| < 1$, then the series is absolutely convergent and
+
+$$\sum_{n = 0}^\infty a_n = \frac{1}{1 - x}$$
+
+### Proposition 7.3.4 (Cauchy criterion)
+
+Let $(a_n)^∞_{n=1}$ be a decreasing sequence of non-negative real numbers (so $a_n ≥ 0$ and $a_{n+1} ≤ a_n$ for all $n ≥ 1$). Then the series $\sum^∞_{n=1} a_n$ is convergent if and only if the series
+
+$$\sum_{k = 0}^\infty 2^k a_{2^k} = a_1 + 2a_2 + 4a_4 + 8a_8...$$
+
+is convergent.
+
+### Corollary 7.3.7
+
+Let $q > 0$ be a rational number. Then the series $\sum^∞_{n=1} 1/n^q$ is convergent when $q > 1$ and divergent when $q ≤ 1$.
+
 ## Appendix a
 
 TODO
