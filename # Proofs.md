@@ -5360,4 +5360,38 @@ Hence, since $a_{N} \neq 0$, $|a_N| > 0$, therefore $\sum_{n = 0}^{N - 1} |a_n| 
 
 By triangle inequality, $\sum_{n = 0}^{N - 1} |a_n| \geq 0$. By Corollary 7.3.2, $\sum_{n = N + 1}^{\infty} |a_n| \geq 0$. $\sum_{n = 0}^{N - 1} |a_n| + \sum_{n = N + 1}^{\infty} |a_n| \geq 0$, contradicting $\sum_{n = 0}^{N - 1} |a_n| + \sum_{n = N + 1}^{\infty} |a_n| < 0$, as desired.
 
-Remark: One can also use a direct proof via directing evaluating $|a_N|$ for any $N \in \N$ and show $|a_N| = 0$, in a manner similar to the presented proof.
+Remark: One can also use a direct proof via directly evaluating $|a_N|$ for any $N \in \N$ and show $|a_N| = 0$, in a manner similar to the presented proof.
+
+### Exercise 7.4.1
+
+Since $f(n + 1) > f(n)$, $f$ is injective via simple induction. Hence, restricting the domain of $f$ to $\{m \in \N: m \leq M\} \rightarrow \{f(m): m \leq M\}$, $f$ is bijective.
+
+Therefore, by Proposition 7.1.11 c):
+
+$$
+\sum_{m = 0}^M |a_{f(m)}| = \sum_{n \in \{f(m): m \leq M\}} |a_{n}|
+$$
+
+Observe $\{f(m): m \leq M\}$ has a least upper bound. Hence, by 5.4.12, it is bounded above by some integer $N$. Since $f: \N \rightarrow \N$, $\{f(m): m \leq M\}$ is bounded below by $0$. Hence, $\{f(m): m \leq M\} \subseteq \{n \in \N: 0 \leq n \leq N\}$. Hence, by Proposition 7.1.11 e):
+
+$$
+\begin{align*}
+\sum_{n \in \{n \in \N: 0 \leq n \leq N\}} |a_{n}|
+&= \sum_{n \in \{f(m): m \leq M\}} |a_{n}| +  \sum_{n \in \{n \in \N: 0 \leq n \leq N\} - \{f(m): m \leq M\}} |a_{n}| \\
+&\geq \sum_{n \in \{f(m): m \leq M\}} |a_{n}|
+\end{align*}
+$$
+
+Since $ \sum_{n \in \{n \in \N: 0 \leq n \leq N\}} |a_{n}| = \sum_{n = 0}^N |a_{n}|$, by Proposition 7.3.1:
+
+$$\sum_{n \in \{n \in \N, 0 \leq n \leq N\}} |a_{n}| \leq \sum_{n = 0}^\infty |a_n|$$
+
+Hence, for any given $M \in \N$:
+
+$$
+\sum_{m = 0}^M |a_{f(m)}| = \sum_{n \in \{f(m): m \leq M\}} |a_{n}| \leq \sum_{n \in \{n \in \N, 0 \leq n \leq N\}} |a_{n}| \leq \sum_{n = 0}^\infty |a_n|
+$$
+
+Therefore, $\sum_{m = 0}^M |a_{f(m)}|$ is bounded above, by Proposition 7.3.1, $\sum_{m = 0}^\infty |a_{f(m)}|$ is convergent as desired.
+
+Remark: Proposition 7.1.11 c)'s bijectivity requirement is insidious. Very easy to miss.

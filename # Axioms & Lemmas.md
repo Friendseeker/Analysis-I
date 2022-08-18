@@ -1429,6 +1429,18 @@ is convergent.
 
 Let $q > 0$ be a rational number. Then the series $\sum^∞_{n=1} 1/n^q$ is convergent when $q > 1$ and divergent when $q ≤ 1$.
 
+### Proposition 7.4.1
+
+Let $\sum^{∞}_{n = 0} a_n$ be a convergent series of non-negative real numbers, and let $f : \N → \N$ be a bijection. Then $\sum^∞_{m=0} a_{f(m)}$ is also convergent, and has the same sum:
+
+$$\sum^{∞}_{n = 0} a_n = \sum^∞_{m=0} a_{f(m)}$$
+
+### Proposition 7.4.3 (Rearrangement of series)
+
+Let $\sum^{∞}_{n = 0} a_n$ an be an absolutely convergent series of real numbers, and let $f : \N → \N$ be a bijection. Then $\sum^∞_{m=0} a_{f(m)}$ is also absolutely convergent, and has the same sum:
+
+$$\sum^{∞}_{n = 0} a_n = \sum^∞_{m=0} a_{f(m)}$$
+
 ## Appendix a
 
 TODO
