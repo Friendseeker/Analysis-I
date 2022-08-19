@@ -1441,6 +1441,32 @@ Let $\sum^{∞}_{n = 0} a_n$ an be an absolutely convergent series of real numbe
 
 $$\sum^{∞}_{n = 0} a_n = \sum^∞_{m=0} a_{f(m)}$$
 
+### Theorem 7.5.1 (Root test)
+
+Let $\sum^{∞}_{n=m} a_n$ be a series of real numbers, and let $α = \lim\sup_{n→∞} |a_n|^{1/n}$
+
+- (a) If $α < 1$, then the series $\sum^{∞}_{n=m} a_n$ is absolutely convergent (and hence conditionally convergent).
+- (b) If $α > 1$, then the series $\sum^{∞}_{n=m} a_n$ an is not conditionally convergent (and hence cannot be absolutely convergent either).
+- (c) If $α = 1$, we cannot assert any conclusion.
+
+### Lemma 7.5.2
+
+Let $(c_n)^∞_{n=m}$ be a sequence of positive numbers. Then we have:
+
+$$\lim\inf_{n\rightarrow\infty} \frac{c^{n + 1}}{c_n} ≤ \lim\inf_{n\rightarrow\infty} c_n^{1/n} ≤ \lim\sup_{n\rightarrow\infty} c_n^{1/n} ≤ \lim\sup_{n\rightarrow\infty} \frac{c^{n + 1}}{c_n}$$
+
+### Corollary 7.5.3 (Ratio test)
+
+Let $\sum^{∞}_{n=m} a_n$ be a series of non-zero numbers. (The non-zero hypothesis is required so that the ratios $|a_{n+1}|/|a_n|$ appearing below are well-defined.)
+
+- If $\lim \sup_{n\rightarrow\infty} \frac{|a_{n + 1}|}{|a_n|} < 1$, then the series $\sum^{∞}_{n=m} a_n$ is absolutely convergent.
+- If $\lim \inf_{n→∞} \frac{|a_{n + 1}|}{|a_n|} > 1$, then the series $\sum^{∞}_{n=m} a_n$ is not conditionally convergent (and thus cannot be absolutely convergent).
+- In the remaining cases, we cannot assert any conclusion.
+
+### Proposition 7.5.4
+
+We have $\lim_{n→∞} n^{1/n} = 1$
+
 ## Appendix a
 
 TODO

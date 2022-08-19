@@ -5395,3 +5395,102 @@ $$
 Therefore, $\sum_{m = 0}^M |a_{f(m)}|$ is bounded above, by Proposition 7.3.1, $\sum_{m = 0}^\infty |a_{f(m)}|$ is convergent as desired.
 
 Remark: Proposition 7.1.11 c)'s bijectivity requirement is insidious. Very easy to miss.
+
+### Exercise 7.5.1
+
+Let $L = \lim\inf_{n\rightarrow\infty} \frac{c_{n + 1}}{c_{n}}$. Then, since $(c_n)^\infty_{n = m}$ is always positive, $\frac{c_{n + 1}}{c_{n}}$ is always positive, hence by Lemma 6.4.13:
+
+$$\lim\inf_{n\rightarrow\infty} 0 \leq \lim\inf_{n\rightarrow\infty} \frac{c_{n + 1}}{c_{n}}$$
+
+Since $LHS = 0$, it holds that:
+
+$$0 \leq \lim\inf_{n\rightarrow\infty} \frac{c_{n + 1}}{c_{n}}$$
+
+Hence $0 \leq L$. If $0 = L$, there's nothing to prove. As, by Lemma 5.6.9 a), since $c_n$ is positive real, $(c_n)^{1/n}$ is positive real, hence by Lemma 6.4.13:
+
+$$\lim\inf_{n\rightarrow\infty} 0 \leq \lim\inf_{n\rightarrow\infty} (c_n)^{1/n}$$
+
+And $LHS = L$, as desired.
+
+If $0 < L$, Let $\epsilon > 0$ s.t. $L - \epsilon > 0$, (i.e. $0 < \epsilon < L$), by Proposition 6.4.12 c), there exists $N \geq m$ s.t. $L - \epsilon \leq \frac{c_{n + 1}}{c_{n}}$ for all $n \geq N$, aka $c_n(L - \epsilon) \leq c_{n + 1}$
+
+Hence, we claim, for all $n \geq N$:
+
+$$c_N(L-ε)^{n−N} \leq c_n$$
+
+Proof: we induct on $n$. For $P(n)$, $c_N(L-ε)^{N - N} \leq c_N$ as desired.
+
+For $P(n + 1)$:
+
+$$
+\begin{align*}
+c_{n + 1}
+&\geq c_n(L - \epsilon) \\
+&\geq c_N(L-ε)^{n−N}(L - \epsilon) &\text{By }P(n)\\
+&= c_N (L-ε)^{(n + 1)−N}
+\end{align*}
+$$
+
+Closing the induction.
+
+Hence, let $A = c_N (L - ε)^{−N} $, we have:
+
+$$
+\begin{align*}
+A(L-ε)^n &\leq c_n \\
+A^{1/n}(L-ε) &\leq c_n^{1/n} &\text{By 5.6.9 e)} \\
+\lim\inf_{n\rightarrow\infty} A^{1/n}(L-ε) &\leq \lim\inf_{n\rightarrow\infty} c_n^{1/n} &\text{By 6.4.13}
+\end{align*}
+$$
+
+To evaluate $\lim\inf_{n\rightarrow\infty} A^{1/n}(L-ε)$, we claim $\lim_{n\rightarrow\infty} A^{1/n}(L-ε)$ exists and evaluate $\lim_{n\rightarrow\infty} A^{1/n}(L-ε)$ instead. First note that since $L - \epsilon > 0$, $(L - \epsilon)^{-N} > 0$ by Proposition 6.7.3 and Lemma 5.6.9 a). consequently since $c_N > 0$, $A = c_N(L - \epsilon)^{-N} > 0$, therefore by Lemma 6.5.4 a):
+
+$$\lim_{n\rightarrow\infty} A^{1/n} = 1$$
+
+Hence:
+
+$$
+\begin{align*}
+\lim_{n\rightarrow\infty} A^{1/n}(L-ε)
+&= (L-ε)\lim_{n\rightarrow\infty} A^{1/n} &\text{By 6.1.19 c)} \\
+&= (L-ε)
+\end{align*}
+$$
+
+Since $\lim\inf_{n\rightarrow\infty} A^{1/n}(L-ε) \leq \lim\inf_{n\rightarrow\infty} c_n^{1/n}$, we have:
+
+$$\forall 0 < \epsilon < L, L - \epsilon \leq \lim\inf_{n\rightarrow\infty} c_n^{1/n}$$
+
+To show $L \leq \lim\inf_{n\rightarrow\infty} c_n^{1/n}$, we argue by contradiction. Assume $L > \lim\inf_{n\rightarrow\infty} c_n^{1/n}$, then $L - (L - \lim\inf_{n\rightarrow\infty} c_n^{1/n})/2 > \lim\inf_{n\rightarrow\infty} c_n^{1/n}$. However, $0 < (L - \lim\inf_{n\rightarrow\infty} c_n^{1/n})/2 < L$. Hence, let $\epsilon = (L - \lim\inf_{n\rightarrow\infty} c_n^{1/n})/2$, we have $L - (L - \lim\inf_{n\rightarrow\infty} c_n^{1/n})/2 \leq \lim\inf_{n\rightarrow\infty} c_n^{1/n}$, contradiction, as desired.
+
+### Exercise 7.5.2
+
+If $x = 0$, then the series trivially converges to $0$.
+
+If $x \neq 0$, then every term is non-negative. Hence, by Corollary 7.5.3:
+
+$$
+\begin{align*}
+\lim_{n\rightarrow\infty} \frac{|(n + 1)^q x^{n + 1}|}{n^q x^n}
+&= |x|\lim_{n\rightarrow\infty} (\frac{n + 1}{n})^q \\
+&< \lim_{n\rightarrow\infty} (\frac{n + 1}{n})^q &\text{Since } |x| < 1 \\
+\end{align*}
+$$
+
+If $\lim_{n\rightarrow\infty} (\frac{n + 1}{n})^q = 1$, then $\lim_{n\rightarrow\infty} \frac{|(n + 1)^q x^{n + 1}|}{n^q x^n} < 1$, hence the series is absolute convergent. We remain to show $\lim_{n\rightarrow\infty} (\frac{n + 1}{n})^q = 1$. Observe, we have $N \leq q < N + 1$ for some integers $N$ by Exercise 5.4.3. By Lemma 5.6.9 e), we have:
+
+$$(\frac{n + 1}{n})^{N} \leq (\frac{n + 1}{n})^q \leq (\frac{n + 1}{n})^{N + 1}$$
+
+Via Proposition 7.5.4 & induction, easy to show $\lim_{n\rightarrow\infty} (\frac{n + 1}{n})^{N} = 1$ for any $N \in \N$, then via Theorem 6.1.19 e) easy to show $\lim_{n\rightarrow\infty} (\frac{n + 1}{n})^{N}$ for any $N \in \N$, hence:
+
+Consequently, by Corollary 6.4.14, $\lim_{n\rightarrow\infty} (\frac{n + 1}{n})^q = 1$, as desired.
+
+### Exercise 7.5.3
+
+Use Corollary 7.3.7:
+
+Divergent series: $\sum_{n = 1}^\infty 1/n$.
+
+Convergent series: $\sum_{n = 1}^\infty 1/{n^2}$.
+
+Easy to verify the ratio for both is $1$. And hence by Lemma 7.5.2, $\alpha$ for root test is also $1$, as desired.
