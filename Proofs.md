@@ -2754,32 +2754,83 @@ We remain to show $|(-1)^n| = 1$. If $n = 0$, then $|(-1)^0| = 1$ as desired. Fo
 
 a)
 
-Assume $n, m$ negative, then $x^nx^m = (x^{-n})^{-1} \times (x^{-m})^{-1} = (x^{-n} x^{-m})^{-1} = (x^{-(n + m)})^{-1} = x^{n + m}$ as desired.  First equality follows from definition 4.3.11. Second equality follows from $a^{-1}b^{-1} = (ab)^{-1}$. Third equality follows from 4.3.10 a). Last inequality follows from definition 4.3.10 a). 
+We start with proving $x^nx^m = x^{n + m}$. We proceed by cases. Note if any of $n , m = 0$, then the case is trivially true. Hence, we remains to show two cases. One being $n, m$ both being negative, another being $n$ being positive and $m$ being negative.
 
-We remain to show $a^{-1}b^{-1} = (ab)^{-1}$. We first show that $a^{-1}$ as exponent is consistent with $a^{-1}$ as inverse. Note $a^{-1} = 1 / a = 1 \times \text{Inverse of }a$ as desired.
+#### Case 1 $n, m$ both being negative
+
+We first show for any rational $a,b \neq 0$, $a^{-1}b^{-1} = (ab)^{-1}$. Observe, $a^{-1}$ as exponent is consistent with $a^{-1}$ as inverse, as $a^{-1} = 1 / a = \text{Inverse of }a$.
 
 Then $(ab)^{-1}ab = 1$ by Proposition 4.2.4, then $(ab)^{-1}aba^{-1}b^{-1} = a^{-1}b^{-1}$, then, $(ab)^{-1}aba^{-1}b^{-1} = (ab)^{-1}(aa^{-1})(bb^{-1}) = (ab)^{-1}$ by Proposition 4.2.4 as desired.
 
-Assume $n$ positive, $m$ negative. Let $m' = -m$ be positive. We propose Lemma 1: $x^a / x^b = x^{a - b}$ if $a, b, a - b \in \N$. We induct on $a$. If $a = 0$, then $x^{a - b} = x^{-b}, x^a / x^b = 1/ x^b = x^{-b}$ as desired.
+Then:
 
-Note definition 4.3.11 only ensures $1/x^n = x^{-n}$ if $n$ is negative. Hence, we prove Lemma 2: $1/x^n = x^{-n}$ for any $n \in \Z$. Proof: Assume $n \geq 0$, then $1/x^n = 1 / (1 / x^{-n})$ for some negative $-n$ by definition 4.3.11. Easy to verify $1 / (1 / a) = a$ for $a \in \R$, hence $1 / x^n = 1 / (1 / x^{-n}) = x^{-n}$ as desired, ensuring that $1/x^b = x^{-b}$ is true.
+$$
+\begin{align*}
+x^nx^m
+&= (x^{-n})^{-1} \times (x^{-m})^{-1} &\text{By 4.3.11} \\
+&= (x^{-n} x^{-m})^{-1} &\text{As } a^{-1}b^{-1} = (ab)^{-1} \\
+&= (x^{-(n + m)})^{-1} &\text{By 4.3.10 a)} \\
+&= x^{n + m} &\text{By 4.3.11}
+\end{align*}
+$$
 
-Therefore for $P(a + 1)$, $x^{a+1} / x^b = x(x^a) / x^b = x \times x^{a - b} = x^{(a + 1) - b}$, with second inequality is ensured by $P(a)$, other inequalities ensured by Definition 4.3.9 (As $a - b \in \N$) as desired.
+As desired.
 
-We remain to show $x^nx^{-m'} = x^{n - m'}$. Note $x^n x^{-m'} = x^n \times (1 / x^{m'}) = x^n \times (x^{m'})^{-1} = x^n / x^{m'}$. The first inequality is ensured by Lemma 2, second inequality is ensured by Definition 4.3.11 and third inequality follows from definition of division.
+#### Case 2: $n$ is positive and $m$ is negative
 
-Hence, if $n - m \geq 0$, result directly follows from Lemma 1. Otherwise, $x^n/x^{m'} = 1/(x^{m'} / x^n) = 1/x^{m' - n} = x^{n - m'}$ as desired.
+Assume $n$ is positive, $m$ is negative. Then, let $m' = -m$ be a positive integer.
 
-For $(x^n)^{m} = x^{nm}$, assume $n, m$ are negative, then it remains to prove $(x^{-n'})^{-m'} = x^{-n'-m'}$ for $n' = -n, m' = -n, n', m' \in \N$.
+We propose Lemma 1: $x^a / x^b = x^{a - b}$ if $a, b, a - b \in \N$. To prove it:
+
+$$
+\begin{align*}
+x^a &= x^{a - b}x^b &\text{By 4.3.10 a)} \\
+x^a / x^b &= x^{a - b}
+\end{align*}
+$$
+
+As desired.
+
+We propose Lemma 2: $1/x^n = x^{-n}$ for any $n \in \Z$.
+
+Assume $n \geq 0$, then $1/x^n = 1 / (1 / x^{-n})$ for some negative $-n$ by Definition 4.3.11. Easy to verify $1 / (1 / a) = a$ for $a \in \mathbb{Q}$, hence $1 / x^n = 1 / (1 / x^{-n}) = x^{-n}$, as desired.
+
+We remain to show $x^nx^{-m'} = x^{n - m'}$. Observe:
+
+$$
+\begin{align*}
+x^n x^{-m'}
+&= x^n \times (1 / x^{m'}) &\text{By 4.3.11} \\
+&= x^n / x^{m'} &\text{By Definition of division}
+\end{align*}
+$$
+
+Hence, if $n - m' \geq 0$, result directly follows from Lemma 1. Otherwise:
+
+$$\begin{align*}
+x^n/x^{m'}
+&= 1/(x^{m'} / x^n) \\
+&= 1/x^{m' - n} &\text{By Lemma 1}\\
+&= x^{n - m'} &\text{By Lemma 2}
+\end{align*}
+$$
+
+As desired.
+
+We proceed to prove $(x^n)^{m} = x^{nm}$. We again proceed by cases. Again, if any of $n, m = 0$, result is trivial. Hence, remains the case $n, m < 0$, the case $n > 0, m < 0$ and the case $n < 0, m > 0$.
+
+#### Case 1: $n, m < 0$
+
+We remains to show $(x^{-n'})^{-m'} = x^{(-n')(-m')}$ for $n' = -n, m' = -n, n', m' \in \N$.
 
 We propose Lemma 3: $1/a^n = (1/a)^n$ for $n \in \N$. $P(0)$ is true as $1/a^0 = (1/a)^0 = 1$. For $P(n + 1)$:
 
 $$
 \begin{align*}
-\frac{1}{a^{n+1}} &= \frac{1}{a a^n} \quad \text{By Definition 4.3.9} \\
-                  &= \frac{1}{a} \frac{1}{a^n} \quad \text{By Division Rules} \\
-                  &= \frac{1}{a} (\frac{1}{a})^n \quad \text{By } P(n) \\
-                  &= (\frac{1}{a})^{n + 1}  \quad \text{By Definition 4.3.9}
+\frac{1}{a^{n+1}} &= \frac{1}{a a^n} &\text{By Definition 4.3.9} \\
+                  &= \frac{1}{a} \frac{1}{a^n} \\
+                  &= \frac{1}{a} (\frac{1}{a})^n &\text{By } P(n) \\
+                  &= (\frac{1}{a})^{n + 1}  &\text{By Definition 4.3.9}
 \end{align*}
 $$
 
@@ -2788,50 +2839,54 @@ As desired.
 Then, with Lemma 3:
 $$
 \begin{align*}
-(x^{-n'})^{-m'} &= (\frac{1}{x^{n'}})^{-m'} \quad \text{By Definition 4.3.11} \\
-                &= 1 / ((1 / x^{n'})^{m'}) \quad \text{By Definition 4.3.11} \\
-                &= 1 / (1 / (x^{n'})^{m'}) \quad \text{By Lemma 3} \\
-                &= 1 / (1 / x^{n'm'}) \quad \text{By 4.3.10 (a)} \\
-                &= x^{n'm'} \quad \text{By Division rules} \\
+(x^{-n'})^{-m'} &= (\frac{1}{x^{n'}})^{-m'} &\text{By Definition 4.3.11} \\
+                &= \frac{1}{(1 / x^{n'})^{m'}} &\text{By Definition 4.3.11} \\
+                &= \frac{1}{1 / (x^{n'})^{m'}} &\text{By Lemma 3} \\
+                &= \frac{1}{1 / x^{n'm'}} &\text{By 4.3.10 (a)} \\
+                &= x^{n'm'} \\
                 &= x^{(-n')(-m')}
 \end{align*}
 $$
 
 As desired.
 
-Similarly, if $n$ is positive, and $m$ is negative, we let $m' = -m \in \N$, then:
+#### Case 2: $n > 0, m < 0$
+
+We let $m' = -m \in \N$, then:
 
 $$
 \begin{align*}
-(x^n)^{-m'} &= 1 / (x^n)^{m'} \quad \text{By Definition 4.3.11} \\
-            &= 1 / x^{nm'} \quad \text{By 4.3.10 (a)} \\
-            &= x^{n(-m')} \quad \text{By Lemma 2} 
+(x^n)^{-m'} &= 1 / (x^n)^{m'} &\text{By Definition 4.3.11} \\
+            &= 1 / x^{nm'} &\text{By 4.3.10 (a)} \\
+            &= x^{n(-m')} &\text{By Lemma 2}
 \end{align*}
 $$
 
 As desired.
 
-If $n$ is negative, and $m$ is positive, then let $n' = -n \in \N$:
+#### Case 2: $n < 0, m > 0$
+
+Let $n' = -n \in \N$, then:
 
 $$
 \begin{align*}
-(x^{-n'})^{m} &= (1 / x^{n'})^{m} \quad \text{By Definition 4.3.11} \\
-              &= (1/(x^{n'})^{m}) \quad \text{By Lemma 3} \\
-              &= 1 / x^{n'm} \quad \text{By 4.3.10 (a)} \\
-              &= x^{(-n')m} \quad \text{By Lemma 2} 
+(x^{-n'})^{m} &= (1 / x^{n'})^{m} &\text{By Definition 4.3.11} \\
+              &= (1/(x^{n'})^{m}) &\text{By Lemma 3} \\
+              &= 1 / x^{n'm} &\text{By 4.3.10 (a)} \\
+              &= x^{(-n')m} &\text{By Lemma 2}
 \end{align*}
 $$
 
 As desired.
 
-For $(xy)^n = x^n y^n$, consider $n$ negative, and let $n' = -n \in \N$:
+For $(xy)^n = x^n y^n$, consider $n$ being negative, and let $n' = -n \in \N$:
 
 $$
 \begin{align*}
-(xy)^{-n'} &= 1 / (xy)^{n'} \quad \text{By Definition 4.3.11} \\
-            &= 1 / (x^{n'} y^{n'})  \quad \text{By 4.3.10 (a)} \\
-            &= (1 / x^{n'})(1 / y^{n'}) \quad \text{By Definition 4.2.2} \\
-            &= x^{-n'} y^{-n'} \quad \text{By Definition 4.3.11}
+(xy)^{-n'} &= 1 / (xy)^{n'} &\text{By Definition 4.3.11} \\
+            &= 1 / (x^{n'} y^{n'})  &\text{By 4.3.10 (a)} \\
+            &= (1 / x^{n'})(1 / y^{n'}) &\text{By Definition 4.2.2} \\
+            &= x^{-n'} y^{-n'} &\text{By Definition 4.3.11}
 \end{align*}
 $$
 
@@ -2839,27 +2894,29 @@ As desired.
 
 b)
 
-Say $n$ negative, then let $n' = -n \in \N, x = a/b, y = c/d, a,b,c,d \in \N$. Easy to verify $x^{-n'} = b^{n'} / a^{n'}$. By 4.3.10 c), $b^{n'} > 0, a^{n'} > 0$, hence $x^{-n'} > 0$ as desired as $x^{-n'} - 0$ is a positive rational number by Definition 4.2.6, and the inequality is true by 4.2.7.
+We show if $x≥y>0$ and $n$ is negative, $0<x^n ≤y^n$.
 
-For $x^{-n'} \leq y^{-n'}$, note:
+Let $n' = -n \in \N, x = a/b, y = c/d, a,b,c,d \in \N$. Easy to verify $x^{-n'} = b^{n'} / a^{n'}$. By 4.3.10 c), $b^{n'} > 0, a^{n'} > 0$, then $x^{-n'}$ is positive by Definition 4.2.6, hence $x^{-n'} > 0$ by 4.2.8, proving $0 < x^n$ part of the inequality.
+
+For $x^n ≤y^n$, aka $x^{-n'} \leq y^{-n'}$, note:
 
 $$
 \begin{align*}
-y^{n'} &\leq x^{n'} \quad \text{By 4.3.10 (c)} \\
-1 &\leq \frac{x^{n'}}{y^{n'}} \quad \text{By 4.2.9 (e) and Lemma 1} \\
-x^{-n'} &\leq y^{-n'} \quad \text{By 4.2.9 (e) and Lemma 1}
+y^{n'} &\leq x^{n'} &\text{By 4.3.10 (c)} \\
+1 &\leq \frac{x^{n'}}{y^{n'}} &\text{By 4.2.9 (e) and Lemma 1} \\
+x^{-n'} &\leq y^{-n'} &\text{By 4.2.9 (e) and Lemma 1}
 \end{align*}
 $$
 
-As desired. (Note: Definition 4.3.11 or many other facts can be used instead of Lemma 1).
+As desired.
 
 c)
 
-We start by introducing Lemma 4: $a^n = 1 \Rightarrow a = 1$, for $a \in \mathbf{Q}, n \in \Z - \{0\}$.
+We start with Lemma 4: $a^n = 1 \Rightarrow a = 1$, for $a \in \mathbb{Q}, n \in \Z - \{0\}$.
 
-Proof: Consider $n$ positive, then we induct on $n$. Let $n = 1$, then $a^1 = 1$ implies $a = 1$ as desired. For $P(n+1)$, note $a^{n+1} = 1$ implies $a a^n = 1$ which by $P(n)$ implies $a = 1$ as desired.
+We proceed by cases. If $n$ is positive, then we can induct on $n$. Let $n = 1$, then $a^1 = 1$ implies $a = 1$ as desired. For $P(n+1)$, note $a^{n+1} = 1$ implies $a a^n = 1$ which by $P(n)$ implies $a = 1$ as desired.
 
-For $n$ negative, let $n' = -n \in \N$, then:
+If $n$ is negative, let $n' = -n \in \N$, then:
 
 $$
 \begin{align*}
@@ -2872,7 +2929,7 @@ $$
 
 As desired.
 
-Then:
+Hence:
 
 $$
 \begin{align*}
@@ -2888,16 +2945,22 @@ As desired.
 
 d)
 
-We start with Lemma 5: $|1 / a| = 1 / |a|, a \neq 0$. Assume $a$ is positive, then easy to verify $1/a$ is positive, hence $|1 / a| = 1 / a = 1 / |a|$ as desired. Assume $a$ is negative, then easy to verify $1/a$ is negative, hence $|1 / a| = 1 / (-a) = 1 / |a|$ as desired.
+We start with Lemma 5: $|1 / a| = 1 / |a|, a \neq 0$.
 
-Assume $n$ negative, then let $n' = -n \in \N$, then:
+We proceed with two cases, $a$ is positive and $a$ is negative.
+
+Assume $a$ is positive, then easy to verify $1/a$ is also positive, hence $|1 / a| = 1 / a = 1 / |a|$ as desired.
+
+Assume $a$ is negative, then easy to verify $1/a$ is negative, hence $|1 / a| = 1 / (-a) = 1 / |a|$ as desired.
+
+Assume $n$ is negative, then let $n' = -n \in \N$, then:
 
 $$
 \begin{align*}
-|x^{-n'}| &= |\frac{1}{x^{n'}}| \quad \text{By Definition 4.3.11} \\
-          &= \frac{1}{|x^{n'}|} \quad \text{By Lemma 5} \\
-          &= \frac{1}{|x|^{n'}} \quad \text{By 4.3.10 (d)} \\
-          &= |x|^{-n'} \quad \text{By Definition 4.3.11}
+|x^{-n'}| &= \left|\frac{1}{x^{n'}}\right| &\text{By Definition 4.3.11} \\
+          &= \frac{1}{|x^{n'}|} &\text{By Lemma 5} \\
+          &= \frac{1}{|x|^{n'}} &\text{By 4.3.10 (d)} \\
+          &= |x|^{-n'} &\text{By Definition 4.3.11}
 \end{align*}
 $$
 
@@ -3029,23 +3092,21 @@ $$
 
 Hence $(a_n)_{n=1}^{\infty}$ is Cauchy Sequence implies $(b_n)_{n=1}^{\infty}$ is Cauchy Sequence. Easy to verify equivalent sequence is reflexive, symmetric and transitive, hence the other direction follows from symmetry as desired.
 
-Comment: Thanks MVT and C-R equation proof telling me the triangle inequality trick.
-
 ### Exercise 5.2.2
 
 Assume $a$ is bounded by some $M$, then:
 
 $$
 \begin{align*}
-\forall i \geq N, |a_i - b_i| \leq \epsilon& &\text{As }a, b \text{ eventually } \epsilon \text{ close} \\
-\forall i \geq N, |b_i| - |a_i| \leq |a_i - b_i| \leq \epsilon& &\text{By reverse triangle inequality} \\
-\forall i \geq N, |b_i| - |a_i| \leq \epsilon& \\
-\forall i \geq N, |b_i| \leq \epsilon + |a_i|& \\
-\forall i \geq N, |b_i| \leq \epsilon + M& &\text{As } a \text{ is bounded by some } M
+\forall i \geq N, |a_i - b_i| \leq \epsilon& &\text{As }a, b \text{ eventually } 1 \text{ close} \\
+\forall i \geq N, |b_i| - |a_i| \leq |a_i - b_i| \leq 1& &\text{By reverse triangle inequality} \\
+\forall i \geq N, |b_i| - |a_i| \leq 1& \\
+\forall i \geq N, |b_i| \leq 1 + |a_i|& \\
+\forall i \geq N, |b_i| \leq 1 + M& &\text{As } a \text{ is bounded by some } M
 \end{align*}
 $$
 
-By Lemma 5.1.14, $(b_n)_{n=1}^{N - 1}$ is bounded by some $M'$, hence $(b_n)_{n=1}^{\infty}$ is bounded by $\max(M, \epsilon + M')$ as desired.
+By Lemma 5.1.14, $(b_n)_{n=1}^{N - 1}$ is bounded by some $M'$, hence $(b_n)_{n=1}^{\infty}$ is bounded by $\max(M, 1 + M')$ as desired.
 
 The other direction follows similarly.
 
@@ -3090,8 +3151,6 @@ $$
 $$
 
 As desired.
-
-Remark: Issa Rice offers a much cleaner way to do this part in contrast to the brute force above.
 
 Show $x = x' \Rightarrow xy = x'y$
 
@@ -5485,6 +5544,8 @@ Via Proposition 7.5.4 & induction, easy to show $\lim_{n\rightarrow\infty} (\fra
 
 Consequently, by Corollary 6.4.14, $\lim_{n\rightarrow\infty} (\frac{n + 1}{n})^q = 1$, as desired.
 
+$\lim_{n→∞} n^qx^n = 0$ follows from Corollary 7.2.6, as desired.
+
 ### Exercise 7.5.3
 
 Use Corollary 7.3.7:
@@ -5494,3 +5555,25 @@ Divergent series: $\sum_{n = 1}^\infty 1/n$.
 Convergent series: $\sum_{n = 1}^\infty 1/{n^2}$.
 
 Easy to verify the ratio for both is $1$. And hence by Lemma 7.5.2, $\alpha$ for root test is also $1$, as desired.
+
+### Exercise 8.1.1
+
+TODO (Since it requires Axiom of Choice not introduced in 8.1 yet)
+
+### Exercise 8.1.2
+
+A inductive proof is presented already in the solution for Exercise 6.6.3.
+
+Instead, we present a proof by infinite descent.
+
+Assume the contrapositive:
+
+$$\forall n \in X, \exists m \in X, n > m \quad \text{(1)}$$
+
+Then take an element $e_0 \in X$. By (1), $\exists e_1 \in X, e_0 > e_1$. Hence, we can recursively construct a sequence $(e_n)^\infty_{n = 0}$ s.t. $e_n > e_{n + 1}$, yet $\forall n \in \N, e_n \in \N$, contradiction by infinite descent.
+
+### Exercise 8.1.3
+
+#### Since $X$ is infinite, the set $\{x ∈ X : x \neq a_m \text{ for all } m < n\}$ is infinite
+
+

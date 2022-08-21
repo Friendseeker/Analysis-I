@@ -1467,6 +1467,59 @@ Let $\sum^{∞}_{n=m} a_n$ be a series of non-zero numbers. (The non-zero hypoth
 
 We have $\lim_{n→∞} n^{1/n} = 1$
 
+### Definition 8.1.1 (Countable sets)
+
+A set $X$ is said to be countably infinite (or just countable) iff it has equal cardinality with the natural numbers $\N$. A set $X$ is said to be at most countable iff it is either countable or finite. We say that a set is uncountable if it is infinite but not countable.
+
+### Remark 8.1.2
+
+Countably infinite sets are also called denumerable sets.
+
+### Proposition 8.1.4 (Well ordering principle)
+
+Let $X$ be a non-empty subset of the natural numbers $\N$. Then there exists exactly one element $n∈X$ such that $n≤m $ for all $m∈X$. In other words, every non-empty set of natural numbers has a minimum element.
+
+### Proposition 8.1.5
+
+Let $X$ be an infinite subset of the natural numbers $\N$. Then there exists a unique bijection $f : \N → X$ which is increasing, in the sense that $f(n + 1) > f(n)$ for all $n ∈ \N$. In particular, $X$ has equal cardinality with $\N$ and is hence countable.
+
+### Corollary 8.1.6
+
+All subsets of the natural numbers are at most countable.
+
+### Corollary 8.1.7
+
+If $X$ is an at most countable set, and $Y$ is a subset of $X$, then $Y$ is at most countable.
+
+### Proposition 8.1.8
+
+Let $Y$ be a set, and let $f : \N → Y$ be a function. Then $f(\N)$ is at most countable.
+
+### Corollary 8.1.9
+
+Let $X$ be a countable set, and let $f : X → Y$ be a
+function. Then $f(X)$ is at most countable.
+
+### Proposition 8.1.10
+
+Let $X$ be a countable set, and let $Y$ be a countable set. Then $X ∪ Y$ is a countable set.
+
+### Corollary 8.1.11
+
+The integers $\Z$ are countable
+
+### Lemma 8.1.12
+
+The set $A = \{(n, m) ∈ N × N : 0 ≤ m ≤ n\}$ is countable.
+
+### Corollary 8.1.13
+
+The set $\N × \N$ is countable.
+
+### Corollary 8.1.14
+
+If $X$ and $Y$ are countable, then $X × Y$ is countable.
+
 ## Appendix a
 
 TODO
