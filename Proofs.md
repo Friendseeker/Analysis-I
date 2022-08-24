@@ -5572,8 +5572,235 @@ $$\forall n \in X, \exists m \in X, n > m \quad \text{(1)}$$
 
 Then take an element $e_0 \in X$. By (1), $\exists e_1 \in X, e_0 > e_1$. Hence, we can recursively construct a sequence $(e_n)^\infty_{n = 0}$ s.t. $e_n > e_{n + 1}$, yet $\forall n \in \N, e_n \in \N$, contradiction by infinite descent.
 
+#### Does the well-ordering principle work if we replace the natural numbers by the integers? What if we replace the natural numbers by the positive rationals?
+
+The well-ordering principle doesn't work if we replace the natural numbers by the integers. For example, we can have $\{-1, -2, -3, -4...\}$, which does not have a minimum element.
+
+The well-ordering principle doesn't apply to sets of positive rational. For example, consider the set $\{1/n: n \in \Z^{+}\}$. Given any positive rational $q$, we can find $1/n < q$, hence the set has no minimal element.
+
 ### Exercise 8.1.3
 
 #### Since $X$ is infinite, the set $\{x ∈ X : x \neq a_m \text{ for all } m < n\}$ is infinite
 
+We argue by contradiction. Assume $\{x ∈ X : x \neq a_m \text{ for all } m < n\}$ is finite for some $n$. Easy to verify $X = \{x \in X: P(x)\} \cup \{x \in X: \lnot P(x)\}$ for any property $P(x)$. Let $P(x)$ be $x \neq a_m \text{ for all } m < n$, then:
 
+$X = \{x ∈ X : x \neq a_m \text{ for all } m < n\} \cup \{x ∈ X : x = a_m \text{ for some } m < n\}$
+
+We claim $\{x ∈ X : x = a_m \text{ for some } m < n\}$ is finite.
+
+We induct on $n$. Let $P(n)$ denote $\{x ∈ X : x = a_m \text{ for some } m < n\}$ is finite. Then for $P(0)$, $\{x ∈ X : x = a_m \text{ for some } m < 0\}$ is empty, as desired. 
+
+For $P(n + 1)$, observe $\{x ∈ X : x = a_m \text{ for some } m < n + 1\} = \{x ∈ X : x = a_m \text{ for some } m < n\} \cup \{x ∈ X : x = a_n\}$. Easy to verify $\{x ∈ X : x = a_n\}$ is finite. And, $\{x ∈ X : x = a_m \text{ for some } m < n\}$ is finite by $P(n)$, hence their union is finite by 3.6.14 b), as desired.
+
+Hence, $X = \{x ∈ X : x \neq a_m \text{ for all } m < n\} \cup \{x ∈ X : x = a_m \text{ for some } m < n\}$ is finite by finite by 3.6.14 b), yet $X$ is infinite, which is the desired contradiction.
+
+#### One can show(?) that $a_n$ is an increasing sequence
+
+We show $\forall n \in \N, a_n < a_{n + 1}$.
+
+Recall:
+
+$$a_n = \min\{x ∈ X : x \neq a_m \text{ for all } m < n\}$$
+
+$$a_{n + 1} = \min\{x ∈ X : x \neq a_m \text{ for all } m < n + 1\}$$
+
+To show $a_n < a_{n + 1}$, it is sufficient to show $a_n \neq a_{n + 1}$ and $a_n \leq a_{n + 1}$.
+
+We have $a_n \neq a_{n + 1}$, as, since $a_{n + 1} \in \{x ∈ X : x \neq a_m \text{ for all } m < n + 1\}$ and $n < n + 1$, $a_{n} \neq a_{n + 1}$.
+
+We have $a_n \leq a_{n + 1}$, as, observe $a_{n + 1} \in \{x ∈ X : x \neq a_m \text{ for all } m < n\}$ (as $a_{n + 1} \in X$ and $a_{n + 1} \neq a_m \text{ for all } m < n + 1$ implies $a_{n + 1} \neq a_m \text{ for all } m < n$). Then, since $a_n$ is the minimal element of $\{x ∈ X : x \neq a_m \text{ for all } m < n\}$, it holds that $a_n \leq a_{n + 1}$, as desired.
+
+#### in particular that(?) $a_n \neq a_m$ for all $n \neq m$.
+
+We had shown similar result before (an increasing function is injective). WLOG assume $m > n$, then we can induct on $m$ to prove $a_n < a_m$ for all $m > n$, hence $a_n \neq a_m$ for all $m > n$.
+
+#### We have(?) $a_n ∈ X$ for each natural number $n$
+
+Recall definition of $a_n$:
+
+$$a_n = \min\{x ∈ X : x \neq a_m \text{ for all } m < n\}$$
+
+Hence, $a_n \in \{x ∈ X : x \neq a_m \text{ for all } m < n\}$, hence $a_n \in X$, as desired.
+
+#### This implies(?) that $x$ is an element of the set $\{x ∈ X : x \neq a_m \text{ for all } m < n\}$ for all $n$
+
+Since we have $x \in X$, and we have $\forall m \in \N, x \neq a_m$. Hence we have $\forall m < n, x \neq a_m$, hence $x \in \{x ∈ X : x \neq a_m \text{ for all } m < n\}$, as desired.
+
+#### Since $a_n$ is an increasing sequence, we have $a_n ≥ n$ (?)
+
+We use induction. Let $P(n): a_n \geq n$. Then for $P(0)$, since $a_0 \in \N$, $a_0 \geq 0$ as desired.
+
+For $P(n + 1)$:
+
+$$
+\begin{align*}
+a_{n + 1}
+&> a_{n} \\
+&\geq a_{n} + 1\\
+&\geq n + 1
+\end{align*}
+$$
+
+As desired.
+
+Remark: Basically the gist of this part of proof is observing $a_n$ is not bounded above. By showing $\forall n \geq \N, x \geq a_n$, we can find sufficiently large $n$ to cause contradiction.
+
+#### But we then must have(?)
+
+We have:
+
+$$m = \min\{n ∈ N : g(n) \neq f(n)\}$$
+
+Hence, we have $g(m) \neq f(m) = a_m$ and $\forall t < m, g(t) \neq f(m)$ (otherwise $m$ is not the minimal element of $\{n ∈ N : g(n) \neq f(n)\}$.
+
+Therefore, since $\forall t < m, g(t) \neq f(m)$, we have $\forall t < m, g(m) \neq a_t$. Since $g: \N \rightarrow X$, $g(m) \in X$. Therefore $g(m) \in \{x \in X: x \neq a_t \text{ for all } t < m\}$.
+
+Then, we argue by contradiction. Assume $g(m) \neq \min\{x \in X: x \neq a_t \text{ for all } t < m\}$, then we have $g(m) > \min\{x \in X: x \neq a_t \text{ for all } t < m\}$. Since $g$ is increasing, we have:
+
+$$g(m - 1) \leq \min\{x \in X: x \neq a_t \text{ for all } t < m\} < g(m)$$
+
+However, since $g(m - 1) = f(m - 1) = a_{m - 1}$, and $\min\{x \in X: x \neq a_t \text{ for all } t < m\} = a_m > a_{m - 1}$, we can change $\leq$ to $<$:
+
+$$g(m - 1) < a_m < g(m)$$
+
+This contradicts the surjectivity of $g$. As, for all $n \leq m - 1$, since $g$ is increasing, we have $g(n) \leq g(m - 1) < a_m$, hence $g(n) \neq a_m$. Similarly, for all $n \geq m$, $g(n) \neq a_m$. Hence $g$ is not surjective, as desired.
+
+### Exercise 8.1.4
+
+We define:
+
+$$A = \{n ∈ \N : f(m) \neq f(n) \text{ for all } 0 ≤ m < n\}$$
+
+Define $g: A \rightarrow f(\N)$ s.t. $\forall n \in A, g(n) = f(n)$. We claim $g$ is bijective.
+
+We first show $g$ is injective by contradiction. Assume there exists $a, b$ s.t. $a \neq b, g(a) = g(b)$. WLOG assume $a < b$. Then, since $\forall 0 \leq m \leq b, f(m) \neq f(a)$, and $a < b$, it holds that $f(a) \neq f(b)$. However since $g(a) = g(b)$, $f(a) = f(b)$, contradiction.
+
+We then show $g$ is surjective by contradiction. Assume $g$ is not surjective, then $\exists y \in f(\N), \forall a \in A, g(a) \neq y$. However, since $y \in f(\N), \exists n \in \N, f(n) = y$. Hence $\forall a \in A, g(a) \neq f(n)$. We proceed by cases. Assume $n \in A$, then $g(n) = f(n)$, contradicting $\forall a \in A, g(a) \neq f(n)$. Assume $n \notin A$, then $f(m) = f(n) \text{ for some } 0 \leq m < n$. By Proposition 8.1.4, we let $m$ be the minimum element of $\{m \in N: 0 \leq m < n: f(m) = f(n)\}$. Then, we claim $m \in A$. Assume the contrary, then $f(m') = f(m) \text{ for some } 0 \leq m' < m$. Hence $f(m') = f(n)$ and $0 \leq m' < n$, therefore $m' \in \{m \in N: 0 \leq m < n: f(m) = f(n)\}$, yet $m' < m$, contradiction. Since $m \in a$, we have $f(m) = g(m)$. Since $f(m) = f(n)$, we have $g(m) = f(n)$, contradicting $\forall a \in A, g(a) \neq f(n)$, as desired.
+
+Since $g: A \rightarrow f(\N)$ is a bijection, $f(\N)$ has the same cardinality as $A$. Since $A \subseteq \N$, $A$ is at most countable. Since $|A| = |f(\N)|$, $f(\N)$ is at most countable, as desired.
+
+### Exercise 8.1.5
+
+Since $X$ is countable, then there exists bijection $g: \N \rightarrow X$. Hence $f \circ g: \N \rightarrow Y$. Therefore by Proposition 8.1.8, $f \circ g(\N)$ is at most countable. Since $g(\N) = X$, $f(X)$ is at most countable, as desired.
+
+### Exercise 8.1.6
+
+#### If direction
+
+Let $g: A \rightarrow f(A)$ s.t. $\forall a \in A, g(a) = f(a)$. Easy to verify $g$ is bijective. Hence, $|A| = |f(A)|$. Since $f(A) \subseteq \N$, $f(A)$ is at most countable by Corollary 8.1.6, hence $A$ is at most countable.
+
+#### Only if direction
+
+If $A$ is at most countable, by Corollary 8.1.6 there's a bijective map $g: A \rightarrow Y$, for some $Y \subseteq \N$. Hence, let $f: A \rightarrow \N$ s.t. $\forall a \in A, f(a) = g(a)$, easy to verify $f$ is injective, as desired.
+
+### Exercise 8.1.7
+
+We have bijection $f: \N \rightarrow X, g: \N \rightarrow Y$. We define $h: \N \rightarrow X \cup Y$ by:
+
+$$
+\begin{align*}
+h(2n) &= f(n) \\
+h(2n + 1) &= g(n)
+\end{align*}
+$$
+
+Above does define a function $\N \rightarrow X \cup Y$, as by Exercise 4.4.3, for any natural number $k$, either $k = 2n$ or $k = 2n + 1$ for some $n \in \N$ (but not both). Hence for any $k \in \N$, $h(k)$ is assigned with exactly one value, hence $h(k)$ has domain $\N$. And, we either have $h(k) = f(n)$ or $h(k) = g(n)$, in either case $h(k) \in  X \cup Y$, hence $h$ has range $X \cup Y$.
+
+We claim $h(\N) = X \cup Y$. We first show $h(\N) \subseteq X \cup Y$. Since $h(\N) = \{h(k): k \in \N\}$, and $h$ has range $X \cup Y$, it holds that $h(\N) \subseteq X \cup Y$. We then show $X \cup Y \subseteq h(\N)$. Take an element $e \in X \cup Y$. We have two overlapping cases of $e \in X$ or $e \in Y$. WLOG $e \in X$, then we have $f(n) = e$ for some $n \in \N$. Hence, we have $h(2n) = e$, hence $e \in X \cup Y \rightarrow e \in h(\N)$, as desired.
+
+Therefore, by Corollary 8.1.9, since $\N$ is countable, $h(\N)$ is countable. Since $h(\N) = X \cup Y$, $X \cup Y$ is countable, as desired.
+
+### Exercise 8.1.8
+
+By Corollary 8.1.13, $\N \times \N$ is countable. Hence, remains to show $\N \times \N$ is bijective to $X \times Y$. Since $X, Y$ are countable, there exists bijection $f: X \rightarrow \N, g: Y \rightarrow \N$. We claim $h: X \times Y \rightarrow \N \times \N$ s.t. $h(x,y) = (f(x), g(y))$ is a bijection, by showing $h$ is injective and surjective.
+
+$h$ is injective, as say we have $x, x', y, y'$ s.t. $x \neq x', y \neq y', x \in X, y \in Y$, then $f(x) \neq f(x'), g(y) \neq g(y')$, hence $(f(x), g(y)) \neq (f(x'), g(y'))$, as desired.
+
+$h$ is surjective, as, for any $p, q \in \N$, we always have $(p, q) = h(f^{-1}(p), g^{-1}(q))$.
+
+Hence, $h$ is bijective, therefore $|X \times Y| = |\N \times \N|$. Since $|\N \times \N|$ is countable, $|X \times Y|$ is countable, as desired.
+
+### Exercise 8.1.9
+
+TODO as it requires Axiom of Choice, which is not introduced yet.
+
+### Exercise 8.1.10
+
+#### Overview
+
+We first construct bijections: $g: \N \rightarrow \mathbb{Q}^{+}$. Then, easy to construct bijection $h: \Z^{-} \rightarrow \mathbb{Q}^{-}$ from $g$. Then we can construct bijection $i: \Z \rightarrow \mathbb{Q}$ via:
+
+$$
+i(n) =
+\begin{cases}
+g(n) &\text{If } n \geq 0 \\
+h(n) &\text{If } n < 0
+\end{cases}
+$$
+
+Easy to verify if $g: \Z^{+} \rightarrow \mathbb{Q}^{+}, h: \Z^{-} \rightarrow \mathbb{Q}^{-}$ are indeed bijections, then $i: \Z \rightarrow \mathbb{Q}$, as defined above, is a bijection.
+
+Then, since $\Z$ is countable, there exists bijection $j: \N \rightarrow \Z$ (easy to explicitly construct either). Easy to verify $i \circ j: \N \rightarrow \mathbb{Q}$ is a bijection. And, if we can explicitly define $g$, we can explicitly define $i \circ j$.
+
+#### Explicitly define $g$
+
+We construct the following sequence:
+
+$$
+\begin{align*}
+a_0 &= 0, a_1 = 1\\
+a_{2n} &= a_n \\
+a_{2n + 1} &= a_n + a_{n + 1} \\
+g(n) &= \frac{a_n}{a_{n + 1}} \\
+\end{align*}
+$$
+
+With induction, one can show above recursive definition does uniquely define a sequence.
+
+Then, we define $g$ as:
+
+$$
+g(n) = \frac{a_n}{a_{n + 1}}
+$$
+
+We then show $g$, as defined above, is bijective.
+
+We first show $g$ is surjective. It is sufficient to show, for all $a, b \in \N \times (\N - \{0\})$ relatively prime, $\exists n \in \N, g(n) = a / b$. We argue by contradiction, assume for some relatively prime $a, b$ pairs, $\forall n \in \N, g(n) \neq a/b$. Then, denote the set containing such $a, b$ pairs as $C$.
+
+We claim, we can take $p/q \in C$, for which $p/q$ has the smallest denominator out of all rationals in $C$, and the smallest numerator out of all rationals with the smallest denominator in $C$. (Existence of such $p/q$ may seen obvious but it is not true for certain sets, say if $C = \Z \times \Z$, hence justification is needed).
+
+By Axiom of Replacement, we replace every $(a,b) \in C$ with $b$ and form a new set $C_b$. Then, by Proposition 8.1.4, we take $q = \min(C_b)$. We then use Axiom of Specification to construct $\{(a, b) \in C: b = q\}$. We then use Axiom of replacement to replace $(a,b) \in \{(a, b) \in C: b = q\}$ with $b$ and form a new set $C_{ba}$. We use Proposition 8.1.4 again to take $p = \min(C_{ba})$, as desired.
+
+Hence, we either have $p = q, p < q, p > q$. If $p = q$, then since $p, q$ are relatively prime, $p = q$ implies $p = q = 1$. Hence $g(1) = 1$, as desired.
+
+If $p < q$, then we claim $p/(q - p) \in C$. Since $p, q$ are relatively prime, hence $\gcd(p, q) = 1$, hence $\gcd(p, q - p) = 1$, therefore $p, q - p$ are relatively prime. We then argue by contradiction.
+
+Assume $p / (q - p) \notin C$, then $\exists n \in N, g(n) = p / (q - p)$.
+
+We then propose Lemma 1: $a_n, a_{n + 1}$ are relatively prime for all $n \in \Z^{+}$. We induct on $n$. Let $P(n)$ denote $a_n, a_{n + 1}$ are relatively prime.
+
+For $P(1)$, easy to compute $a_1 = a_2 = 1$, hence $a_1, a_2$ are relatively prime, as desired.
+
+For $P(n)$, if $n$ is even, then $a_n = a_{n'}, a_{n + 1} = a_{n'} + a_{n' + 1}$ for some $n' < n$. Hence, $\gcd(a_{n}, a_{n + 1}) = \gcd(a_{n'},  a_{n'} + a_{n' + 1}) = \gcd(a_{n'}, a_{n' + 1}) = 1$ as desired.
+
+Similar reasoning follows if $n$ is odd, closing the induction.
+
+Hence, by Lemma 1, since $p, q - p$ are relatively prime and $\exists n \in N, g(n) = p / (q - p)$, it holds that for the same $n$, $p = a_n, q - p = a_{n + 1}$. Hence, $g(2n) = a_{2n} / a_{2n + 1} = a_{n} / (a_{n} + a_{n + 1}) = p/(p + q - p) = p/q$. Hence $p/q \notin C$, contradiction.
+
+Hence $p/(q - p) \in C$. However, $p/q$ has the smallest denominator out of all rationals in $C$, yet $p/(q - p)$ has smaller denominator, contradiction. Hence $p, q \in C$. Similarly $p > q$ leads to a contradiction. Hence $g$ is surjective.
+
+To show $g$ is injective. We argue by contradiction. If $g$ is not injective, then the set $C = \{a, b \in \N \times \N - \{0\}: \gcd(a,b) = 1: \exists n, n' \in \N,n \neq n' \land g(n) = g(n') = a/b\}$ is non-empty.
+
+Choose $p/q \in C$ s.t. $p/q$ has the smallest denominator in $C$, and has the smallest numerator among those with the smallest denominator.
+
+We proceed by cases. Either $p = q, p < q, p > q$.
+
+If $p = q$, we must have $p = q = 1$. However, we can inductively show that $\forall n \geq 2, g(n) \neq 1$. Hence $1/1 \notin C$, contradiction.
+
+If $p < q$, by Lemma $a_{n} = a_{n'} = p, a_{n + 1} = a_{n' + 1} = q$.
+
+We start with Lemma 2: If $a_{n} < a_{n + 1}$, $n$ is even. We argue by contradiction. Assume $n$ is odd, then $a_{n} = a_{2k + 1}, a_{n + 1} = a_{2(k + 1)}$. Yet, $a_{2(k + 1)} = a_{k + 1}, a_{2k + 1} = a_{k} + a_{k + 1}$. Hence, $a_{2(k + 1)} \leq a_{2k + 1}$, hence $a_{n + 1} \leq a_{n}$, contradiction.
+
+Therefore, since $p < q$, $n, n'$ are both even. Hence, easy to verify $g(n/2) = g(n'/2) = p/(q - p)$. Yet, $\gcd(p, q - p) = 1$ and $p/(q - p)$ has smaller denominator, contradiction, as desired. 
+
+Case $p > q$ follows similarly. Hence $g$ is injective.
