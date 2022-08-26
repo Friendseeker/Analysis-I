@@ -5728,7 +5728,7 @@ TODO as it requires Axiom of Choice, which is not introduced yet.
 
 #### Overview
 
-We first construct bijections: $g: \N \rightarrow \mathbb{Q}^{+}$. Then, easy to construct bijection $h: \Z^{-} \rightarrow \mathbb{Q}^{-}$ from $g$. Then we can construct bijection $i: \Z \rightarrow \mathbb{Q}$ via:
+We first construct bijections: $g: \N \rightarrow \mathbb{Q}^{+} + \{0\}$. Then, easy to construct bijection $h: \Z^{-} \rightarrow \mathbb{Q}^{-}$ from $g$. Then we can construct bijection $i: \Z \rightarrow \mathbb{Q}$ via:
 
 $$
 i(n) =
@@ -5767,7 +5767,7 @@ We then show $g$, as defined above, is bijective.
 
 We first show $g$ is surjective. It is sufficient to show, for all $a, b \in \N \times (\N - \{0\})$ relatively prime, $\exists n \in \N, g(n) = a / b$. We argue by contradiction, assume for some relatively prime $a, b$ pairs, $\forall n \in \N, g(n) \neq a/b$. Then, denote the set containing such $a, b$ pairs as $C$.
 
-We claim, we can take $p/q \in C$, for which $p/q$ has the smallest denominator out of all rationals in $C$, and the smallest numerator out of all rationals with the smallest denominator in $C$. (Existence of such $p/q$ may seen obvious but it is not true for certain sets, say if $C = \Z \times \Z$, hence justification is needed).
+We claim, we can take $p/q \in C$, for which $p/q$ has the smallest denominator out of all rationals in $C$, and the smallest numerator out of all rationals with the smallest denominator in $C$. (Existence of such $p/q$ may seen obvious, but it is not true for certain sets, say if $C = \Z \times \Z$, hence justification is needed).
 
 By Axiom of Replacement, we replace every $(a,b) \in C$ with $b$ and form a new set $C_b$. Then, by Proposition 8.1.4, we take $q = \min(C_b)$. We then use Axiom of Specification to construct $\{(a, b) \in C: b = q\}$. We then use Axiom of replacement to replace $(a,b) \in \{(a, b) \in C: b = q\}$ with $b$ and form a new set $C_{ba}$. We use Proposition 8.1.4 again to take $p = \min(C_{ba})$, as desired.
 
@@ -5801,6 +5801,204 @@ If $p < q$, by Lemma $a_{n} = a_{n'} = p, a_{n + 1} = a_{n' + 1} = q$.
 
 We start with Lemma 2: If $a_{n} < a_{n + 1}$, $n$ is even. We argue by contradiction. Assume $n$ is odd, then $a_{n} = a_{2k + 1}, a_{n + 1} = a_{2(k + 1)}$. Yet, $a_{2(k + 1)} = a_{k + 1}, a_{2k + 1} = a_{k} + a_{k + 1}$. Hence, $a_{2(k + 1)} \leq a_{2k + 1}$, hence $a_{n + 1} \leq a_{n}$, contradiction.
 
-Therefore, since $p < q$, $n, n'$ are both even. Hence, easy to verify $g(n/2) = g(n'/2) = p/(q - p)$. Yet, $\gcd(p, q - p) = 1$ and $p/(q - p)$ has smaller denominator, contradiction, as desired. 
+Therefore, since $p < q$, $n, n'$ are both even. Hence, easy to verify $g(n/2) = g(n'/2) = p/(q - p)$. Yet, $\gcd(p, q - p) = 1$, hence $p/(q - p) \in C$, yet $p/(q - p)$ has smaller denominator than $p/q \in C$, contradiction, as desired.
 
 Case $p > q$ follows similarly. Hence $g$ is injective.
+
+### The second equality follows easily from Proposition 7.4.3 (Page 189)
+
+We need to show:
+
+$$
+\sum_{(n,m) \in \N \times \N} f(n, m) = \sum_{(n,m) \in \N \times \N} f(m, n)
+$$
+
+By Corollary 8.1.13, $\N \times \N$ is countable, hence there exists bijection $g: \N \rightarrow \N \times \N$, therefore, by Definition 8.2.1:
+
+$$\sum_{(n,m) \in \N \times \N} f(n, m) = \sum_{i = 0}^\infty f(g(i))$$
+
+Define $s: \N \times \N \rightarrow \N \times \N$ s.t. $s(m, n) = (n, m)$, then:
+
+$$
+\sum_{(n,m) \in \N \times \N} f(m, n) = \sum_{(n,m) \in \N \times \N} f(s(n, m))
+$$
+
+Hence:
+
+$$
+\sum_{(n,m) \in \N \times \N} f(m, n) = \sum_{j = 0}^\infty f(s(g(j)))
+$$
+
+Observe:
+
+$$\sum_{j = 0}^\infty f(s(g(j))) = \sum_{j = 0}^\infty f(g(g^{-1}s(g(j)))$$
+
+Easy to verify $g(g^{-1}s(g(j)))$ is a bijection from $\N \rightarrow \N$, hence, by Proposition 7.4.3:
+
+$$
+\sum_{i = 0}^\infty f(g(i)) = \sum_{j = 0}^\infty f(g(g^{-1}s(g(j))))
+$$
+
+Therefore:
+
+$$
+\begin{align*}
+\sum_{(n,m) \in \N \times \N} f(n, m)
+&= \sum_{i = 0}^\infty f(g(i)) \\
+&= \sum_{j = 0}^\infty f(g(g^{-1}s(g(j)))) \\
+&= \sum_{j = 0}^\infty f(s(g(j))) \\
+&= \sum_{(n,m) \in \N \times \N} f(m, n)
+\end{align*}
+$$
+
+As desired.
+
+### Exercise 8.2.1
+
+According to Erratum, $X$ is countable instead of at most countable.
+
+#### Only If direction
+
+Since $X$ is countable, there exists bijection $g: \N \rightarrow X$. Hence, by Definition 8.2.1:
+
+$$\sum_{x \in X} f(x) = \sum_{n = 0}^\infty f(g(n))$$
+
+And furthermore $\sum_{n = 0}^\infty |f(g(n))|$ is convergent.
+
+For a given finite subset $A \subseteq X$. If $A = \empty$, $\sum_{x \in X} f(x) = 0$, hence $\sum_{a \in X} |f(x)| < \infty$.
+
+If $A \neq \empty$, consider the set $\{g^{-1}(a): a \in A\}$. Since $A$ is finite, $\{g^{-1}(a): a \in A\}$ is finite. Since $\{g^{-1}(a): a \in A\}$ is finite and $\{g^{-1}(a): a \in A\} \subseteq \N$, by Exercise 3.6.3, it holds that $\exists M \in \N, \forall a \in A, g^{-1}(a) \leq M$. Then, denote $S = \{g(n): 0 \leq n \leq M\}$. We claim $A \subseteq S$. We argue by contradiction. Assume $a \notin S$, then $\forall 0 \leq n \leq M, g(n) \neq a$. Since $g: \N \rightarrow X$ is surjective, and $\forall 0 \leq n \leq M, g(n) \neq a$, there must exists $g(n') = a$ for some $n' > M$. Hence, $g^{-1}(a) = n' > M$, contradicting $\forall a \in A, g^{-1}(a) \leq M$.
+
+Therefore, by Proposition 7.1.11 e):
+
+$$
+\sum_{x \in A} |f(x)| + \sum_{x \in S - A} |f(x)|= \sum_{x \in S} |f(x)|
+$$
+
+$$
+\sum_{x \in A} |f(x)| \leq \sum_{x \in S} |f(x)|
+$$
+
+Easy to show $\sum_{x \in S} |f(x)| = \sum_{n = 0}^M |f(g(n))|$. Since $\sum_{n = 0}^\infty |f(g(n))|$ is convergent and $(\sum_{n = 0}^{M'} |f(g(n))|)^\infty_{M' = 0}$ is an increasing sequence, by Proposition 6.3.8, it holds that $\sum_{n = 0}^\infty |f(g(n))|$ is supremum of $(\sum_{n = 0}^{M'} |f(g(n))|)^\infty_{M' = 0}$, therefore:
+
+$$
+\sum_{n = 0}^M |f(g(n))| \leq \sum_{n = 0}^\infty |f(g(n))|
+$$
+
+Hence:
+
+$$
+\begin{align*}
+\sum_{x \in A} |f(x)|
+&\leq \sum_{x \in S} |f(x)|\\
+&= \sum_{n = 0}^M |f(g(n))| \\
+&\leq \sum_{n = 0}^\infty |f(g(n))| \\
+&= \sum_{x \in X} |f(x)|
+\end{align*}
+$$
+
+Hence $\sum_{x \in X} |f(x)|$ is an upper bound for $\{\sum_{x \in X} |f(x)|: A \subseteq X, A \text{ finite}\}$, therefore:
+
+$$\sup\{\sum_{x \in X} |f(x)|: A \subseteq X, A \text{ finite}\} \leq \sum_{x \in X} |f(x)| < \infty$$
+
+As desired.
+
+#### If direction
+
+Since $X$ is countable, there exists bijection $g: \N \rightarrow X$. Hence, by Definition 8.2.1:
+
+$$\sum_{x \in X} f(x) = \sum_{n = 0}^\infty f(g(n))$$
+
+We need to show $\sum_{x \in X} f(x)$ is absolutely convergent, which is equivalent to showing $\sum_{n = 0}^\infty f(g(n))$ is absolutely convergent, which is equivalent to showing $\sum_{n = 0}^\infty |f(g(n))|$ is convergent.
+
+Observe $\sum_{n = 0}^\infty |f(g(n))|$ is a series of non-negative numbers. Hence, by Proposition 7.3.1, if we can find a finite upper bound $M$ for $(\sum_{n = 0}^M |f(g(n))|)^\infty_{M = 0}$, $\sum_{n = 0}^\infty |f(g(n))|$ is convergent.
+
+We claim $\sup\{\sum_{x \in X} |f(x)|: A \subseteq X, A \text{ finite}\}$ is the desired finite upper bound. Easy to verify it is finite. For it being an upper bound, we claim, for any $M \in \N$,
+
+$$\sum_{n = 0}^M |f(g(n))| = \sum_{a \in A} |f(a)|$$
+
+For some set $A \subseteq X$.
+
+To prove the claim, we restrict the domain of $g$ to $\{0 \leq i \leq M\} \rightarrow \{g(n): 0 \leq i \leq M\}$. Easy to prove $g$ is a bijection. Furthermore, $ \{g(n): 0 \leq i \leq M\} \subseteq X$. Hence set $A = \{g(n): 0 \leq i \leq M\}$ yields the equality.
+
+Therefore, for any $M \in \N$
+, it holds that:
+
+$$\sum_{n = 0}^M |f(g(n))| = \sum_{a \in A} |f(a)| \leq \sup\{\sum_{x \in X} |f(x)|: A \subseteq X, A \text{ finite}\} $$
+
+Hence, by Proposition 7.3.1, $\sum_{n = 0}^\infty |f(g(n))|$ converges, as desired.
+
+### Exercise 8.2.2
+
+TODO (as it requires Choice)
+
+### Exercise 8.2.3
+
+#### (a)
+
+If $X$ is countable, then, consider bijection $h: \N \rightarrow X$:
+
+$$
+\begin{align*}
+\sum_{x \in X} f(x) + \sum_{x \in X} g(x)
+&= \sum_{n = 0}^\infty f(h(n)) + \sum_{n = 0}^\infty g(h(n)) \\
+&= \sum_{n = 0}^\infty (f(h(n)) + g(h(n))) &\text{By 7.2.14 a)} \\
+&= \sum_{x \in X} (f(x) + g(x))
+\end{align*}
+$$
+
+As desired.
+
+#### (b)
+
+If $X$ is countable, proof is similar to (a)
+
+#### (c)
+
+### Exercise 8.4.1
+
+#### Show that the Axiom of Choice implies Proposition 8.4.7
+
+Consider the set $Y_{x} = \{y \in Y: P(x, y) \text{ is true}\}$. Then, by Axiom of Choice (using $X$ as index set), there exists a function $g: X \rightarrow \bigcup_{x \in X} Y_{x}$ s.t. for each $x \in X$, $g(x) \in Y_{x}$. Observe, $g(x) \in Y_x$ iff $P(x, g(x))$ is true, hence $g: X \rightarrow \bigcup_{x \in X} Y_{x}$ has the property s.t. for each $x \in X$, $P(x, g(x))$ is true. Easy to verify $\bigcup_{x \in X} Y_{x} \subseteq Y$. Hence we define $f: X \rightarrow Y$ as $\forall x \in x, f(x) = g(x)$. Since $\forall x \in X, P(x, g(x)) \text{ is true}$ and $\forall x \in x, f(x) = g(x)$, $\forall x \in X, P(x, f(x))$ is true, as desired.
+
+#### Show that Proposition 8.4.7 implies the Axiom of Choice
+
+Let $I$ be a set and for each $\alpha \in I$ let $X_\alpha$ be a non-empty set. Then, define the property $P(\alpha, x)$ pertaining to object $\alpha \in I$ and $x \in \bigcup_{\beta \in I} X_{\beta}$, with the property being $x \in X_\alpha$. Pick $x' \in X_{\alpha}$ (by Lemma 3.1.6), easy to verify $x' \in \bigcup_{\beta \in I} X_{\beta}$. Hence $P(\alpha, x')$ is true. Therefore there is at least one $x ∈ \bigcup_{\beta \in I} X_{\beta}$ such that $P(\alpha,x)$ is true.
+
+Then, by Proposition 8.4.7, there exists a function $f: I \rightarrow \bigcup_{\beta \in I} X_{\beta}$ s.t. $\forall \alpha \in I, P(\alpha, f(\alpha)) \text{ is true}$. Hence $\forall \alpha \in I, f(\alpha) \in X_{\alpha} \text{ is true}$, as desired.
+
+### Exercise 8.4.2
+
+#### Using the axiom of choice, show that there exists a set $Y$ such that $|Y ∩ X_α| = 1$ for all $α ∈ I$
+
+By Axiom of Choice, there exists $f: I \rightarrow \bigcup_{\beta \in I} X_{\beta}$ s.t. $\forall \alpha \in I, f(\alpha) \in X_{\alpha}$. We claim $Y = \{f(\alpha): \alpha \in I\}$ is permissible. Observe $f(\alpha) \in Y ∩ X_α$. Hence $|Y ∩ X_α| \geq 1$ by 3.6.14 c). Assume $|Y ∩ X_α| > 1$, then there exists $e \in Y ∩ X_α, e \neq f(\alpha)$. Since $e \in Y$, it holds that $e = f(\beta)$ for some $\beta \in I - \{\alpha\}$. Therefore, $e \in X_\beta$. Since $e \in X_\alpha$ and $e \in X_\beta$, it holds that $e \in X_\alpha \cup X_\beta$, hence by single choice $X_\alpha \cap X_\beta \neq \empty$, however $X_\alpha \cap X_\beta = \empty$, contradiction. Hence $|Y ∩ X_α| = 1$
+
+#### Show that if the above statement was true for an arbitrary choice of sets $I$ and non-empty disjoint sets $X_α$, then the axiom of choice is true
+
+Given an index set $I$, we need to show there exists $f: I \rightarrow \bigcup_{\beta \in I} X_{\beta}$ s.t. $\forall \alpha \in I, f(\alpha) \in X_{\alpha}$. Consider the sets $M_{\alpha} = \{(\alpha, x): x \in X_\alpha\}$. Easy to verify $\forall \alpha, \beta \in I, \alpha \neq \beta \rightarrow M_\alpha \cap M_\beta = \empty$. Hence, there exists a set $Y$ s.t. $\forall \alpha \in I, |Y \cap M_\alpha| = 1$.
+
+We then define $f: I \rightarrow \bigcup_{\beta \in I} X_{\beta}$ implicitly with the property $P(\alpha, x)$ as $(\alpha, x) \in Y \cap M_{\alpha}$. The property is permissible, as, given $\alpha$, since $|Y \cap M_\alpha| = 1$, there exists $(\alpha, x) \in Y \cap M_\alpha$. Furthermore, assume $(a, x') \in Y \cap M_\alpha$ for some $x' \neq x$, then $|Y \cap M_\alpha| > 1$, contradiction.
+
+We claim $\forall \alpha \in I, f(\alpha) \in X_\alpha$. Since $(\alpha, f(\alpha)) \in Y \cap M_\alpha$, it holds that $(\alpha, f(\alpha)) \in M_\alpha$, hence $f(\alpha) \in X_{\alpha}$, as desired. Therefore $f$ is the desired choice function.
+
+### Exercise 8.4.3
+
+Errata: Tao stated that $f: A \rightarrow B$ must not only be an injection, but $g \circ f : A \rightarrow A$ is the identity map
+
+For some reason the error remain uncorrected in the 3rd edition.
+
+####  Using the axiom of choice, show that there then exists an injection $f : A → B$ s.t. $g \circ f : A \rightarrow A$ is the identity map
+
+Denote $X_\alpha = g^{-1}(\{\alpha\})$. Since $g: B \rightarrow A$ is surjective, $g^{-1}(\{\alpha\})$ is non-empty for all $\alpha \in A$. Then, by Axiom of Choice there exists $f: A \rightarrow \bigcap_{\alpha \in A} X_\alpha$ s.t. $\forall \alpha \in A, f(\alpha) \in X_\alpha$. Easy to verify $\bigcap_{\alpha \in A} X_\alpha \subseteq B$. Hence we can extend the range of $f$ s.t. $f: A \rightarrow B$.
+
+We claim $f$ is the desired injection. Given any $\alpha, \alpha' \in A$ s,t. $\alpha \neq \alpha'$, since $\forall \alpha \in A, f(\alpha) \in X_\alpha$, it holds that $f(\alpha) \in g^{-1}(\{\alpha\})$ and $f(\alpha') \in g^{-1}(\{\alpha'\})$. Therefore $g(f(\alpha)) = \alpha, g(f(\alpha')) = \alpha'$. (and $g \circ f$ is the identity map). We then argue by contradiction. Assume $f(\alpha) = f(\alpha')$, then $g(f(\alpha)) = g(f(\alpha'))$ implying $\alpha = \alpha'$, contradiction. Hence given any $\alpha, \alpha' \in A$, it holds that $f(\alpha) \neq f(\alpha')$, as desired.
+
+#### Show that if the above statement is true for arbitrary sets $A, B$ and surjections $g : B → A$, then the axiom of choice is true
+
+As shown in Exercise 8.4.2, if, for any arbitrary choice of sets $I$ and non-empty disjoint sets $X_α$, there exists a set $Y$ s.t. $|Y ∩ X_α| = 1$ for all $α ∈ I$, then the Axiom of Choice is true.
+
+Hence, suffices to show such $Y$ exists given for any arbitrary sets $A, B$ and surjections $g : B → A$, there exists an injection $f: A \rightarrow B$. We define the function $g: \bigcup_{\alpha \in I} X_{\alpha} \rightarrow I$ with the property $P(x, \alpha)$ being $x \in X_\alpha$. $P(x, \alpha)$ is permissible as for each $x \in \bigcup_{\alpha \in I} X_{\alpha}$, there exists $\alpha \in I$ s.t. $x \in X_{\alpha}$. Furthermore, there's exactly one $\alpha \in I$ s.t. $x \in X_{\alpha}$, as, assume $\exists \alpha, \alpha' \in I$ s.t. $\alpha \neq \alpha'$ and $x \in X_{\alpha}, x \in X_{\alpha'}$, then $X_{\alpha} \cap X_{\alpha'} = \empty$, contradiction.
+
+Then, there exists injection $f: I \rightarrow \bigcup_{\alpha \in I} X_\alpha$ s.t. $g \circ f: I \rightarrow I$ is identity map. We claim $Y = \{f(\alpha): \alpha \in I\}$ is permissible. We first show $|Y ∩ X_α| \neq 0$ for any given $\alpha \in I$. Observe $g(f(\alpha)) = \alpha$, hence, by definition of $g$, $f(\alpha) \in X_\alpha$. Therefore $\{f(\alpha)\} \subseteq Y ∩ X_α$ hence $|Y ∩ X_α| \neq 0$, as desired.
+
+We then show $|Y ∩ X_α| \leq 1$ by contradiction. Assume $|Y ∩ X_α| > 1$, then there exists $e \neq f(\alpha)$ s.t. $e \in Y ∩ X_α$. Since $e \in Y$, $\exists \beta \in I, f(\beta) = e$ by definition of $Y$. Furthermore since $f(\beta) = e \neq f(\alpha)$, it holds that $\beta \neq \alpha$. Since $g(f(\beta)) = \beta$, $f(\beta) \in X_{\beta}$ by definition of $g$. However, since $e \in Y ∩ X_α$, $f(\beta) = e \in X_{\alpha}$. Hence $f(\beta) \in X_{\alpha} \cap X_{\beta}$, hence $X_{\alpha}, X_{\beta}$ not disjoint, contradiction. Therefore $|Y ∩ X_α| = 1$, as desired.

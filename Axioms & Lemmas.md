@@ -476,8 +476,8 @@ We say that two sets $X$ and $Y$ have equal cardinality iff there exists a bijec
 
 Let $X, Y , Z$ be sets. Then:
 
-- $X$ has equal cardinality with $X$. 
-- If $X$ has equal cardinality with $Y$, then $Y$ has equal cardinality with $X$. 
+- $X$ has equal cardinality with $X$.
+- If $X$ has equal cardinality with $Y$, then $Y$ has equal cardinality with $X$.
 - If $X$ has equal cardinality with $Y$ and $Y$ has equal cardinality with $Z$, then $X$ has equal cardinality with $Z$.
 
 ### Proposition 3.6.8 (Uniqueness of cardinality)
@@ -1519,6 +1519,131 @@ The set $\N × \N$ is countable.
 ### Corollary 8.1.14
 
 If $X$ and $Y$ are countable, then $X × Y$ is countable.
+
+### Definition 8.2.1 (Series on countable sets)
+
+Let $X$ be a countable set, and let $f:X→\R$ be a function. We say that the series $\sum_{x \in X} f(x)$
+is absolutely convergent iff for some bijection $g : \N → X$, the sum
+$\sum_{n = 0}^∞ f(g(n))$ is absolutely convergent. We then define the sum of $\sum_{x \in X} f(x)$ by the formula
+
+$$\sum_{x \in X} f(x) = \sum_{n = 0}^∞ f(g(n))$$
+
+### Theorem 8.2.2 (Fubini’s theorem for infinite sums). 
+
+Let $f : \N × \N → \R$ be a function such that $\sum_{(n, m) \in \N \times \N} f(n, m)$ is absolutely convergent.
+
+Then we have
+
+$$
+\begin{align*}
+\sum_{n = 0}^\infty \left(\sum_{m = 0}^\infty f(n, m)\right)
+&= \sum_{(n,m) \times \N \times \N} f(n, m) \\
+&= \sum_{(m,n) \times \N \times \N} f(n, m) \\
+&= \sum_{m = 0}^\infty \left(\sum_{n = 0}^\infty f(n, m)\right)
+\end{align*}
+$$
+
+### Lemma 8.2.3
+
+Let $X$ be an at most countable set, and let $f : X → \R$
+be a function. Then the series $\sum_{x \in X} f(x)$ is absolutely convergent if and only if
+
+$$
+\sup\left\{\sum_{x \in A} f(x): A \subseteq X, A \text{ finite}\right\} < \infty
+$$
+
+### Definition 8.2.4
+
+Let $X$ be a set (which could be uncountable), and let $f:X→\R$ be a function. We say that the series $\sum_{x \in X} f(x)$ is absolutely convergent iff
+
+$$
+\sup\left\{\sum_{x \in A} f(x): A \subseteq X, A \text{ finite}\right\} < \infty
+$$
+
+### Lemma 8.2.5
+
+Let $X$ be a set (which could be uncountable), and let $f : X → \R$ be a function such that the series $\sum_{x \in X} f(x)$ is absolutely convergent. Then the set $\{x ∈ X : f(x) \neq 0\}$ is at most countable. (This result requires the axiom of choice, see Section 8.4.)
+
+Because of this, we can define the value of $\sum_{x \in X} f(x)$ for any absolutely convergent series on an uncountable set $X$ by the formula
+$$
+\sum_{x \in X} f(x) = \sum_{x \in X: f(x) \neq 0} f(x)
+$$
+since we have replaced a sum on an uncountable set $X$ by a sum on the countable set $\{x ∈ X : f(x) \neq 0\}$. (Note that if the former sum is absolutely convergent, then the latter one is also.)
+
+### Proposition 8.2.6 (Absolutely convergent series laws)
+
+Let $X$ be an arbitrary set (possibly uncountable), and let $f : X → \R$ and $g : X → \R$ be functions such that the series $\sum_{x \in X} f(x)$ and $\sum_{x \in X} g(x)$ are both absolutely convergent.
+
+#### (a)
+
+The series $\sum_{x \in X}(f(x) + g(x))$ is absolutely convergent, and
+
+$$
+\sum_{x \in X}(f(x) + g(x)) = \sum_{x \in X}f(x) + \sum_{x \in X}g(x)
+$$
+
+#### (b)
+
+If c is a real number, then $\sum_{x \in X} cf(x)$ is absolutely convergent, and
+
+$$
+\sum_{x \in X}cf(x) = c\sum_{x \in X}f(x)
+$$
+
+#### (c)
+
+If $X = X_1 \cup X_2$ for some disjoint sets $X_1$ and $X_2$, then $\sum_{x \in X_1} f(x)$ and $\sum_{x \in X_2} f(x)$ are absolutely convergent, and
+
+$$
+\sum_{x \in X_1 \cup X_2}f(x) = \sum_{x \in X_1}f(x) + \sum_{x \in X_2}f(x)
+$$
+
+Conversely, if $h : X → \R$ is such that $\sum_{x \in X_1} h(x)$ and $\sum_{x \in X_2} h(x)$ are absolutely convergent, then absolutely convergent, then $\sum_{x \in X_1 \cup X_2} h(x)$ is absolutely convergent, and
+
+$$
+\sum_{x \in X_1 \cup X_2}h(x) = \sum_{x \in X_1}h(x) + \sum_{x \in X_2}h(x)
+$$
+
+#### (d)
+
+If $Y$ is another set, and $φ : Y → X$ is a bijection, then $\sum_{y \in Y} f(φ(y))$ is absolutely convergent, and
+
+$$
+\sum_{y \in Y} f(φ(y)) = \sum_{x \in X} f(x)
+$$
+
+### Lemma 8.2.7
+
+Let $\sum^∞_{n=0} a_n$ be a series of real numbers which is conditionally convergent, but not absolutely convergent. Define the sets $A_+ =\{n∈\N:a_n ≥0\}$ and $A_− =\{n∈\N:a_n <0\}$,thus
+$A_+ \cup A_− =\ N$ and $A_+\cap A_− =\empty$. Then both of the series $\sum_{n \in A_+} a_n$ and $\sum_{n \in A_-} a_n$ are not conditionally convergent (and thus not absolutely convergent).
+
+### Theorem 8.2.8
+
+Let $\sum^∞_{n=0} a_n$ be a series which is conditionally convergent, but not absolutely convergent, and let $L$ be any real number. Then there exists a bijection $f : \N → \N$ such that $\sum^∞_{m=0} a_{f(m)}$ converges conditionally to $L$.
+
+### Definition 8.4.1 (Infinite Cartesian products)
+
+Let $I$ be a set (possibly infinite), and for each $α ∈ I$ let $X_α$ be a set. We then define the Cartesian
+product $\prod_{\alpha \in I} X_\alpha$ to be the set
+
+$$
+\prod_{\alpha \in I} X_\alpha = \left\{(x_\alpha)_{\alpha \in I} \in (\bigcup_{\beta \in I} x_\beta)^I : x_\alpha \in X_\alpha \text{ for all } \alpha \in I \right\}
+$$
+
+Remark: $(\bigcup_{\beta \in I} x_\beta)^I$ is the set of all functions from $I \rightarrow \bigcup_{\beta \in I} x_\beta$. (Set of all elements contained in the family of sets). $(x_\alpha)_{a \in I}$ represents a function from $I \rightarrow \bigcup_{\beta \in I}$ (The notation $(x_\alpha)_{a \in I}$ is a generalization of Definition 5.1.1). $x_\alpha \in X_\alpha \text{ for all } \alpha \in I$ is a constraint, stating the function must be a choice function.
+
+### Axiom 8.1 (Choice)
+
+Let $I$ be a set, and for each $α ∈ I$, let $X_α$ be
+a non-empty set. Then $\prod_{\alpha \in I} X_\alpha$ is also non-empty. In other words, there exists a function $(x_\alpha)_{\alpha \in I}$ which assigns to each $α ∈ I$ an element $x_α∈ X_\alpha$.
+
+### Lemma 8.4.5
+
+Let $E$ be a non-empty subset of the real line with $\sup(E) < \infty$ (i.e., $E$ is bounded from above). Then there exists a sequence $(a_n)^∞_{n=1}$ whose elements an all lie in $E$, such that $\lim_{n\rightarrow\infty} a_n = \sup(E)$.
+
+### Proposition 8.4.7
+
+Let $X$ and $Y$ be sets, and let $P(x,y)$ be a property pertaining to an object $x ∈ X$ and an object $y ∈ Y$ such that for every $x ∈ X$ there is at least one $y ∈ Y$ such that $P(x,y)$ is true. Then there exists a function $f : X → Y$ such that $P(x,f(x))$ is true for all $x ∈ X$.
 
 ## Appendix a
 
