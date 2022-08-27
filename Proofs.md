@@ -1924,67 +1924,88 @@ Hence $f \in F \rightarrow f \in F'$ and $f \in F' \rightarrow f \in F$, indicat
 
 ### Exercise 3.5.12
 
-We use induction to show existence of $a_N:\{n \in \N, n \leq N\} \rightarrow N$ s.t. $a_N(0) = c$ and $\forall n < N, a_N(n++) = f(n, a_N(n))$, then we use $a_N$ to construct $a$.
+Let $P(N)$ denote: a function $\phi_N:\{n \in \N, n \leq N\} \rightarrow \N $ s.t. $\phi_N(0) = c$ and $\forall n < N, \phi_N(n\mathtt{++}) = f(n, \phi_N(n))$ exists.
 
-Let $P(N)$ be $a_N$ exists. Then, for the base case, easy to construct (by definition of function) $a_0: \{0\} \rightarrow \N$ s.t. $a_0(0) = c$, as desired.
+Remark: $P(N)$ only states a function with certain properties exist. $P(N)$ does not state there's only one function with such properties exists (unless uniqueness is proven, there may be two, three or more functions with such properties).
 
-Assume true for $P(N)$, then, for $P(N++)$, we construct the function $a_{N++}$ s.t.:
+Remark 2: $\phi_N$ is merely a mock variable, as with $\xi_N$.
 
-- For $n < N++$, $a_{N++}(n) = a_{N}(n)$
-- For $n = N++$, $a_{N++}(N++) = f(N, a_{N}(N))$
+For base case $P(0)$, we construct $\phi_0: \{0\} \rightarrow \N$ s.t. $\phi_0(0) = c$, as desired.
 
-First, we can verify that the above is a function (that passes vertical line test). Assume there exists $a_{N++}(n)$ s.t. it is assigned with two values $y, y'$. Then, $n < N++$ is false as $a_{N++}(n) = a_{N}(n)$, and $a_{N}(n)$ is assigned with one value by inductive hypothesis. Hence, it must hold that $n = N++$ (by trichotomy of order), however, $a_{N++}(N++) = f(N, a_{N}(N))$, for which RHS has only one value, as desired.
+For $P(N\mathtt{++})$, by $P(N)$ there exists function $\phi_N:\{n \in \N, n \leq N\} \rightarrow \N $ s.t. $\phi_N(0) = c$ and $\forall n < N, \phi_N(n\mathtt{++}) = f(n, \phi_N(n))$.
 
-Also, easy to verify that the above function has the desired domain & range $\{n \in \N, n \leq N++\} \rightarrow N$.
+We claim the following construction defines a permissible $\phi_{N\mathtt{++}}$:
 
-We remains to show that the function satisfies the desired properties, aka:
+$$
+\phi_{N\mathtt{++}}(n) =
+\begin{cases}
+\phi_{N}(n) &\text{If } n < N\mathtt{++} \\
+f(n, \phi_{N}(n)) &\text{If } n = N\mathtt{++}
+\end{cases}
+$$
 
-- $a_{N++}(0) = c$
-- $\forall n < N++, a_{N++}(n++) = f(n, a_{N++}(n))$
+We need to verify that the construction defines a function from $\{n \in \N, n \leq N\mathtt{++}\} \rightarrow \N$. Pick $n \in \{n \in \N, n \leq N\mathtt{++}\}$, by Definition 2.2.11, either $n < N\mathtt{++}$ or $n = N\mathtt{++}$. We proceed by cases. If $n < N\mathtt{++}$, then by construction, $\phi_{N\mathtt{++}}(n) = \phi_{N}(n)$. Hence $\phi_{N\mathtt{++}}(n)$ is assigned once, and $a_{N\mathtt{++}}(n) = a_{N}(n) \in \N$. Case $n = N\mathtt{++}$ follows similarly. Hence, by Definition 3.3.1, $\phi_{N\mathtt{++}}$, as by construction, is a function from $\{n \in \N, n \leq N\mathtt{++}\} \rightarrow \N$.
 
-For $a_{N++}(0) = c$, note, it must hold that $0 < N++$. As, otherwise by trichotomy of order, we have $0 = N++$ or $0 > N++$. $0 = N++$ contradicts Axiom 2.3. $0 > N++$ implies that $0 = d + (N++)$ for some natural number $d$. By Corollary 2.2.9 it implies $0 = N++$, contradiction.
+To prove $P(N\mathtt{++})$, we remain to show that:
 
-Hence, $a_{N++}(0) = a_{N}(0) = c$ by inductive hypothesis, as desired.
+$$\phi_{N\mathtt{++}}(0) = c$$
+$$\forall n < N\mathtt{++}, \phi_{N\mathtt{++}}(n\mathtt{++}) = f(n, \phi_{N\mathtt{++}}(n))$$
 
-For $\forall n < N++, a_{N++}(n++) = f(n, a_N(n))$, we prove by cases. 
+To show $\phi_{N\mathtt{++}}(0) = c$, we first argue by contradiction that $0 < N\mathtt{++}$. Assume $0 < N\mathtt{++}$ is false, then by Proposition 2.2.13, we have $0 \geq N\mathtt{++}$, which, by Definition 2.2.11, implies $0 = d + (N\mathtt{++})$ for some $d \in \N$. Since $0 = d + (N\mathtt{++})$, by Corollary 2.2.9, $0 = N\mathtt{++}$. However, by Axiom 3.3, $\forall n \in N, 0 \neq n\mathtt{++}$, contradiction.
 
-For $n < N$, it must hold that $n + d = N$ for some positive $d$, hence $(n + d)++ = N++$ By Axiom of substitution and therefore $(n++) + d = N++$ by addition laws, hence $n++ < N++$. Therefore $a_{N++}(n++) = a_{N}(n++) = f(n, a_{N}(n))$. Note $n < N++$, hence $f(n, a_{N}(n)) = f(n, a_{N++}(n))$, as desired.
+For $\forall n < N\mathtt{++}, \phi_{N\mathtt{++}}(n\mathtt{++}) = f(n, \phi_N(n))$. By Proposition 2.2.12, $n < N\mathtt{++}$ iff $n \leq N$. Hence either $n = N$ or $n < N$. We proceed by cases. If $n = N$, then $a_{N\mathtt{++}}(n\mathtt{++}) = f(n, a_{N}(n))$ by construction. If $n < N$, then we claim $n\mathtt{++} < N\mathtt{++}$, as, by Definition 2.2.12 f), it holds that $n + d = N$ for some positive $d$, therefore $(n + d)\mathtt{++} = N\mathtt{++}$, therefore $(n\mathtt{++}) + d = N\mathtt{++}$ by Definition 2.2.1, therefore $n\mathtt{++} < N\mathtt{++}$ by Definition 2.2.12 f). Hence, by construction $\phi_{N\mathtt{++}}(n\mathtt{++}) = \phi_{N}(n\mathtt{++}) = f(n, \phi_{N}(n)) = f(n, \phi_{N\mathtt{++}}(n))$, as desired.
 
-For $n = N$, $a_{N++}(n++) = a_{N++}(N++) = f(N, a_{N}(N))$ by construction, as desired.
+Then, we argue for all $N \in \N$, only one function is specified by $P(N)$. We argue by induction. For each $N \in \N$, by $P(N)$ we take function $\phi_N:\{n \in \N, n \leq N\} \rightarrow N $ s.t. $\phi_N(0) = c$ and $\forall n < N, \phi_N(n\mathtt{++}) = f(n, \phi_N(n))$, and $\xi_N:\{n \in \N, n \leq N\} \rightarrow N $ s.t. $\xi_N(0) = c$ and $\forall n < N, \xi_N(n\mathtt{++}) = f(n, \xi_N(n))$. We then denote $P'(n)$ as $n \leq N \rightarrow \phi_N(n) = \xi_N(n)$.
 
-For $n > N$, $n \geq N++$ by 2.2.12 e. Hence, either $n = N++$ or $n > N++$, both violates trichotomy of order as $n < N++$. Therefore the case is vacuous, as desired.
+For base case $P'(0)$, by $P(N)$ we have $\phi_N(0) = \xi_N(0) = c$, as desired.
 
-For existence of $a$, we define $a(n) = a_N(n)$. Then, $a(0) = a_0(0) = c, a(n++) = a_{N++}(n) = f(n, a_{N}(n)) = f(n, a(n))$ as desired.
+For $P'(n\mathtt{++})$, by $P(N)$ we have $\phi_N(n\mathtt{++}) = f(n, \phi_N(n)), \xi_N(n\mathtt{++}) = f(n, \xi_N(n))$. Since, by $P'(n)$, we have $\phi_N(n) = \xi_N(n)$, we then have $f(n, \phi_N(n)) = f(n, \xi_N(n))$, therefore $\phi_N(n\mathtt{++}) = f(n, \xi_N(n)) = f(n, \xi_N(n)) = \xi_N(n\mathtt{++})$, as desired.
 
-For uniqueness of $a$, assume there exists $b$ that satisfies the conditions. We proceed to show that $\forall n \in N, a(n) = b(n)$, aka $a = b$.
+Since only one function is specified by each $P(N)$, for each $N \in \N$, we can define $a_N$ as the function specified by $P(N)$. Then $a(0) = a_0(0) = c$. To verify $a(n\mathtt{++}) = f(n, a(n))$, we first verify that $a_{N++}(n) = a_{N}(n)$. Recall, during construction of some function specified by $P(n\mathtt{++})$ (and referred to it as $\phi_{N++}$), we used some function specified by $P(n)$ (and referred to it as $\phi_N$), and set $\phi_{N\mathtt{++}}(n) = \phi_{N}(n)$ if $n < N\mathtt{++}$. Since two functions specified by $P(N), P(N\mathtt{++})$ are unique, $\phi_{N\mathtt{++}}(n) = \phi_{N}(n)$ implies $a_{N\mathtt{++}}(n) = a_{N}(n)$, hence:
 
-We let $P(n)$ be $a(n) = b(n)$. Then, $a(0) = b(0) = c$ by definition, hence the base case is satisfied.
+$$
+\begin{align*}
+a(n\mathtt{++})
+&= a_{N\mathtt{++}}(n\mathtt{++}) \\
+&= f(n, a_{N\mathtt{++}}(n)) \\
+&= f(n, a_{N}(n)) \\
+&= f(n, a(n))
+\end{align*}
+$$
 
-For $P(n++)$, note $a(n++) = f(n, a(n)), b(n++) = f(n, b(n))$. Hence since $a(n) = b(n)$ by inductive hypothesis, $f(n, a(n)) = f(n, b(n))$, hence $a(n++) = b(n++)$ as desired.
+As desired.
+
+We remains to show $a$ is unique, aka $a$ is the only function that satisfies the conditions $a(0) = c, a(n\mathtt{++}) = f(n, a(n))$.
+
+Assume there exists $b$ that satisfies the conditions. We proceed to show that $\forall n \in N, a(n) = b(n)$, aka $a = b$.
+
+We let $P''(n)$ be $a(n) = b(n)$. Then, $a(0) = b(0) = c$ by definition, hence the base case is satisfied.
+
+For $P''(n\mathtt{++})$, note $a(n\mathtt{++}) = f(n, a(n)), b(n\mathtt{++}) = f(n, b(n))$. Hence since $a(n) = b(n)$ by $P''(n)$, it holds that $f(n, a(n)) = f(n, b(n))$, hence $a(n\mathtt{++}) = b(n\mathtt{++})$ as desired.
 
 Therefore $a$ is unique.
 
-Problem with the above proof: Circularity. Order is defined using addition, which is then defined using recursive definition.
+Remark 3: Additional Challenge is not merely a challenge. In fact, the above proof is unsound. Above proof used order, which is defined using addition, which is then defined using recursive definition. Hence the above proof is circular.
 
-Bonus: TODO
+Additional Challenge : TODO
 
 ### Exercise 3.5.13
 
 We first show that $f$ exists, using Exercise 3.5.12, then we show that $f$ has the desired property:
 
 - $f$ needs to be bijective
-- $f(n) = n' \Leftrightarrow f(n++) = n'++$ 
+- $f(n) = n' \Leftrightarrow f(n\mathtt{++}) = n'\mathtt{++}$ 
 
 Existence: we define $f: \N \rightarrow \N'$ as:
 
 - $f(0) = 0'$
-- $f(n++) = f(n)++$
+- $f(n\mathtt{++}) = f(n)\mathtt{++}$
 
 Above uniquely defines a function by Exercise 3.5.12, as desired.
 
-For $f(n) = n' \Leftrightarrow f(n++) = n'++$, note $f(n) = n'$ implies $f(n++) = f(n)++ = n'++$, as desired. And, $f(n++) = n'++$ implies $f(n)++ = n'++$, which, by Axiom 2.4, implies that $f(n) = n'$, as desired. Using this, we can also inductively show that $f(n) = n'$.
+For $f(n) = n' \Leftrightarrow f(n\mathtt{++}) = n'\mathtt{++}$, note $f(n) = n'$ implies $f(n\mathtt{++}) = f(n)\mathtt{++} = n'\mathtt{++}$, as desired. And, $f(n\mathtt{++}) = n'\mathtt{++}$ implies $f(n)\mathtt{++} = n'\mathtt{++}$, which, by Axiom 2.4, implies that $f(n) = n'$, as desired. Using this, we can also inductively show that $f(n) = n'$.
 
-We proceed to prove that $f$ is bijective. For surjectivity, let the inductive hypothesis $P(n')$ be $\exists x \in N, f(x) = n'$. Then, for $P(0')$, we let $x = 0$ as desired. For $P(n++)$, note by inductive hypothesis we have $f(c) = n'$. Hence $f(c++) = n'++$, as desired.
+We proceed to prove that $f$ is bijective. For surjectivity, let the inductive hypothesis $P(n')$ be $\exists x \in N, f(x) = n'$. Then, for $P(0')$, we let $x = 0$ as desired. For $P(n\mathtt{++})$, note by inductive hypothesis we have $f(c) = n'$. Hence $f(c\mathtt{++}) = n'\mathtt{++}$, as desired.
 
 For injectivity, assume $f(n) = f(m)$. Then, we have $f(n) = n', f(m) = m'$, hence $f(n) = f(m) \rightarrow n' = m'$, as desired.
 
@@ -2014,7 +2035,7 @@ If $X$ has same cardinality with $Y$, there exists bijective $f: X \rightarrow Y
 
 ### Exercise 3.6.2
 
-Note $\{i \in \N; 1 \leq i \leq 0\}$ is empty, as $i \leq 0$ implies $i + d = 0$, which then by Corollary 2.2.9 implies that $i = 0$, yet $1 + a = i$ for some $a$, leading to $1 = 0$, yet $1 = 0++$, hence $0++ = 0$, contradicting Axiom 2.3.
+Note $\{i \in \N; 1 \leq i \leq 0\}$ is empty, as $i \leq 0$ implies $i + d = 0$, which then by Corollary 2.2.9 implies that $i = 0$, yet $1 + a = i$ for some $a$, leading to $1 = 0$, yet $1 = 0\mathtt{++}$, hence $0\mathtt{++} = 0$, contradicting Axiom 2.3.
 
 Only If direction:
 
@@ -2026,17 +2047,17 @@ If $X$ is empty, then, obvious bijection $f: \empty \rightarrow \empty$ exists, 
 
 ### Exercise 3.6.3
 
-We induct on $n$. Vacuously true for $n = 0$. For $P(n++)$, consider $f: \{i \in \N, 1 \leq i \leq n++\} \rightarrow \N$, consider $g: \{i \in \N, 1 \leq i \leq n\} \rightarrow \N$ s.t. $\forall 1 \leq i \leq n, g(i) = f(i)$, then by inductive hypothesis $\exists M' \in \N, \forall 1 \leq i \leq n, g(i) = f(i) \leq M'$.
+We induct on $n$. Vacuously true for $n = 0$. For $P(n\mathtt{++})$, consider $f: \{i \in \N, 1 \leq i \leq n\mathtt{++}\} \rightarrow \N$, consider $g: \{i \in \N, 1 \leq i \leq n\} \rightarrow \N$ s.t. $\forall 1 \leq i \leq n, g(i) = f(i)$, then by inductive hypothesis $\exists M' \in \N, \forall 1 \leq i \leq n, g(i) = f(i) \leq M'$.
 
-Therefore, we let $M = \max(M', f(n++))$, then:
+Therefore, we let $M = \max(M', f(n\mathtt{++}))$, then:
 
-$$\forall 1 \leq i \leq n, f(i) \leq M' \leq  \max(M', f(n++))$$
+$$\forall 1 \leq i \leq n, f(i) \leq M' \leq  \max(M', f(n\mathtt{++}))$$
 
-$$f(n++) \leq \max(M', f(n++))$$
+$$f(n\mathtt{++}) \leq \max(M', f(n\mathtt{++}))$$
 
 Combined:
 
-$$\forall 1 \leq i \leq n++, f(i) \leq  \max(M', f(n++))$$
+$$\forall 1 \leq i \leq n\mathtt{++}, f(i) \leq  \max(M', f(n\mathtt{++}))$$
 
 As desired.
 
@@ -2107,9 +2128,9 @@ Assume $Y$ is non-empty, then we claim $Y = X = \{x\}$. As, assume $Y$ contains 
 
 Assume $Y$ is empty, then $Y \subset X$, as desired.
 
-For $P(n++)$, we take $x \in X, x \notin Y$ (which exists as $X \neq Y$. By Lemma 3.6.9 $\#(X - \{x\}) = n$. Hence, if $X - \{x\} \neq Y$, it must then hold that $X - \{x\} \subset Y$, therefore $\#(Y) < \#(X - \{x\})$, by inductive hypothesis. Hence $\#(Y) < \#(X - \{x\}) < n++ = \#(X)$ as desired.
+For $P(n\mathtt{++})$, we take $x \in X, x \notin Y$ (which exists as $X \neq Y$. By Lemma 3.6.9 $\#(X - \{x\}) = n$. Hence, if $X - \{x\} \neq Y$, it must then hold that $X - \{x\} \subset Y$, therefore $\#(Y) < \#(X - \{x\})$, by inductive hypothesis. Hence $\#(Y) < \#(X - \{x\}) < n\mathtt{++} = \#(X)$ as desired.
 
-If $X - \{x\} = Y$, then $\#(Y) = \#(X - \{x\}) = n < n++ = \#(X)$, closing the induction.
+If $X - \{x\} = Y$, then $\#(Y) = \#(X - \{x\}) = n < n\mathtt{++} = \#(X)$, closing the induction.
 
 (d)
 
@@ -2117,11 +2138,11 @@ Let $\#(X) = n$, we induct on $\#(X)$.
 
 For $n = 0$, by Exercise 3.6.2, $X = \empty$, hence $f(X) = \empty$. Therefore $\#(X) = \#(f(X)) = 0$, as desired.
 
-For $P(n++)$, we take an element $x \in X$ and consider $X - \{x\}$. Note by Lemma 3.6.9, $\#(X - \{x\}) = n$, hence $\#(f(X - \{x\}))\leq \#(X - \{x\})$ by inductive hypothesis. 
+For $P(n\mathtt{++})$, we take an element $x \in X$ and consider $X - \{x\}$. Note by Lemma 3.6.9, $\#(X - \{x\}) = n$, hence $\#(f(X - \{x\}))\leq \#(X - \{x\})$ by inductive hypothesis. 
 
 Then, we perform case analysis. If there exist $x' \in X, x \neq x'$ s.t. $f(x) = f(x')$, then $f(X - \{x\}) = f(X)$. As, given $y \in f(X)$, it must hold that $y = f(c)$ for some $c \in X$. If $c \in X - \{x\}$, then $y \in f(X - \{x\})$. If $c \notin X - \{x\}$, since $c \in X$ it must hold that $c = x$. Hence $y = f(c) = f(x') \in f(X)$ as desired. Similarly for $y \in f(X - \{x\})$, we can show that $y \in f(X)$, as desired.
 
-Therefore, $f(X - \{x\}) = f(X)$, hence $\#f(X - \{x\}) = \#f(X)$, consequently $\#f(X) \leq \#(X - \{x\})$, note $\#(X - \{x\}) = n$, hence $\#f(X) \leq n < n++$ as desired.
+Therefore, $f(X - \{x\}) = f(X)$, hence $\#f(X - \{x\}) = \#f(X)$, consequently $\#f(X) \leq \#(X - \{x\})$, note $\#(X - \{x\}) = n$, hence $\#f(X) \leq n < n\mathtt{++}$ as desired.
 
 If there doesn't exist $x' \in X, x \neq x'$ s.t. $f(x) = f(x')$, then easy to verify $f(X - \{x\}) = f(X) - \{f(x)\}$. Since $f(x) \in f(X)$, $\#(f(X - \{x\})) = \#(f(X) - \{f(x)\}) = \#(f(X)) - 1$. Hence:
 
@@ -2129,7 +2150,7 @@ $$
 \begin{align*}
 \#(f(X - \{x\})) &\leq \#(X - \{x\}) \\
 \#(f(X)) - 1 &\leq n \\
-\#(f(X)) &\leq n++ \\
+\#(f(X)) &\leq n\mathtt{++} \\
 \end{align*}
 $$
 
@@ -2171,7 +2192,7 @@ For uniqueness, Induct on $n$.
 
 For $n = 1$, $1 = mq + r$. Hence, it must hold that $r = 1$, then $mq = 0$. Since $q \geq 1$, then by Lemma 2.3.3, $m = 0$ must hold, as desired.
 
-For $P(n++)$, we have $n++ = mq + r$. Assume we also have $n++ = mq + r'$, s.t. $r \neq r'$, then contradiction as $mq + r = mq + r' \rightarrow r = r'$. Similarly, cannot have $m \neq m' \land r = r'$. Therefore must have $m \neq m' \land r \neq r'$
+For $P(n\mathtt{++})$, we have $n\mathtt{++} = mq + r$. Assume we also have $n\mathtt{++} = mq + r'$, s.t. $r \neq r'$, then contradiction as $mq + r = mq + r' \rightarrow r = r'$. Similarly, cannot have $m \neq m' \land r = r'$. Therefore must have $m \neq m' \land r \neq r'$
 
 Then, if $r, r' > 1$, we have $n = mq + (r - 1) = m'q + (r' - 1)$, contradicting $P(n)$.
 
@@ -2200,7 +2221,7 @@ Let $\#(X) = n$, We induct on $n$.
 
 When $n = 0$, we have $\#(Y)^{\#(X)} = 1$ and $X = \empty$ (By 3.6.2), and there exists $1$ function $f: X \rightarrow \empty$, as desired.
 
-For $P(n++)$, consider taking $x \in X$, and hence $Y^{X - \{x\}} = \#(Y)^n$ by inductive hypothesis.
+For $P(n\mathtt{++})$, consider taking $x \in X$, and hence $Y^{X - \{x\}} = \#(Y)^n$ by inductive hypothesis.
 
 We proceed to show that there exists a bijection between $Y^{X - \{x\}} \times Y^{\{x\}}$ and $Y^X$. Let $g: Y^{X - \{x\}} \times Y^{\{x\}} \rightarrow Y^X$ be:
 
@@ -2458,7 +2479,7 @@ Equivalent of showing exactly one of $a - b > 0$, $a - b$ positive, $a - b$ nega
 
 Let $P(n)$ denote $n \geq 0$. Then, $P(0)$ is true as $0 \geq 0$.
 
-For $P(n++)$, note $n++ > n \geq 0$ (by $P(n)$), as desired.
+For $P(n\mathtt{++})$, note $n\mathtt{++} > n \geq 0$ (by $P(n)$), as desired.
 
 However, $P(-1)$, aka $-1 \geq 0$ is false.
 
@@ -5558,11 +5579,17 @@ Easy to verify the ratio for both is $1$. And hence by Lemma 7.5.2, $\alpha$ for
 
 ### Exercise 8.1.1
 
-TODO (Since it requires Axiom of Choice not introduced in 8.1 yet)
+#### Only if direction
+
+By single choice, there exists $x \in X$. We claim $X - \{x\}$ is infinite. Assume $X - \{x\}$ is finite, then by Proposition 3.6.14 b), $(X - \{x\}) \cup \{x\} = X$ is finite, contradiction. Easy to verify $X - \{x\} \neq X$ and $(X - \{x\}) \subseteq X$, hence set $Y = X - \{x\}$ is permissible.
+
+#### If direction
+
+
 
 ### Exercise 8.1.2
 
-A inductive proof is presented already in the solution for Exercise 6.6.3.
+A inductive proof is presented in the solution for Exercise 6.6.3.
 
 Instead, we present a proof by infinite descent.
 
@@ -5571,6 +5598,8 @@ Assume the contrapositive:
 $$\forall n \in X, \exists m \in X, n > m \quad \text{(1)}$$
 
 Then take an element $e_0 \in X$. By (1), $\exists e_1 \in X, e_0 > e_1$. Hence, we can recursively construct a sequence $(e_n)^\infty_{n = 0}$ s.t. $e_n > e_{n + 1}$, yet $\forall n \in \N, e_n \in \N$, contradiction by infinite descent.
+
+Remark: The above proof assumes the existence of $(e_n)^\infty_{n = 0}$ from $\exists e_{n + 1} \in X, e_{n} > e_{n + 1}$. It uses [Axiom of Dependent Choice](https://en.wikipedia.org/wiki/Axiom_of_dependent_choice), which is a weaker form of Axiom of Choice.
 
 #### Does the well-ordering principle work if we replace the natural numbers by the integers? What if we replace the natural numbers by the positive rationals?
 
@@ -6002,3 +6031,4 @@ Hence, suffices to show such $Y$ exists given for any arbitrary sets $A, B$ and 
 Then, there exists injection $f: I \rightarrow \bigcup_{\alpha \in I} X_\alpha$ s.t. $g \circ f: I \rightarrow I$ is identity map. We claim $Y = \{f(\alpha): \alpha \in I\}$ is permissible. We first show $|Y ∩ X_α| \neq 0$ for any given $\alpha \in I$. Observe $g(f(\alpha)) = \alpha$, hence, by definition of $g$, $f(\alpha) \in X_\alpha$. Therefore $\{f(\alpha)\} \subseteq Y ∩ X_α$ hence $|Y ∩ X_α| \neq 0$, as desired.
 
 We then show $|Y ∩ X_α| \leq 1$ by contradiction. Assume $|Y ∩ X_α| > 1$, then there exists $e \neq f(\alpha)$ s.t. $e \in Y ∩ X_α$. Since $e \in Y$, $\exists \beta \in I, f(\beta) = e$ by definition of $Y$. Furthermore since $f(\beta) = e \neq f(\alpha)$, it holds that $\beta \neq \alpha$. Since $g(f(\beta)) = \beta$, $f(\beta) \in X_{\beta}$ by definition of $g$. However, since $e \in Y ∩ X_α$, $f(\beta) = e \in X_{\alpha}$. Hence $f(\beta) \in X_{\alpha} \cap X_{\beta}$, hence $X_{\alpha}, X_{\beta}$ not disjoint, contradiction. Therefore $|Y ∩ X_α| = 1$, as desired.
+
