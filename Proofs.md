@@ -5593,7 +5593,9 @@ Then for every natural number $n$, define $A_n: \{S \subseteq X: |S| = n\}$. $A_
 
 Remark 2: Similar to our proof for Exercise 3.5.12, to build an infinite set, one way is to establish series of finite approximations and then combine them.
 
-Then, by the Axiom of Choice, there exists $f: \N \rightarrow \bigcup_{n \in \N} A_n$ such that $\forall n \in \N, f(n) \in A_n$.
+We proceed to prove that $A_n: \{S \subseteq X: |S| = n\}$ is non-empty for all $n \in \N$. Assume there exists $n$ s.t. $A_n$ is empty. Then, by Proposition 8.1.4, there exists minimum $n$ s.t. $A_n$ is empty. Call it $n_0$. We proceed by cases. If $n_0 = 0$, then $\empty \in \{S \subseteq X: |S| = n\}$, contradiction. If $n_0 > 0$, then $A_{n_0 - 1}$ is non-empty. Take $a_{n_0 - 1} \in A_{n_0 - 1}$, we claim $X - a_{n_0 - 1}$ is non-empty. (Assume $X - a_{n_0 - 1}$ is empty, then $X \subseteq a_{n_0 - 1}$, hence by Proposition 3.6.14 d), $X$ is finite, contradiction.) Hence, take $x \in X - a_{n_0 - 1}$, easy to verify $a_{n_0 - 1} \cup \{x\} \in A_{n_0}$, contradiction.
+
+Therefore, by the Axiom of Choice, there exists $f: \N \rightarrow \bigcup_{n \in \N} A_n$ such that $\forall n \in \N, f(n) \in A_n$.
 
 Then, we let $C = \bigcup_{n \in \N} f(n)$. Easy to verify $C \subseteq X$. Remains to show $C$ is countable. We proceed to show $C$ is at most countable.
 
