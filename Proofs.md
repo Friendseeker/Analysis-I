@@ -5579,13 +5579,86 @@ Easy to verify the ratio for both is $1$. And hence by Lemma 7.5.2, $\alpha$ for
 
 ### Exercise 8.1.1
 
-#### Only if direction
+#### There exists a proper subset $Y \subsetneq X$ of $X$ which has the same cardinality as $X$ $\implies$ $X$ is infinite
 
-By single choice, there exists $x \in X$. We claim $X - \{x\}$ is infinite. Assume $X - \{x\}$ is finite, then by Proposition 3.6.14 b), $(X - \{x\}) \cup \{x\} = X$ is finite, contradiction. Easy to verify $X - \{x\} \neq X$ and $(X - \{x\}) \subseteq X$, hence set $Y = X - \{x\}$ is permissible.
+We prove the contrapositive. Assume $X$ is finite, then by Proposition 3.6.14 c), for all proper subset $Y \subsetneq X$, $|Y| < |X|$, hence $|Y| \neq |X|$, as desired.
 
-#### If direction
+#### $X$ is infinite $\implies$ there exists a proper subset $Y \subsetneq X$ of $X$ which has the same cardinality as $X$
 
+We first establish that $X$ is infinite $\implies$ $X$ has a countable subset $C$.
 
+Remark: This may seen as an arbitrary move. However, since it is more tractable to show a countable subset $C$ has proper subset $C - \{c\}$ with the same cardinality as $C$, taking a countable subset may help to reduce a less tractable problem to a more tractable problem.
+
+Then for every natural number $n$, define $A_n: \{S \subseteq X: |S| = n\}$. $A_n$ is a valid set by Lemma 3.4.9 and Axiom of Specification.
+
+Remark 2: Similar to our proof for Exercise 3.5.12, to build an infinite set, one way is to establish series of finite approximations and then combine them.
+
+Then, by the Axiom of Choice, there exists $f: \N \rightarrow \bigcup_{n \in \N} A_n$ such that $\forall n \in \N, f(n) \in A_n$.
+
+Then, we let $C = \bigcup_{n \in \N} f(n)$. Easy to verify $C \subseteq X$. Remains to show $C$ is countable. We proceed to show $C$ is at most countable.
+
+We prove a more general statement, we claim:
+
+$$
+\bigcup_{n \in \N} Q_n
+$$
+
+is at most countable if each $Q_n$ is at most countable. (Lemma 1)
+
+Remark 3: Say we have some at most countable sets $Q_0, Q_1...$, then a natural way to represent them is to write them out as a 2D array.
+
+| $f(n)$ | $0$ | $1$ | $2$ | $3$ |
+|--------|-----|-----|-----|-----|
+| $f(0)$ | $a$ |     |     |     |
+| $f(1)$ |     | $b$ |     |     |
+| $f(2)$ | $b$ |     |     | $a$ |
+| $f(3)$ | $b$ |     | $a$ | $c$ |
+
+Then, a natural idea is map each element in $\bigcup_{n \in \N} f(n)$ to $\N \rightarrow \N$ with each elements's coordinate in the 2D array.
+
+However, the coordinates are not unique (e.g. $a$ is at $(0, 0), (3, 2), (2, 3)$) at the same time. Hence we instead aim for a injection by taking the coordinate with the smallest $y$ axis.
+
+Formalizing the idea from Remark 3, since $n \in \N$, $Q_n$ is at most countable, hence by Exercise 8.1.6, there exists injection from $Q_n \rightarrow \N$. Combined with Axiom 3.10, the set
+
+$$T_n = \{t \text{ is a function with domain } Q_n \text{ and range } \N: t \text{ is an injection}\}$$
+
+is non-empty. Hence, by Axiom of choice, for each $n \in \N$ we have a sequence $(t_n)_{n \in \N}$ s.t. $t_n: Q_n \rightarrow \N$ is an injection.
+
+We define $u: \bigcup_{n \in \N} Q_n \rightarrow \N \times \N$ as:
+
+$$
+u(x) = (t_{n_x}(x), n_x)
+$$
+
+For which $n_x = \min\{n \in \N: x \in Q_n\}$, which exists by Proposition 8.1.4.
+
+We then claim $u$ is an injection. Take $x, x' \in \bigcup_{n \in \N}$ s.t. $x \neq x'$. Then, we claim $(t_{n_x}(x), n_x) \neq (t_{n_{x'}}(x), n_{x'})$. We proceed by cases. If $n_{x'} \neq n_{x}$, then $(t_{n_x}(x), n_x) \neq (t_{n_{x'}}(x), n_{x'})$, as desired. If $n_{x'} = n_{x}$, then $t_{n_x}(x) = t_{n_{x'}}(x)$. Since $t_{n_{x'}}$ is an injection and $x \neq x'$, $t_{n_x}(x) = t_{n_{x'}}(x) t_{n_{x'}}(x')$ as desired.
+
+Since, by Corollary 8.1.13, $\N \times \N$ is countable, there exists bijection $r: \N \times \N \rightarrow \N$. Hence, by Exercise 3.3.2, $r \circ u: \bigcup_{n \in \N} Q_n \rightarrow \N$ is injective. By Exercise 8.1.6, $\bigcup_{n \in \N}$ is at most countable, as desired.
+
+Since each $f(n)$ is at most countable, by Lemma 1, $C = \bigcup_{n \in \N} f(n)$ is at most countable. We then argue $C$ is not finite. Assume $C$ is finite, then since $f(|C| + 1|) \subseteq C$, by Proposition 3.6.14 c), $|f(|C| + 1|)| \leq |C|$. However $|f(|C| + 1|)| = |C| + 1 > |C|$, contradiction. Since $C$ is at most countable and $C$ is not finite, $C$ is countable.
+
+Since $C$ is countable, take $c \in C$. By Corollary 8.1.7, $C - \{c\}$ is at most countable. We argue $C - \{c\}$ is countable. Assume $C - \{c\}$ is finite, then By Proposition 3.6.14 b), $C = (C - \{c\}) \cup \{c\}$ is finite, contradiction.
+
+Since $C, C - \{c\}$ are countable, there exists bijection $g: C \rightarrow C - \{c\}$.
+
+We then define $h: X \rightarrow X - \{c\}$ as:
+
+$$
+h(x) =
+\begin{cases}
+g(x) &\text{If } x \in C \\
+x &\text{Otherwise}
+\end{cases}
+$$
+
+We claim $g$ is a bijection.
+
+We argue $g$ is injective by contradiction. If $\exists a, b \in X, a \neq b \land h(a) = h(b)$, then either $a, b \in C, a \in C \land b \notin C, a, b \notin C$. We proceed by cases. Assume $a, b \in C$, then $\exists a, b \in C, a \neq b \land g(a) = g(b)$, hence $g$ is not injective, contradiction. Assume $a \in C \land b \notin C$, then $g(a) \in C - \{c\}$ and $g(b) = b \notin C$. Since $g(a) \in C - \{c\}$, $g(a) \in C$, yet $g(a) = g(b) \notin C$, contradiction. Assume $a, b \notin C$, then $h(a) = a, h(b) = b$, hence $h(a) = h(b)$ implies $a = b$, contradiction.
+
+We argue $g$ is surjective by cases, for all $y \in C - \{c\}$, we have $h(g^{-1}(y)) = y$. For all $y \notin C - \{c\}$, we have $h(y) = y$. Hence in either case there exist $x \in X$ s.t. $h(x) = y$.
+
+Since $h: X \rightarrow X - \{c\}$ is a bijection, $|X| = |X - \{c\}|$. Since  $|X| = |X - \{c\}|$ and $X - \{c\} \subsetneq X$, $Y = X - \{c\}$ is permissible, as desired.
 
 ### Exercise 8.1.2
 
@@ -5599,7 +5672,18 @@ $$\forall n \in X, \exists m \in X, n > m \quad \text{(1)}$$
 
 Then take an element $e_0 \in X$. By (1), $\exists e_1 \in X, e_0 > e_1$. Hence, we can recursively construct a sequence $(e_n)^\infty_{n = 0}$ s.t. $e_n > e_{n + 1}$, yet $\forall n \in \N, e_n \in \N$, contradiction by infinite descent.
 
-Remark: The above proof assumes the existence of $(e_n)^\infty_{n = 0}$ from $\exists e_{n + 1} \in X, e_{n} > e_{n + 1}$. It uses [Axiom of Dependent Choice](https://en.wikipedia.org/wiki/Axiom_of_dependent_choice), which is a weaker form of Axiom of Choice.
+#### Exact Construction of $(e_n)^\infty_{n = 0}$
+
+Since $\forall n \in X, \exists m \in X, n > m$, for every $x \in X$, the set $A_x = \{y \in X: y < x\}$ is non-empty. Therefore we define the choice function $g: X \rightarrow \bigcup_{x \in X} A_x$ s.t. $\forall x \in X, g(x) \in A_x$. Therefore $\forall x \in X, g(x) < x$. Then, we take $c \in X$. Finally by Exercise 3.5.12, there exists sequence $(e_n)^\infty_{n = 0}$ s.t.
+
+$$e_0 = c$$
+$$\forall n \in \N, e_{n+1} = f(n, e_n)$$
+
+for which $f(n, e_n) = g(e_n)$.
+
+Since $e_{n + 1} = f(n, e_n) = g(e_n)$, it holds that $\forall n \in \N, e_{n + 1} < e_{n}$. Since $g$ has range $\bigcup_{x \in X} A_x \subseteq X$, easy to verify $\forall n \in \N, e_n \in X$, as desired.
+
+Remark: it turns out to demonstrate existence of a sequence for which we make arbitrary choice at each step (e.g. multiple permissible $e_{n + 1}$ given a single $e_n$), there's a special Axiom called [Axiom of Dependent Choice](https://en.wikipedia.org/wiki/Axiom_of_dependent_choice). And, its proof from Axiom of Choice is identical to the above reasoning.
 
 #### Does the well-ordering principle work if we replace the natural numbers by the integers? What if we replace the natural numbers by the positive rationals?
 
