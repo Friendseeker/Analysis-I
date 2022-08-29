@@ -5620,9 +5620,9 @@ Then, a natural idea is map each element in $\bigcup_{n \in \N} f(n)$ to $\N \ri
 
 However, the coordinates are not unique (e.g. $a$ is at $(0, 0), (3, 2), (2, 3)$) at the same time. Hence we instead aim for a injection by taking the coordinate with the smallest $y$ axis.
 
-Formalizing the idea from Remark 3, since $n \in \N$, $Q_n$ is at most countable, hence by Exercise 8.1.6, there exists injection from $Q_n \rightarrow \N$. Combined with Axiom 3.10, the set
+Formalizing the idea from Remark 3, since $n \in \N$, $Q_n$ is at most countable, hence by Exercise 8.1.6, there exists injection from $Q_n \rightarrow \N$. Hence, the set
 
-$$T_n = \{t \text{ is a function with domain } Q_n \text{ and range } \N: t \text{ is an injection}\}$$
+$$T_n = \{t \text{ is a injection with domain } Q_n \text{ and range } \N\}$$
 
 is non-empty. Hence, by Axiom of choice, for each $n \in \N$ we have a sequence $(t_n)_{n \in \N}$ s.t. $t_n: Q_n \rightarrow \N$ is an injection.
 
@@ -5634,7 +5634,7 @@ $$
 
 For which $n_x = \min\{n \in \N: x \in Q_n\}$, which exists by Proposition 8.1.4.
 
-We then claim $u$ is an injection. Take $x, x' \in \bigcup_{n \in \N}$ s.t. $x \neq x'$. Then, we claim $(t_{n_x}(x), n_x) \neq (t_{n_{x'}}(x), n_{x'})$. We proceed by cases. If $n_{x'} \neq n_{x}$, then $(t_{n_x}(x), n_x) \neq (t_{n_{x'}}(x), n_{x'})$, as desired. If $n_{x'} = n_{x}$, then $t_{n_x}(x) = t_{n_{x'}}(x)$. Since $t_{n_{x'}}$ is an injection and $x \neq x'$, $t_{n_x}(x) = t_{n_{x'}}(x) t_{n_{x'}}(x')$ as desired.
+We then claim $u$ is an injection. Take $x, x' \in \bigcup_{n \in \N}$ s.t. $x \neq x'$. Then, we claim $(t_{n_x}(x), n_x) \neq (t_{n_{x'}}(x), n_{x'})$. We proceed by cases. If $n_{x'} \neq n_{x}$, then $(t_{n_x}(x), n_x) \neq (t_{n_{x'}}(x), n_{x'})$, as desired. If $n_{x'} = n_{x}$, then $t_{n_x}(x) = t_{n_{x'}}(x)$. Since $t_{n_{x'}}$ is an injection and $x \neq x'$, $t_{n_x}(x) = t_{n_{x'}}(x) = t_{n_{x'}}(x')$ as desired.
 
 Since, by Corollary 8.1.13, $\N \times \N$ is countable, there exists bijection $r: \N \times \N \rightarrow \N$. Hence, by Exercise 3.3.2, $r \circ u: \bigcup_{n \in \N} Q_n \rightarrow \N$ is injective. By Exercise 8.1.6, $\bigcup_{n \in \N}$ is at most countable, as desired.
 
@@ -5837,7 +5837,7 @@ Hence, $h$ is bijective, therefore $|X \times Y| = |\N \times \N|$. Since $|\N \
 
 ### Exercise 8.1.9
 
-TODO as it requires Axiom of Choice, which is not introduced yet.
+Proved in Exercise 8.1.1 Solution
 
 ### Exercise 8.1.10
 
@@ -6045,7 +6045,39 @@ Hence, by Proposition 7.3.1, $\sum_{n = 0}^\infty |f(g(n))|$ converges, as desir
 
 ### Exercise 8.2.2
 
-TODO (as it requires Choice)
+Define $M$ as:
+
+$$M = \sup\{ \sum_{x \in A} |f(x)| : A ⊆ X,A \text{ finite}\} $$
+
+We show the set $\{x ∈ X : |f(x)| > 1/n\}$ are finite with cardinality at most $Mn$ for every $n \in \Z^{+}$.
+We argue by contradiction. Assume $\{x ∈ X : |f(x)| > 1/n\}$ is infinite, then by our solution of Exercise 8.1.1, we can find a countably infinite subset $C \subsetneq \{x ∈ X : |f(x)| > 1/n\}$. Since $\sum_{x \in X} |f(x)|$ is absolutely convergent and $C \subseteq X$, $\sum_{x \in C} |f(x)|$ is absolutely convergent by Lemma 8.2.3. Therefore, by Definition 8.2.1, it holds that:
+
+$$
+\sum_{x \in C} |f(x)| = \sum_{n = 0}^\infty |f(g(n))|
+$$
+
+for some bijection $g: \N \rightarrow C$.
+
+Since $g(n) \in C$, $\forall n \in \N, f(g(n)) > 1/n$. Therefore, by Corollary 7.2.6 and Lemma 7.5.2 (or By Corollary 7.3.2), $\sum_{x \in C} |f(x)| = \sum_{n = 0}^\infty |f(g(n))|$ is divergent. Contradiction.
+
+Hence $\{x ∈ X : |f(x)| > 1/n\}$ is finite. Denote $u = |\{x ∈ X : |f(x)| > 1/n\}|$. Hence there exists bijection $g: \{1 \leq i \leq u\} \rightarrow \{x ∈ X : |f(x)| > 1/n\}$
+
+We then show $u \leq Mn$.
+
+Observe:
+
+$$
+\begin{align*}
+M
+&\geq \sum_{x ∈ X : |f(x)| > 1/n} |f(x)| \\
+&= \sum_{i = 1}^u |f(g(i))| \\
+&\geq u \frac{1}{n}
+\end{align*}
+$$
+
+Hence $u \leq Mn$, as desired.
+
+Therefore, by Exercise 8.1.9, $\bigcup_{n \in \Z^{+}} \{x ∈ X : |f(x)| > 1/n\}$ is at most countable. We then claim $\{x ∈ X : f(x) \neq 0\} = \bigcup_{n \in \Z^{+}} \{x ∈ X : |f(x)| > 1/n\}$. If $x \in \bigcup_{n \in \Z^{+}} \{x ∈ X : |f(x)| > 1/n\}$, then $|f(x)| > 1/n$ implies $f(x) \neq 0$, hence $x \in \{x ∈ X : f(x) \neq 0\}$, If $x \in \{x ∈ X : f(x) \neq 0\}$, then $|f(x)| > 0$, therefore $\exists n \in \Z^{+}, |f(x)| > 1/n$, as desired. Hence $\{x ∈ X : f(x) \neq 0\}$ is at most countable.
 
 ### Exercise 8.2.3
 
@@ -6102,7 +6134,7 @@ Errata: Tao stated that $f: A \rightarrow B$ must not only be an injection, but 
 
 For some reason the error remain uncorrected in the 3rd edition.
 
-####  Using the axiom of choice, show that there then exists an injection $f : A → B$ s.t. $g \circ f : A \rightarrow A$ is the identity map
+#### Using the axiom of choice, show that there then exists an injection $f : A → B$ s.t. $g \circ f : A \rightarrow A$ is the identity map
 
 Denote $X_\alpha = g^{-1}(\{\alpha\})$. Since $g: B \rightarrow A$ is surjective, $g^{-1}(\{\alpha\})$ is non-empty for all $\alpha \in A$. Then, by Axiom of Choice there exists $f: A \rightarrow \bigcap_{\alpha \in A} X_\alpha$ s.t. $\forall \alpha \in A, f(\alpha) \in X_\alpha$. Easy to verify $\bigcap_{\alpha \in A} X_\alpha \subseteq B$. Hence we can extend the range of $f$ s.t. $f: A \rightarrow B$.
 
@@ -6117,4 +6149,3 @@ Hence, suffices to show such $Y$ exists given for any arbitrary sets $A, B$ and 
 Then, there exists injection $f: I \rightarrow \bigcup_{\alpha \in I} X_\alpha$ s.t. $g \circ f: I \rightarrow I$ is identity map. We claim $Y = \{f(\alpha): \alpha \in I\}$ is permissible. We first show $|Y ∩ X_α| \neq 0$ for any given $\alpha \in I$. Observe $g(f(\alpha)) = \alpha$, hence, by definition of $g$, $f(\alpha) \in X_\alpha$. Therefore $\{f(\alpha)\} \subseteq Y ∩ X_α$ hence $|Y ∩ X_α| \neq 0$, as desired.
 
 We then show $|Y ∩ X_α| \leq 1$ by contradiction. Assume $|Y ∩ X_α| > 1$, then there exists $e \neq f(\alpha)$ s.t. $e \in Y ∩ X_α$. Since $e \in Y$, $\exists \beta \in I, f(\beta) = e$ by definition of $Y$. Furthermore since $f(\beta) = e \neq f(\alpha)$, it holds that $\beta \neq \alpha$. Since $g(f(\beta)) = \beta$, $f(\beta) \in X_{\beta}$ by definition of $g$. However, since $e \in Y ∩ X_α$, $f(\beta) = e \in X_{\alpha}$. Hence $f(\beta) \in X_{\alpha} \cap X_{\beta}$, hence $X_{\alpha}, X_{\beta}$ not disjoint, contradiction. Therefore $|Y ∩ X_α| = 1$, as desired.
-
