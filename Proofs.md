@@ -5980,7 +5980,7 @@ $$\sum_{x \in X} f(x) = \sum_{n = 0}^\infty f(g(n))$$
 
 And furthermore $\sum_{n = 0}^\infty |f(g(n))|$ is convergent.
 
-For a given finite subset $A \subseteq X$. If $A = \empty$, $\sum_{x \in X} f(x) = 0$, hence $\sum_{a \in X} |f(x)| < \infty$.
+For a given finite subset $A \subseteq X$. If $A = \empty$, $\sum_{x \in A} f(x) = 0$, hence $\sum_{x \in A} |f(x)| < \infty$.
 
 If $A \neq \empty$, consider the set $\{g^{-1}(a): a \in A\}$. Since $A$ is finite, $\{g^{-1}(a): a \in A\}$ is finite. Since $\{g^{-1}(a): a \in A\}$ is finite and $\{g^{-1}(a): a \in A\} \subseteq \N$, by Exercise 3.6.3, it holds that $\exists M \in \N, \forall a \in A, g^{-1}(a) \leq M$. Then, denote $S = \{g(n): 0 \leq n \leq M\}$. We claim $A \subseteq S$. We argue by contradiction. Assume $a \notin S$, then $\forall 0 \leq n \leq M, g(n) \neq a$. Since $g: \N \rightarrow X$ is surjective, and $\forall 0 \leq n \leq M, g(n) \neq a$, there must exists $g(n') = a$ for some $n' > M$. Hence, $g^{-1}(a) = n' > M$, contradicting $\forall a \in A, g^{-1}(a) \leq M$.
 
@@ -6096,11 +6096,469 @@ $$
 
 As desired.
 
+If $X$ is uncountable, we first show $\sum_{x \in X} |f(x) + g(x)|$ is absolutely convergent.
+
+Observe, for any finite $A \subseteq X$, it holds that:
+
+$$
+\begin{align*}
+\sum_{x \in A} |f(x) + g(x)|
+&\leq \sum_{x \in A} |f(x)| + \sum_{x \in A} |g(x)| \\
+&\leq \quad \sup\{\sum_{x \in A} |f(x)|, A \subseteq X, A \text{ finite}\}\\
+&\quad + \sup\{\sum_{x \in A} |g(x)|, A \subseteq X, A \text{ finite}\} \\
+&< \infty
+\end{align*}
+$$
+
+Hence $\sum_{x \in X} |f(x) + g(x)|$ is absolutely convergent by Definition 8.2.4.
+
+Then, it suffices to prove:
+
+$$
+\sum_{x \in X: f(x) \neq 0} f(x) + \sum_{x \in X: g(x) \neq 0} g(x) = \sum_{x \in X: f(x) + g(x) \neq 0} (f(x) + g(x))
+$$
+
+We decompose $f(x) + g(x) \neq 0$ into mutually exclusive cases. The row means $f(x) = 0$
+
+|        | $f(x)=0$ | $f(x)\neq0$         |
+|--------|-----|----------------|
+| $g(x)=0$    | x   | ✓              |
+| $g(x)\neq0$ | ✓   | $f(x) + g(x) \neq 0$ |
+
+Hence, we can break $\{x \in X: f(x) + g(x) \neq 0\}$ into three pairwise disjoint components:
+
+$$
+\begin{align*}
+\{x \in X: f(x) + g(x) \neq 0\}
+&= \{x \in X: f(x) = 0, g(x) \neq 0\} \\
+&\quad \cup \{x \in X: f(x) \neq 0, g(x) = 0\} \\
+&\quad \cup \{x \in X: f(x), g(x) \neq 0, f(x) + g(x) \neq 0\}
+\end{align*}
+$$
+
+Then, by Proposition 8.2.6 c), we can break $\sum_{x \in X: f(x) + g(x) \neq 0} f(x) + g(x)$ into three absolutely convergent sums:
+
+$$
+\begin{align*}
+\sum_{x \in X: f(x) + g(x) \neq 0} f(x) + g(x)
+&= \sum_{x \in X: f(x) = 0, g(x) \neq 0} f(x) + g(x) \\
+&\quad + \sum_{x \in X: f(x) \neq 0, g(x) = 0} f(x) + g(x) \\
+&\quad + \sum_{x \in X: f(x), g(x) \neq 0, f(x) + g(x) \neq 0} f(x) + g(x) \\
+&
+\end{align*}
+$$
+
+We proceed to simplify each components (with Proposition 8.2.6 c):
+
+$$
+\begin{align*}
+\sum_{x \in X: f(x) = 0, g(x) \neq 0} f(x) + g(x)
+&= \sum_{x \in X: f(x) = 0, g(x) \neq 0} g(x) \\
+&= \sum_{x \in X: g(x) \neq 0} g(x) - \sum_{x \in X: f(x) \neq 0, g(x) \neq 0} g(x)
+\end{align*}
+$$
+
+Similarly:
+
+$$
+\sum_{x \in X: f(x) \neq 0, g(x) = 0} f(x) + g(x) = \sum_{x \in X: f(x) \neq 0} f(x) - \sum_{x \in X: f(x) \neq 0, g(x) \neq 0} f(x)
+$$
+
+Then:
+
+$$
+\begin{align*}
+\sum_{x \in X: f(x) + g(x) \neq 0} f(x) + g(x)
+&= \sum_{x \in X: f(x) = 0, g(x) \neq 0} f(x) + g(x) \\
+&\quad + \sum_{x \in X: f(x) \neq 0, g(x) = 0} f(x) + g(x) \\
+&\quad + \sum_{x \in X: f(x), g(x) \neq 0, f(x) + g(x) \neq 0} f(x) + g(x) \\
+&= \sum_{x \in X: g(x) \neq 0} g(x) - \sum_{x \in X: f(x) \neq 0, g(x) \neq 0} g(x) \\
+&\quad + \sum_{x \in X: f(x) \neq 0} f(x) - \sum_{x \in X: f(x) \neq 0, g(x) \neq 0} f(x) \\
+&\quad + \sum_{x \in X: f(x), g(x) \neq 0, f(x) + g(x) \neq 0} f(x) + g(x) \\
+&= \sum_{x \in X: f(x) \neq 0} f(x) + \sum_{x \in X: g(x) \neq 0} g(x) \\
+&\quad + \sum_{x \in X: f(x), g(x) \neq 0, f(x) + g(x) \neq 0} f(x) + g(x) \\
+&\quad - ( \sum_{x \in X: f(x) \neq 0, g(x) \neq 0} f(x) + \sum_{x \in X: f(x) \neq 0, g(x) \neq 0} g(x))
+\end{align*}
+$$
+
+We remains to prove:
+
+$$\sum_{x \in X: f(x), g(x) \neq 0, f(x) + g(x) \neq 0} f(x) + g(x) - (\sum_{x \in X: f(x) \neq 0, g(x) \neq 0} f(x) + \sum_{x \in X: f(x) \neq 0, g(x) \neq 0} g(x)) = 0$$
+
+Aka:
+
+$$\sum_{x \in X: f(x), g(x) \neq 0, f(x) + g(x) \neq 0} f(x) + g(x) = \sum_{x \in X: f(x) \neq 0, g(x) \neq 0} f(x) + \sum_{x \in X: f(x) \neq 0, g(x) \neq 0} g(x)$$
+
+Observe, by countable version of 8.2.6 a):
+
+$$
+\sum_{x \in X: f(x), g(x) \neq 0} f(x) + g(x) = \sum_{x \in X: f(x) \neq 0, g(x) \neq 0} f(x) + \sum_{x \in X: f(x) \neq 0, g(x) \neq 0} g(x)
+$$
+
+Hence, remains to show:
+
+$$\sum_{x \in X: f(x), g(x) \neq 0} f(x) + g(x) = \sum_{x \in X: f(x), g(x) \neq 0, f(x) + g(x) \neq 0} f(x) + g(x)$$
+
+We prove a more general statement. Say $\sum_{x \in X} f(x)$ is absolutely convergent, then $\sum_{x \in X: f(x) \neq 0} f(x)$ is absolutely convergent, and:
+
+$$\sum_{x \in X} f(x) = \sum_{x \in X: f(x) \neq 0} f(x)$$
+
+The above statement is true by definition if $X$ is uncountable. Hence, remains to prove above statement is true if $X$ is countable.
+
+Observe:
+
+$$
+\begin{align*}
+\sum_{x \in X} f(x)
+&= \sum_{x \in X: f(x) \neq 0} f(x) + \sum_{x \in X: f(x) = 0} f(x) &\text{By 8.2.6 c)}\\
+&= \sum_{x \in X: f(x) \neq 0} f(x) &\text{As } \sum_{x \in X: f(x) = 0} f(x) = 0
+\end{align*}
+$$
+
+Remark: Above also shows if $\sum_{x \in X: f(x) \neq 0} f(x)$ is absolutely convergent, then $\sum_{x \in X} f(x)$ is absolutely convergent and is equal to $\sum_{x \in X: f(x) \neq 0} f(x)$.
+
+As desired.
+
 #### (b)
 
-If $X$ is countable, proof is similar to (a)
+If $X$ is countable, proof is similar to countable case of $(a)$.
+
+If $X$ is uncountable. We first show $\sum_{x \in X} cf(x)$ is absolutely convergent.
+
+Observe, for any finite set $A \subseteq X$:
+
+$$
+\begin{align*}
+\sum_{x \in A} |cf(x)|
+&= \sum_{x \in A} c|f(x)| \\
+&= c\sum_{x \in A} |f(x)| &\text{By 7.1.11 g)}  \\
+&\leq c\sup\{\sum_{x \in A} |f(x)|, A \subseteq X, A \text{ finite}\} \\
+&< \infty
+\end{align*}
+$$
+
+Hence $\sum_{x \in X} cf(x)$ is absolutely convergent by Definition 8.2.4
+
+Then:
+
+$$
+\begin{align*}
+c\sum_{x \in X} f(x)
+&= c\sum_{x \in X: f(x) \neq 0} f(x) \\
+&= \sum_{x \in X: f(x) \neq 0} cf(x) \\
+&= \sum_{x \in X} cf(x)
+\end{align*}
+$$
+
+As desired.
 
 #### (c)
+
+We proceed by cases. If $X$ is finite, then $X_1, X_2$ are finite. Result then follows from 7.1.11 e).
+
+If $X$ is countable, then, either $X_1$ is finite and $X_2$ is countable or $X_1, X_2$ are both countable.
+
+If $X_1$ is finite and $X_2$ is countable, then, despite absolute convergent is defined for infinite series, we extend the definition for finite series and claim all finite series are absolutely convergent. Therefore $\sum_{x \in X_1} f(x)$ is absolutely convergent. To show $\sum_{x \in X_2} f(x)$ is absolutely convergent, note, since $X_2 \subseteq X$, it follows that for all finite set $A \subseteq X_2$, it holds that $A \subseteq X$, hence:
+
+$$
+\sum_{x \in A} |f(x)| < \sup(\sum_{x \in A} |f(x)|, A \subseteq X, A \text{ finite}) < \infty
+$$
+
+Hence $\sum_{x \in X_2} f(x)$ is absolutely convergent by Lemma 8.2.3.
+
+Observe, there exists bijection $g: \{1 \leq i \leq |X_1|\} \rightarrow X_1$ and $h: \N \rightarrow X_2$. Then, we construct bijection $t: \N \rightarrow X$ as following.
+
+$$
+t(n) =
+\begin{cases}
+g(n + 1) &\text{if } n < |X_1| \\
+h(n - |X_1|) &\text{Otherwise}
+\end{cases}
+$$
+
+Easy to prove $t: \N \rightarrow X$ is a bijection. Therefore:
+
+$$
+\begin{align*}
+\sum_{x \in X} f(x)
+&= \sum_{n = 0}^\infty f(t(n)) \\
+&= \sum_{n = 0}^{|X_1| - 1} f(t(n)) + \sum_{n = |X_1|}^\infty f(t(n)) &\text{By 7.2.14 c)}
+\end{align*}
+$$
+
+We remains to show $\sum_{n = 0}^{|X_1| - 1} f(t(n)) = \sum_{x \in X_1} f(x)$ and $\sum_{n = |X_1|}^\infty f(t(n)) = \sum_{x \in X_2} f(x)$.
+
+$$
+\begin{align*}
+\sum_{n = 0}^{|X_1| - 1} f(t(n))
+&= \sum_{n = 1}^{|X_1|} f(t(n - 1)) &\text{By 7.1.4 b)} \\
+&= \sum_{n = 1}^{|X_1|} f(g(n)) \\
+&= \sum_{x \in X_1} f(x)
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\sum_{n = |X_1|}^\infty f(t(n))
+&= \sum_{n = |X_1|}^\infty f(h(n - |x_1|)) \\
+&= \sum_{n = 0}^\infty f(h(n)) &\text{By 7.2.14 d)} \\
+&= \sum_{x \in X_2} f(x)
+\end{align*}
+$$
+
+As desired.
+
+If both $X_1, X_2$ are countable. Via similar argument, $\sum_{x \in X_1} f(x), \sum_{x \in X_2} f(x)$ are absolutely convergent.
+
+Let $g: \N \rightarrow X_1, h: \N \rightarrow X_2$ be bijections. Then, similar to Exercise 8.1.7, define $t: \N \rightarrow X_1 \cup X_2$ as follows:
+
+$$
+t(2n) = g(n) \\
+t(2n + 1) = h(n)
+$$
+
+Since $X_1 \cap X_2 = \empty$, easy to verify $t$ is a bijection.
+
+Then, we claim, for all $N \in \N$:
+
+$$
+\sum_{n = 0}^{2N + 1} f(t(n)) = \sum_{n = 0}^{N} f(g(n)) + \sum_{n = 0}^{N} f(h(n))
+$$
+
+We prove via induction. For $P(0)$:
+
+$$
+\begin{align*}
+\sum_{n = 0}^{1} f(t(n)) 
+&= f(t(0)) + f(t(1)) = f(g(0)) + f(h(0)) \\
+&= \sum_{n = 0}^{0} f(g(n)) + \sum_{n = 0}^{0} f(h(n))
+\end{align*}
+$$
+
+As desired.
+
+For $P(n + 1)$:
+
+$$
+\begin{align*}
+\sum_{n = 0}^{2(N + 1) + 1} f(t(n))
+&= \sum_{n = 0}^{2(N + 1)} f(t(n)) + f(t(2N + 2)) + f(t(2(N + 3))) \\
+&= \sum_{n = 0}^{N} f(g(n)) + \sum_{n = 0}^{N} f(h(n)) + g(N + 1) + h(N + 1) \\
+&= \sum_{n = 0}^{N + 1} f(g(n)) + \sum_{n = 0}^{N + 1} f(h(n))
+\end{align*}
+$$
+
+As desired.
+
+Define $(S_N)^\infty_{N = 0} = (\sum_{n = 0}^{N} f(t(n)))^\infty_{N = 0}$, it holds that $(S_{2N + 1})^\infty_{N = 0}$ is a subsequence of $(S_N)^\infty_{N = 0}$. By 6.1.19 a), $(S_{2N + 1})$ converges to $\sum_{n = 0}^{\infty} f(g(n)) + \sum_{n = 0}^{\infty} f(h(n)) = \sum_{x \in X_1} f(x) + \sum_{x \in X_2} f(x)$. Therefore, by Proposition 6.6.5, $(S_N)^\infty_{N = 0}$ converges to $\sum_{x \in X_1} f(x) + \sum_{x \in X_2} f(x)$, as desired.
+
+For the converse with at most countable $X_1, X_2$, we merely need to show $\sum_{X_1 \cup X_2} f(x)$ is absolutely convergent. Then, the equality follows the same reasoning as above.
+
+To show $\sum_{X_1 \cup X_2} f(x)$ is absolutely convergent, given a finite set $A \subseteq X_1 \cup X_2$, observe $A = (X_1 \cap A) \cup (X_2 \cap A)$. Therefore:
+
+$$
+\begin{align*}
+\sum_{x \in A} |f(x)|
+&= \sum_{x \in X_1 \cap A} |f(x)| + \sum_{x \in X_2 \cap A} |f(x)| \\
+&\leq \sup\{\sum_{x \in A} |f(x)|: A \subseteq X: A \text{ finite}\} \\
+&\quad + \sup\{\sum_{x \in A} |f(x)|: A \subseteq X: A \text{ finite}\} \\
+&< \infty
+\end{align*}
+$$
+
+Hence $\sum_{X_1 \cup X_2} f(x)$ is absolutely convergent by Lemma 8.2.3.
+
+For case with uncountable $X, X_1, X_2$, observe, since $X = X_1 \cup X_2$
+
+$$\{x \in X: f(x) \neq 0\} = \{x \in X_1: f(x) \neq 0\} \cup \{x \in X_2: f(x) \neq 0\}$$
+
+Hence, the uncountable case follows from the countable case.
+
+#### (d)
+
+Assume $X, Y$ are countable. We first show $\sum_{y \in y} f(\phi(y))$ is absolutely convergent. Given finite $B \subseteq Y$, it holds that:
+
+$$
+\begin{align*}
+\sum_{y \in B} |f(\phi(y))| &= \sum_{x \in \phi(B)} |f(x)| &\text{By 7.1.11 c)} \\
+&\leq \sup\{\sum_{x \in A} |f(x)|, A \subseteq X, A \text{ finite}\} \\
+&< \infty
+\end{align*}
+$$
+
+Hence $\sum_{y \in y} f(\phi(y))$ is absolutely convergent by Lemma 8.2.3.
+
+Denote bijection $h: \N \rightarrow X$. Observe $\phi^{-1} \circ h: \N \rightarrow Y$ is a bijection. Hence:
+
+$$
+\begin{align*}
+\sum_{x \in X} f(x)
+&= \sum_{n = 0}^\infty f(h(n)) \\
+&= \sum_{n = 0}^\infty f(\phi(\phi^{-1}(h(n)))) \\
+&= \sum_{y \in Y} f(\phi(y))
+\end{align*}
+$$
+
+As desired.
+
+If $X, Y$ are uncountable. Then suffices to $\phi: \{y \in Y: f(\phi(y)) \neq 0\} \rightarrow \{x \in X: f(x) \neq 0\}$ remains a bijection.
+
+$\phi$ is surjective. As, given $x \in \{x \in X: f(x) \neq 0\}$, it holds that $\phi(\phi^{-1}(x)) = x$. Furthermore, $\phi^{-1}(x) \in \{y \in Y: f(\phi(y)) \neq 0\}$, as $\phi^{-1}(x) \in Y$, and since $f(x) \neq 9$, $f(\phi(y)) = f(\phi(\phi^{-1}(x))) = f(x) \neq 0$, as desired.
+
+$\phi$ is injective. As, assume $\phi: \{y \in Y: f(\phi(y)) \neq 0\} \rightarrow \{x \in X: f(x) \neq 0\}$ is not injective, then $\exists y, y' \in \{y \in Y: f(\phi(y)) \neq 0\}, y \neq y' \land \phi(y) = \phi(y')$. Since $\phi(y), \phi(y') \in \{x \in X: f(x) \neq 0\}$, it holds that $\phi(y), \phi(y') \in X$. Similarly $y, y' \in Y$. Therefore $\phi: Y \rightarrow X$ is not injective, contradiction.
+
+### Exercise 8.2.4
+
+We first define conditional convergence for summation on infinite sets. Analogous to Definition 8.2.1, we say a series $\sum_{x \in X} f(x)$ is conditionally convergent iff for some bijection $g: \N \rightarrow X$, the sum $\sum_{n = 0}^\infty f(g(n))$ is conditionally convergent.
+
+We then argue by contradiction. Assume not both of the series $\sum_{n \in A^{+}} a_n, \sum_{n \in A^{+}} a_n$ are conditionally convergent, then, there exists two overlapping cases:
+
+- $\sum_{n \in A^{+}} a_n$ is conditionally convergent
+- $\sum_{n \in A^{-}} a_n$ is conditionally convergent
+
+#### Case 1: $\sum_{n \in A^{+}} a_n$ is conditionally convergent
+
+Define $(b_n)^\infty_{n = 0}$ s.t.
+
+$$
+b_n =
+\begin{cases}
+a_n &\text{If } n \in A^+ \\
+0 &\text{Otherwise}
+\end{cases}
+$$
+
+Recall, by Solution of Exercise 8.2.3 a), if $\sum_{x \in X: f(x) \neq 0} f(x)$ is absolutely convergent, then $\sum_{x \in X} f(x)$ is absolutely convergent and is equal to $\sum_{x \in X: f(x) \neq 0} f(x)$. Hence:
+
+$$\sum_{n \in A^{+}} a_n = \sum_{n \in \N: b_n \neq 0} b_n = \sum_{n \in \N} b_n$$
+
+With $\sum_{n \in \N} b_n$ being absolutely convergent.
+
+Since $\sum_{n \in \N} a_n, \sum_{n \in \N} b_n$ are convergent, by Proposition 7.2.14 a), $\sum_{n \in \N} (b_n - a_n)$ is convergent. Since $\forall n \in \N, b_n - a_n \geq 0$, hence $\sum_{n \in \N} (b_n - a_n)$ is absolutely convergent. Hence by Proposition 8.2.6 a), $\sum_{n \in \N} -a_n = \sum_{n \in \N} (b_n - a_n) - \sum_{n \in \N} b_n$ is absolutely convergent. Hence by Proposition 8.2.6 c), $\sum_{n \in \N} a_n$ is absolutely convergent, contradiction.
+
+#### Case 2: $\sum_{n \in A^{-}} a_n$ is conditionally convergent
+
+Similar to Case 1
+
+### Exercise 8.2.5
+
+#### $A^+$ and $A^−$ are infinite
+
+We proceed to show $A^+, A^−$ are countable. Since $A^+, A^− \subseteq \N$, by Corollary 8.1.6,  $A^+, A^−$ are at most countable.
+
+Assume $A^+, A^-$ are both finite, then by Proposition 3.6.14 b), $\N = A^+ \cup A^-$ is finite, contradiction.
+
+Assume $A^+$ is countable and $A^{-}$ is finite. Then, let $M = \max(A^{-})$. (Easy to verify we can take $\max$ on a finite set by inducting on the cardinality of the set). By Proposition 7.2.14 c), since $\sum_{n = 0}^\infty a_n$ is conditionally convergent, $\sum_{n = M + 1}^\infty a_n$ is conditionally convergent. Since $M = \max(A^{-})$, it holds that $\forall n > M, a_n \geq 0$, hence $\sum_{n = M + 1}^\infty a_n = \sum_{n = M + 1}^\infty |a_n|$ is conditionally convergent. Hence, by Proposition 7.2.14 c), $\sum_{n = 0}^\infty |a_n|$ is conditionally convergent, hence $\sum_{n = 0}^\infty a_n$ is absolutely convergent, contradiction.
+
+Similarly it cannot hold that $A^-$ is countable and $A^+$ is finite, as desired.
+
+#### The sums $\sum_{m=0}^\infty a_{f_+(m)}$ and $\sum_{m=0}^\infty a_{f_+(m)}$ both fail to be absolutely convergent
+
+We argue by contradiction. WLOG assume $\sum_{m=0}^\infty a_{f_+(m)}$ is absolutely convergent, then $\sum_{n \in A^+} a_{n}$ is absolutely convergent, contradiction.
+
+#### The map $j \rightarrow n_j$ is injective
+
+We argue by contradiction. Assume $\exists j, j' \in \N, j \neq j' \land n_j = n_{j'}$.
+
+Assume $n_j \in A^+, n_{j'} \in A^-$, then it holds that $n_j \geq 0, n_{j'} < 0$, hence $n_j \neq n_{j'}$, contradiction.
+
+Assume $n_j \in A^+, n_{j'} \in A^+$. WLOG say $j' < j$. Then $n_j = \min\{n∈A^+ :n \neq n_i \text{ for all }i<j\}.$ Hence, since $j' < j$, it holds that $n_j \neq n_{j'}$, contradiction.
+
+Case $j \in A^-, j' \in A^-$ follows similarly, as desired.
+
+#### Case I occurs an infinite number of times, and Case II also occurs an infinite number of times
+
+We first translate "Case I occurs an infinite number of times" into mathematical language. We define the number of times Case I appears as $|\{j \in \N: \sum_{0 \leq i < j} a_{n_i} < L\}|$. (And vise versa for Case 2)
+
+We prove Case I occurs an infinite number of times. We argue by contradiction. Assume Case I occurs finitely many times. Then, the set $\{j \in \N: \sum_{0 \leq i < j} a_{n_i} < L\}$ is finite. Therefore, $\max\{j \in \N: \sum_{0 \leq i < j} a_{n_i} < L\}$ exists.
+
+We then let $M = \max\{j \in \N: \sum_{0 \leq i < j} a_{n_i} < L\}$., Then, for all $j > M$, it holds that $\sum_{0 \leq i < j} a_{n_i} \geq L$. Therefore
+
+$$
+\begin{align*}
+\sum_{0 \leq i < j} a_{n_i} &\geq L \\
+\sum_{0 \leq i < M} a_{n_i} + \sum_{M + 1 \leq i < j} a_{n_i} &\geq L \\
+\sum_{M + 1 \leq i < j} a_{n_i} &\geq L - \sum_{0 \leq i < M} a_{n_i} \\
+\sum_{M + 1\leq i < j} a_{n_i} &\geq 0 &\text{As } \sum_{0 \leq i < M} a_{n_i} < L
+\end{align*}
+$$
+
+Yet since for all $j > M$, $n_j \in A^{-}$, hence for all $j > M$, $a_{n_j} < 0$, therefore $\sum_{M + 1 \leq i < j} a_{n_i} < 0$, contradiction.
+
+#### The map $j \rightarrow n_j$ is surjective
+
+We argue by contradiction. Assume $j \rightarrow n_j$ is surjective. then, by Proposition 8.1.4, there exists a minimum $N$ s.t. $\forall j \in \N, n_j \neq N$.
+
+WLOG say $N \in A^+$. We then argue
+
+$$\forall j \in \N, \sum_{0 \leq i < j} a_{n_i} < L, n_j < N$$
+
+We argue by contradiction. Assume $\exists j \in \N, \sum_{0 \leq i < j} a_{n_i} < L, n_j \geq N$, then since $\forall j \in \N, n_j \neq N$, it holds that $n_j > N$ and $N \in \{n \in A^{+}: n \neq n_i \text{ for all } i < j\}$. Since $n_j = \min\{n \in A^{+}: n \neq n_i \text{ for all } i < j\}$, it holds that $n_j \leq N$. Yet $n_j > N$, contradiction.
+
+Then, consider the set $\{n_j: j \in \N, \sum_{0 \leq i < j} a_{n_i} < L\}$, easy to verify $\{n_j: j \in \N, \sum_{0 \leq i < j} a_{n_i} < L\} \subseteq \{n \in \N: n < N\}$. Hence, by Proposition 3.6.14 c), $\{n_j: j \in \N, \sum_{0 \leq i < j} a_{n_i} < L\}$ is finite.
+
+However, since Case I occurs infinitely many times, it holds that $\{j \in \N: \sum_{0 \leq i < j} a_{n_i} < L\}$ is infinite. Since $j \rightarrow n_j$ is injective, it holds that the image $\{n_j: j \in \N, \sum_{0 \leq i < j} a_{n_i} < L\}$ is infinite. Contradiction.
+
+#### We have $\lim_{j→∞} a_{n_j} = 0$
+
+Since $\sum_{n = 0}^\infty a_n$ converges, by Corollary 7.2.6, $\lim_{n→∞} a_{n} = 0$. Easy to verify $j \rightarrow n_j$ is increasing. Hence, $(a_{n_j})_{n \in \N}$ is a subsequence of $(a_{n_j})_{n \in \N}$, therefore $\lim_{j→∞} a_{n_j} = 0$ by Proposition 6.6.5.
+
+#### We have $\lim_{j \rightarrow \infty} \sum_{0 \leq i < j} a_{n_i} = L$
+
+Denote $S_j = \sum_{0 \leq i < j} a_{n_i}$.
+
+We claim:
+$$\forall \epsilon > 0, \exists K \in \N, S_{K} < L + \epsilon \quad \text{(0)}$$
+
+To prove the claim, since $\lim_{j→∞} a_{n_j} = 0$, we have:
+
+$$\forall \epsilon' > 0, \exists J' \geq 0, \forall j \geq J', |a_{n_j}| \leq \epsilon' \quad \text{(1)}$$
+
+We then argue, for any $J \in \N$, there exists $j \geq J$ s.t. $S_j < L$
+
+$$\forall J \in \N, \exists j \geq J, S_j < L \quad \text{(2)}$$
+
+We argue by contradiction. Assume $\exists J \in \N, \forall j \geq J, S_j < L$. Then, $\{j \in \N: S_j < L\}$ is finite, hence Case I occurs finitely many times, contradiction.
+
+Instantiate $(1)$ with $\epsilon' = \epsilon$, we have $\exists J' \geq 0, \forall j \geq J', |a_{n_j}| \leq \epsilon$. Instantiate $(2)$ with $J = J'$, we have $\exists j' \geq J', S_{j'} < L$. Since $S_{j'} < L$, it holds that $S_{j'} < L + \epsilon$. Hence $K = j'$ is permissible, proving $(0)$. Furthermore, since $\forall j \geq J', |a_{n_j}| \leq \epsilon$ and $K = j' \geq J'$, it holds that $\forall j \geq K, |a_{n_j}| \leq \epsilon$.
+
+We then claim:
+
+$$\forall j \geq K, S_{j} < L + \epsilon$$
+
+We argue by induction. Let $P(j)$ denote $S_{j} < L + \epsilon$, then the base case $P(j)$ is trivially true.
+
+For $P(j + 1)$, we proceed by cases. Either $S_{j} < L$ or $L \leq S_{j} < L + \epsilon$:
+
+If $S_{j} < L$, then:
+
+$$S_{j} + a_{n_{j}} < L + a_{n_{j}}$$
+
+$$S_{j + 1} < L + a_{n_{j}} \quad \text{Since } S_{j} + a_{n_{j}} = S_{j + 1}$$
+
+$$S_{j + 1} < L + \epsilon \quad \text{Since } L + a_{n_{j}} \leq L + |a_{n_{j}}| \leq L + \epsilon$$
+
+As desired.
+
+If $L \leq S_{j} < L + \epsilon$, then by Case II, $a_{n_{j}}$ is negative, therefore $S_{j + 1} = S_{j} + a_{n_{j}} < S_{j} < L + \epsilon$ as desired.
+
+Since $\forall \epsilon > 0, \exists K \in \N, S_{K} < L + \epsilon$ and $\forall j \geq K, S_{k} < L + \epsilon$, it holds that
+
+$$\forall \epsilon > 0, \exists K \in \N, \forall j \geq K, S_{k} < L + \epsilon \quad \text{(3)}$$
+
+Via similar reasoning, one can show:
+
+$$\forall \epsilon > 0, \exists K' \in \N, \forall j \geq K, L - \epsilon \leq S_{k} \quad \text{(4)}$$
+
+By $(3)$ and $(4)$:
+
+$$\forall \epsilon > 0, \forall j \geq \max(K, K'), |S_{k}- L | \leq \epsilon$$
+
+Hence $\lim_{j \rightarrow \infty} \sum_{0 \leq i < j} a_{n_i} = L$, as desired.
+
+### Exercise 8.2.6
+
+TODO
 
 ### Exercise 8.4.1
 

@@ -690,7 +690,7 @@ particular, $| − x| = |x|$.
 - (f) (Symmetry of distance) $d(x, y) = d(y, x)$.
 - (g) (Triangle inequality for distance) $d(x, z) ≤ d(x, y) + d(y, z)$.
 
-Note: Another useful inequality not included in the list is $|x| - |y| \leq |x - y|$. Note $x = (x - y) + y$, hence $|x| \leq |x - y| + |y|$ by triangle inequality. Therefore $|x| - |y| \leq |x - y|$. Similarly $|y| - |x| \leq |x - y|$. 
+Note: Another useful inequality not included in the list is $|x| - |y| \leq |x - y|$ (Reverse triangle inequality). Note $x = (x - y) + y$, hence $|x| \leq |x - y| + |y|$ by triangle inequality. Therefore $|x| - |y| \leq |x - y|$. Similarly $|y| - |x| \leq |x - y|$. 
 
 ### Definition 4.3.4 ($\epsilon$-closeness)
 
