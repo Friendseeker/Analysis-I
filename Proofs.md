@@ -6641,7 +6641,7 @@ $$\forall \epsilon' > 0, \exists N \geq 0, \forall j \geq N, |a_{n_j}| \leq \eps
 
 Instantiate $(1)$ with $\epsilon' = \epsilon$. We can find $J > N$ s.t. Case II happens, aka $S_{J} \geq \operatorname{cnt}(J)$ (Otherwise, similar to the reasoning in Exercise 8.2.5, Case II happens finitely, contradiction).
 
-We claim such $J$ is permissible in $(1)$. We argue by induction on $j$. For $P(J)$, it holds that $\operatorname{cnt}(J) - \epsilon \leq \operatorname{cnt}(J) \leq S(J)$, as desired.
+We claim such $J$ is permissible in $(0)$. We argue by induction on $j$. For $P(J)$, it holds that $\operatorname{cnt}(J) - \epsilon \leq \operatorname{cnt}(J) \leq S(J)$, as desired.
 
 For $P(j + 1)$, assume $j + 1$ is under Case I, then
 
@@ -6653,7 +6653,7 @@ $$S_{j + 1} \geq \operatorname{cnt}(j + 1) \geq \operatorname{cnt}(j + 1) - \eps
 
 As desired.
 
-Therefore, set $\epsilon = 1$, we have, for all $j > J$:
+Therefore, instantiate $(0)$ with $\epsilon = 1$, we have, for all $j > J$:
 
 $$S_{j} \geq \operatorname{cnt}(j) - 1$$
 
