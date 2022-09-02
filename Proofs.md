@@ -2688,8 +2688,8 @@ Similarly:
 
 $$
 \begin{align*}
-d(x - z, y - w) &= |x - z - (y - w)| \\ 
-                &= |(x - y) + (-1)(z - w)| \\ 
+d(x - z, y - w) &= |x - z - (y - w)| \\
+                &= |(x - y) + (-1)(z - w)| \\
                 &\leq |x - y| + |z - w| \quad \text{by 4.3.3 (b), (d)} \\
                 &= \epsilon + \delta
 \end{align*}
@@ -6558,7 +6558,112 @@ Hence $\lim_{j \rightarrow \infty} \sum_{0 \leq i < j} a_{n_i} = L$, as desired.
 
 ### Exercise 8.2.6
 
-TODO
+Remark: the question need to be amended. Check Errata for detail.
+
+<details>
+  <summary>Informal Idea</summary>
+  We construct the bijection by adding one element if we have a trailing series of positive elements summing up to $1$. Since new elements added eventually gets small, the negative element added will not offset $1$, resulting in a series converging to $\infty$.
+</details>
+
+We aim to make minimal tweak to Exercise 8.2.5 Solution, while incorporating the informal idea.
+
+We define $(n_j)_{n = 0}^\infty$ recursively as follows. Denote $\operatorname{cnt(j)} = |\{i < j: n_i \in A^{-}\}|$ (Informally, number of negative elements added), then:
+
+$$
+n_j =
+\begin{cases}
+\min\{n \in A^{+}: n \neq n_i \text{ for all } i < j\} &\text{If } \sum_{0 \leq i < j} n_i < \operatorname{cnt(j)}\\
+\min\{n \in A^{-}: n \neq n_i \text{ for all } i < j\} &\text{If } \sum_{0 \leq i < j} n_i \geq \operatorname{cnt(j)}
+\end{cases}
+$$
+
+#### $j \rightarrow n_j$ is injective
+
+Follows from similar reasoning in Exercise 8.2.5
+
+#### Case I, II appears infinitely many times
+
+Denote $S_j = \sum_{0 \leq i < j} n_i$.
+We argue by contradiction.
+
+Assume Case I appears finitely many times, then take $M = \max\{j \in \N: n_j \in A^+\}$. Then, it holds that $\forall n > M, S_n \geq \operatorname{cnt}(n)$. However, easy to verify $\forall n > M, S_M \geq S_n \land \operatorname{cnt}(n) = \operatorname{cnt}(M) + n - M$ (e.g. by induction), Hence, $\forall n > M$, we have
+
+$$
+S_M > S_n \geq \operatorname{cnt}(n) = \operatorname{cnt}(M) + n - M
+$$
+
+$$
+S_M > \operatorname{cnt}(M) + n - M
+$$
+
+We can always choose sufficiently large $n$ s.t. $S_M \leq \operatorname{cnt}(M) + n - M$ (e.g. by Proposition 5.4.12) Contradiction.
+
+Assume Case II appears finitely many times, then take $M = \max\{j \in \N: n_j \in A^-\}$. Then, it holds that $\forall n > M, S_n < \operatorname{cnt}(n)$. Furthermore, $\operatorname{cnt}(n) = \operatorname{cnt}(m)$. Hence $(S_n)_{n = M + 1}^\infty$ is bounded above.
+
+Since $\forall j \geq M, a_{n_{j}} \in A^{+}$, $(S_n)_{n = M + 1}^\infty$ is increasing. Therefore by Proposition 6.3.8, $(S_n)_{n = M + 1}^\infty$ converges. Hence, by Definition 7.2.2, $\sum_{i = 0}^\infty a_{n_j}$ converges. Hence, by Proposition 7.2.14 c), $\sum_{i = M + 1}^\infty a_{n_j}$ converges. Since $\forall j > M, a_{n_{j}} \in A^{+}$, it holds that $\sum_{i = M + 1}^\infty a_{n_j}$ converges absolutely.
+
+We then claim $A^{+} - \{n_j: j > M\}$ is a finite set. We first prove $A^{+} = \{n_j: j \in \N, n_j \in A^{+}\}$. Easy to verify $\{n_j: j \in \N, n_j \in A^{+}\} \subseteq A^{+}$. For $A^{+} \subseteq \{n_j: j \in \N, n_j \in A^{+}\}$. We argue by contradiction. Suppose for some $p \in A^{+}$, $\forall j \in \N, n_j \neq p$. Then, it holds that, for all $j \in \N$ s.t. $n_j = \min\{n \in A^{+}: n \neq n_i \text{ for all } i < j\}$, $p \geq n_j$.
+
+However, observe for each $n_j \in A^{+}$, $n_j$ forms a strictly increasing sequence of natural number.
+
+(Assume the contrary, then define $\operatorname{suc}(n) = \min\{j > n: n_j \in A^{+}\}$. We can then find minimum $M$ s.t. $n_M, n_{\operatorname{suc}(M)} \in A^{+}$ and $n_M \geq n_{\operatorname{suc}(n)}$. However, then it holds that $n_{\operatorname{suc}(n)} \in \{n \in A^{+}: n \neq n_i \text{ for all } i < N\}$. Hence $n_M > n_{\operatorname{suc}(n)}$. Therefore $n_M = n_{\operatorname{suc}(n)}$. However $n_M \notin \{n \in A^{+}: n \neq n_i \text{ for all } i < \operatorname{suc}(M)\}$, hence $n_M \neq n_{\operatorname{suc}(n)}$, contradiction.)
+
+Since Case I happens infinitely many times. the sequence is strictly increasing. Hence, we can always find $j$ s.t. $n_j \in A^{+}$ is arbitrary large. Therefore $\exists j, p < n_j$, contradiction. Therefore $A^{+} = \{n_j: j \in \N, n_j \in A^{+}\}$.
+
+Hence $A^{+} - \{n_j: j > M\} = \{n_j: j \in \N, n_j \in A^{+}\} - \{n_j: j > M\} = \{n_j: j \leq M, n_j \in A^{+}\}$, which is a finite set, as desired.
+
+Therefore, since:
+
+- $A^{+} = \{n_j: j > M\} \cup (A^{+} - \{n_j: j > M\})$
+- $\{n_j: j > M\} \cap (A^{+} - \{n_j: j > M\}) = \empty$
+- $\sum_{n \in \{n_j: j > M\}} a_n = \sum_{i = M + 1}^\infty a_{n_j}$ is absolutely convergent
+- $(A^{+} - \{n_j: j > M\})$ is finite
+
+By Proposition 8.2.6 c), $\sum_{n \in A^{+}} a_n$ is absolutely convergent, contradiction. Therefore, Case II appears infinitely many times.
+
+#### $j \rightarrow n_j$ is surjective
+
+We had already shown $A^{+} = \{n_j: j \in \N, n_j \in A^{+}\}$. Hence $A^{+} \subseteq n(\N)$. We can similarly show $A^{-} \subseteq n(\N)$. Hence $j \rightarrow n_j$ is surjective, as desired.
+
+#### $\lim_{j→∞} a_{n_j} = 0$
+
+Follows from similar reasoning in Exercise 8.2.5
+
+#### $\liminf_{N\rightarrow\infty} \sum_{n = N}^\infty a_{f(m)} = \limsup_{N\rightarrow\infty} \sum_{n = N}^\infty a_{f(m)} = \infty$
+
+We first claim:
+
+$$\forall \epsilon > 0, \exists J \geq 0, \forall j \geq J, \operatorname{cnt}(j) - \epsilon \leq S(j) \quad \text{(0)}$$
+
+To prove the claim, since $\lim_{j→∞} a_{n_j} = 0$, we have:
+
+$$\forall \epsilon' > 0, \exists N \geq 0, \forall j \geq N, |a_{n_j}| \leq \epsilon' \quad \text{(1)}$$
+
+Instantiate $(1)$ with $\epsilon' = \epsilon$. We can find $J > N$ s.t. Case II happens, aka $S_{J} \geq \operatorname{cnt}(J)$ (Otherwise, similar to the reasoning in Exercise 8.2.5, Case II happens finitely, contradiction).
+
+We claim such $J$ is permissible in $(1)$. We argue by induction on $j$. For $P(J)$, it holds that $\operatorname{cnt}(J) - \epsilon \leq \operatorname{cnt}(J) \leq S(J)$, as desired.
+
+For $P(j + 1)$, assume $j + 1$ is under Case I, then
+
+$$S_{j + 1} = S_j + a_{n_j} \geq S_j \geq \operatorname{cnt}(j) - \epsilon = \operatorname{cnt}(j + 1) - \epsilon$$
+
+Assume $j + 1$ is under Case II, then:
+
+$$S_{j + 1} \geq \operatorname{cnt}(j + 1) \geq \operatorname{cnt}(j + 1) - \epsilon$$
+
+As desired.
+
+Therefore, set $\epsilon = 1$, we have, for all $j > J$:
+
+$$S_{j} \geq \operatorname{cnt}(j) - 1$$
+
+Since Case 2 happens infinitely many times, easy to verify $\limsup_{n\rightarrow\infty} \operatorname{cnt}(j) - 1 = \liminf_{n\rightarrow\infty} \operatorname{cnt}(j) - 1 = \infty$. Therefore, by Corollary 6.4.14:
+
+$$\liminf_{n\rightarrow\infty} S_n \geq \liminf_{n\rightarrow\infty} \operatorname{cnt}(n) - 1 = \infty$$
+
+$$\limsup_{n\rightarrow\infty} S_n \geq \limsup_{n\rightarrow\infty} \operatorname{cnt}(n) - 1 = \infty$$
+
+As desired.
 
 ### Exercise 8.4.1
 

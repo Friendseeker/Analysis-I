@@ -1621,6 +1621,18 @@ $A_+ \cup A_− =\ N$ and $A_+\cap A_− =\empty$. Then both of the series $\sum
 
 Let $\sum^∞_{n=0} a_n$ be a series which is conditionally convergent, but not absolutely convergent, and let $L$ be any real number. Then there exists a bijection $f : \N → \N$ such that $\sum^∞_{m=0} a_{f(m)}$ converges conditionally to $L$.
 
+### Theorem 8.3.1 (Cantor’s theorem)
+
+Let $X$ be an arbitrary set (finite or infinite). Then the sets $X$ and $2^X$ cannot have equal cardinality.
+
+### Corollary 8.3.3
+
+$2^N$ is uncountable
+
+### Corollary 8.3.4
+
+$\R$ is uncountable
+
 ### Definition 8.4.1 (Infinite Cartesian products)
 
 Let $I$ be a set (possibly infinite), and for each $α ∈ I$ let $X_α$ be a set. We then define the Cartesian
