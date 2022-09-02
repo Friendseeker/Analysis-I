@@ -6643,13 +6643,42 @@ Instantiate $(1)$ with $\epsilon' = \epsilon$. We can find $J > N$ s.t. Case II 
 
 We claim such $J$ is permissible in $(0)$. We argue by induction on $j$. For $P(J)$, it holds that $\operatorname{cnt}(J) - \epsilon \leq \operatorname{cnt}(J) \leq S(J)$, as desired.
 
-For $P(j + 1)$, assume $j + 1$ is under Case I, then
+For $P(j + 1)$, assume $j + 1$ is under Case I. First, observe $j + 1$ is under Case I, $\operatorname{cnt}(j) = \operatorname{cnt}(j + 1)$. Then we proceed by cases.
 
-$$S_{j + 1} = S_j + a_{n_j} \geq S_j \geq \operatorname{cnt}(j) - \epsilon = \operatorname{cnt}(j + 1) - \epsilon$$
+If $j$ is under Case I, then
+
+$$
+\begin{align*}
+S_{j + 1}
+&= S_j + a_{n_j} \\
+&\geq S_j &\text{As } j \text{ is under Case II}, a_{n_j} \geq 0\\ 
+&\geq \operatorname{cnt}(j) - \epsilon &\text{By } P(j)\\
+&= \operatorname{cnt}(j + 1) - \epsilon &\text{As } j + 1 \text{ is under Case I}
+\end{align*}
+$$
+
+If $j$ is under Case II, then $S_N \geq \operatorname{cnt}(j)$, hence:
+
+$$
+\begin{align*}
+S_{j + 1}
+&= S_j + a_{n_j} \\
+&= S_j - |a_{n_j}| &\text{As } j \text{ is under Case II}, a_{n_j} < 0\\
+&\geq \operatorname{cnt}(j) - |a_{n_j}| &\text{As } j \text{ is under Case II}, S_j \geq \operatorname{cnt}(j) \\
+&\geq \operatorname{cnt}(j) - \epsilon &\text{As } |a_{n_j}| \leq \epsilon \\
+&= \operatorname{cnt}(j + 1) - \epsilon &\text{As } j + 1 \text{ is under Case I}
+\end{align*}
+$$
 
 Assume $j + 1$ is under Case II, then:
 
-$$S_{j + 1} \geq \operatorname{cnt}(j + 1) \geq \operatorname{cnt}(j + 1) - \epsilon$$
+$$
+\begin{align*}
+S_{j + 1}
+&\geq \operatorname{cnt}(j + 1) &\text{As } j + 1 \text{ is under Case II} \\
+&\geq \operatorname{cnt}(j + 1) - \epsilon
+\end{align*}
+$$
 
 As desired.
 
