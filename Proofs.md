@@ -3684,14 +3684,16 @@ Note we have $\exists A \geq M, \forall n \geq M, |a_n - x| \leq \epsilon/2, \ex
 
 b)
 
-I can use 4.3.7 h), however it is... ugly. Hence using something else this time.
+One can use 4.3.7 h). We present an alternative approach.
 
-Need to show:
+We need to prove:
 $$\forall \epsilon > 0, \exists M \geq m, \forall n \geq M, |a_nb_n - xy| \leq \epsilon$$
 
-Note by Corollary 6.1.17, $\forall n, |a_n| \leq U$. Then:
+Fix $\epsilon$. By Corollary 6.1.17, $\forall n, |a_n| \leq U$ for some $U \in \R^{+}$. Then, since $(a_n)_{n = m}^\infty$ converges to $x$, it holds that:
 
 $$\exists A \geq m, \forall n \geq M, |a_n - x| \leq \epsilon/(2U)$$
+
+We then proceed by cases. If $y \neq 0$, then:
 
 $$\exists B \geq m, \forall n \geq M, |b_n - y| \leq \epsilon/(2|y|)$$
 
@@ -3704,7 +3706,24 @@ $$
               &\leq |a_n||b_n - y| + |y||a_n - x| \\
               &\leq U|b_n - y| + |y||a_n - x| \\
               &\leq U \epsilon/(2U) + |y| \epsilon/(2|y|) \\
-              &= \epsilon 
+              &= \epsilon
+\end{align*}
+$$
+
+If $y = 0$, then, since $(b_n)_{n = m}^\infty$ converges to $0$, it holds that:
+
+$$\exists B \geq m, \forall n \geq M, |b_n| \leq \epsilon/(U)$$
+
+Therefore:
+
+$$
+\begin{align*}
+|a_nb_n - xy|
+&= |a_nb_n| \\
+&= |a_n||b_n| \\
+&\leq U|b_n| \\
+&\leq U \epsilon/(U) \\
+&\leq \epsilon
 \end{align*}
 $$
 
@@ -6693,6 +6712,9 @@ $$\liminf_{n\rightarrow\infty} S_n \geq \liminf_{n\rightarrow\infty} \operatorna
 $$\limsup_{n\rightarrow\infty} S_n \geq \limsup_{n\rightarrow\infty} \operatorname{cnt}(n) - 1 = \infty$$
 
 As desired.
+
+### Exercise 8.3.1
+
 
 ### Exercise 8.4.1
 
